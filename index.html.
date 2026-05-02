@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GeoVentas | Tienda Online</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">GEO<span>VENTAS</span></div>
+        <ul class="nav-links">
+            <li><a href="#inicio">Inicio</a></li>
+            <li><a href="#productos">Productos</a></li>
+            <li><a href="mailto:contacto@geoventas.cl">Contacto</a></li>
+        </ul>
+    </nav>
+
+    <header id="inicio" class="hero">
+        <div class="hero-content">
+            <img src="logo.png" alt="GeoVentas Logo" class="main-logo">
+            <h1>TECNOLOGÍA QUE ELEVA</h1>
+            <p>Accesorios premium en Hualpén</p>
+            <a href="#productos" class="btn-gold">Ver Catálogo</a>
+        </div>
+    </header>
+
+    <section id="productos" class="products">
+        <h2 class="section-title">NUESTROS PRODUCTOS</h2>
+        <div class="product-grid">
+            <div class="product-card">
+                <h3>Audio y Sonido</h3>
+                <p>Audífonos TWS, Parlantes y más.</p>
+                <button class="btn-buy">Ver más</button>
+            </div>
+            <div class="product-card">
+                <h3>Carga y Energía</h3>
+                <p>Cargadores rápidos y cables reforzados.</p>
+                <button class="btn-buy">Ver más</button>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>Instagram: @geoventas_cl | Correo: contacto@geoventas.cl</p>
+        <p>© 2026 GeoVentas</p>
+    </footer>
+</body>
+</html>
