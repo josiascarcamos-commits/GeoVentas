@@ -25,6 +25,7 @@ body { background-color: #0a0a0a; color: #fff; scroll-behavior: smooth; }
 .nav-links a:hover { color: #d4af37; }
 
 /* Portada (Hero Section) */
+
 .hero {
     height: 100vh;
     display: flex;
@@ -32,7 +33,10 @@ body { background-color: #0a0a0a; color: #fff; scroll-behavior: smooth; }
     justify-content: center;
     align-items: center;
     text-align: center;
-    background: radial-gradient(circle, #1a1a1a 0%, #000 100%);
+    /* Esto pone tu imagen 1000034716.png de fondo con un filtro oscuro */
+    background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.8)), url('1000034716.png');
+    background-size: cover;
+    background-position: center;
     padding: 0 20px;
 }
 
