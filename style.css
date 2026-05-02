@@ -1,0 +1,79 @@
+body {
+    background-color: #000000;
+    color: #ffffff;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    text-align: center;
+    line-height: 1.6;
+}
+
+.navbar {
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+    background: #0a0a0a;
+    border-bottom: 2px solid #D4AF37;
+    position: sticky;
+    top: 0;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.logo span {
+    color: #D4AF37;
+}
+
+.hero {
+    padding: 80px 20px;
+    background: radial-gradient(circle, #1a1a1a 0%, #000000 100%);
+}
+
+.main-logo {
+    width: 180px;
+    height: auto;
+    margin-bottom: 20px;
+    border-radius: 50%;
+}
+
+.btn-gold {
+    display: inline-block;
+    padding: 15px 30px;
+    background-color: #D4AF37;
+    color: #000;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 8px;
+    margin-top: 20px;
+    text-transform: uppercase;
+}
+
+.products {
+    padding: 40px 20px;
+}
+
+.product-card {
+    background: #111;
+    border: 1px solid #333;
+    padding: 25px;
+    margin: 20px auto;
+    border-radius: 15px;
+    max-width: 300px;
+}
+
+.product-card h3 {
+    color: #D4AF37;
+    margin-bottom: 10px;
+}
+
+footer {
+    padding: 40px;
+    background: #0a0a0a;
+    border-top: 1px solid #333;
+    font-size: 14px;
+    color: #888;
+}
