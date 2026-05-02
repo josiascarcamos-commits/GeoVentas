@@ -1,115 +1,75 @@
-body {
-    background-color: #000000;
-    color: #ffffff;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    margin: 0;
-    text-align: center;
-    line-height: 1.6;
-}
+/* Configuración General */
+* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
+body { background-color: #0a0a0a; color: #fff; scroll-behavior: smooth; }
 
+/* Barra de Navegación */
 .navbar {
     display: flex;
-    justify-content: center;
-    padding: 20px;
-    background: #0a0a0a;
-    border-bottom: 2px solid #D4AF37;
-    position: sticky;
-    top: 0;
-}
-
-.logo {
-    font-size: 24px;
-    font-weight: bold;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-}
-
-.logo span {
-    color: #D4AF37;
-}
-
-.hero {
-    padding: 80px 20px;
-    background: radial-gradient(circle, #1a1a1a 0%, #000000 100%);
-}
-
-.main-logo {
-    width: 180px;
-    height: auto;
-    margin-bottom: 20px;
-    border-radius: 50%;
-}
-
-.btn-gold {
-    display: inline-block;
-    padding: 15px 30px;
-    background-color: #D4AF37;
-    color: #000;
-    text-decoration: none;
-    font-weight: bold;
-    border-radius: 8px;
-    margin-top: 20px;
-    text-transform: uppercase;
-}
-
-.products {
-    padding: 40px 20px;
-}
-
-.product-card {
-    background: #111;
-    border: 1px solid #333;
-    padding: 25px;
-    margin: 20px auto;
-    border-radius: 15px;
-    max-width: 300px;
-}
-
-.product-card h3 {
-    color: #D4AF37;
-    margin-bottom: 10px;
-}
-
-footer {
-    padding: 40px;
-    background: #0a0a0a;
-    border-top: 1px solid #333;
-    font-size: 14px;
-    color: #888;
-}
-/* 1. Achicar el logo para la barra superior */
-.logo {
-    display: flex;
+    justify-content: space-between;
     align-items: center;
+    padding: 15px 5%;
+    background: rgba(0, 0, 0, 0.9);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    border-bottom: 1px solid #d4af3733;
 }
 
-.logo-img {
-    height: 40px; /* Tamaño ideal para el celular */
-    width: auto;
-    margin-right: 10px;
-}
+.logo { display: flex; align-items: center; font-weight: bold; font-size: 1.2rem; color: #d4af37; letter-spacing: 2px; }
+.logo-img { height: 35px; margin-right: 10px; border-radius: 5px; }
 
-/* 2. Portada (Hero) más profesional */
+.nav-links { display: flex; list-style: none; }
+.nav-links li { margin-left: 20px; }
+.nav-links a { color: #fff; text-decoration: none; font-size: 0.9rem; transition: 0.3s; }
+.nav-links a:hover { color: #d4af37; }
+
+/* Portada (Hero Section) */
 .hero {
-    height: 100vh; /* Que ocupe toda la pantalla */
+    height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     text-align: center;
-    /* Un fondo negro con un toque de luz al centro */
-    background: radial-gradient(circle, rgba(30,30,30,1) 0%, rgba(0,0,0,1) 100%);
+    background: radial-gradient(circle, #1a1a1a 0%, #000 100%);
+    padding: 0 20px;
 }
 
-.hero-content h1 {
-    font-size: 2.5rem;
-    color: #D4AF37; /* Dorado */
-    text-shadow: 0px 0px 15px rgba(212, 175, 55, 0.4);
-    margin-bottom: 10px;
+.hero h1 { font-size: 3rem; color: #d4af37; text-transform: uppercase; letter-spacing: 5px; margin-bottom: 10px; }
+.hero p { font-size: 1.2rem; color: #ccc; margin-bottom: 30px; }
+
+.btn-main {
+    padding: 12px 30px;
+    background: #d4af37;
+    color: #000;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 50px;
+    transition: 0.4s;
+    text-transform: uppercase;
+}
+.btn-main:hover { background: #fff; transform: scale(1.05); }
+
+/* Sección Productos */
+.productos { padding: 80px 5%; text-align: center; }
+.productos h2 { color: #d4af37; margin-bottom: 40px; font-size: 2rem; }
+
+.grid-productos {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 25px;
 }
 
-.hero-content p {
-    font-size: 1.1rem;
-    color: #ffffff;
-    opacity: 0.8;
+.card {
+    background: #111;
+    padding: 20px;
+    border: 1px solid #222;
+    border-radius: 15px;
+    transition: 0.3s;
 }
+.card:hover { border-color: #d4af37; transform: translateY(-5px); }
+.card img { width: 100%; border-radius: 10px; margin-bottom: 15px; }
+.card h3 { color: #fff; margin-bottom: 10px; }
+.card p { color: #d4af37; font-weight: bold; font-size: 1.2rem; }
+
