@@ -1,77 +1,123 @@
-/* VARIABLES CORPORATIVAS (Dorado profesional y negro profundo) */
+/* VARIABLES DE DISEÑO */
 :root {
-    --oro: #D4AF37;
-    --negro-fondo: #0a0a0a;
-    --gris-borde: #1c1c1c;
-    --texto-corp: #ccc;
+    --oro-claro: #f9e27d;
+    --oro-medio: #d4af37;
+    --oro-oscuro: #8c6d1f;
+    --negro-fondo: #050505;
+    --negro-tarjeta: #0c0c0c;
 }
 
-* { margin: 0; padding: 0; box-sizing: border-box; }
-body { background-color: var(--negro-fondo); color: white; font-family: 'Montserrat', sans-serif; }
+* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
 
-/* TEXTURA DE FONDO (Simula el fondo corporativo con degradado) */
-.textured-bg {
-    background-image: 
-        radial-gradient(circle at 10% 10%, #1a1a1a 0%, transparent 20%),
-        radial-gradient(circle at 90% 90%, #1c1c1c 0%, transparent 20%),
-        url('fondo-corporativo.jpg'); /* Si tienes una foto de fondo con curvas, cámbiala aquí */
-    background-size: cover; background-attachment: fixed;
+/* FONDO CON TEXTURA DE METAL OSCURO */
+body { 
+    background-color: var(--negro-fondo);
+    background-image: radial-gradient(circle at 50% 50%, #151515 0%, #050505 100%);
+    color: white;
+    overflow-x: hidden;
 }
 
-/* NAVBAR LUXURY */
-.navbar { 
-    display: flex; justify-content: space-between; align-items: center; 
-    padding: 15px 10%; background: rgba(0,0,0,0.95); 
-    border-bottom: 1px solid var(--gris-borde); 
-    position: sticky; top: 0; z-index: 100; 
+/* EFECTO DE ORO REAL PARA LAS LETRAS */
+.gold-gradient-text {
+    background: linear-gradient(to bottom, 
+        var(--oro-claro) 0%, 
+        var(--oro-medio) 45%, 
+        var(--oro-oscuro) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    filter: drop-shadow(0px 2px 2px rgba(0,0,0,0.8));
+    font-weight: 900;
+    letter-spacing: 1px;
 }
-.nav-brand { font-weight: 900; font-size: 1.5rem; letter-spacing: 1px; color: white; }
-.gold { color: var(--oro); }
-.nav-links { display: flex; gap: 20px; }
-.nav-links a { 
-    color: white; text-decoration: none; font-size: 0.8rem; font-weight: 400; 
-    transition: 0.3s; border-bottom: 1px solid transparent; padding-bottom: 3px;
-}
-.nav-links a:hover, .nav-links a.active { color: var(--oro); border-color: var(--oro); }
-.menu-icon { color: var(--oro); font-size: 1.5rem; cursor: pointer; }
 
-/* HERO CORPORATIVO */
-.main-hero { 
-    height: 70vh; 
-    background-image: linear-gradient(rgba(0,0,0,0.9), rgba(0,0,0,0.6)), url('hero-bg.jpg'); 
-    background-size: cover; background-position: center;
-    display: flex; align-items: center; justify-content: center; text-align: center; 
+/* NAVBAR */
+.navbar {
+    display: flex; justify-content: space-between; padding: 15px 5%;
+    border-bottom: 2px solid var(--oro-medio); background: rgba(0,0,0,0.9);
 }
-.hero-title { 
-    font-family: 'Playfair Display', serif; font-size: clamp(3rem, 15vw, 6rem); 
-    font-weight: 900; color: white; 
-    text-shadow: 0 0 20px rgba(212,175,55,0.4); 
-}
-.divider { width: 100px; height: 3px; background: var(--oro); margin: 20px auto 0; }
+.logo { font-family: 'Montserrat'; font-weight: 900; font-size: 1.4rem; }
 
-/* INFO CORPORATIVA */
-.container { padding: 80px 10%; max-width: 1300px; margin: auto; }
-.gold-subtitle { 
-    color: var(--oro); font-family: 'Playfair Display', serif; 
-    font-size: 2rem; margin-top: 50px; 
+/* HEADER Y LOGO */
+.hero-premium { padding: 50px 0; text-align: center; }
+.ring-glow {
+    width: 200px; height: 200px; border-radius: 50%; margin: 0 auto;
+    border: 3px solid var(--oro-medio);
+    box-shadow: 0 0 20px var(--oro-oscuro), inset 0 0 15px var(--oro-oscuro);
+    display: flex; align-items: center; justify-content: center;
+    background: radial-gradient(circle, #1a1a1a 0%, #000 100%);
 }
-.divider-small { width: 50px; height: 2px; background: var(--oro); margin: 15px 0 25px; }
-.corp-text { color: var(--texto-corp); font-size: 1rem; line-height: 1.8; margin-bottom: 20px; text-align: justify;}
-.corp-list { color: var(--texto-corp); list-style: circle; margin-left: 30px; line-height: 1.8; margin-bottom: 20px; }
-.corp-list li strong { color: white; }
+.logo-img { width: 75%; filter: drop-shadow(0 0 5px rgba(212,175,55,0.5)); }
+.brand-name { font-family: 'Montserrat'; font-size: 3rem; margin-top: 15px; letter-spacing: 5px; }
+.brand-tagline { color: #888; font-size: 0.8rem; letter-spacing: 4px; margin-top: -5px; }
 
-/* FOOTER LUXURY CORREGIDO (Replica exacta) */
-.main-footer { padding: 60px 10% 20px; background: black; border-top: 1px solid var(--gris-borde); }
-.footer-grid { 
-    display: grid; grid-template-columns: 1fr 1fr; gap: 40px; 
-    border-bottom: 1px solid #1a1a1a; padding-bottom: 40px; margin-bottom: 20px;
+/* CAJAS Y TARJETAS */
+.main-container { padding: 20px 5%; max-width: 1000px; margin: auto; }
+
+.section-box {
+    background: var(--negro-tarjeta);
+    border: 1px solid #1a1a1a;
+    border-radius: 20px;
+    padding: 30px 20px;
+    margin-bottom: 35px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
 }
-.footer-links { display: flex; flex-direction: column; gap: 10px; }
-.footer-links a { 
-    color: white; text-decoration: none; font-size: 0.8rem; text-transform: lowercase; 
-    font-weight: 300; border: 1px solid var(--oro); padding: 5px 15px; border-radius: 5px; 
-    display: inline-block; width: max-content; transition: 0.3s;
+
+.section-title {
+    font-family: 'Montserrat';
+    font-size: 1.3rem;
+    text-align: center;
+    margin-bottom: 30px;
+    letter-spacing: 3px;
 }
-.footer-links a:hover { background-color: var(--oro); color: black; }
-.footer-origin { color: #555; font-size: 0.8rem; text-align: justify; line-height: 1.6; }
-.copyright { text-align: center; color: #222; font-size: 0.75rem; margin-top: 20px;}
+
+.grid-cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+.card-premium {
+    background: linear-gradient(145deg, #121212, #080808);
+    border: 1px solid #222;
+    border-radius: 15px;
+    padding: 25px 10px;
+    text-align: center;
+    transition: 0.3s;
+}
+
+.card-premium:hover {
+    border-color: var(--oro-medio);
+    transform: translateY(-5px);
+}
+
+.gold-icon { color: var(--oro-medio); font-size: 2.2rem; margin-bottom: 15px; display: block; }
+.card-premium h3 { font-size: 0.7rem; letter-spacing: 1px; }
+
+/* LISTAS */
+.list-item-premium {
+    background: #0f0f0f;
+    border: 1px solid #1a1a1a;
+    border-radius: 12px;
+    padding: 18px;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+.white-text { font-size: 0.9rem; font-weight: 400; color: #eee; }
+
+/* FOOTER */
+.footer-elite {
+    background: #000;
+    padding: 50px 5% 30px;
+    text-align: center;
+    border-top: 2px solid var(--oro-medio);
+}
+.footer-links { display: flex; flex-direction: column; gap: 12px; margin-bottom: 25px; }
+.footer-links a { color: var(--oro-medio); text-decoration: none; font-size: 0.85rem; transition: 0.3s; }
+.footer-links a:hover { color: white; }
+
+.social-footer { font-size: 1.8rem; margin-bottom: 25px; display: flex; justify-content: center; gap: 30px; }
+.social-footer a { color: var(--oro-medio); }
+
+.copyright { color: #333; font-size: 0.7rem; letter-spacing: 1px; }
