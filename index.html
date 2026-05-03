@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GeoVentas | Corporativo</title>
+    <title>GeoVentas | Corporativo Elite</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;900&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
@@ -12,13 +12,20 @@
 
     <nav class="navbar">
         <div class="logo">GEO<span class="gold-gradient-text">VENTAS</span></div>
-        <div class="menu-icon"><i class="fas fa-bars"></i></div>
+        <div class="menu-icon" id="mobile-menu-btn">
+            <i class="fas fa-bars"></i>
+        </div>
+        <ul class="nav-links" id="nav-menu">
+            <li><a href="index.html">Inicio</a></li>
+            <li><a href="productos.html">Productos</a></li>
+            <li><a href="https://wa.me/56929142859">Contacto</a></li>
+        </ul>
     </nav>
 
     <header class="hero-premium">
         <div class="logo-main-container">
             <div class="ring-glow">
-                <img src="logo.webp" alt="GeoVentas Logo" class="logo-img">
+                <img src="1000032322.webp" alt="GeoVentas Logo" class="logo-img">
             </div>
             <h1 class="brand-name gold-gradient-text">GEOVENTAS</h1>
             <p class="brand-tagline">TIENDA ONLINE</p>
@@ -26,9 +33,9 @@
     </header>
 
     <section class="main-container">
-        <div class="section-box">
+        <!-- SECCIÓN: QUIÉNES SOMOS -->
+        <div class="section-box reveal">
             <h2 class="section-title gold-gradient-text">QUIENES SOMOS</h2>
-            
             <div class="grid-cards">
                 <div class="card-premium">
                     <i class="fas fa-history gold-icon"></i>
@@ -49,37 +56,49 @@
             </div>
         </div>
 
-        <div class="section-box">
+        <!-- SECCIÓN: SERVICIOS Y OPERACIONES -->
+        <div class="section-box reveal">
             <h2 class="section-title gold-gradient-text">SERVICIOS Y OPERACIONES</h2>
             
-            <div class="list-item-premium">
+            <a href="productos.html" class="list-item-premium">
                 <i class="fas fa-book-open gold-icon"></i>
                 <span class="white-text">Catálogo Corporativo</span>
-            </div>
-            <div class="list-item-premium">
+            </a>
+
+            <a href="https://wa.me/56929142859" target="_blank" class="list-item-premium">
                 <i class="fas fa-truck-moving gold-icon"></i>
                 <span class="white-text">Logística Regional (Concepción/Hualpén)</span>
-            </div>
-            <div class="list-item-premium">
+            </a>
+
+            <a href="#" class="list-item-premium">
                 <i class="fas fa-handshake gold-icon"></i>
                 <span class="white-text">Alianzas Estratégicas</span>
-            </div>
+            </a>
         </div>
     </section>
 
     <footer class="footer-elite">
         <div class="footer-links">
             <a href="productos.html">Productos</a>
-            <a href="#">Garantía Corporativa</a>
-            <a href="#">Políticas de Privacidad</a>
+            <a href="#">Garantía</a>
+            <a href="#">Privacidad</a>
         </div>
         <div class="social-footer">
             <a href="#"><i class="fab fa-instagram"></i></a>
-            <a href="#"><i class="fab fa-whatsapp"></i></a>
+            <a href="https://wa.me/56929142859"><i class="fab fa-whatsapp"></i></a>
             <a href="#"><i class="fas fa-envelope"></i></a>
         </div>
         <p class="copyright">© 2026 GeoVentas - Hualpén, Chile.</p>
     </footer>
+
+    <script>
+        // Lógica Menú Hamburguesa
+        const menuBtn = document.getElementById('mobile-menu-btn');
+        const navMenu = document.getElementById('nav-menu');
+        menuBtn.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+        });
+    </script>
 
 </body>
 </html>
