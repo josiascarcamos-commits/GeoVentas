@@ -1,18 +1,71 @@
-:root { --oro: #D4AF37; --negro-profundo: #050505; --negro-tarjeta: #0a0a0a; --whatsapp: #25D366; }
-body { background-color: var(--negro-profundo); color: white; font-family: 'Poppins', sans-serif; }
-h1, h2, h3, .logo { font-family: 'Montserrat', sans-serif; }
-.gold-txt { color: var(--oro); }
+:root {
+    --oro: #D4AF37;
+    --oro-oscuro: #8C6D1F;
+    --negro-bg: #050505;
+    --negro-card: #0a0a0a;
+}
 
-.navbar { display: flex; justify-content: space-between; padding: 15px 10%; background: #000; border-bottom: 1px solid #1c1c1c; position: sticky; top: 0; z-index: 100; }
-.hero { height: 70vh; background: linear-gradient(rgba(0,0,0,0.9), rgba(0,0,0,0.4)), url('4.png'); background-size: cover; display: flex; align-items: center; justify-content: center; text-align: center; }
-.titulo-pro span { color: var(--oro); text-shadow: 0 0 30px rgba(212,175,55,0.5); }
+* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
+body { background-color: var(--negro-bg); color: white; }
 
-.promo-banner { background: #000; border: 2px solid var(--oro); border-radius: 20px; padding: 40px; text-align: center; }
-.badge { background: #ff4757; color: white; padding: 5px 10px; border-radius: 4px; font-weight: bold; }
-.precio-oferta { color: var(--oro); font-size: 2.5rem; font-weight: 900; }
-.precio-tachado { color: #555; text-decoration: line-through; }
+/* NAVBAR */
+.navbar {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 20px 5%; background: black; border-bottom: 1px solid #1a1a1a;
+}
+.logo-container { display: flex; flex-direction: column; }
+.brand { font-family: 'Montserrat'; font-weight: 900; font-size: 1.5rem; color: var(--oro); line-height: 1; }
+.sub-brand { font-size: 0.8rem; color: #888; text-align: center; }
+.menu-icon { color: var(--oro); font-size: 1.5rem; }
 
-.luxury-card { background: var(--negro-tarjeta); border: 1px solid #1c1c1c; border-radius: 20px; transition: 0.3s; }
-.luxury-card:hover { border-color: var(--oro); transform: translateY(-5px); }
-.stock-bar { width: 100%; height: 6px; background: #222; border-radius: 10px; overflow: hidden; }
-.gold-gradient { background: linear-gradient(90deg, var(--oro), #f39c12); }
+/* HERO - MAPA Y ESCUDO */
+.hero-map {
+    height: 400px; display: flex; flex-direction: column;
+    align-items: center; justify-content: center; position: relative;
+    background: radial-gradient(circle, #111 0%, #000 100%);
+}
+.shield-logo {
+    position: relative; font-size: 8rem; color: var(--oro-oscuro);
+    display: flex; align-items: center; justify-content: center;
+    text-shadow: 0 0 20px rgba(140, 109, 31, 0.4);
+}
+.shield-text {
+    position: absolute; font-size: 2rem; color: white; font-weight: 900;
+}
+.delivery-text {
+    color: var(--oro); font-family: 'Montserrat'; text-transform: lowercase;
+    margin-top: 20px; font-size: 1.8rem; letter-spacing: 1px;
+}
+
+/* LOCALIZACIONES (Simulando mapa) */
+.locations { position: absolute; width: 100%; height: 100%; font-size: 0.7rem; color: #555; }
+.loc { position: absolute; font-weight: bold; }
+.t { top: 20%; left: 10%; }
+.c { top: 15%; right: 40%; color: var(--oro); }
+.h { top: 35%; right: 20%; color: var(--oro-oscuro); }
+.sp { bottom: 20%; left: 20%; }
+.ch { bottom: 15%; right: 15%; }
+
+/* PROMOCIONES */
+.container { padding: 40px 5%; }
+.section-title { color: var(--oro); font-size: 1.5rem; margin-bottom: 20px; text-align: center; }
+.promo-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
+.promo-card, .product-item {
+    background: var(--negro-card); border: 1px solid #1a1a1a;
+    padding: 20px; border-radius: 15px; text-align: center; position: relative;
+}
+.status-tags { position: absolute; top: 10px; left: 10px; font-size: 0.7rem; }
+.tag-ok { color: #2ecc71; font-weight: bold; }
+.img-placeholder, .product-img {
+    height: 150px; background: #111; border-radius: 10px; margin-bottom: 15px;
+    display: flex; align-items: center; justify-content: center; color: #333;
+}
+.new { color: var(--oro); font-size: 1.5rem; font-weight: bold; margin-left: 10px; }
+.old { color: #444; text-decoration: line-through; }
+
+/* FOOTER ICONS */
+.footer { padding: 40px 5%; background: black; text-align: center; border-top: 1px solid #111; }
+.footer-icons { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-bottom: 20px; }
+.f-item { color: var(--oro); font-size: 0.7rem; display: flex; flex-direction: column; gap: 5px; }
+.f-item i { font-size: 1.2rem; }
+.copy { color: #333; font-size: 0.7rem; }
