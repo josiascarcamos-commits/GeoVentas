@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GeoVentas | Catálogo Elite</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;900&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body class="deep-black-bg">
+    <nav class="navbar">
+        <div class="logo">GEO<span class="gold-txt">VENTAS</span></div>
+        <ul class="nav-links"><li><a href="index.html">Volver</a></li></ul>
+    </nav>
+
+    <section class="container">
+        <h1 class="main-title-gold">Exclusividad Tecnológica</h1>
+        <div class="grid-productos">
+            <div class="card luxury-card">
+                <div class="promo-tag">OFERTA</div>
+                <div class="card-img-wrapper"><img src="1.png" alt="Cargador"></div>
+                <div class="card-body">
+                    <h3>Ugreen Nexode Pro 65W</h3>
+                    <p class="sku">ID: #UG-65W</p>
+                    <div class="price-wrapper"><span class="precio-oferta">$00.000</span><span class="precio-tachado">$00.000</span></div>
+                    <div class="stock-container">
+                        <div class="stock-bar"><div class="stock-progress gold-gradient" style="width: 80%;"></div></div>
+                        <p class="stock-status">🔥 Últimas unidades</p>
+                    </div>
+                    <a href="https://wa.me/56929142859" class="btn-buy-wa gold-glow-btn">Adquirir</a>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
