@@ -1,87 +1,70 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GeoVentas | Corporativo</title>
+    <title>GeoVentas | Página Principal</title>
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;900&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
-<body>
+<body class="textured-bg">
 
     <nav class="navbar">
-        <div class="logo">GEO<span class="gold-txt">VENTAS</span></div>
-        <div class="menu-toggle"><i class="fas fa-bars"></i></div>
+        <div class="nav-brand">GEO<span class="gold">VENTAS</span></div>
+        <div class="nav-links">
+            <a href="index.html" class="active">Página principal</a>
+            <a href="contacto.html">Contactos y medios de pago</a>
+            <a href="productos.html">Productos</a>
+        </div>
+        <div class="menu-icon"><i class="fas fa-bars"></i></div>
     </nav>
 
-    <header class="hero-corporate">
-        <div class="logo-central-container">
-            <div class="main-logo-ring">
-                <img src="tu-logo.png" alt="GeoVentas Logo" class="center-logo">
-            </div>
-            <h1 class="corporate-title">GEOVENTAS</h1>
-            <p class="corporate-sub">tienda online</p>
+    <header class="main-hero">
+        <div class="hero-overlay">
+            <h1 class="hero-title">GeoVentas</h1>
+            <div class="divider"></div>
         </div>
     </header>
 
-    <section class="corporate-section">
-        <div class="container">
-            <h2 class="gold-title">Quiénes Somos</h2>
-            <div class="grid-corporate">
-                <div class="corp-card">
-                    <i class="fas fa-history gold-icon"></i>
-                    <h3>Nuestra Historia</h3>
-                    <p>Nacidos en Hualpén para revolucionar la tecnología local.</p>
-                </div>
-                <div class="corp-card">
-                    <i class="fas fa-eye gold-icon"></i>
-                    <h3>Misión y Visión</h3>
-                    <p>Liderar el mercado de accesorios premium en toda la región.</p>
-                </div>
-                <div class="corp-card">
-                    <i class="fas fa-lightbulb gold-icon"></i>
-                    <h3>Nuestra Idea</h3>
-                    <p>Calidad de nivel mundial al alcance de un clic.</p>
-                </div>
-            </div>
-        </div>
-    </section>
+    <section class="container corporate-info">
+        <h2 class="gold-subtitle">¿Qué es GeoVentas?</h2>
+        <div class="divider-small"></div>
+        <p class="corp-text">
+            GeoVentas es una plataforma de comercio electrónico dedicada a la distribución de productos tecnológicos de vanguardia y joyería artesanal en resina. Nos especializamos en conectar a nuestros clientes con las tendencias globales en electrónica y la delicadeza del arte hecho a mano, garantizando una experiencia de compra segura y eficiente.
+        </p>
 
-    <section class="operations-section alternate-bg">
-        <div class="container">
-            <h2 class="gold-title">Servicios y Operaciones</h2>
-            <div class="op-item">
-                <i class="fas fa-truck-loading"></i>
-                <div class="op-text">
-                    <h3>Logística Regional</h3>
-                    <p>Entregas rápidas y seguras en Concepción y Hualpén.</p>
-                </div>
-            </div>
-            <div class="op-item">
-                <i class="fas fa-handshake"></i>
-                <div class="op-text">
-                    <h3>Alianzas Estratégicas</h3>
-                    <p>Trabajamos con las mejores marcas: Ugreen y Essager.</p>
-                </div>
-            </div>
-        </div>
+        <h2 class="gold-subtitle">Nuestra Idea</h2>
+        <div class="divider-small"></div>
+        <p class="corp-text">
+            Nuestro concepto se basa en la diversidad funcional. Entendemos que el consumidor moderno busca tanto la practicidad de la tecnología importada como la exclusividad de un accesorio artesanal. En GeoVentas, nos encargamos de seleccionar cuidadosamente cada artículo de nuestro catálogo para asegurar que cumpla con las expectativas de calidad y utilidad de quienes confían en nosotros.
+        </p>
+
+        <h2 class="gold-subtitle">Nuestros Objetivos</h2>
+        <div class="divider-small"></div>
+        <ul class="corp-list">
+            <li><strong>Curaduría de Productos:</strong> Seleccionar los mejores dispositivos tecnológicos internacionales para acercarlos a nuestro público de forma directa.</li>
+            <li><strong>Valor Artesanal:</strong> Impulsar nuestra línea de joyería en resina como una alternativa auténtica y personalizada frente a la producción masiva.</li>
+            <li><strong>Accesibilidad:</strong> Ofrecer precios competitivos y un proceso de compra sencillo, profesional y transparente.</li>
+            <li><strong>Compromiso con el Cliente:</strong> Brindar una atención personalizada que guíe al usuario en su elección, asegurando que cada compra sea una inversión satisfactoria.</li>
+        </ul>
     </section>
 
     <footer class="main-footer">
-        <div class="footer-bottom">
-            <div class="social-links">
-                <a href="#"><i class="fab fa-instagram"></i></a>
-                <a href="#"><i class="fab fa-whatsapp"></i></a>
-                <a href="#"><i class="fas fa-envelope"></i></a>
+        <div class="footer-grid">
+            <div class="footer-links">
+                <a href="productos.html">productos nuevos</a>
+                <a href="contacto.html">formas de pago</a>
+                <a href="#">contáctanos</a>
+                <a href="#">políticas de seguridad y privacidad</a>
+                <a href="#">preguntas frecuentes</a>
             </div>
-            <p>© 2026 GeoVentas - Hualpén, Chile.</p>
-            <div class="footer-nav">
-                <a href="productos.html">Productos</a> | <a href="#">Garantía</a> | <a href="#">Políticas</a>
-            </div>
+            <p class="footer-origin">
+                GeoVentas nace en Concepción para ofrecer una alternativa local en tecnología y joyería artesanal. Nos enfocamos en productos seleccionados bajo criterios de calidad y funcionalidad, gestionando importaciones internacionales y ofreciendo trato directo.
+            </p>
         </div>
+        <p class="copyright">© 2026 GeoVentas - Hualpén, Chile.</p>
     </footer>
 
 </body>
 </html>
-
