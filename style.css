@@ -1,4 +1,3 @@
-/* VARIABLES DE DISEÑO */
 :root {
     --oro-claro: #f9e27d;
     --oro-medio: #d4af37;
@@ -9,115 +8,99 @@
 
 * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
 
-/* FONDO CON TEXTURA DE METAL OSCURO */
 body { 
     background-color: var(--negro-fondo);
     background-image: radial-gradient(circle at 50% 50%, #151515 0%, #050505 100%);
-    color: white;
+    color: white; 
     overflow-x: hidden;
 }
 
-/* EFECTO DE ORO REAL PARA LAS LETRAS */
+/* --- ANIMACIONES CSS --- */
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes goldPulse {
+    0% { box-shadow: 0 0 15px var(--oro-oscuro); }
+    50% { box-shadow: 0 0 30px var(--oro-medio); }
+    100% { box-shadow: 0 0 15px var(--oro-oscuro); }
+}
+
+/* --- ESTILOS DORADOS --- */
 .gold-gradient-text {
-    background: linear-gradient(to bottom, 
-        var(--oro-claro) 0%, 
-        var(--oro-medio) 45%, 
-        var(--oro-oscuro) 100%);
+    background: linear-gradient(to bottom, var(--oro-claro) 0%, var(--oro-medio) 45%, var(--oro-oscuro) 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     filter: drop-shadow(0px 2px 2px rgba(0,0,0,0.8));
     font-weight: 900;
-    letter-spacing: 1px;
 }
 
-/* NAVBAR */
+/* NAVEGACIÓN */
 .navbar {
-    display: flex; justify-content: space-between; padding: 15px 5%;
-    border-bottom: 2px solid var(--oro-medio); background: rgba(0,0,0,0.9);
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 15px 5%; background: rgba(0,0,0,0.95);
+    border-bottom: 2px solid var(--oro-medio);
+    position: sticky; top: 0; z-index: 1000;
 }
-.logo { font-family: 'Montserrat'; font-weight: 900; font-size: 1.4rem; }
 
-/* HEADER Y LOGO */
-.hero-premium { padding: 50px 0; text-align: center; }
+.nav-links { display: flex; list-style: none; gap: 20px; }
+.nav-links a { color: white; text-decoration: none; font-size: 0.9rem; font-weight: 600; }
+.nav-links a:hover { color: var(--oro-medio); }
+.menu-icon { color: var(--oro-medio); font-size: 1.5rem; cursor: pointer; display: none; }
+
+/* HEADER */
+.hero-premium { padding: 50px 0; text-align: center; animation: fadeInUp 1s ease-out; }
 .ring-glow {
-    width: 200px; height: 200px; border-radius: 50%; margin: 0 auto;
+    width: 180px; height: 180px; border-radius: 50%; margin: 0 auto;
     border: 3px solid var(--oro-medio);
-    box-shadow: 0 0 20px var(--oro-oscuro), inset 0 0 15px var(--oro-oscuro);
     display: flex; align-items: center; justify-content: center;
-    background: radial-gradient(circle, #1a1a1a 0%, #000 100%);
+    animation: goldPulse 3s infinite ease-in-out;
 }
-.logo-img { width: 75%; filter: drop-shadow(0 0 5px rgba(212,175,55,0.5)); }
-.brand-name { font-family: 'Montserrat'; font-size: 3rem; margin-top: 15px; letter-spacing: 5px; }
-.brand-tagline { color: #888; font-size: 0.8rem; letter-spacing: 4px; margin-top: -5px; }
+.logo-img { width: 75%; }
+.brand-name { font-family: 'Montserrat'; font-size: 2.8rem; margin-top: 15px; letter-spacing: 4px; }
+.brand-tagline { color: #666; font-size: 0.8rem; letter-spacing: 3px; }
 
-/* CAJAS Y TARJETAS */
-.main-container { padding: 20px 5%; max-width: 1000px; margin: auto; }
-
+/* CONTENEDORES */
+.main-container { padding: 20px 5%; max-width: 900px; margin: auto; }
 .section-box {
-    background: var(--negro-tarjeta);
-    border: 1px solid #1a1a1a;
-    border-radius: 20px;
-    padding: 30px 20px;
-    margin-bottom: 35px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    background: var(--negro-tarjeta); border: 1px solid #1a1a1a;
+    border-radius: 20px; padding: 30px 20px; margin-bottom: 30px;
+    animation: fadeInUp 1s ease-out;
 }
+.section-title { font-size: 1.2rem; text-align: center; margin-bottom: 25px; letter-spacing: 2px; }
 
-.section-title {
-    font-family: 'Montserrat';
-    font-size: 1.3rem;
-    text-align: center;
-    margin-bottom: 30px;
-    letter-spacing: 3px;
-}
-
-.grid-cards {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 15px;
-}
-
+.grid-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
 .card-premium {
-    background: linear-gradient(145deg, #121212, #080808);
-    border: 1px solid #222;
-    border-radius: 15px;
-    padding: 25px 10px;
-    text-align: center;
-    transition: 0.3s;
+    background: #111; border: 1px solid #222; border-radius: 15px;
+    padding: 20px 10px; text-align: center; transition: 0.3s;
 }
+.card-premium:hover { border-color: var(--oro-medio); transform: translateY(-5px); }
+.gold-icon { color: var(--oro-medio); font-size: 1.8rem; margin-bottom: 10px; display: block; }
+.card-premium h3 { font-size: 0.7rem; }
 
-.card-premium:hover {
-    border-color: var(--oro-medio);
-    transform: translateY(-5px);
-}
-
-.gold-icon { color: var(--oro-medio); font-size: 2.2rem; margin-bottom: 15px; display: block; }
-.card-premium h3 { font-size: 0.7rem; letter-spacing: 1px; }
-
-/* LISTAS */
+/* BOTONES DE SERVICIO */
 .list-item-premium {
-    background: #0f0f0f;
-    border: 1px solid #1a1a1a;
-    border-radius: 12px;
-    padding: 18px;
-    margin-bottom: 12px;
-    display: flex;
-    align-items: center;
-    gap: 15px;
+    background: #0f0f0f; border: 1px solid #1a1a1a; border-radius: 12px;
+    padding: 18px; margin-bottom: 12px; display: flex; align-items: center; 
+    gap: 15px; text-decoration: none; transition: 0.3s;
 }
-.white-text { font-size: 0.9rem; font-weight: 400; color: #eee; }
+.list-item-premium:hover { border-color: var(--oro-medio); background: #151515; box-shadow: 0 0 10px rgba(212,175,55,0.2); }
+.white-text { color: #eee; font-size: 0.9rem; }
 
-/* FOOTER */
-.footer-elite {
-    background: #000;
-    padding: 50px 5% 30px;
-    text-align: center;
-    border-top: 2px solid var(--oro-medio);
+/* RESPONSIVE */
+@media (max-width: 768px) {
+    .menu-icon { display: block; }
+    .nav-links {
+        display: none; flex-direction: column; position: absolute;
+        top: 60px; right: 5%; background: #0a0a0a; border: 1px solid var(--oro-medio);
+        padding: 20px; border-radius: 10px; width: 180px;
+    }
+    .nav-links.active { display: flex; }
+    .brand-name { font-size: 2.2rem; }
 }
-.footer-links { display: flex; flex-direction: column; gap: 12px; margin-bottom: 25px; }
-.footer-links a { color: var(--oro-medio); text-decoration: none; font-size: 0.85rem; transition: 0.3s; }
-.footer-links a:hover { color: white; }
 
-.social-footer { font-size: 1.8rem; margin-bottom: 25px; display: flex; justify-content: center; gap: 30px; }
+.footer-elite { padding: 40px 5%; text-align: center; border-top: 1px solid #222; margin-top: 40px; }
+.social-footer { font-size: 1.5rem; margin: 20px 0; display: flex; justify-content: center; gap: 25px; }
 .social-footer a { color: var(--oro-medio); }
-
-.copyright { color: #333; font-size: 0.7rem; letter-spacing: 1px; }
+.copyright { color: #444; font-size: 0.65rem; }
