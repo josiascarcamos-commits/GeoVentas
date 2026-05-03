@@ -6,66 +6,91 @@
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
-body { background-color: var(--negro-bg); color: white; }
+body { background-color: var(--negro-bg); color: white; overflow-x: hidden; }
 
 /* NAVBAR */
 .navbar {
     display: flex; justify-content: space-between; align-items: center;
-    padding: 20px 5%; background: black; border-bottom: 1px solid #1a1a1a;
+    padding: 15px 5%; background: black; border-bottom: 1px solid #1a1a1a;
+    position: sticky; top: 0; z-index: 1000;
 }
 .logo-container { display: flex; flex-direction: column; }
 .brand { font-family: 'Montserrat'; font-weight: 900; font-size: 1.5rem; color: var(--oro); line-height: 1; }
-.sub-brand { font-size: 0.8rem; color: #888; text-align: center; }
-.menu-icon { color: var(--oro); font-size: 1.5rem; }
+.sub-brand { font-size: 0.7rem; color: #888; text-transform: lowercase; margin-top: 2px; }
+.nav-links a { color: white; text-decoration: none; margin-right: 15px; font-size: 0.8rem; font-weight: bold; text-transform: uppercase; }
+.menu-icon { color: var(--oro); font-size: 1.2rem; }
 
 /* HERO - MAPA Y ESCUDO */
 .hero-map {
-    height: 400px; display: flex; flex-direction: column;
+    height: 450px; display: flex; flex-direction: column;
     align-items: center; justify-content: center; position: relative;
-    background: radial-gradient(circle, #111 0%, #000 100%);
+    background: radial-gradient(circle, #0f0f0f 0%, #000 100%);
+    border-bottom: 1px solid #111;
 }
 .shield-logo {
-    position: relative; font-size: 8rem; color: var(--oro-oscuro);
+    position: relative; font-size: 7rem; color: var(--oro-oscuro);
     display: flex; align-items: center; justify-content: center;
-    text-shadow: 0 0 20px rgba(140, 109, 31, 0.4);
+    filter: drop-shadow(0 0 15px rgba(140, 109, 31, 0.3));
 }
 .shield-text {
-    position: absolute; font-size: 2rem; color: white; font-weight: 900;
+    position: absolute; font-size: 1.8rem; color: white; font-weight: 900; font-family: 'Montserrat';
 }
 .delivery-text {
     color: var(--oro); font-family: 'Montserrat'; text-transform: lowercase;
-    margin-top: 20px; font-size: 1.8rem; letter-spacing: 1px;
+    margin-top: 25px; font-size: 1.6rem; letter-spacing: 1px; font-weight: 900;
 }
 
-/* LOCALIZACIONES (Simulando mapa) */
-.locations { position: absolute; width: 100%; height: 100%; font-size: 0.7rem; color: #555; }
-.loc { position: absolute; font-weight: bold; }
-.t { top: 20%; left: 10%; }
-.c { top: 15%; right: 40%; color: var(--oro); }
-.h { top: 35%; right: 20%; color: var(--oro-oscuro); }
-.sp { bottom: 20%; left: 20%; }
-.ch { bottom: 15%; right: 15%; }
+/* LOCALIZACIONES */
+.locations { position: absolute; width: 100%; height: 100%; font-size: 0.65rem; color: #444; pointer-events: none; }
+.loc { position: absolute; font-weight: bold; text-transform: uppercase; }
+.t { top: 15%; left: 15%; }
+.c { top: 20%; right: 25%; color: var(--oro); }
+.h { top: 45%; right: 10%; color: var(--oro); }
+.sp { bottom: 25%; left: 10%; }
+.ch { bottom: 15%; right: 30%; }
 
-/* PROMOCIONES */
-.container { padding: 40px 5%; }
-.section-title { color: var(--oro); font-size: 1.5rem; margin-bottom: 20px; text-align: center; }
-.promo-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
-.promo-card, .product-item {
+/* PROMOCIONES Y PRODUCTOS */
+.container { padding: 50px 5%; }
+.section-title { color: var(--oro); font-size: 1.4rem; margin-bottom: 30px; text-align: center; text-transform: uppercase; font-family: 'Montserrat'; }
+.promo-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; }
+.promo-card {
     background: var(--negro-card); border: 1px solid #1a1a1a;
-    padding: 20px; border-radius: 15px; text-align: center; position: relative;
+    padding: 25px; border-radius: 20px; text-align: center; position: relative;
+    transition: 0.3s;
 }
-.status-tags { position: absolute; top: 10px; left: 10px; font-size: 0.7rem; }
-.tag-ok { color: #2ecc71; font-weight: bold; }
-.img-placeholder, .product-img {
-    height: 150px; background: #111; border-radius: 10px; margin-bottom: 15px;
-    display: flex; align-items: center; justify-content: center; color: #333;
+.promo-card:hover { border-color: var(--oro-oscuro); transform: translateY(-5px); }
+.status-tags { position: absolute; top: 15px; left: 15px; font-size: 0.7rem; }
+.tag-ok { color: #2ecc71; font-weight: bold; background: rgba(46, 204, 113, 0.1); padding: 3px 8px; border-radius: 4px; }
+.img-placeholder {
+    height: 180px; background: #080808; border-radius: 12px; margin-bottom: 20px;
+    display: flex; align-items: center; justify-content: center; color: #222; font-weight: bold;
 }
-.new { color: var(--oro); font-size: 1.5rem; font-weight: bold; margin-left: 10px; }
-.old { color: #444; text-decoration: line-through; }
+.prices { margin: 15px 0; }
+.new { color: var(--oro); font-size: 1.8rem; font-weight: 900; }
+.old { color: #444; text-decoration: line-through; font-size: 1rem; }
+.btn-wa-promo {
+    background: var(--oro-oscuro); color: white; padding: 12px 25px;
+    text-decoration: none; border-radius: 50px; display: inline-block;
+    font-weight: bold; font-size: 0.9rem; margin-top: 10px; transition: 0.3s;
+}
+.btn-wa-promo:hover { background: var(--oro); color: black; }
 
-/* FOOTER ICONS */
-.footer { padding: 40px 5%; background: black; text-align: center; border-top: 1px solid #111; }
-.footer-icons { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-bottom: 20px; }
-.f-item { color: var(--oro); font-size: 0.7rem; display: flex; flex-direction: column; gap: 5px; }
-.f-item i { font-size: 1.2rem; }
-.copy { color: #333; font-size: 0.7rem; }
+/* STOCK BAR */
+.stock-bar { width: 100%; height: 5px; background: #111; border-radius: 10px; margin: 15px 0; overflow: hidden; }
+.stock-progress { height: 100%; background: var(--oro); border-radius: 10px; }
+
+/* FOOTER */
+.footer { padding: 50px 5% 20px; background: black; text-align: center; border-top: 1px solid #111; }
+.footer-icons { display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; margin-bottom: 30px; }
+.f-item { color: var(--oro-oscuro); font-size: 0.65rem; display: flex; flex-direction: column; gap: 8px; transition: 0.3s; }
+.f-item i { font-size: 1.4rem; }
+.f-item:hover { color: var(--oro); }
+.copy { color: #222; font-size: 0.7rem; margin-top: 20px; }
+
+/* FLOAT WHATSAPP */
+.whatsapp-float {
+    position: fixed; bottom: 20px; right: 20px; background: #25D366;
+    color: white; width: 55px; height: 55px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 28px; z-index: 1000; box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+}
