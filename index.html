@@ -178,17 +178,36 @@
     /* SERVICES SECTION */
     .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 3rem; max-width: 1000px; margin: 0 auto; }
 
-    /* FOOTER */
-    .footer {
-      background: var(--bg-secondary); border-top: 1px solid rgba(249, 226, 125, 0.1);
-      padding: 4rem 0 2rem; text-align: center;
-    }
-    .footer-content { max-width: 1200px; margin: 0 auto 2rem; padding: 0 5%; }
-    .footer-logo { font-size: 2rem; font-weight: 800; margin-bottom: 1rem; }
-    .social-links { display: flex; justify-content: center; gap: 2rem; margin: 2rem 0; }
-    .social-links a { color: var(--text-secondary); font-size: 1.5rem; transition: all 0.3s ease; }
-    .social-links a:hover { color: var(--gold-1); transform: translateY(-3px) scale(1.2); filter: drop-shadow(0 0 15px rgba(249,226,125,0.6)); }
-    .footer-location { color: var(--text-secondary); font-size: 0.95rem; }
+    <footer id="contact" class="footer">
+  <div class="footer-content">
+    <!-- SECCIÓN SÍGUENOS -->
+    <div class="follow-section">
+      <h3 class="follow-title gradient-gold">SÍGUENOS</h3>
+      <div class="footer-socials">
+        <a href="https://instagram.com/geoventas" target="_blank" class="footer-social-icon" title="Instagram">
+          <i class="fab fa-instagram"></i>
+          <span class="sr-only">Instagram</span>
+        </a>
+        <a href="https://facebook.com/geoventas" target="_blank" class="footer-social-icon" title="Facebook">
+          <i class="fab fa-facebook-f"></i>
+          <span class="sr-only">Facebook</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- LOGO Y UBICACIÓN -->
+    <div class="footer-logo gradient-gold">GeoVentas</div>
+    <p style="color: var(--text-secondary); margin-bottom: 1.5rem;">Hualpén/Concepción - Chile</p>
+    
+    <!-- COPYRIGHT -->
+    <div class="footer-location">
+      <p style="color: var(--text-secondary); font-size: 0.9rem;">
+        © 2024 GeoVentas. Todos los derechos reservados. | Hualpén, Concepción, Chile
+      </p>
+    </div>
+  </div>
+</footer>
+    
 
     /* RESPONSIVE */
     @media (max-width: 768px) {
