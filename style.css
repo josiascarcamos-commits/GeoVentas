@@ -362,3 +362,102 @@ footer {
 .footer-links a:hover {
   opacity: 1;
 }
+/* Animaciones clave para rendimiento en móviles */
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes glowPulse {
+  0%, 100% {
+    box-shadow: 0 0 10px rgba(255, 215, 0, 0.4), 0 0 20px rgba(255, 215, 0, 0.2);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(255, 215, 0, 0.8), 0 0 40px rgba(255, 215, 0, 0.6);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+/* CIRCULO DEL LOGO - Glow Pulse Dorado */
+.logo-circle {
+  animation: glowPulse 2s ease-in-out infinite;
+  will-change: box-shadow; /* Optimización para móviles */
+}
+
+/* TARJETAS - FadeInUp */
+.card {
+  opacity: 0;
+  animation: fadeInUp 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+
+/* Stagger animation para tarjetas (diferentes delays) */
+.card:nth-child(1) { animation-delay: 0.1s; }
+.card:nth-child(2) { animation-delay: 0.2s; }
+.card:nth-child(3) { animation-delay: 0.3s; }
+.card:nth-child(4) { animation-delay: 0.4s; }
+.card:nth-child(5) { animation-delay: 0.5s; }
+.card:nth-child(6) { animation-delay: 0.6s; }
+
+/* BOTONES - Efecto Shimmer */
+.btn {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+  background-size: 200% 100%;
+  transition: all 0.3s ease;
+}
+
+.btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, 
+    transparent, 
+    rgba(255, 255, 255, 0.4), 
+    transparent
+  );
+  animation: shimmer 2s infinite;
+  transition: none;
+}
+
+.btn:hover::before {
+  animation-duration: 0.8s;
+}
+
+/* Optimizaciones para móviles */
+@media (prefers-reduced-motion: reduce) {
+  .card,
+  .logo-circle,
+  .btn::before {
+    animation: none !important;
+  }
+}
+
+/* Intersection Observer para lazy load (mejor rendimiento) */
+.card {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.card.animate {
+  opacity: 1;
+  transform: translateY(0);
+}
