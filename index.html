@@ -35,47 +35,31 @@
       -webkit-text-fill-color: transparent;
       filter: drop-shadow(0 0 10px rgba(249, 226, 125, 0.5));
       text-shadow: 0 0 20px rgba(249, 226, 125, 0.3);
-    }
-
-    /* NAVBAR */
-    .navbar {
-      position: fixed; top: 0; width: 100%; background: rgba(5, 5, 5, 0.95);
-      backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
-      z-index: 1000; padding: 1rem 5%; transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-      border-bottom: 1px solid rgba(249, 226, 125, 0.1);
-    }
-    .nav-container {
-      max-width: 1400px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center;
-    }
-    .logo-nav {
-      font-family: 'Montserrat', sans-serif; font-size: 1.8rem; font-weight: 800;
-      background: linear-gradient(135deg, var(--gold-1), var(--gold-2));
-      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-      text-decoration: none; letter-spacing: -0.5px;
-    }
-    .hamburger {
-      display: none; flex-direction: column; cursor: pointer; gap: 4px; z-index: 1001;
-      padding: 8px; border-radius: 8px; transition: all 0.3s ease;
-    }
-    .hamburger:hover { background: rgba(249, 226, 125, 0.1); }
-    .hamburger span {
-      width: 28px; height: 3px; background: var(--gold-1); border-radius: 2px;
-      transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94); box-shadow: 0 0 8px rgba(249, 226, 125, 0.5);
-    }
-    .nav-menu {
-      display: flex; list-style: none; gap: 2.5rem; align-items: center;
-    }
-    .nav-menu a {
-      color: var(--text-primary); text-decoration: none; font-weight: 500;
-      font-size: 0.95rem; letter-spacing: 0.5px; position: relative; transition: all 0.3s ease;
-    }
-    .nav-menu a::after {
-      content: ''; position: absolute; bottom: -8px; left: 0; width: 0; height: 2px;
-      background: linear-gradient(90deg, var(--gold-1), var(--gold-2)); transition: width 0.3s ease;
-    }
-    .nav-menu a:hover::after { width: 100%; }
-    .nav-menu a:hover { color: var(--gold-1); text-shadow: 0 0 10px rgba(249, 226, 125, 0.5); }
-
+    
+<div class="nav-container">
+  <a href="#home" class="logo-nav">GeoVentas</a>
+  
+  <!-- ÍCONOS REDES SOCIALES EN NAVBAR (pequeños) -->
+  <div class="nav-socials">
+    <a href="https://instagram.com/geoventas" target="_blank" class="nav-social-icon" title="Instagram">
+      <i class="fab fa-instagram"></i>
+    </a>
+    <a href="https://facebook.com/geoventas" target="_blank" class="nav-social-icon" title="Facebook">
+      <i class="fab fa-facebook-f"></i>
+    </a>
+  </div>
+  
+  <ul class="nav-menu" id="navMenu">
+    <li><a href="#home">Inicio</a></li>
+    <li><a href="#about">Nosotros</a></li>
+    <li><a href="#services">Servicios</a></li>
+    <li><a href="#contact">Contacto</a></li>
+  </ul>
+  
+  <div class="hamburger" id="hamburger">
+    <span></span><span></span><span></span>
+  </div>
+</div>
     /* HERO */
     .hero {
       min-height: 100vh; display: flex; align-items: center; justify-content: center;
