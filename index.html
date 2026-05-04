@@ -98,7 +98,31 @@
         menuBtn.addEventListener('click', () => {
             navMenu.classList.toggle('active');
         });
+        <script>
+        // Aquí pegas el código que te dio Blackbox
+        const observerOptions = {
+          threshold: 0.1,
+          rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('animate');
+              observer.unobserve(entry.target);
+            }
+          });
+        }, observerOptions);
+
+        // OJO: Si tus tarjetas en el HTML dicen class="card-premium", 
+        // cambia '.card' por '.card-premium' aquí abajo:
+        document.querySelectorAll('.card-premium').forEach(card => {
+          observer.observe(card);
+        });
     </script>
+</body>
+</html>
+
 
 </body>
 </html>
