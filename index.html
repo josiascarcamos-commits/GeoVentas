@@ -1,128 +1,226 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GeoVentas | Corporativo Elite</title>
-    <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;900&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tu Empresa - Soluciones Innovadoras</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+  <style>
+    /* CSS OPTIMIZADO DE ANIMACIONES DEL MENSAJE ANTERIOR */
+    @keyframes fadeInUp {
+      0% { opacity: 0; transform: translateY(30px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes glowPulse {
+      0%, 100% { box-shadow: 0 0 10px rgba(255,215,0,0.4), 0 0 20px rgba(255,215,0,0.2); }
+      50% { box-shadow: 0 0 20px rgba(255,215,0,0.8), 0 0 40px rgba(255,215,0,0.6); }
+    }
+    @keyframes shimmer {
+      0% { background-position: -200% 0; }
+      100% { background-position: 200% 0; }
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; color: #333; overflow-x: hidden; }
+
+    /* NAVEGACIÓN */
+    .navbar {
+      position: fixed; top: 0; width: 100%; background: rgba(255,255,255,0.95); 
+      backdrop-filter: blur(10px); z-index: 1000; padding: 1rem 5%; transition: all 0.3s ease;
+      box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+    }
+    .nav-container { display: flex; justify-content: space-between; align-items: center; max-width: 1200px; margin: 0 auto; }
+    .logo-nav { font-size: 1.8rem; font-weight: bold; color: #667eea; text-decoration: none; }
+    .hamburger { display: none; flex-direction: column; cursor: pointer; gap: 4px; z-index: 1001; }
+    .hamburger span { width: 25px; height: 3px; background: #333; transition: 0.3s; border-radius: 2px; }
+    .nav-menu { display: flex; list-style: none; gap: 2rem; }
+    .nav-menu a { text-decoration: none; color: #333; font-weight: 500; transition: color 0.3s; }
+    .nav-menu a:hover { color: #667eea; }
+
+    /* HERO */
+    .hero { 
+      height: 100vh; display: flex; align-items: center; justify-content: center; 
+      text-align: center; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white; position: relative; overflow: hidden;
+    }
+    .hero::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+      background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="white" opacity="0.1"/><circle cx="75" cy="75" r="1.5" fill="white" opacity="0.05"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+      animation: float 20s ease-in-out infinite;
+    }
+    @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-20px); } }
+    .hero-content { position: relative; z-index: 2; max-width: 800px; padding: 0 20px; }
+    .logo-circle {
+      width: 150px; height: 150px; margin: 0 auto 2rem; border-radius: 50%;
+      background: linear-gradient(45deg, #ffd700, #ffed4a); display: flex;
+      align-items: center; justify-content: center; font-size: 2.5rem; font-weight: bold;
+      color: #333; animation: glowPulse 2s ease-in-out infinite; box-shadow: 0 0 30px rgba(255,215,0,0.5);
+    }
+    .hero h1 { font-size: clamp(2.5rem, 5vw, 4rem); margin-bottom: 1rem; }
+    .hero p { font-size: 1.3rem; margin-bottom: 2rem; opacity: 0.95; }
+
+    /* SECCIONES */
+    .container { max-width: 1200px; margin: 0 auto; padding: 80px 5%; }
+    section { padding: 80px 0; }
+    h2 { text-align: center; font-size: 2.5rem; margin-bottom: 4rem; color: #333; position: relative; }
+    h2::after { content: ''; position: absolute; bottom: -10px; left: 50%; transform: translateX(-50%); width: 80px; height: 4px; background: linear-gradient(90deg, #667eea, #764ba2); border-radius: 2px; }
+
+    /* QUIÉNES SOMOS - 4 TARJETAS */
+    .cards-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; }
+    .card {
+      background: white; border-radius: 20px; padding: 2.5rem 2rem; text-align: center;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.1); border: 1px solid rgba(255,255,255,0.2);
+      opacity: 0; animation: fadeInUp 0.8s cubic-bezier(0.25,0.46,0.45,0.94) forwards;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .card:hover { transform: translateY(-10px); box-shadow: 0 20px 60px rgba(0,0,0,0.15); }
+    .card i { font-size: 3rem; color: #667eea; margin-bottom: 1rem; }
+    .card h3 { font-size: 1.5rem; margin-bottom: 1rem; color: #333; }
+    .card:nth-child(1) { animation-delay: 0.1s; }
+    .card:nth-child(2) { animation-delay: 0.2s; }
+    .card:nth-child(3) { animation-delay: 0.3s; }
+    .card:nth-child(4) { animation-delay: 0.4s; }
+
+    /* SERVICIOS - BOTONES GRANDES */
+    .services-buttons { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; max-width: 800px; margin: 0 auto; }
+    .btn {
+      position: relative; overflow: hidden; padding: 1.5rem 3rem; border: none; border-radius: 50px;
+      font-size: 1.2rem; font-weight: bold; cursor: pointer; text-decoration: none;
+      display: inline-flex; align-items: center; gap: 1rem; transition: all 0.3s ease;
+      background: linear-gradient(90deg, #25D366 0%, #128C7E 100%); color: white;
+      background-size: 200% 100%;
+    }
+    .btn-products { background: linear-gradient(90deg, #667eea 0%, #764ba2 100%); }
+    .btn::before {
+      content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+      animation: shimmer 2s infinite;
+    }
+    .btn:hover { transform: translateY(-3px); box-shadow: 0 15px 40px rgba(0,0,0,0.2); }
+    .btn:active { transform: translateY(-1px); }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      .hamburger { display: flex; }
+      .nav-menu { 
+        position: fixed; top: 70px; left: 0; width: 100%; height: calc(100vh - 70px);
+        background: white; flex-direction: column; justify-content: flex-start; align-items: center;
+        padding-top: 2rem; transform: translateX(-100%); opacity: 0; transition: all 0.3s ease;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+      }
+      .nav-menu.active { transform: translateX(0); opacity: 1; }
+      .hero h1 { font-size: 2.5rem; }
+      .services-buttons { grid-template-columns: 1fr; }
+      .navbar.scrolled { padding: 0.8rem 5%; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
+    }
+  </style>
 </head>
 <body>
+  <!-- NAVEGACIÓN -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-container">
+      <a href="#" class="logo-nav">TuEmpresa</a>
+      <ul class="nav-menu" id="navMenu">
+        <li><a href="#home">Inicio</a></li>
+        <li><a href="#about">Nosotros</a></li>
+        <li><a href="#services">Servicios</a></li>
+        <li><a href="#contact">Contacto</a></li>
+      </ul>
+      <div class="hamburger" id="hamburger">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+  </nav>
 
-    <nav class="navbar">
-        <div class="logo">GEO<span class="gold-gradient-text">VENTAS</span></div>
-        <div class="menu-icon" id="mobile-menu-btn">
-            <i class="fas fa-bars"></i>
-        </div>
-        <ul class="nav-links" id="nav-menu">
-            <li><a href="index.html">Inicio</a></li>
-            <li><a href="productos.html">Productos</a></li>
-            <li><a href="https://wa.me/56929142859">Contacto</a></li>
-        </ul>
-    </nav>
+  <!-- HERO -->
+  <section id="home" class="hero">
+    <div class="hero-content">
+      <div class="logo-circle">TE</div>
+      <h1>Tu Empresa</h1>
+      <p>Soluciones innovadoras que transforman tu negocio. Calidad, experiencia y resultados garantizados.</p>
+    </div>
+  </section>
 
-    <header class="hero-premium">
-        <div class="logo-main-container">
-            <div class="ring-glow">
-                <img src="1000032322.webp" alt="GeoVentas Logo" class="logo-img">
-            </div>
-            <h1 class="brand-name gold-gradient-text">GEOVENTAS</h1>
-            <p class="brand-tagline">TIENDA ONLINE</p>
-        </div>
-    </header>
+  <!-- QUIÉNES SOMOS -->
+  <section id="about" class="container">
+    <h2>¿Quiénes Somos?</h2>
+    <div class="cards-grid">
+      <div class="card">
+        <i class="fas fa-users"></i>
+        <h3>Experiencia</h3>
+        <p>Más de 10 años ayudando a empresas como la tuya a alcanzar el éxito.</p>
+      </div>
+      <div class="card">
+        <i class="fas fa-lightbulb"></i>
+        <h3>Innovación</h3>
+        <p>Siempre a la vanguardia con las últimas tecnologías y tendencias del mercado.</p>
+      </div>
+      <div class="card">
+        <i class="fas fa-shield-alt"></i>
+        <h3>Confianza</h3>
+        <p>Tu satisfacción es nuestra prioridad. Garantía total en todos nuestros servicios.</p>
+      </div>
+      <div class="card">
+        <i class="fas fa-rocket"></i>
+        <h3>Resultados</h3>
+        <p>Enfocados en métricas reales que impulsan el crecimiento de tu negocio.</p>
+      </div>
+    </div>
+  </section>
 
-    <section class="main-container">
-        <!-- SECCIÓN: QUIÉNES SOMOS -->
-        <div class="section-box reveal">
-            <h2 class="section-title gold-gradient-text">QUIENES SOMOS</h2>
-            <div class="grid-cards">
-                <div class="card-premium">
-                    <i class="fas fa-history gold-icon"></i>
-                    <h3 class="gold-gradient-text">Nuestra Historia</h3>
-                </div>
-                <div class="card-premium">
-                    <i class="fas fa-bullseye gold-icon"></i>
-                    <h3 class="gold-gradient-text">Misión y Visión</h3>
-                </div>
-                <div class="card-premium">
-                    <i class="fas fa-lightbulb gold-icon"></i>
-                    <h3 class="gold-gradient-text">Nuestra Idea</h3>
-                </div>
-                <div class="card-premium">
-                    <i class="fas fa-chart-line gold-icon"></i>
-                    <h3 class="gold-gradient-text">Objetivos Corporativos</h3>
-                </div>
-            </div>
-        </div>
+  <!-- SERVICIOS -->
+  <section id="services" class="container" style="background: #f8f9ff;">
+    <h2>Nuestros Servicios</h2>
+    <div class="services-buttons">
+      <a href="https://wa.me/1234567890?text=Hola%20quiero%20más%20información" class="btn" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+        Consultar por WhatsApp
+      </a>
+      <a href="/productos.html" class="btn btn-products">
+        <i class="fas fa-store"></i>
+        Ver Productos
+      </a>
+    </div>
+  </section>
 
-        <!-- SECCIÓN: SERVICIOS Y OPERACIONES -->
-        <div class="section-box reveal">
-            <h2 class="section-title gold-gradient-text">SERVICIOS Y OPERACIONES</h2>
-            
-            <a href="productos.html" class="list-item-premium">
-                <i class="fas fa-book-open gold-icon"></i>
-                <span class="white-text">Catálogo Corporativo</span>
-            </a>
+  <script>
+    // MENU HAMBURGUESA
+    const hamburger = document.getElementById('hamburger');
+    const navMenu = document.getElementById('navMenu');
+    const navbar = document.getElementById('navbar');
 
-            <a href="https://wa.me/56929142859" target="_blank" class="list-item-premium">
-                <i class="fas fa-truck-moving gold-icon"></i>
-                <span class="white-text">Logística Regional (Concepción/Hualpén)</span>
-            </a>
+    hamburger.addEventListener('click', () => {
+      navMenu.classList.toggle('active');
+      hamburger.classList.toggle('active');
+    });
 
-            <a href="#" class="list-item-premium">
-                <i class="fas fa-handshake gold-icon"></i>
-                <span class="white-text">Alianzas Estratégicas</span>
-            </a>
-        </div>
-    </section>
+    // CERRAR MENU AL CLICLAR ENLACES
+    document.querySelectorAll('.nav-menu a').forEach(link => {
+      link.addEventListener('click', () => {
+        navMenu.classList.remove('active');
+        hamburger.classList.remove('active');
+      });
+    });
 
-    <footer class="footer-elite">
-        <div class="footer-links">
-            <a href="productos.html">Productos</a>
-            <a href="#">Garantía</a>
-            <a href="#">Privacidad</a>
-        </div>
-        <div class="social-footer">
-            <a href="#"><i class="fab fa-instagram"></i></a>
-            <a href="https://wa.me/56929142859"><i class="fab fa-whatsapp"></i></a>
-            <a href="#"><i class="fas fa-envelope"></i></a>
-        </div>
-        <p class="copyright">© 2026 GeoVentas - Hualpén, Chile.</p>
-    </footer>
+    // NAVBAR SCROLLED
+    window.addEventListener('scroll', () => {
+      navbar.classList.toggle('scrolled', window.scrollY > 50);
+    });
 
-    <script>
-        // Lógica Menú Hamburguesa
-        const menuBtn = document.getElementById('mobile-menu-btn');
-        const navMenu = document.getElementById('nav-menu');
-        menuBtn.addEventListener('click', () => {
-            navMenu.classList.toggle('active');
-        });
-        <script>
-        // Aquí pegas el código que te dio Blackbox
-        const observerOptions = {
-          threshold: 0.1,
-          rootMargin: '0px 0px -50px 0px'
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-          entries.forEach(entry => {
-            if (entry.isIntersecting) {
-              entry.target.classList.add('animate');
-              observer.unobserve(entry.target);
-            }
-          });
-        }, observerOptions);
-
-        // OJO: Si tus tarjetas en el HTML dicen class="card-premium", 
-        // cambia '.card' por '.card-premium' aquí abajo:
-        document.querySelectorAll('.card-premium').forEach(card => {
-          observer.observe(card);
-        });
-    </script>
-</body>
-</html>
-
-
+    // SMOOTH SCROLL
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+  </script>
 </body>
 </html>
