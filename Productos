@@ -35,5 +35,34 @@
 
         </div>
     </section>
+<footer id="contact" class="footer">
+  <div class="footer-content">
+    <!-- SECCIÓN SÍGUENOS -->
+    <div class="follow-section">
+      <h3 class="follow-title gradient-gold">SÍGUENOS</h3>
+      <div class="footer-socials">
+        <a href="https://instagram.com/geoventas" target="_blank" class="footer-social-icon" title="Instagram">
+          <i class="fab fa-instagram"></i>
+          <span class="sr-only">Instagram</span>
+        </a>
+        <a href="https://facebook.com/geoventas" target="_blank" class="footer-social-icon" title="Facebook">
+          <i class="fab fa-facebook-f"></i>
+          <span class="sr-only">Facebook</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- LOGO Y UBICACIÓN -->
+    <div class="footer-logo gradient-gold">GeoVentas</div>
+    <p style="color: var(--text-secondary); margin-bottom: 1.5rem;">Hualpén/Concepción - Chile</p>
+    
+    <!-- COPYRIGHT -->
+    <div class="footer-location">
+      <p style="color: var(--text-secondary); font-size: 0.9rem;">
+        © 2024 GeoVentas. Todos los derechos reservados. | Hualpén, Concepción, Chile
+      </p>
+    </div>
+  </div>
+</footer>
 </body>
 </html>
