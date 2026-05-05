@@ -1,479 +1,767 @@
-/* CSS COMPLETO - DISEÑO LUXURY GEOVENTAS PRODUCTOS */
-/* PALETA: NEGRO PROFUNDO + ORO REAL */
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GeoVentas Hualpén | Tecnología Premium Concepción</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --black-deep: #050505;
+            --black-secondary: #0a0a0a;
+            --white-primary: #ffffff;
+            --gold-premium: #d4af37;
+            --gold-light: #f0d47a;
+            --gold-glow: rgba(212, 175, 55, 0.3);
+            --glass-bg: rgba(255, 255, 255, 0.05);
+        }
 
-:root {
-    --black-deep: #050505;
-    --black-card: rgba(10, 10, 10, 0.95);
-    --white-soft: rgba(255, 255, 255, 0.92);
-    --white-pure: rgba(255, 255, 255, 0.98);
-    --gold-light: #f9e27d;
-    --gold-dark: #d4af37;
-    --gold-glow: rgba(249, 226, 125, 0.6);
-    --gold-shine: rgba(249, 226, 125, 0.3);
-}
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-/* RESET Y BASE */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--black-deep);
+            color: var(--white-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
 
-body {
-    font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
-    background: var(--black-deep);
-    color: var(--white-soft);
-    line-height: 1.6;
-    overflow-x: hidden;
-}
+        /* NAVBAR CRISTAL */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(5, 5, 5, 0.95);
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
+            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+            z-index: 1000;
+            transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
 
-/* NAVBAR LUXURY */
-.navbar {
-    position: fixed;
-    top: 0;
-    width: 100%;
-    background: rgba(5, 5, 5, 0.98);
-    padding: 1.5rem 6%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    z-index: 9999;
-    backdrop-filter: blur(25px);
-    border-bottom: 1px solid rgba(249, 226, 125, 0.3);
-    transition: all 0.3s ease;
-}
+        .nav-container {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
 
-.logo-nav {
-    font-size: 2.4rem;
-    font-weight: 900;
-    background: linear-gradient(135deg, var(--gold-light), var(--gold-dark), var(--gold-light));
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-    text-shadow: 0 0 35px var(--gold-glow);
-    animation: logoGlow 2.5s ease-in-out infinite alternate;
-}
+        .nav-logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--gold-premium), var(--gold-light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-decoration: none;
+        }
 
-@keyframes logoGlow {
-    0% { filter: drop-shadow(0 0 15px var(--gold-glow)); }
-    100% { filter: drop-shadow(0 0 35px var(--gold-glow)); }
-}
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2.5rem;
+        }
 
-.nav-social { display: flex; align-items: center; gap: 3rem; }
+        .nav-link {
+            color: var(--white-primary);
+            text-decoration: none;
+            font-weight: 500;
+            position: relative;
+            transition: all 0.3s ease;
+        }
 
-.social-icons a {
-    color: var(--white-soft);
-    font-size: 1.6rem;
-    transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-    padding: 0.8rem;
-    border-radius: 50%;
-}
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 50%;
+            background: linear-gradient(90deg, var(--gold-premium), var(--gold-light));
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+        }
 
-.social-icons a:hover {
-    color: var(--gold-light);
-    background: rgba(249, 226, 125, 0.2);
-    transform: scale(1.3) rotate(180deg);
-    text-shadow: 0 0 25px var(--gold-glow);
-}
+        .nav-link:hover::after {
+            width: 100%;
+        }
 
-.hamburger {
-    display: flex;
-    flex-direction: column;
-    gap: 0.4rem;
-    width: 35px;
-    cursor: pointer;
-}
+        .nav-link:hover {
+            color: var(--gold-premium);
+        }
 
-.hamburger span {
-    height: 4px;
-    background: linear-gradient(135deg, var(--gold-light), var(--gold-dark));
-    border-radius: 2px;
-    transition: 0.4s;
-    box-shadow: 0 2px 15px var(--gold-glow);
-}
+        .social-icons {
+            display: flex;
+            gap: 1rem;
+        }
 
-.hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(6px, 6px); }
-.hamburger.active span:nth-child(2) { opacity: 0; }
-.hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(8px, -7px); }
+        .social-icon {
+            color: var(--white-primary);
+            font-size: 1.4rem;
+            padding: 0.5rem;
+            transition: all 0.3s ease;
+        }
 
-.mobile-menu {
-    position: fixed;
-    top: 90px;
-    right: -400px;
-    width: 400px;
-    height: calc(100vh - 90px);
-    background: linear-gradient(180deg, var(--black-card), var(--black-deep));
-    transition: right 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-    padding: 4rem 3rem;
-    z-index: 9998;
-    border-left: 2px solid rgba(249, 226, 125, 0.4);
-}
+        .social-icon:hover {
+            color: var(--gold-premium);
+            transform: scale(1.2);
+        }
 
-.mobile-menu.active { right: 0; }
+        /* HERO SECTION */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+        }
 
-.mobile-menu ul li { margin: 2.5rem 0; list-style: none; }
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(212, 175, 55, 0.08) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(212, 175, 55, 0.06) 0%, transparent 50%);
+        }
 
-.mobile-menu a {
-    color: var(--white-pure);
-    text-decoration: none;
-    font-size: 1.5rem;
-    font-weight: 600;
-    padding: 1.2rem 0;
-    display: block;
-    border-bottom: 1px solid rgba(249, 226, 125, 0.2);
-    transition: all 0.3s ease;
-}
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            padding: 0 2rem;
+        }
 
-.mobile-menu a:hover {
-    color: var(--gold-light);
-    padding-left: 2rem;
-    text-shadow: 0 0 20px var(--gold-glow);
-}
+        .logo-hero {
+            width: 260px;
+            height: auto;
+            margin-bottom: 2.5rem;
+            display: block;
+            filter: drop-shadow(0 0 30px var(--gold-glow));
+            animation: logoFloat 5s ease-in-out infinite;
+        }
 
-/* HERO */
-.hero {
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    padding: 150px 6% 100px;
-    background: radial-gradient(circle at center, rgba(249, 226, 125, 0.08) 0%, transparent 70%);
-}
+        @keyframes logoFloat {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-15px) rotate(1deg); }
+        }
 
-.hero h1 {
-    font-size: 5rem;
-    font-weight: 900;
-    background: linear-gradient(135deg, var(--gold-light), var(--gold-dark));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    margin-bottom: 2rem;
-    text-shadow: 0 0 50px var(--gold-glow);
-    animation: titleFloat 4s ease-in-out infinite;
-}
+        .hero h1 {
+            font-size: 3.8rem;
+            font-weight: 700;
+            margin-bottom: 1.2rem;
+            background: linear-gradient(135deg, var(--gold-premium), var(--gold-light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
 
-@keyframes titleFloat {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-15px); }
-}
+        .hero p {
+            font-size: 1.25rem;
+            opacity: 0.9;
+            margin-bottom: 3rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
 
-.hero p { font-size: 1.8rem; max-width: 800px; opacity: 0.9; }
+        .cta-main {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--gold-premium), var(--gold-light));
+            color: var(--black-deep);
+            padding: 1.1rem 2.8rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+            text-decoration: none;
+            border-radius: 50px;
+            box-shadow: 0 15px 35px var(--gold-glow);
+            transition: all 0.3s ease;
+        }
 
-/* FILTROS DE CATEGORÍA */
-.filtros-container { padding: 100px 6%; text-align: center; max-width: 1400px; margin: 0 auto; }
+        .cta-main:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 25px 50px rgba(212, 175, 55, 0.4);
+        }
 
-.filtros {
-    display: flex;
-    justify-content: center;
-    gap: 2.5rem;
-    flex-wrap: wrap;
-    margin-bottom: 6rem;
-}
+        /* SECTION GENERAL */
+        .section {
+            padding: 110px 0;
+        }
 
-.filtro-btn {
-    background: rgba(255, 255, 255, 0.03);
-    backdrop-filter: blur(15px);
-    color: var(--white-pure);
-    border: 2px solid rgba(249, 226, 125, 0.4);
-    padding: 1.2rem 3rem;
-    border-radius: 50px;
-    font-size: 1.1rem;
-    font-weight: 700;
-    cursor: pointer;
-    transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-    position: relative;
-    overflow: hidden;
-}
+        .container {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 0 5%;
+        }
 
-.filtro-btn::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
-    transition: left 0.6s;
-}
+        .section-title {
+            font-size: 3.2rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 4rem;
+            background: linear-gradient(135deg, var(--gold-premium), var(--gold-light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
 
-.filtro-btn:hover::before { left: 100%; }
+        /* ABOUT & SERVICES CARDS */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 2.5rem;
+            margin-top: 3rem;
+        }
 
-.filtro-btn:hover, .filtro-btn.active {
-    background: linear-gradient(135deg, var(--gold-light), var(--gold-dark));
-    color: var(--black-deep) !important;
-    border-color: var(--gold-light);
-    transform: translateY(-5px);
-    box-shadow: 0 20px 50px var(--gold-glow);
-}
+        .card-base {
+            background: var(--glass-bg);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(212, 175, 55, 0.15);
+            border-radius: 20px;
+            padding: 2.8rem 2rem;
+            text-align: center;
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            position: relative;
+            overflow: hidden;
+        }
 
-/* TARJETAS PRODUCTO - PIEZAS DE ARTE */
-.productos-grid {
-    padding: 0 6%;
-    max-width: 1600px;
-    margin: 0 auto 120px;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
-    gap: 4rem;
-}
+        .card-base::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--gold-premium), var(--gold-light));
+        }
 
-.producto-card {
-    background: linear-gradient(145deg, var(--black-card), rgba(10, 10, 10, 0.8));
-    backdrop-filter: blur(30px);
-    border: 1px solid rgba(249, 226, 125, 0.3);
-    border-radius: 30px;
-    padding: 3rem 2.5rem;
-    text-align: center;
-    position: relative;
-    overflow: hidden;
-    transition: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-    cursor: pointer;
-    opacity: 0;
-    transform: translateY(80px);
-}
+        .card-base:hover {
+            transform: translateY(-12px);
+            border-color: var(--gold-premium);
+            box-shadow: 0 30px 60px var(--gold-glow);
+        }
 
-.producto-card.animate {
-    opacity: 1;
-    transform: translateY(0);
-    transition: all 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-}
+        .card-icon {
+            font-size: 3.5rem;
+            color: var(--gold-premium);
+            margin-bottom: 1.2rem;
+            display: block;
+        }
 
-/* EFECTO SHINE DESTELLO */
-.producto-card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -120%;
-    width: 120%;
-    height: 100%;
-    background: linear-gradient(90deg, 
-        transparent, 
-        var(--gold-shine), 
-        rgba(249, 226, 125, 0.5), 
-        var(--gold-shine), 
-        transparent);
-    transition: left 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-    z-index: 2;
-}
+        .card-base h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
 
-.producto-card:hover::before { left: 120%; }
+        /* ZONA TECNOLOGÍA - PRODUCTOS */
+        .products-section {
+            background: rgba(10, 10, 10, 0.6);
+        }
 
-/* HOVER ELEVACIÓN + RESPLANOR */
-.producto-card:hover {
-    transform: translateY(-30px) scale(1.04);
-    border-color: var(--gold-light);
-    box-shadow: 
-        0 60px 120px rgba(249, 226, 125, 0.4),
-        0 0 60px rgba(249, 226, 125, 0.3) inset;
-}
+        .products-subtitle {
+            text-align: center;
+            font-size: 1.2rem;
+            color: #b0b0b0;
+            margin-bottom: 2rem;
+            font-weight: 400;
+        }
 
-.producto-imagen {
-    width: 100%;
-    height: 300px;
-    border-radius: 25px;
-    object-fit: cover;
-    margin-bottom: 2.5rem;
-    border: 2px solid rgba(249, 226, 125, 0.2);
-    transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-    position: relative;
-    z-index: 1;
-}
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+            gap: 2.5rem;
+            margin-top: 2rem;
+        }
 
-.producto-card:hover .producto-imagen {
-    transform: scale(1.08);
-    border-color: var(--gold-light);
-    box-shadow: 0 30px 80px rgba(249, 226, 125, 0.5);
-}
+        /* PRODUCT CARD SYSTEM */
+        .product-card {
+            background: var(--black-secondary);
+            border: 2px solid rgba(212, 175, 55, 0.2);
+            border-radius: 24px;
+            overflow: hidden;
+            transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            cursor: pointer;
+            position: relative;
+        }
 
-.producto-placeholder {
-    width: 100%;
-    height: 300px;
-    background: linear-gradient(135deg, var(--gold-light), var(--gold-dark));
-    border-radius: 25px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 5rem;
-    color: var(--black-deep);
-    margin-bottom: 2.5rem;
-    border: 3px solid var(--gold-light);
-    box-shadow: 0 20px 60px var(--gold-glow);
-}
+        .product-card:hover {
+            transform: translateY(-18px) scale(1.02);
+            border-color: var(--gold-premium);
+            box-shadow: 0 40px 80px var(--gold-glow);
+        }
 
-.producto-titulo {
-    font-size: 2.4rem;
-    font-weight: 800;
-    margin-bottom: 1.5rem;
-    color: var(--white-pure);
-    transition: all 0.4s ease;
-}
+        /* CONTENEDOR DE IMAGEN CON FALLBACK */
+        .product-img-container {
+            height: 220px;
+            overflow: hidden;
+            position: relative;
+            background: rgba(212, 175, 55, 0.05);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
 
-.producto-card:hover .producto-titulo {
-    color: var(--gold-light);
-    text-shadow: 0 0 25px var(--gold-glow);
-}
+        .product-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
 
-.producto-precio {
-    font-size: 3.2rem;
-    font-weight: 900;
-    background: linear-gradient(135deg, var(--gold-light), var(--gold-dark));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    margin-bottom: 3rem;
-    text-shadow: 0 0 40px var(--gold-glow);
-    letter-spacing: 2px;
-}
+        .product-card:hover .product-img {
+            transform: scale(1.1);
+        }
 
-/* BOTÓN WHATSAPP DORADO SÓLIDO */
-.whatsapp-btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 1.2rem;
-    background: linear-gradient(135deg, var(--gold-light), var(--gold-dark));
-    color: var(--black-deep) !important;
-    padding: 1.5rem 4rem;
-    font-size: 1.4rem;
-    font-weight: 900;
-    text-decoration: none;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    border-radius: 50px;
-    transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-    box-shadow: 0 20px 50px rgba(249, 226, 125, 0.6);
-    position: relative;
-    overflow: hidden;
-    border: none;
-}
+        /* FALLBACK ICONO */
+        .product-fallback {
+            position: absolute;
+            font-size: 4rem;
+            color: var(--gold-premium);
+            opacity: 0;
+            transition: all 0.3s ease;
+            z-index: 2;
+        }
 
-.whatsapp-btn::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.5), transparent);
-    transition: left 0.7s ease;
-}
+        .product-img-failed .product-fallback {
+            opacity: 1;
+        }
 
-.whatsapp-btn:hover::before { left: 100%; }
+        .product-img-failed .product-img {
+            opacity: 0;
+        }
 
-.whatsapp-btn:hover {
-    transform: translateY(-12px) scale(1.08);
-    box-shadow: 0 35px 80px rgba(249, 226, 125, 0.8);
-}
+        /* SHINE EFFECT */
+        .product-card::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, 
+                transparent 30%, 
+                rgba(255, 255, 255, 0.4) 50%, 
+                transparent 70%);
+            transform: rotate(45deg);
+            transition: all 0.8s ease;
+            opacity: 0;
+            pointer-events: none;
+        }
 
-/* FOOTER */
-.footer {
-    background: var(--black-card);
-    padding: 8rem 6% 4rem;
-    border-top: 3px solid transparent;
-    border-image: linear-gradient(135deg, var(--gold-light), var(--gold-dark)) 1;
-    margin-top: 150px;
-}
+        .product-card:hover::after {
+            animation: shineSlide 1s ease-in-out;
+            opacity: 1;
+        }
 
-.footer-grid {
-    max-width: 1400px;
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 5rem;
-    margin-bottom: 4rem;
-}
+        @keyframes shineSlide {
+            0% {
+                transform: translateX(-100%) translateY(-100%) rotate(45deg);
+                opacity: 0;
+            }
+            50% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateX(100%) translateY(100%) rotate(45deg);
+                opacity: 0;
+            }
+        }
 
-.footer h3 {
-    color: var(--gold-light);
-    font-size: 2rem;
-    margin-bottom: 2.5rem;
-    text-shadow: 0 0 30px var(--gold-glow);
-}
+        .product-content {
+            padding: 2rem;
+        }
 
-.social-grid { text-align: center; }
+        .product-content h3 {
+            font-size: 1.6rem;
+            font-weight: 600;
+            margin-bottom: 0.8rem;
+        }
 
-.social-icons-large {
-    display: flex;
-    justify-content: center;
-    gap: 3rem;
-    margin-top: 3rem;
-}
+        .product-content p {
+            color: #b8b8b8;
+            margin-bottom: 1.5rem;
+            font-size: 0.95rem;
+        }
 
-.social-icons-large a {
-    width: 90px;
-    height: 90px;
-    background: linear-gradient(135deg, var(--gold-light), var(--gold-dark));
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 2.5rem;
-    color: var(--black-deep);
-    text-decoration: none;
-    transition: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-    box-shadow: 0 25px 70px rgba(249, 226, 125, 0.6);
-}
+        .whatsapp-product {
+            background: linear-gradient(135deg, var(--gold-premium), var(--gold-light));
+            color: var(--black-deep);
+            border: none;
+            padding: 1rem 1.8rem;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            width: 100%;
+            text-decoration: none;
+            display: block;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 25px rgba(212, 175, 55, 0.3);
+        }
 
-.social-icons-large a:hover {
-    transform: translateY(-25px) rotateY(360deg) scale(1.15);
-    box-shadow: 0 40px 100px rgba(249, 226, 125, 0.8);
-}
+        .whatsapp-product:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 15px 35px rgba(212, 175, 55, 0.4);
+        }
 
-.footer-bottom {
-    text-align: center;
-    padding-top: 4rem;
-    border-top: 2px solid rgba(249, 226, 125, 0.3);
-    color: var(--white-soft);
-    font-size: 1.2rem;
-}
+        /* CONTACT */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 3rem;
+            margin-top: 4rem;
+        }
 
-/* RESPONSIVO CELULARES */
-@media (max-width: 768px) {
-    .productos-grid { 
-        grid-template-columns: 1fr;
-        gap: 3rem;
-        padding: 0 4%;
-        max-width: 450px;
-        margin: 0 auto;
-    }
-    
-    .hero h1 { font-size: 3.5rem; }
-    
-    .filtros { 
-        gap: 1.5rem; 
-        flex-direction: column; 
-        align-items: center; 
-    }
-    
-    .filtro-btn { 
-        padding: 1rem 2.5rem; 
-        font-size: 1rem; 
-    }
-    
-    .whatsapp-btn { 
-        padding: 1.3rem 3rem; 
-        font-size: 1.2rem; 
-    }
-    
-    .social-icons-large { gap: 2rem; }
-    .social-icons-large a { 
-        width: 75px; 
-        height: 75px; 
-        font-size: 2rem; 
-    }
-    
-    .producto-card { padding: 2.5rem 2rem; }
-    .producto-imagen, .producto-placeholder { height: 280px; }
-}
+        /* FOOTER */
+        .footer {
+            background: var(--black-secondary);
+            padding: 3rem 0 1.5rem;
+            border-top: 1px solid rgba(212, 175, 55, 0.2);
+        }
 
-/* SCROLLBAR PERSONALIZADA ORO */
-::-webkit-scrollbar { width: 14px; }
-::-webkit-scrollbar-track { background: var(--black-deep); }
-::-webkit-scrollbar-thumb {
-    background: linear-gradient(135deg, var(--gold-light), var(--gold-dark));
-    border-radius: 7px;
-    border: 3px solid var(--black-deep);
-}
-::-webkit-scrollbar-thumb:hover { 
-    background: var(--gold-light);
-    box-shadow: 0 0 15px var(--gold-glow);
-}
+        .footer-container {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 0 5%;
+            text-align: center;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .footer-link {
+            color: #b8b8b8;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .footer-link:hover {
+            color: var(--gold-premium);
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .nav-menu { display: none; }
+            .hero h1 { font-size: 2.6rem; }
+            .section-title { font-size: 2.4rem; }
+            .logo-hero { width: 200px; }
+            .products-grid { grid-template-columns: 1fr; gap: 2rem; }
+            .contact-grid { grid-template-columns: 1fr; }
+        }
+
+        /* ANIMATIONS */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(40px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.8s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <!-- NAVBAR -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="#home" class="nav-logo">GeoVentas</a>
+            <ul class="nav-menu">
+                <li><a href="#home" class="nav-link">Inicio</a></li>
+                <li><a href="#productos" class="nav-link">Productos</a></li>
+                <li><a href="#contacto" class="nav-link">Contacto</a></li>
+            </ul>
+            <div class="social-icons">
+                <a href="https://instagram.com/geoventas" target="_blank" class="social-icon">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="https://facebook.com/geoventas" target="_blank" class="social-icon">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <img src="1000032322.webp" alt="Logo GeoVentas Hualpén" class="logo-hero">
+            <h1>Tecnología Premium<br>Hualpén Concepción</h1>
+            <p>Tienda local especializada en accesorios de celular y electrónica premium. Entregas rápidas en el Gran Concepción.</p>
+            <a href="#contacto" class="cta-main">Contactar WhatsApp</a>
+        </div>
+    </section>
+
+    <!-- QUIÉNES SOMOS -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">¿Quiénes Somos?</h2>
+            <div class="cards-grid">
+                <div class="card-base fade-in">
+                    <i class="fas fa-store card-icon"></i>
+                    <h3>Tienda Local Hualpén</h3>
+                    <p>Tu negocio de confianza en Hualpén para tecnología y accesorios premium del Gran Concepción.</p>
+                </div>
+                <div class="card-base fade-in">
+                    <i class="fas fa-motorcycle card-icon"></i>
+                    <h3>Entregas Rápidas</h3>
+                    <p>Servicio express en Hualpén y Concepción. Recibe tu pedido el mismo día.</p>
+                </div>
+                <div class="card-base fade-in">
+                    <i class="fas fa-handshake card-icon"></i>
+                    <h3>Servicio Cercano</h3>
+                    <p>Atención personalizada como en el barrio, productos premium como en la ciudad.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SERVICIOS -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">Servicios</h2>
+            <div class="cards-grid">
+                <div class="card-base fade-in">
+                    <i class="fas fa-mobile-retro card-icon"></i>
+                    <h3>Accesorios Celular</h3>
+                    <p>Selección premium de fundas, cargadores y accesorios para todos los modelos.</p>
+                </div>
+                <div class="card-base fade-in">
+                    <i class="fas fa-truck-fast card-icon"></i>
+                    <h3>Delivery Local</h3>
+                    <p>Entregas rápidas y seguras en Hualpén y Gran Concepción.</p>
+                </div>
+                <div class="card-base fade-in">
+                    <i class="fas fa-comments card-icon"></i>
+                    <h3>Asesoría Técnica</h3>
+                    <p>Te ayudamos a elegir el mejor accesorio para tus necesidades.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ZONA TECNOLOGÍA -->
+    <section id="productos" class="section products-section">
+        <div class="container">
+            <h2 class="section-title">Zona Tecnología</h2>
+            <p class="products-subtitle">Nuestros productos estrella</p>
+            <div class="products-grid">
+                
+                <!-- AUDÍFONOS PRO -->
+                <div class="product-card fade-in">
+                    <div class="product-img-container">
+                        <img src="audifonos-pro.jpg" alt="Audífonos Pro" class="product-img" 
+                             onerror="this.parentElement.classList.add('product-img-failed')">
+                        <i class="fas fa-headphones product-fallback"></i>
+                    </div>
+                    <div class="product-content">
+                        <h3>Audífonos Pro</h3>
+                        <p>Sonido profesional y cancelación de ruido activa.</p>
+                        <a href="https://wa.me/56912345678?text=Hola%20GeoVentas%2C%20consulto%20por%20Audífonos%20Pro" 
+                           class="whatsapp-product" target="_blank">Consultar WhatsApp</a>
+                    </div>
+                </div>
+
+                <!-- CARGADORES RÁPIDOS -->
+                <div class="product-card fade-in">
+                    <div class="product-img-container">
+                        <img src="cargadores-rapidos.jpg" alt="Cargadores Rápidos" class="product-img" 
+                             onerror="this.parentElement.classList.add('product-img-failed')">
+                        <i class="fas fa-bolt product-fallback"></i>
+                    </div>
+                    <div class="product-content">
+                        <h3>Cargadores Rápidos</h3>
+                        <p>Carga 0-100% en 30 minutos. Compatible universal.</p>
+                        <a href="https://wa.me/56912345678?text=Hola%20GeoVentas%2C%20consulto%20por%20Cargadores%20Rápidos" 
+                           class="whatsapp-product" target="_blank">Consultar WhatsApp</a>
+                    </div>
+                </div>
+
+                <!-- SOPORTES AUTO -->
+                <div class="product-card fade-in">
+                    <div class="product-img-container">
+                        <img src="soportes-auto.jpg" alt="Soportes de Auto" class="product-img" 
+                             onerror="this.parentElement.classList.add('product-img-failed')">
+                        <i class="fas fa-car-side product-fallback"></i>
+                    </div>
+                    <div class="product-content">
+                        <h3>Soportes de Auto</h3>
+                        <p>Manos libres seguro y estable para navegación.</p>
+                        <a href="https://wa.me/56912345678?text=Hola%20GeoVentas%2C%20consulto%20por%20Soportes%20de%20Auto" 
+                           class="whatsapp-product" target="_blank">Consultar WhatsApp</a>
+                    </div>
+                </div>
+
+                <!-- CABLES PREMIUM -->
+                <div class="product-card fade-in">
+                    <div class="product-img-container">
+                        <img src="cables-premium.jpg" alt="Cables Premium" class="product-img" 
+                             onerror="this.parentElement.classList.add('product-img-failed')">
+                        <i class="fas fa-plug-circle-bolt product-fallback"></i>
+                    </div>
+                    <div class="product-content">
+                        <h3>Cables Premium</h3>
+                        <p>Resistentes al doblez. Carga + datos ultra rápida.</p>
+                        <a href="https://wa.me/56912345678?text=Hola%20GeoVentas%2C%20consulto%20por%20Cables%20Premium" 
+                           class="whatsapp-product" target="_blank">Consultar WhatsApp</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACTO -->
+    <section id="contacto" class="section">
+        <div class="container">
+            <h2 class="section-title">Contacto</h2>
+            <div class="contact-grid">
+                <div class="card-base fade-in">
+                    <i class="fab fa-whatsapp card-icon" style="color: #25D366;"></i>
+                    <h3>WhatsApp Directo</h3>
+                    <p><strong>+56 9 1234 5678</strong><br>Hualpén / Concepción</p>
+                    <a href="https://wa.me/56912345678?text=¡Hola!%20Quiero%20cotizar%20con%20GeoVentas" class="whatsapp-product" target="_blank" style="margin-top: 1rem;">Escribir Ahora</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-links">
+                <a href="#home" class="footer-link">Inicio</a>
+                <a href="#productos" class="footer-link">Productos</a>
+                <a href="#contacto" class="footer-link">Contacto</a>
+            </div>
+            <p style="margin-top: 2rem; opacity: 0.8;">© 2024 GeoVentas Hualpén. Tecnología local premium.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(link => {
+            link.addEventListener('click', e => {
+                e.preventDefault();
+                document.querySelector(link.getAttribute('href'))?.scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Fade in animation
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        });
+
+        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            const navbar = document.querySelector('.navbar');
+            navbar.style.background = window.scrollY > 100 
+                ? 'rgba(5, 5, 5, 0.98)' 
+                : 'rgba(5, 5, 5, 0.95)';
+        });
+    </script>
+                            <div class="product-card fade-in">
+                    <div class="product-img-container">
+                        <img src="cables-premium.jpg" alt="Cables Premium" class="product-img" 
+                             onerror="this.parentElement.classList.add('product-img-failed')">
+                        <i class="fas fa-plug product-fallback"></i>
+                    </div>
+                    <div class="product-content">
+                        <h3>Cables Premium</h3>
+                        <p>Reforzados con Kevlar para durabilidad extrema.</p>
+                        <a href="https://wa.me/569XXXXXXXX?text=Hola%20GeoVentas%2C%20consulto%20por%20Cables%20Premium" 
+                           class="whatsapp-product" target="_blank">Consultar WhatsApp</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contacto" class="section">
+        <div class="container">
+            <h2 class="section-title">Contacto</h2>
+            <div class="contact-grid">
+                <div class="card-base fade-in">
+                    <i class="fab fa-whatsapp card-icon"></i>
+                    <h3>Ventas WhatsApp</h3>
+                    <p>+56 9 XXXXXXXX</p>
+                    <a href="https://wa.me/569XXXXXXXX" class="whatsapp-product" style="background: #25D366; color: white;">Escribir ahora</a>
+                </div>
+                <div class="card-base fade-in">
+                    <i class="fas fa-location-dot card-icon"></i>
+                    <h3>Ubicación</h3>
+                    <p>Hualpén / Concepción<br>Región del Biobío, Chile</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-links">
+                <a href="#home" class="footer-link">Inicio</a>
+                <a href="#productos" class="footer-link">Productos</a>
+                <a href="#contacto" class="footer-link">Contacto</a>
+            </div>
+            <p style="color: #b8b8b8;">&copy; 2026 GeoVentas Hualpén. Tecnología Premium a tu alcance.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Animación al hacer scroll (Intersection Observer)
+        const observerOptions = { threshold: 0.1 };
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+        // Smooth Scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
+            
