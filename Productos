@@ -3,66 +3,818 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GeoVentas | Nuestros Productos</title>
-    <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;900&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <title>Productos GeoVentas - Catálogo Premium Hualpén Concepción</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* CSS COMPLETO - MISMO ESTILO LUXURY NEGRO Y ORO */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --black-primary: #050505;
+            --black-deep: #0a0a0a;
+            --gold-primary: #f9e27d;
+            --gold-dark: #d4af37;
+            --gold-glow: rgba(249, 226, 125, 0.6);
+            --white-soft: rgba(255, 255, 255, 0.9);
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(180deg, var(--black-deep) 0%, var(--black-primary) 100%);
+            color: var(--white-soft);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        /* NAVBAR - MISMO QUE PRINCIPAL */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: var(--black-primary);
+            padding: 1.2rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(244, 226, 125, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .logo-nav {
+            font-size: 2.2rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--gold-primary), var(--gold-dark), var(--gold-primary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 30px var(--gold-glow);
+            animation: logoPulse 3s ease-in-out infinite;
+        }
+
+        @keyframes logoPulse {
+            0%, 100% { transform: scale(1); filter: drop-shadow(0 0 10px var(--gold-glow)); }
+            50% { transform: scale(1.05); filter: drop-shadow(0 0 25px var(--gold-glow)); }
+        }
+
+        .navbar-right {
+            display: flex;
+            align-items: center;
+            gap: 2.5rem;
+        }
+
+        .social-nav {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .social-nav a {
+            color: var(--white-soft);
+            font-size: 1.4rem;
+            transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        }
+
+        .social-nav a:hover {
+            color: var(--gold-primary);
+            transform: translateY(-3px) rotate(10deg);
+            text-shadow: 0 0 15px var(--gold-glow);
+        }
+
+        .hamburger {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            width: 35px;
+            height: 25px;
+            cursor: pointer;
+            z-index: 1001;
+            transition: 0.3s;
+        }
+
+        .hamburger span {
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(135deg, var(--gold-primary), var(--gold-dark));
+            border-radius: 2px;
+            transition: 0.3s;
+            box-shadow: 0 2px 10px var(--gold-glow);
+        }
+
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(8px, 8px);
+        }
+
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -7px);
+        }
+
+        .mobile-menu {
+            position: fixed;
+            top: 80px;
+            right: -350px;
+            width: 350px;
+            height: calc(100vh - 80px);
+            background: linear-gradient(135deg, var(--black-primary), var(--black-deep));
+            transition: right 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            padding: 3rem 2rem;
+            z-index: 999;
+            border-left: 1px solid rgba(244, 226, 125, 0.2);
+        }
+
+        .mobile-menu.active {
+            right: 0;
+        }
+
+        .mobile-menu ul {
+            list-style: none;
+        }
+
+        .mobile-menu li {
+            margin: 2rem 0;
+        }
+
+        .mobile-menu a {
+            color: var(--white-soft);
+            text-decoration: none;
+            font-size: 1.3rem;
+            font-weight: 500;
+            display: block;
+            padding: 1rem 0;
+            border-bottom: 1px solid rgba(244, 226, 125, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .mobile-menu a:hover {
+            color: var(--gold-primary);
+            padding-left: 1.5rem;
+            text-shadow: 0 0 15px var(--gold-glow);
+        }
+
+        /* HERO PRODUCTOS */
+        .hero-productos {
+            min-height: 70vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 140px 5% 80px;
+            background: radial-gradient(ellipse at center, rgba(244, 226, 125, 0.1) 0%, transparent 70%);
+        }
+
+        .hero-title {
+            font-size: 4.5rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--gold-primary), var(--gold-dark), var(--gold-primary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 1.5rem;
+            text-shadow: 0 0 40px var(--gold-glow);
+        }
+
+        .hero-subtitle {
+            font-size: 1.6rem;
+            max-width: 700px;
+            opacity: 0.9;
+        }
+
+        /* SECCIÓN GRILLA PRODUCTOS PREMIUM */
+        .productos-section {
+            padding: 80px 5%;
+            max-width: 1600px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: 3.8rem;
+            text-align: center;
+            margin-bottom: 5rem;
+            background: linear-gradient(135deg, var(--gold-primary), var(--gold-dark));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 0 0 40px var(--gold-glow);
+        }
+
+        .productos-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 3.5rem;
+            margin-bottom: 6rem;
+        }
+
+        /* TARJETAS PRODUCTOS PREMIUM */
+        .producto-card {
+            background: linear-gradient(145deg, rgba(10, 10, 10, 0.95), rgba(5, 5, 5, 0.85));
+            backdrop-filter: blur(25px);
+            border: 2px solid transparent;
+            border-radius: 25px;
+            padding: 2.5rem 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            box-shadow: 0 25px 70px rgba(0,0,0,0.6);
+            cursor: pointer;
+        }
+
+        .producto-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(249, 226, 125, 0.15), transparent);
+            transition: left 0.8s ease;
+            z-index: 1;
+        }
+
+        .producto-card:hover::before {
+            left: 100%;
+        }
+
+        .producto-card:hover {
+            transform: translateY(-25px) scale(1.05);
+            border-image: linear-gradient(135deg, var(--gold-primary), var(--gold-dark)) 1;
+            border-color: transparent;
+            box-shadow: 0 50px 120px rgba(249, 226, 125, 0.35);
+        }
+
+        .producto-imagen {
+            width: 100%;
+            height: 280px;
+            border-radius: 20px;
+            margin-bottom: 2rem;
+            object-fit: cover;
+            border: 2px solid rgba(249, 226, 125, 0.3);
+            transition: all 0.4s ease;
+            background: linear-gradient(135deg, rgba(249, 226, 125, 0.1), rgba(212, 175, 55, 0.1));
+        }
+
+        .producto-card:hover .producto-imagen {
+            transform: scale(1.1);
+            border-color: var(--gold-primary);
+            box-shadow: 0 20px 50px rgba(249, 226, 125, 0.4);
+        }
+
+        /* PLACEHOLDER IMAGEN SI NO CARGA */
+        .producto-placeholder {
+            width: 100%;
+            height: 280px;
+            background: linear-gradient(135deg, var(--gold-primary), var(--gold-dark));
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            color: var(--black-primary);
+            margin-bottom: 2rem;
+            border: 2px solid var(--gold-primary);
+        }
+
+        .producto-titulo {
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--white-soft);
+            transition: all 0.3s ease;
+        }
+
+        .producto-card:hover .producto-titulo {
+            color: var(--gold-primary);
+            text-shadow: 0 0 20px var(--gold-glow);
+        }
+
+        .producto-precio {
+            font-size: 2.8rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, var(--gold-primary), var(--gold-dark));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 2.5rem;
+            text-shadow: 0 0 30px var(--gold-glow);
+        }
+
+        /* BOTÓN WHATSAPP DORADO */
+        .btn-whatsapp {
+            display: inline-flex;
+            align-items: center;
+            gap: 1rem;
+            background: linear-gradient(135deg, var(--gold-primary), var(--gold-dark));
+            color: var(--black-primary);
+            padding: 1.3rem 3rem;
+            font-size: 1.3rem;
+            font-weight: 700;
+            text-decoration: none;
+            border-radius: 50px;
+            transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            box-shadow: 0 15px 40px rgba(249, 226, 125, 0.5);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-whatsapp::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+            transition: left 0.6s;
+        }
+
+        .btn-whatsapp:hover::before {
+            left: 100%;
+        }
+
+        .btn-whatsapp:hover {
+            transform: translateY(-8px) scale(1.05);
+            box-shadow: 0 25px 60px rgba(249, 226, 125, 0.7);
+        }
+
+        /* FILTROS CATEGORÍAS */
+        .filtros {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 4rem;
+            flex-wrap: wrap;
+        }
+
+        .filtro-btn {
+            background: rgba(255,255,255,0.05);
+            color: var(--white-soft);
+            border: 2px solid rgba(249, 226, 125, 0.3);
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .filtro-btn.active,
+        .filtro-btn:hover {
+            background: linear-gradient(135deg, var(--gold-primary), var(--gold-dark));
+            color: var(--black-primary);
+            border-color: var(--gold-primary);
+            box-shadow: 0 10px 30px rgba(249, 226, 125, 0.4);
+        }
+
+        /* FOOTER - MISMO QUE PRINCIPAL */
+        .footer {
+            background: var(--black-primary);
+            padding: 6rem 5% 3rem;
+            border-top: 2px solid transparent;
+            border-image: linear-gradient(135deg, var(--gold-primary), var(--gold-dark)) 1;
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 4rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-section h3 {
+            color: var(--gold-primary);
+            font-size: 1.8rem;
+            margin-bottom: 2rem;
+            text-shadow: 0 0 20px var(--gold-glow);
+        }
+
+        .siguenos-section {
+            text-align: center;
+        }
+
+        .social-large {
+            display: flex;
+            justify-content: center;
+            gap: 2.5rem;
+            margin-top: 2rem;
+        }
+
+        .social-large a {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--gold-primary), var(--gold-dark));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.2rem;
+            color: var(--black-primary);
+            text-decoration: none;
+            transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            box-shadow: 0 15px 40px rgba(244, 226, 125, 0.4);
+        }
+
+        .social-large a:hover {
+            transform: translateY(-15px) rotate(360deg) scale(1.1);
+            box-shadow: 0 25px 60px rgba(244, 226, 125, 0.6);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 3rem;
+            border-top: 1px solid rgba(244, 226, 125, 0.2);
+            color: rgba(255,255,255,0.7);
+        }
+
+        /* RESPONSIVE PARA CELULARES HULPÉN/CONCEPCIÓN */
+        @media (max-width: 768px) {
+            .hero-title { font-size: 3.2rem; }
+            .section-title { font-size: 2.8rem; }
+            .productos-grid { 
+                grid-template-columns: 1fr; 
+                gap: 2.5rem;
+                max-width: 400px;
+                margin: 0 auto;
+            }
+            .producto-card { 
+                padding: 2rem 1.5rem; 
+                margin: 0 1rem;
+            }
+            .producto-imagen, .producto-placeholder { 
+                height: 250px; 
+            }
+            .filtros { 
+                flex-direction: column; 
+                align-items: center;
+                gap: 1rem;
+            }
+            .navbar { padding: 1rem 3%; }
+            .social-large { gap: 2rem; }
+            .social-large a { width: 70px; height: 70px; font-size: 2rem; }
+        }
+
+        /* SCROLLBAR PERSONALIZADA */
+        ::-webkit-scrollbar {
+            width: 12px;
+        }
+
+        ::-webkit-scrollbar-track { background: var(--black-deep); }
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(135deg, var(--gold-primary), var(--gold-dark));
+            border-radius: 6px;
+        }
+    </style>
 </head>
 <body>
+    <!-- NAVBAR - MISMO QUE PRINCIPAL -->
     <nav class="navbar">
-        <div class="logo-container">
-            <span class="brand">GeoVentas</span>
+        <div class="logo-nav">GeoVentas</div>
+        <div class="navbar-right">
+            <div class="social-nav">
+                <a href="https://instagram.com/geoventas" target="_blank" aria-label="Instagram">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="https://facebook.com/geoventas" target="_blank" aria-label="Facebook">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+            </div>
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
         </div>
-        <div class="nav-links">
-            <a href="index.html">Inicio</a>
+        
+        <div class="mobile-menu" id="mobileMenu">
+            <ul>
+                <li><a href="index.html#hero">Inicio</a></li>
+                <li><a href="index.html#quienes">Quiénes Somos</a></li>
+                <li><a href="#productos">Productos</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+            </ul>
         </div>
     </nav>
 
-    <section class="container">
-        <h2 class="section-title">Nuestros Productos</h2>
-        <div class="promo-grid">
-            
-            <div class="promo-card">
-                <div class="status-tags"><span class="tag-ok">✅ Disponible</span></div>
-                <div class="img-placeholder">FOTO PRODUCTO</div>
-                <h3>Cargador Ugreen 65W</h3>
-                <div class="prices">
-                    <span class="new">$00.000</span>
+    <!-- HERO PRODUCTOS -->
+    <section class="hero-productos">
+        <h1 class="hero-title">CATÁLOGO <span style="color: var(--gold-primary);">PREMIUM</span></h1>
+        <p class="hero-subtitle">
+            Los mejores productos con entrega inmediata en Hualpén y Concepción. 
+            Calidad certificada, precios imbatibles.
+        </p>
+    </section>
+
+    <!-- GRILLA PRODUCTOS PREMIUM -->
+    <section class="productos-section" id="productos">
+        <div class="filtros">
+            <button class="filtro-btn active" data-filtro="todos">Todos</button>
+            <button class="filtro-btn" data-filtro="electronica">Electrónica</button>
+            <button class="filtro-btn" data-filtro="hogar">Hogar</button>
+            <button class="filtro-btn" data-filtro="joyeria">Joyería</button>
+        </div>
+
+        <div class="productos-grid">
+            <!-- PRODUCTO 1 -->
+            <div class="producto-card" data-categoria="electronica">
+                <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=400&h=300&fit=crop" 
+                     alt="Audífonos Premium" class="producto-imagen" 
+                     onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                <div class="producto-placeholder" style="display: none;">
+                    <i class="fas fa-headphones"></i>
                 </div>
-                <div class="stock-bar"><div class="stock-progress" style="width: 80%;"></div></div>
-                <a href="https://wa.me/56929142859" class="btn-wa-promo">Comprar</a>
+                <h3 class="producto-titulo">Audífonos Premium Wireless</h3>
+                <div class="producto-precio">$49.990</div>
+                <a href="https://wa.me/56987654321?text=Hola%20GeoVentas,%20me%20interesa%20comprar%20Audífonos%20Premium%20Wireless" 
+                   class="btn-whatsapp" target="_blank">
+                    <i class="fab fa-whatsapp"></i> Comprar Ahora
+                </a>
             </div>
 
+            <!-- PRODUCTO 2 -->
+            <div class="producto-card" data-categoria="electronica">
+                <img src="https://images.unsplash.com/photo-1587829741303-dc1266b9e1c8?w=400&h=300&fit=crop" 
+                     alt="Cargador Rápido" class="producto-imagen"
+                     onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                <div class="producto-placeholder" style="display: none;">
+                    <i class="fas fa-bolt"></i>
+                </div>
+                <h3 class="producto-titulo">Cargador Turbo 65W</h3>
+                <div class="producto-precio">$19.990</div>
+                <a href="https://wa.me/56987654321?text=Hola%20GeoVentas,%20me%20interesa%20comprar%20Cargador%20Turbo%2065W" 
+                   class="btn-whatsapp" target="_blank">
+                    <i class="fab fa-whatsapp"></i> Comprar Ahora
+                </a>
+            </div>
+
+            <!-- PRODUCTO 3 -->
+            <div class="producto-card" data-categoria="hogar">
+                <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=400&h=300&fit=crop" 
+                     alt="Lámpara LED" class="producto-imagen"
+                     onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                <div class="producto-placeholder" style="display: none;">
+                    <i class="fas fa-lightbulb"></i>
+                </div>
+                <h3 class="producto-titulo">Lámpara LED Inteligente</h3>
+                <div class="producto-precio">$29.990</div>
+                <a href="https://wa.me/56987654321?text=Hola%20GeoVentas,%20me%20interesa%20comprar%20Lámpara%20LED%20Inteligente" 
+                   class="btn-whatsapp" target="_blank">
+                    <i class="fab fa-whatsapp"></i> Comprar Ahora
+                </a>
+            </div>
+
+            <!-- PRODUCTO 4 -->
+            <div class="producto-card" data-categoria="joyeria">
+                <img src="https://images.unsplash.com/photo-1558999178-a96d8cbb94b8?w=400&h=300&fit=crop" 
+                     alt="Collar Oro" class="producto-imagen"
+                     onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                <div class="producto-placeholder" style="display: none;">
+                    <i class="fas fa-gem"></i>
+                </div>
+                <h3 class="producto-titulo">Collar Oro 18K</h3>
+                <div class="producto-precio">$89.990</div>
+                <a href="https://wa.me/56987654321?text=Hola%20GeoVentas,%20me%20interesa%20comprar%20Collar%20Oro%2018K" 
+                   class="btn-whatsapp" target="_blank">
+                    <i class="fab fa-whatsapp"></i> Comprar Ahora
+                </a>
+            </div>
+
+            <!-- PRODUCTO 5 -->
+            <div class="producto-card" data-categoria="electronica">
+                <img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=400&h=300&fit=crop" 
+                     alt="Smartwatch" class="producto-imagen"
+                     onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                <div class="producto-placeholder" style="display: none;">
+                    <i class="fas fa-clock"></i>
+                </div>
+                <h3 class="producto-titulo">Smartwatch Pro</h3>
+                <div class="producto-precio">$79.990</div>
+                <a href="https://wa.me/56987654321?text=Hola%20GeoVentas,%20me%20interesa%20comprar%20Smartwatch%20Pro" 
+                   class="btn-whatsapp" target="_blank">
+                    <i class="fab fa-whatsapp"></i> Comprar Ahora
+                </a>
+            </div>
+
+            <!-- PRODUCTO 6 -->
+            <div class="producto-card" data-categoria="hogar">
+                <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=400&h=300&fit=crop" 
+                     alt="Aspiradora Robot" class="producto-imagen"
+                     onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                <div class="producto-placeholder" style="display: none;">
+                    <i class="fas fa-robot"></i>
+                </div>
+                <h3 class="producto-titulo">Aspiradora Robot</h3>
+                <div class="producto-precio">$149.990</div>
+                <a href="https://wa.me/56987654321?text=Hola%20GeoVentas,%20me%20interesa%20comprar%20Aspiradora%20Robot" 
+                   class="btn-whatsapp" target="_blank">
+                    <i class="fab fa-whatsapp"></i> Comprar Ahora
+                </a>
+            </div>
+
+            <!-- PRODUCTO 7 -->
+            <div class="producto-card" data-categoria="joyeria">
+                <img src="https://images.unsplash.com/photo-1476491347667-d4ca86c2e8a6?w=400&h=300&fit=crop" 
+                     alt="Pulsera Plata" class="producto-imagen"
+                     onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                <div class="producto-placeholder" style="display: none;">
+                    <i class="fas fa-gift"></i>
+                </div>
+                <h3 class="producto-titulo">Pulsera Plata Ley 925</h3>
+                <div class="producto-precio">$39.990</div>
+                <a href="https://wa.me/56987654321?text=Hola%20GeoVentas,%20me%20interesa%20comprar%20Pulsera%20Plata%20Ley%20925" 
+                   class="btn-whatsapp" target="_blank">
+                    <i class="fab fa-whatsapp"></i> Comprar Ahora
+                </a>
+            </div>
+
+            <!-- PRODUCTO 8 -->
+            <div class="producto-card" data-categoria="electronica">
+                <img src="https://images.unsplash.com/photo-1517433456452-f9633a875f6f?w=400&h=300&fit=crop" 
+                     alt="Tablet Gaming" class="producto-imagen"
+                     onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                <div class="producto-placeholder" style="display: none;">
+                    <i class="fas fa-tablet-alt"></i>
+                </div>
+                <h3 class="producto-titulo">Tablet Gaming 128GB</h3>
+                <div class="producto-precio">$299.990</div>
+                <a href="https://wa.me/56987654321?text=Hola%20GeoVentas,%20me%20interesa%20comprar%20Tablet%20Gaming%20128GB" 
+                   class="btn-whatsapp" target="_blank">
+                    <i class="fab fa-whatsapp"></i> Comprar Ahora
+                </a>
+            </div>
         </div>
     </section>
-<footer id="contact" class="footer">
-  <div class="footer-content">
-    <!-- SECCIÓN SÍGUENOS -->
-    <div class="follow-section">
-      <h3 class="follow-title gradient-gold">SÍGUENOS</h3>
-      <div class="footer-socials">
-        <a href="https://instagram.com/geoventas" target="_blank" class="footer-social-icon" title="Instagram">
-          <i class="fab fa-instagram"></i>
-          <span class="sr-only">Instagram</span>
-        </a>
-        <a href="https://facebook.com/geoventas" target="_blank" class="footer-social-icon" title="Facebook">
-          <i class="fab fa-facebook-f"></i>
-          <span class="sr-only">Facebook</span>
-        </a>
-      </div>
-    </div>
 
-    <!-- LOGO Y UBICACIÓN -->
-    <div class="footer-logo gradient-gold">GeoVentas</div>
-    <p style="color: var(--text-secondary); margin-bottom: 1.5rem;">Hualpén/Concepción - Chile</p>
-    
-    <!-- COPYRIGHT -->
-    <div class="footer-location">
-      <p style="color: var(--text-secondary); font-size: 0.9rem;">
-        © 2024 GeoVentas. Todos los derechos reservados. | Hualpén, Concepción, Chile
-      </p>
-    </div>
-  </div>
-</footer>
+    <!-- FOOTER - MISMO QUE PRINCIPAL -->
+    <footer class="footer" id="contacto">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>GEO<span style="color: var(--gold-primary);">VENTAS</span></h3>
+                <p>Catálogo Premium con entrega inmediata en Hualpén y Concepción.</p>
+            </div>
+            <div class="footer-section">
+                <h3>VENTAS</h3>
+                <p><i class="fas fa-phone"></i> +56 9 8765 4321</p>
+                <p><i class="fas fa-envelope"></i> ventas@geoventas.cl</p>
+            </div>
+            <div class="footer-section siguenos-section">
+                <h3>SÍGUENOS</h3>
+                <div class="social-large">
+                    <a href="https://instagram.com/geoventas" target="_blank"><i class="fab fa-instagram"></i></a>
+                    <a href="https://facebook.com/geoventas" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://wa.me/56987654321" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3>COBERTURA</h3>
+                <p>Hualpén • Concepción<br>Talcahuano • San Pedro<br>Chiguayante • Hualqui</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 <strong>GeoVentas</strong> - Productos Premium | Entrega Inmediata | Hualpén - Concepción</p>
+        </div>
+    </footer>
+
+    <!-- JAVASCRIPT COMPLETO -->
+    <script>
+        // 1. MENÚ HAMBURGUESA
+        const hamburger = document.getElementById('hamburger');
+        const mobileMenu = document.getElementById('mobileMenu');
+
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            mobileMenu.classList.toggle('active');
+        });
+
+        // Cerrar menú móvil
+        document.querySelectorAll('.mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                mobileMenu.classList.remove('active');
+            });
+        });
+
+        // 2. SMOOTH SCROLL
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+
+        // 3. FILTROS DE PRODUCTOS
+        const filtroBtns = document.querySelectorAll('.filtro-btn');
+        const productoCards = document.querySelectorAll('.producto-card');
+
+        filtroBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Remover active de todos
+                filtroBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+
+                const filtro = btn.dataset.filtro;
+
+                productoCards.forEach(card => {
+                    if (filtro === 'todos') {
+                        card.style.display = 'block';
+                        card.style.opacity = '1';
+                        card.style.transform = 'translateY(0)';
+                    } else {
+                        if (card.dataset.categoria === filtro) {
+                            card.style.display = 'block';
+                            card.style.opacity = '1';
+                            card.style.transform = 'translateY(0)';
+                        } else {
+                            card.style.opacity = '0';
+                            card.style.transform = 'translateY(20px)';
+                            setTimeout(() => {
+                                if (card.dataset.categoria !== filtro) {
+                                    card.style.display = 'none';
+                                }
+                            }, 300);
+                        }
+                    }
+                });
+            });
+        });
+
+        // 4. EFECTO NAVBAR SCROLL
+        window.addEventListener('scroll', () => {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.style.background = 'rgba(5, 5, 5, 0.98)';
+            } else {
+                navbar.style.background = 'var(--black-primary)';
+            }
+        });
+
+        // 5. ANIMACIÓN ENTRADA CARDS
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry, index) => {
+                if (entry.isIntersecting) {
+                    setTimeout(() => {
+                        entry.target.classList.add('animate');
+                    }, index * 100);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.producto-card').forEach(card => {
+            card.classList.add('fade-in-up');
+            observer.observe(card);
+        });
+
+        // Agregar clase CSS para animación entrada
+        const style = document.createElement('style');
+        style.textContent = `
+            .fade-in-up {
+                opacity: 0;
+                transform: translateY(60px);
+                transition: all 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            }
+            .fade-in-up.animate {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        `;
+        document.head.appendChild(style);
+
+        // 6. EFECTO CLICK EN CARDS
+        document.querySelectorAll('.producto-card').forEach(card => {
+            card.addEventListener('click', (e) => {
+                if (!e.target.closest('.btn-whatsapp')) {
+                    const btn = card.querySelector('.btn-whatsapp');
+                    btn.click();
+                }
+            });
+        });
+
+        // 7. TOOLTIP WHATSAPP
+        document.querySelectorAll('.btn-whatsapp').forEach(btn => {
+            btn.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-8px) scale(1.05)';
+            });
+            btn.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0) scale(1)';
+            });
+        });
+    </script>
 </body>
 </html>
