@@ -390,5 +390,10 @@
         : 'rgba(5, 5, 5, 0.95)';
     });
   </script>
+  // INTERSECTION OBSERVER PARA REDES SOCIALES FOOTER
+observer.observe(document.querySelector('.follow-title'));
+document.querySelectorAll('.footer-social-icon').forEach(icon => {
+  observer.observe(icon);
+});
 </body>
 </html>
