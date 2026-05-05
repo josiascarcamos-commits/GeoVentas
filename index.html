@@ -1,399 +1,562 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>GeoVentas - Hualpén/Concepción | Luxury Tech Solutions</title>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
-  <style>
-    /* RESET Y VARIABLES */
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    :root {
-      --bg-primary: #050505;
-      --bg-secondary: #0f0f0f;
-      --gold-1: #f9e27d;
-      --gold-2: #d4af37;
-      --gold-3: #8c6d1f;
-      --text-primary: #ffffff;
-      --text-secondary: #b8b8b8;
-    }
-    body {
-      font-family: 'Poppins', sans-serif;
-      background: var(--bg-primary);
-      color: var(--text-primary);
-      line-height: 1.6;
-      overflow-x: hidden;
-    }
-    h1, h2, h3 { font-family: 'Montserrat', sans-serif; }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GeoVentas - Cobertura Total en Ventas</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* ESTILO LUXURY - TODO EN UN SOLO BLOQUE CSS */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-    /* GRADIENTES ORO METÁLICO */
-    .gradient-gold {
-      background: linear-gradient(135deg, var(--gold-1) 0%, var(--gold-2) 50%, var(--gold-3) 100%);
-      background-clip: text;
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      filter: drop-shadow(0 0 10px rgba(249, 226, 125, 0.5));
-      text-shadow: 0 0 20px rgba(249, 226, 125, 0.3);
-    
-<div class="nav-container">
-  <a href="#home" class="logo-nav">GeoVentas</a>
-  
-  <!-- ÍCONOS REDES SOCIALES EN NAVBAR (pequeños) -->
-  <div class="nav-socials">
-    <a href="https://instagram.com/geoventas" target="_blank" class="nav-social-icon" title="Instagram">
-      <i class="fab fa-instagram"></i>
-    </a>
-    <a href="https://facebook.com/geoventas" target="_blank" class="nav-social-icon" title="Facebook">
-      <i class="fab fa-facebook-f"></i>
-    </a>
-  </div>
-  
-  <ul class="nav-menu" id="navMenu">
-    <li><a href="#home">Inicio</a></li>
-    <li><a href="#about">Nosotros</a></li>
-    <li><a href="#services">Servicios</a></li>
-    <li><a href="#contact">Contacto</a></li>
-  </ul>
-  
-  <div class="hamburger" id="hamburger">
-    <span></span><span></span><span></span>
-  </div>
-</div>
-    /* HERO */
-    .hero {
-      min-height: 100vh; display: flex; align-items: center; justify-content: center;
-      text-align: center; position: relative; overflow: hidden; padding: 120px 5% 80px;
-    }
-    .hero::before {
-      content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
-      background: radial-gradient(circle at 20% 80%, rgba(249,226,125,0.1) 0%, transparent 50%),
-                  radial-gradient(circle at 80% 20%, rgba(212,175,55,0.1) 0%, transparent 50%),
-                  radial-gradient(circle at 40% 40%, rgba(140,109,31,0.05) 0%, transparent 50%);
-      animation: heroFloat 25s ease-in-out infinite;
-    }
-    @keyframes heroFloat {
-      0%, 100% { transform: scale(1) rotate(0deg); opacity: 1; }
-      33% { transform: scale(1.05) rotate(1deg); opacity: 0.8; }
-      66% { transform: scale(1.02) rotate(-1deg); opacity: 0.9; }
-    }
-    .hero-content { position: relative; z-index: 2; max-width: 900px; }
-    .hero-logo-ring {
-      width: 220px; height: 220px; margin: 0 auto 3rem; position: relative;
-      animation: glowPulse 3s ease-in-out infinite;
-    }
-    .hero-logo-ring::before {
-      content: ''; position: absolute; inset: 8px; border-radius: 50%;
-      background: linear-gradient(45deg, var(--gold-1), var(--gold-2), var(--gold-3), var(--gold-1));
-      background-size: 300% 300%; animation: rotateRing 8s linear infinite;
-      filter: drop-shadow(0 0 25px rgba(249, 226, 125, 0.6));
-      mask: radial-gradient(circle, transparent 30%, black 35%);
-      -webkit-mask: radial-gradient(circle, transparent 30%, black 35%);
-    }
-    @keyframes rotateRing { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
-    .hero-logo {
-      width: 180px; height: 180px; border-radius: 50%; object-fit: cover;
-      position: relative; z-index: 2; border: 4px solid var(--gold-2);
-      box-shadow: 0 0 40px rgba(249, 226, 125, 0.4), inset 0 0 20px rgba(255,255,255,0.1);
-    }
-    .hero h1 {
-      font-size: clamp(3rem, 6vw, 5.5rem); font-weight: 800; margin-bottom: 1.5rem;
-      letter-spacing: -1px; line-height: 1.1;
-    }
-    .hero-subtitle { font-size: 1.4rem; color: var(--text-secondary); margin-bottom: 3rem; }
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 50%, #050505 100%);
+            color: #ffffff;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
 
-    /* ANIMACIONES */
-    @keyframes glowPulse {
-      0%, 100% { box-shadow: 0 0 20px rgba(249,226,125,0.4), 0 0 40px rgba(249,226,125,0.2), 0 0 60px rgba(249,226,125,0.1); }
-      50% { box-shadow: 0 0 40px rgba(249,226,125,0.8), 0 0 80px rgba(249,226,125,0.5), 0 0 120px rgba(249,226,125,0.3); }
-    }
-    @keyframes fadeInUp {
-      0% { opacity: 0; transform: translateY(50px) scale(0.95); }
-      100% { opacity: 1; transform: translateY(0) scale(1); }
-    }
-    @keyframes shimmer {
-      0% { background-position: -200% 0; }
-      100% { background-position: 200% 0; }
-    }
+        /* NAVBAR PREMIUM */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: #050505;
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(255, 215, 0, 0.3);
+            backdrop-filter: blur(10px);
+        }
 
-    /* CONTAINER */
-    .container { max-width: 1400px; margin: 0 auto; padding: 0 5%; }
-    section { padding: 120px 0; }
-    .section-title {
-      text-align: center; font-size: clamp(2.2rem, 4vw, 3.5rem); font-weight: 700;
-      margin-bottom: 5rem; position: relative;
-    }
-    .section-title::after {
-      content: ''; position: absolute; bottom: -20px; left: 50%; transform: translateX(-50%);
-      width: 100px; height: 4px; background: linear-gradient(90deg, var(--gold-1), var(--gold-2));
-      border-radius: 2px; box-shadow: 0 0 15px rgba(249, 226, 125, 0.5);
-    }
+        .logo {
+            font-size: 2rem;
+            font-weight: bold;
+            background: linear-gradient(45deg, #FFD700, #FFA500, #FFD700);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 0 0 30px rgba(255, 215, 0, 0.5);
+            animation: glow 2s ease-in-out infinite alternate;
+        }
 
-    /* TARJETAS PREMIUM */
-    .cards-premium {
-      display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2.5rem;
-    }
-    .card-premium {
-      background: linear-gradient(145deg, rgba(15,15,15,0.8), rgba(5,5,5,0.9));
-      backdrop-filter: blur(20px); border-radius: 24px; padding: 3rem 2.5rem;
-      text-align: center; border: 1px solid rgba(249, 226, 125, 0.2);
-      opacity: 0; transform: translateY(50px) scale(0.95);
-      transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-      position: relative; overflow: hidden;
-    }
-    .card-premium::before {
-      content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(249,226,125,0.1), transparent);
-      transition: left 0.6s;
-    }
-    .card-premium:hover::before { left: 100%; }
-    .card-premium.animate {
-      animation: fadeInUp 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
-    }
-    .card-icon { font-size: 3.5rem; background: linear-gradient(135deg, var(--gold-1), var(--gold-2)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 1.5rem; filter: drop-shadow(0 0 20px rgba(249,226,125,0.4)); }
-    .card-premium h3 { font-size: 1.6rem; font-weight: 600; margin-bottom: 1rem; color: var(--text-primary); }
-    .card-premium p { color: var(--text-secondary); font-size: 1rem; }
+        @keyframes glow {
+            from { filter: drop-shadow(0 0 5px #FFD700); }
+            to { filter: drop-shadow(0 0 20px #FFD700); }
+        }
 
-    /* BOTONES SHIMMER */
-    .btn-premium {
-      position: relative; overflow: hidden; padding: 1.2rem 3rem; border: 2px solid transparent;
-      border-radius: 50px; font-family: 'Montserrat', sans-serif; font-weight: 600;
-      font-size: 1.1rem; text-decoration: none; display: inline-flex; align-items: center; gap: 1rem;
-      cursor: pointer; transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-      background: linear-gradient(135deg, var(--gold-1), var(--gold-2)); color: #000;
-      box-shadow: 0 10px 30px rgba(249, 226, 125, 0.3);
-    }
-    .btn-premium::before {
-      content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
-      animation: shimmer 2.5s infinite;
-    }
-    .btn-premium:hover {
-      transform: translateY(-4px) scale(1.05); box-shadow: 0 20px 50px rgba(249, 226, 125, 0.5);
-      border-color: rgba(249, 226, 125, 0.5);
-    }
-    .btn-whatsapp { background: linear-gradient(135deg, #25D366, #128C7E); color: white; }
-    .btn-whatsapp::before { background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent); }
+        .navbar-right {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
 
-    /* SERVICES SECTION */
-    .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 3rem; max-width: 1000px; margin: 0 auto; }
+        .social-icons {
+            display: flex;
+            gap: 1rem;
+        }
 
-    <footer id="contact" class="footer">
-  <div class="footer-content">
-    <!-- SECCIÓN SÍGUENOS -->
-    <div class="follow-section">
-      <h3 class="follow-title gradient-gold">SÍGUENOS</h3>
-      <div class="footer-socials">
-        <a href="https://instagram.com/geoventas" target="_blank" class="footer-social-icon" title="Instagram">
-          <i class="fab fa-instagram"></i>
-          <span class="sr-only">Instagram</span>
-        </a>
-        <a href="https://facebook.com/geoventas" target="_blank" class="footer-social-icon" title="Facebook">
-          <i class="fab fa-facebook-f"></i>
-          <span class="sr-only">Facebook</span>
-        </a>
-      </div>
-    </div>
+        .social-icons a {
+            color: #ffffff;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+        }
 
-    <!-- LOGO Y UBICACIÓN -->
-    <div class="footer-logo gradient-gold">GeoVentas</div>
-    <p style="color: var(--text-secondary); margin-bottom: 1.5rem;">Hualpén/Concepción - Chile</p>
-    
-    <!-- COPYRIGHT -->
-    <div class="footer-location">
-      <p style="color: var(--text-secondary); font-size: 0.9rem;">
-        © 2024 GeoVentas. Todos los derechos reservados. | Hualpén, Concepción, Chile
-      </p>
-    </div>
-  </div>
-</footer>
-    
+        .social-icons a:hover {
+            color: #FFD700;
+            transform: scale(1.2);
+        }
 
-    /* RESPONSIVE */
-    @media (max-width: 768px) {
-      .hamburger { display: flex; }
-      .nav-menu {
-        position: fixed; top: 0; left: 0; width: 100%; height: 100vh;
-        background: var(--bg-primary); flex-direction: column; justify-content: center; align-items: center;
-        transform: translateX(-100%); opacity: 0; transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-        padding: 2rem 0;
-      }
-      .nav-menu.active { transform: translateX(0); opacity: 1; }
-      .nav-menu a { font-size: 1.3rem; margin: 1rem 0; }
-      .hero { padding: 100px 5% 60px; min-height: 100vh; }
-      .cards-premium, .services-grid { grid-template-columns: 1fr; gap: 2rem; }
-      .section-title { font-size: 2rem; margin-bottom: 3rem; }
-    }
+        .hamburger {
+            display: flex;
+            flex-direction: column;
+            cursor: pointer;
+            padding: 5px;
+            z-index: 1001;
+        }
 
-    /* PERFORMANCE */
-    @media (prefers-reduced-motion: reduce) {
-      *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
-    }
-  </style>
+        .hamburger span {
+            width: 30px;
+            height: 3px;
+            background: #FFD700;
+            margin: 3px 0;
+            transition: 0.3s;
+            border-radius: 2px;
+        }
+
+        .mobile-menu {
+            position: fixed;
+            top: 70px;
+            right: -100%;
+            width: 300px;
+            height: calc(100vh - 70px);
+            background: #050505;
+            transition: right 0.3s ease;
+            padding: 2rem;
+            box-shadow: -5px 0 20px rgba(0,0,0,0.8);
+        }
+
+        .mobile-menu.active {
+            right: 0;
+        }
+
+        .mobile-menu ul {
+            list-style: none;
+        }
+
+        .mobile-menu li {
+            margin: 1.5rem 0;
+        }
+
+        .mobile-menu a {
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 1.2rem;
+            transition: color 0.3s;
+        }
+
+        .mobile-menu a:hover {
+            color: #FFD700;
+        }
+
+        /* HERO SECTION */
+        .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 5%;
+            position: relative;
+            background: radial-gradient(circle at center, rgba(255,215,0,0.1) 0%, transparent 70%);
+        }
+
+        .logo-central {
+            max-width: 400px;
+            width: 80%;
+            height: auto;
+            filter: drop-shadow(0 0 50px rgba(255,215,0,0.5));
+            animation: float 6s ease-in-out infinite;
+            margin-bottom: 2rem;
+        }
+
+        .logo-placeholder {
+            width: 200px;
+            height: 200px;
+            background: linear-gradient(45deg, #FFD700, #FFA500);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            color: #050505;
+            margin-bottom: 2rem;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            background: linear-gradient(45deg, #FFD700, #FFA500, #FFD700);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1rem;
+            text-shadow: 0 0 30px rgba(255, 215, 0, 0.5);
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            max-width: 600px;
+            margin-bottom: 3rem;
+            opacity: 0.9;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(45deg, #FFD700, #FFA500);
+            color: #050505;
+            padding: 1.2rem 3rem;
+            font-size: 1.2rem;
+            font-weight: bold;
+            text-decoration: none;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(255,215,0,0.4);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(255,215,0,0.6);
+        }
+
+        /* SECCIÓN QUIÉNES SOMOS - CARDS ELEGANTES */
+        .quienes-somos {
+            padding: 100px 5%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: 3.5rem;
+            text-align: center;
+            margin-bottom: 4rem;
+            background: linear-gradient(45deg, #FFD700, #FFA500, #FFD700);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+
+        .cards-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 3rem;
+            margin-top: 4rem;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255, 215, 0, 0.3);
+            border-radius: 20px;
+            padding: 3rem 2rem;
+            text-align: center;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,215,0,0.1), transparent);
+            transition: left 0.5s;
+        }
+
+        .card:hover::before {
+            left: 100%;
+        }
+
+        .card:hover {
+            transform: translateY(-15px) scale(1.05);
+            border-color: #FFD700;
+            box-shadow: 0 25px 50px rgba(255,215,0,0.3);
+        }
+
+        .card i {
+            font-size: 4rem;
+            color: #FFD700;
+            margin-bottom: 1.5rem;
+            filter: drop-shadow(0 0 20px rgba(255,215,0,0.5));
+        }
+
+        .card h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(45deg, #FFD700, #FFA500);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* SECCIÓN SERVICIOS */
+        .servicios {
+            padding: 100px 5%;
+            background: rgba(0,0,0,0.3);
+        }
+
+        .servicios-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+            max-width: 1200px;
+            margin: 4rem auto 0;
+        }
+
+        /* CONTACTO */
+        .contacto {
+            padding: 100px 5%;
+            text-align: center;
+        }
+
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+            max-width: 1000px;
+            margin: 4rem auto 0;
+        }
+
+        .contact-item {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 2rem;
+            border-radius: 15px;
+            border: 1px solid rgba(255,215,0,0.2);
+        }
+
+        /* FOOTER COMPLETO */
+        .footer {
+            background: #050505;
+            padding: 4rem 5% 2rem;
+            border-top: 1px solid rgba(255,215,0,0.3);
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            color: #FFD700;
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+        }
+
+        .siguenos {
+            text-align: center;
+        }
+
+        .social-large {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 1.5rem;
+        }
+
+        .social-large a {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(45deg, #FFD700, #FFA500);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: #050505;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(255,215,0,0.4);
+        }
+
+        .social-large a:hover {
+            transform: translateY(-10px) scale(1.1);
+            box-shadow: 0 20px 40px rgba(255,215,0,0.6);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: rgba(255,255,255,0.7);
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.5rem; }
+            .section-title { font-size: 2.5rem; }
+            .navbar { padding: 1rem 3%; }
+            .cards-container { grid-template-columns: 1fr; }
+        }
+    </style>
 </head>
 <body>
-  <!-- NAVBAR -->
-  <nav class="navbar" id="navbar">
-    <div class="nav-container">
-      <a href="#home" class="logo-nav">GeoVentas</a>
-      <ul class="nav-menu" id="navMenu">
-        <li><a href="#home">Inicio</a></li>
-        <li><a href="#about">Nosotros</a></li>
-        <li><a href="#services">Servicios</a></li>
-        <li><a href="#contact">Contacto</a></li>
-      </ul>
-      <div class="hamburger" id="hamburger">
-        <span></span><span></span><span></span>
-      </div>
-    </div>
-  </nav>
-
-  <!-- HERO -->
-  <section id="home" class="hero">
-    <div class="hero-content">
-      <div class="hero-logo-ring">
-        <img src="1000032322.webp" alt="GeoVentas Logo" class="hero-logo" loading="lazy">
-      </div>
-      <h1 class="gradient-gold">GeoVentas</h1>
-      <p class="hero-subtitle">Soluciones Premium en Hualpén/Concepción. Tecnología de lujo para tu negocio.</p>
-    </div>
-  </section>
-
-  <!-- QUIÉNES SOMOS -->
-  <section id="about" class="container">
-    <h2 class="section-title gradient-gold">¿Quiénes Somos?</h2>
-    <div class="cards-premium">
-      <div class="card-premium">
-        <div class="card-icon">
-          <i class="fas fa-map-marked-alt"></i>
+    <!-- NAVBAR PREMIUM -->
+    <nav class="navbar">
+        <div class="logo">GeoVentas</div>
+        <div class="navbar-right">
+            <div class="social-icons">
+                <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
+            </div>
+            <div class="hamburger" onclick="toggleMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
         </div>
-        <h3>Cobertura Total</h3>
-        <p>Operamos en Hualpén y Concepción con logística premium y entregas garantizadas 24/7.</p>
-      </div>
-      <div class="card-premium">
-        <div class="card-icon">
-          <i class="fas fa-shield-alt"></i>
+        <div class="mobile-menu" id="mobileMenu">
+            <ul>
+                <li><a href="#home">Inicio</a></li>
+                <li><a href="#quienes">Quienes Somos</a></li>
+                <li><a href="#servicios">Servicios</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+            </ul>
         </div>
-        <h3>Calidad Certificada</h3>
-        <p>Productos seleccionados y servicios con estándares internacionales de excelencia.</p>
-      </div>
-      <div class="card-premium">
-        <div class="card-icon">
-          <i class="fas fa-rocket"></i>
+    </nav>
+
+    <!-- HERO CON LOGO CENTRAL -->
+    <section class="hero" id="home">
+        <img src="1000032322.webp" alt="GeoVentas Logo" class="logo-central" onerror="this.style.display='none'; document.querySelector('.logo-placeholder').style.display='flex';">
+        <div class="logo-placeholder" style="display: none;">
+            <i class="fas fa-map-marker-alt"></i>
         </div>
-        <h3>Velocidad Premium</h3>
-        <p>Respuesta inmediata y ejecución eficiente. Tu éxito es nuestra prioridad #1.</p>
-      </div>
-      <div class="card-premium">
-        <div class="card-icon">
-          <i class="fas fa-crown"></i>
+        <h1>GeoVentas</h1>
+        <p>Cobertura total en ventas con calidad certificada. Tu éxito es nuestra misión en Hualpén y Concepción.</p>
+        <a href="#contacto" class="cta-button">Contáctanos Ahora</a>
+    </section>
+
+    <!-- SECCIÓN QUIÉNES SOMOS - CARDS ELEGANTES -->
+    <section class="quienes-somos" id="quienes">
+        <h2 class="section-title">¿QUIÉNES SOMOS?</h2>
+        <div class="cards-container">
+            <div class="card">
+                <i class="fas fa-map"></i>
+                <h3>Cobertura Total</h3>
+                <p>Cubrimos todo Hualpén y Concepción con eficiencia máxima. Donde otros no llegan, nosotros llegamos primero.</p>
+            </div>
+            <div class="card">
+                <i class="fas fa-award"></i>
+                <h3>Calidad Certificada</h3>
+                <p>Certificaciones ISO y años de experiencia nos respaldan. Calidad que se nota en cada entrega.</p>
+            </div>
+            <div class="card">
+                <i class="fas fa-shipping-fast"></i>
+                <h3>Entregas Rápidas</h3>
+                <p>24/7 disponibles. Tu pedido llega cuando lo necesitas, sin excusas ni demoras.</p>
+            </div>
+            <div class="card">
+                <i class="fas fa-users"></i>
+                <h3>Equipo Profesional</h3>
+                <p>Expertos en logística y ventas con formación continua. Tu confianza es nuestro compromiso.</p>
+            </div>
         </div>
-        <h3>Luxury Tech</h3>
-        <p>Tecnología de vanguardia con diseño elegante. Experiencia única para tu empresa.</p>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- SERVICIOS -->
-  <section id="services" class="container" style="background: rgba(15,15,15,0.5);">
-    <h2 class="section-title gradient-gold">Servicios y Operaciones</h2>
-    <div class="services-grid">
-      <div style="text-align: center;">
-        <h3 style="font-size: 1.8rem; margin-bottom: 2rem; color: var(--text-primary);">Atención Personalizada</h3>
-        <a href="https://wa.me/56912345678?text=Hola%20GeoVentas%2C%20quiero%20información" class="btn-premium btn-whatsapp" target="_blank">
-          <i class="fab fa-whatsapp"></i> Contactar WhatsApp
-        </a>
-      </div>
-      <div style="text-align: center;">
-        <h3 style="font-size: 1.8rem; margin-bottom: 2rem; color: var(--text-primary);">Catálogo Completo</h3>
-        <a href="/catalogo.pdf" class="btn-premium" target="_blank">
-          <i class="fas fa-file-pdf"></i> Descargar Catálogo
-        </a>
-      </div>
-    </div>
-  </section>
+    <!-- SECCIÓN SERVICIOS -->
+    <section class="servicios" id="servicios">
+        <h2 class="section-title">Nuestros Servicios</h2>
+        <div class="servicios-grid">
+            <div class="card">
+                <i class="fas fa-truck"></i>
+                <h3>Distribución</h3>
+                <p>Logística eficiente para todo tipo de productos.</p>
+            </div>
+            <div class="card">
+                <i class="fas fa-box"></i>
+                <h3>Almacenamiento</h3>
+                <p>Bodegas seguras y climatizadas 24/7.</p>
+            </div>
+            <div class="card">
+                <i class="fas fa-handshake"></i>
+                <h3>Ventas Directas</h3>
+                <p>Equipos comerciales en terreno constante.</p>
+            </div>
+        </div>
+    </section>
 
-  <!-- FOOTER -->
-  <footer id="contact" class="footer">
-    <div class="footer-content">
-      <div class="footer-logo gradient-gold">GeoVentas</div>
-      <p style="color: var(--text-secondary); margin-bottom: 1.5rem;">Hualpén/Concepción - Chile</p>
-      <div class="social-links">
-        <a href="#"><i class="fab fa-whatsapp"></i></a>
-        <a href="#"><i class="fab fa-instagram"></i></a>
-        <a href="#"><i class="fab fa-linkedin"></i></a>
-        <a href="#"><i class="fab fa-facebook"></i></a>
-      </div>
-      <div class="footer-location">
-        <p style="color: var(--text-secondary); font-size: 0.9rem;">
-          © 2024 GeoVentas. Todos los derechos reservados. | Hualpén, Concepción, Chile
-        </p>
-      </div>
-    </div>
-  </footer>
+    <!-- SECCIÓN CONTACTO -->
+    <section class="contacto" id="contacto">
+        <h2 class="section-title">Contáctanos</h2>
+        <div class="contact-info">
+            <div class="contact-item">
+                <i class="fas fa-phone" style="font-size: 3rem; color: #FFD700; margin-bottom: 1rem;"></i>
+                <h3>+56 9 1234 5678</h3>
+                <p>Llámanos 24/7</p>
+            </div>
+            <div class="contact-item">
+                <i class="fas fa-envelope" style="font-size: 3rem; color: #FFD700; margin-bottom: 1rem;"></i>
+                <h3>contacto@geoventas.cl</h3>
+                <p>Respuesta en menos de 2 horas</p>
+            </div>
+            <div class="contact-item">
+                <i class="fas fa-map-marker-alt" style="font-size: 3rem; color: #FFD700; margin-bottom: 1rem;"></i>
+                <h3>Hualpén, Concepción</h3>
+                <p>Entregas en toda la región</p>
+            </div>
+        </div>
+    </section>
 
-  <script>
-    // MENU HAMBURGUESA
-    const hamburger = document.getElementById('hamburger');
-    const navMenu = document.getElementById('navMenu');
-    hamburger.addEventListener('click', () => {
-      hamburger.classList.toggle('active');
-      navMenu.classList.toggle('active');
-    });
+    <!-- FOOTER COMPLETO -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>GeoVentas</h3>
+                <p>Líderes en cobertura total para Hualpén y Concepción. Calidad certificada, entregas rápidas.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Servicios</h3>
+                <p>Distribución<br>Almacenamiento<br>Ventas Directas<br>Logística 24/7</p>
+            </div>
+            <div class="footer-section siguenos">
+                <h3>SÍGUENOS</h3>
+                <div class="social-large">
+                    <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+                    <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://whatsapp.com" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3>Hualpén - Concepción</h3>
+                <p>Ruta J #1234<br>Barrio Industrial<br>Hualpén, Concepción<br>Región del Biobío</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 GeoVentas. Todos los derechos reservados. | Cobertura Total, Calidad Certificada.</p>
+        </div>
+    </footer>
 
-    // CERRAR MENU MÓVIL
-    document.querySelectorAll('.nav-menu a').forEach(link => {
-      link.addEventListener('click', () => {
-        hamburger.classList.remove('active');
-        navMenu.classList.remove('active');
-      });
-    });
-
-    // INTERSECTION OBSERVER PARA ANIMACIONES
-    const observerOptions = {
-      threshold: 0.15,
-      rootMargin: '0px 0px -100px 0px'
-    };
-
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry, index) => {
-        if (entry.isIntersecting) {
-          setTimeout(() => {
-            entry.target.classList.add('animate');
-          }, index * 150); // Stagger effect
-          observer.unobserve(entry.target);
+    <!-- JAVASCRIPT PARA HAMBURGUESA -->
+    <script>
+        function toggleMenu() {
+            const menu = document.getElementById('mobileMenu');
+            menu.classList.toggle('active');
+            
+            // Animación hamburguesa
+            const hamburger = document.querySelector('.hamburger');
+            hamburger.classList.toggle('active');
         }
-      });
-    }, observerOptions);
 
-    // OBSERVAR TODAS LAS TARJETAS
-    document.querySelectorAll('.card-premium').forEach(card => {
-      observer.observe(card);
-    });
+        // Smooth scroll para links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+                // Cerrar menú móvil
+                document.getElementById('mobileMenu').classList.remove('active');
+            });
+        });
 
-    // SMOOTH SCROLL
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function(e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }
-      });
-    });
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 100) {
+                navbar.style.background = 'rgba(5,5,5,0.95)';
+            } else {
+                navbar.style.background = '#050505';
+            }
+        });
 
-    // NAVBAR SCROLL EFFECT
-    window.addEventListener('scroll', () => {
-      const navbar = document.getElementById('navbar');
-      navbar.style.background = window.scrollY > 100 
-        ? 'rgba(5, 5, 5, 0.98)' 
-        : 'rgba(5, 5, 5, 0.95)';
-    });
-  </script>
-  // INTERSECTION OBSERVER PARA REDES SOCIALES FOOTER
-observer.observe(document.querySelector('.follow-title'));
-document.querySelectorAll('.footer-social-icon').forEach(icon => {
-  observer.observe(icon);
-});
+        // Parallax effect para logo
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const hero = document.querySelector('.hero');
+            hero.style.transform = `translateY(${scrolled * 0.5}px)`;
+        });
+    </script>
 </body>
 </html>
