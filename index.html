@@ -1,23 +1,13 @@
-     <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GeoVentas | Tecnología Premium - Hualpén Concepción</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <title>CATÁLOGO PREMIUM - GEOVENTAS</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        :root {
-            --bg-primary: #050505;
-            --bg-secondary: #0f0f0f;
-            --text-primary: #ffffff;
-            --text-secondary: #b8b8b8;
-            --gold-primary: #d4af37;
-            --gold-secondary: #f9e27d;
-            --gold-gradient: linear-gradient(135deg, #d4af37 0%, #f9e27d 50%, #d4af37 100%);
-            --gold-glow: rgba(212, 175, 55, 0.4);
-        }
-
         * {
             margin: 0;
             padding: 0;
@@ -25,25 +15,99 @@
         }
 
         body {
-            font-family: 'Poppins', sans-serif;
-            background: var(--bg-primary);
-            color: var(--text-primary);
-            line-height: 1.6;
+            background: #000000;
+            color: rgba(255,255,255,0.92);
+            font-family: 'Inter', sans-serif;
+            line-height: 1.7;
             overflow-x: hidden;
+            cursor: none;
         }
 
-        /* NAVBAR LUXURY */
+        /* Preloader */
+        .preloader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #000000;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 0.8s ease-out;
+        }
+
+        .preloader-logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            color: #d4af37;
+            margin-bottom: 2rem;
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+
+        .progress-bar {
+            width: 300px;
+            height: 4px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 2px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #d4af37, #f1c40f);
+            width: 0%;
+            animation: load 3s ease-out forwards;
+            border-radius: 2px;
+        }
+
+        @keyframes glow {
+            from { text-shadow: 0 0 20px #d4af37; }
+            to { text-shadow: 0 0 40px #d4af37, 0 0 60px #d4af37; }
+        }
+
+        @keyframes load {
+            to { width: 100%; }
+        }
+
+        /* Custom Cursor */
+        .cursor {
+            position: fixed;
+            width: 24px;
+            height: 24px;
+            background: radial-gradient(circle, rgba(212,175,55,0.3) 0%, transparent 70%);
+            border: 2px solid #d4af37;
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 9998;
+            transition: transform 0.1s ease-out;
+            mix-blend-mode: difference;
+        }
+
+        .cursor-follower {
+            position: fixed;
+            width: 12px;
+            height: 12px;
+            background: #d4af37;
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 9998;
+            transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        /* Navbar */
         .navbar {
             position: fixed;
             top: 0;
             width: 100%;
-            background: rgba(5, 5, 5, 0.95);
+            padding: 1rem 5%;
             backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border-bottom: 1px solid transparent;
-            background-clip: padding-box;
+            background: rgba(0,0,0,0.3);
+            border-bottom: 1px solid rgba(212,175,55,0.2);
             z-index: 1000;
-            transition: all 0.3s ease;
+            transition: all 0.4s ease;
         }
 
         .nav-container {
@@ -52,729 +116,581 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 1.2rem 5%;
         }
 
-        .nav-logo {
-            font-size: 1.8rem;
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
             font-weight: 700;
-            background: var(--gold-gradient);
+            background: linear-gradient(45deg, #d4af37, #f1c40f);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            text-decoration: none;
         }
 
-        .nav-menu {
+        .nav-links {
             display: flex;
             list-style: none;
-            gap: 2.5rem;
+            gap: 3rem;
         }
 
-        .nav-link {
-            color: var(--text-primary);
+        .nav-links a {
+            color: rgba(255,255,255,0.92);
             text-decoration: none;
             font-weight: 500;
             position: relative;
             transition: all 0.3s ease;
-            padding: 0.5rem 0;
         }
 
-        .nav-link::after {
+        .nav-links a::after {
             content: '';
             position: absolute;
-            bottom: 0;
+            bottom: -5px;
             left: 0;
             width: 0;
             height: 2px;
-            background: var(--gold-gradient);
+            background: #d4af37;
             transition: width 0.3s ease;
         }
 
-        .nav-link:hover::after {
+        .nav-links a:hover::after {
             width: 100%;
         }
 
-        .nav-link:hover {
-            color: var(--gold-primary);
+        .nav-links a:hover {
+            color: #d4af37;
         }
 
-        .social-icons {
-            display: flex;
-            gap: 1.2rem;
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 4px;
         }
 
-        .social-icon {
-            color: var(--text-primary);
-            font-size: 1.3rem;
+        .hamburger span {
+            width: 30px;
+            height: 3px;
+            background: #d4af37;
             transition: all 0.3s ease;
-            padding: 0.5rem;
         }
 
-        .social-icon:hover {
-            color: var(--gold-primary);
-            transform: scale(1.2) rotate(10deg);
-        }
-
-        /* HERO SECTION */
+        /* Hero */
         .hero {
-            min-height: 100vh;
+            height: 100vh;
             display: flex;
-            align-items: center;
+            flex-direction: column;
             justify-content: center;
+            align-items: center;
             text-align: center;
+            padding: 0 5%;
             position: relative;
-            background: radial-gradient(ellipse at center, rgba(212, 175, 55, 0.05) 0%, transparent 70%);
         }
 
-        .hero-content {
-            max-width: 900px;
-            padding: 0 2rem;
-            animation: fadeInUp 1.2s ease-out;
-        }
-
-        .logo-hero {
-            width: 280px;
-            height: auto;
-            margin: 0 auto 3rem;
-            display: block;
-            filter: drop-shadow(0 0 40px var(--gold-glow));
-            animation: float 6s ease-in-out infinite;
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0px) rotate(0deg); }
-            50% { transform: translateY(-20px) rotate(2deg); }
-        }
-
-        .hero h1 {
-            font-size: 4.2rem;
+        .hero-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(3rem, 8vw, 8rem);
             font-weight: 700;
-            margin-bottom: 1.5rem;
-            background: var(--gold-gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            letter-spacing: -1px;
+            margin-bottom: 2rem;
+            opacity: 0;
         }
 
-        .hero p {
+        .hero-subtitle {
             font-size: 1.3rem;
-            margin-bottom: 3rem;
-            opacity: 0.9;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
+            max-width: 800px;
+            opacity: 0;
+            animation-delay: 1s;
         }
 
-        .cta-button {
-            display: inline-block;
-            background: var(--gold-gradient);
-            color: var(--bg-primary);
-            padding: 1.2rem 3rem;
-            font-size: 1.1rem;
-            font-weight: 600;
-            text-decoration: none;
-            border-radius: 50px;
-            box-shadow: 0 20px 40px var(--gold-glow);
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .cta-button:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 30px 60px rgba(212, 175, 55, 0.5);
-        }
-
-        /* SECTIONS */
-        .section {
-            padding: 120px 0;
-        }
-
-        .container {
+        /* Sections */
+        section {
+            padding: 120px 5%;
             max-width: 1400px;
             margin: 0 auto;
-            padding: 0 5%;
         }
 
         .section-title {
+            font-family: 'Playfair Display', serif;
             font-size: 3.5rem;
-            font-weight: 700;
             text-align: center;
             margin-bottom: 4rem;
-            background: var(--gold-gradient);
+            background: linear-gradient(45deg, #d4af37, #f1c40f);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            position: relative;
         }
 
-        .section-title::after {
-            content: '';
-            position: absolute;
-            bottom: -20px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 3px;
-            background: var(--gold-gradient);
-            border-radius: 2px;
-        }
-
-        /* ABOUT SECTION */
-        .about-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 3rem;
-            margin-top: 4rem;
-        }
-
-        .about-card {
-            background: rgba(255, 255, 255, 0.03);
-            padding: 3rem 2.5rem;
-            border-radius: 24px;
-            border: 1px solid rgba(212, 175, 55, 0.15);
-            backdrop-filter: blur(15px);
-            transition: all 0.4s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .about-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-            background: var(--gold-gradient);
-        }
-
-        .about-card:hover {
-            transform: translateY(-15px);
-            border-color: var(--gold-primary);
-            box-shadow: 0 30px 80px var(--gold-glow);
-        }
-
-        .about-card i {
-            font-size: 3.5rem;
-            color: var(--gold-primary);
-            margin-bottom: 1.5rem;
-            display: block;
-        }
-
-        .about-card h3 {
-            font-size: 1.6rem;
-            margin-bottom: 1rem;
-            font-weight: 600;
-        }
-
-        /* SERVICES SECTION */
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 2.5rem;
-            margin-top: 4rem;
-        }
-
-        .service-card {
-            background: rgba(255, 255, 255, 0.03);
-            padding: 3rem 2rem;
-            border-radius: 24px;
-            border: 1px solid rgba(212, 175, 55, 0.15);
-            backdrop-filter: blur(15px);
-            text-align: center;
-            transition: all 0.4s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .service-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-            background: var(--gold-gradient);
-        }
-
-        .service-card:hover {
-            transform: translateY(-12px);
-            border-color: var(--gold-primary);
-            box-shadow: 0 25px 60px var(--gold-glow);
-        }
-
-        .service-icon {
-            font-size: 4rem;
-            color: var(--gold-primary);
-            margin-bottom: 1.5rem;
-            display: block;
-        }
-
-        /* PRODUCTS SECTION - ZONA TECNOLOGÍA */
-        .products-section {
-            background: rgba(15, 15, 15, 0.5);
-        }
-
-        .section-subtitle {
-            text-align: center;
+        .content {
             font-size: 1.2rem;
-            color: var(--text-secondary);
-            margin-bottom: 3rem;
-            font-weight: 400;
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+            line-height: 1.8;
         }
 
+        /* FAQ Accordion */
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            margin-bottom: 1.5rem;
+            border: 1px solid rgba(212,175,55,0.2);
+        }
+
+        .faq-question {
+            width: 100%;
+            padding: 1.5rem;
+            background: none;
+            border: none;
+            font-family: 'Inter', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: rgba(255,255,255,0.92);
+            text-align: left;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+
+        .faq-question:hover {
+            color: #d4af37;
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.4s ease;
+            padding: 0 1.5rem;
+        }
+
+        .faq-answer.active {
+            max-height: 200px;
+            padding: 1.5rem;
+        }
+
+        /* Products Grid */
         .products-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2.5rem;
-            margin-top: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 4rem;
         }
 
-        .product-card {
-            background: rgba(5, 5, 5, 0.8);
-            border: 2px solid rgba(212, 175, 55, 0.2);
-            border-radius: 24px;
-            padding: 2.5rem 2rem;
+        .card-luxury {
+            background: rgba(255,255,255,0.05);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(212,175,55,0.2);
+            border-radius: 20px;
+            padding: 2rem;
             text-align: center;
             transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
             position: relative;
             overflow: hidden;
-            cursor: pointer;
         }
 
-        .product-card::before {
+        .card-luxury::before {
             content: '';
             position: absolute;
             top: 0;
             left: -100%;
             width: 100%;
-            height: 4px;
-            background: var(--gold-gradient);
-            transition: left 0.5s ease;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(212,175,55,0.1), transparent);
+            transition: left 0.6s;
         }
 
-        .product-card:hover::before {
-            left: 0;
+        .card-luxury:hover::before {
+            left: 100%;
         }
 
-        .product-card:hover {
+        .card-luxury:hover {
             transform: translateY(-20px) scale(1.02);
-            border-color: var(--gold-primary);
-            box-shadow: 0 40px 100px var(--gold-glow);
-            background: rgba(5, 5, 5, 0.95);
-        }
-
-        /* SHINE EFFECT */
-        .product-card::after {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.3), transparent);
-            transform: rotate(45deg);
-            transition: all 0.6s ease;
-            opacity: 0;
-        }
-
-        .product-card:hover::after {
-            animation: shine 0.8s ease-in-out;
-            opacity: 1;
-        }
-
-        @keyframes shine {
-            0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
-            50% { transform: translateX(0%) translateY(0%) rotate(45deg); }
-            100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+            border-color: #d4af37;
+            box-shadow: 0 40px 80px rgba(212,175,55,0.2);
         }
 
         .product-image {
-            font-size: 4.5rem;
-            color: var(--gold-primary);
-            margin-bottom: 1.5rem;
-            filter: drop-shadow(0 0 20px var(--gold-glow));
+            width: 120px;
+            height: 120px;
+            background: linear-gradient(45deg, #d4af37, #f1c40f);
+            border-radius: 20px;
+            margin: 0 auto 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: #000;
+            font-weight: bold;
         }
 
-        .product-card h3 {
-            font-size: 1.7rem;
-            font-weight: 600;
+        .product-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
             margin-bottom: 1rem;
         }
 
-        .whatsapp-btn {
-            background: var(--gold-gradient);
-            color: var(--bg-primary);
-            border: none;
-            padding: 1rem 2rem;
-            border-radius: 50px;
-            font-weight: 600;
-            font-size: 1rem;
-            cursor: pointer;
-            width: 100%;
-            text-decoration: none;
-            display: block;
-            transition: all 0.3s ease;
-            box-shadow: 0 10px 30px var(--gold-glow);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .whatsapp-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 20px 50px rgba(212, 175, 55, 0.6);
-        }
-
-        /* CONTACT SECTION */
-        .contact-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 3rem;
-            margin-top: 4rem;
-        }
-
-        .contact-item {
-            background: rgba(255, 255, 255, 0.03);
-            padding: 3rem;
-            border-radius: 24px;
-            border: 1px solid rgba(212, 175, 55, 0.15);
-            backdrop-filter: blur(15px);
-            text-align: center;
-            transition: all 0.4s ease;
-        }
-
-        .contact-item:hover {
-            transform: translateY(-10px);
-            border-color: var(--gold-primary);
-            box-shadow: 0 25px 60px var(--gold-glow);
-        }
-
-        .contact-item i {
-            font-size: 4rem;
-            color: var(--gold-primary);
+        .product-price {
+            font-size: 2rem;
+            font-weight: 700;
+            background: linear-gradient(45deg, #d4af37, #f1c40f);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
             margin-bottom: 1.5rem;
         }
 
-        .whatsapp-primary .whatsapp-btn {
-            background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
-            color: white;
-            box-shadow: 0 10px 30px rgba(37, 211, 102, 0.4);
+        .buy-btn {
+            background: linear-gradient(45deg, #d4af37, #f1c40f);
+            color: #000;
+            border: none;
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            cursor: none;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
         }
 
-        .whatsapp-primary .whatsapp-btn:hover {
-            box-shadow: 0 20px 50px rgba(37, 211, 102, 0.6);
+        .buy-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 30px rgba(212,175,55,0.4);
         }
 
-        /* FOOTER */
+        /* Footer */
         .footer {
-            background: var(--bg-secondary);
-            padding: 4rem 0 2rem;
-            border-top: 1px solid rgba(212, 175, 55, 0.2);
-        }
-
-        .footer-container {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 0 5%;
+            background: rgba(0,0,0,0.5);
+            padding: 4rem 5% 2rem;
             text-align: center;
+            border-top: 1px solid rgba(212,175,55,0.2);
         }
 
-        .footer-links {
+        .social-links {
             display: flex;
             justify-content: center;
             gap: 2rem;
             margin-bottom: 2rem;
-            flex-wrap: wrap;
         }
 
-        .footer-link {
-            color: var(--text-secondary);
+        .social-links a {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(45deg, #d4af37, #f1c40f);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: #000;
             text-decoration: none;
-            font-weight: 500;
             transition: all 0.3s ease;
         }
 
-        .footer-link:hover {
-            color: var(--gold-primary);
+        .social-links a:hover {
+            transform: scale(1.2) rotate(10deg);
+            box-shadow: 0 15px 40px rgba(212,175,55,0.4);
         }
 
-        .footer-contact p {
-            margin-bottom: 0.5rem;
-            opacity: 0.9;
-        }
-
-        .footer-contact a {
-            color: var(--gold-primary);
-            text-decoration: none;
-        }
-
-        .footer-bottom {
-            margin-top: 3rem;
-            padding-top: 2rem;
-            border-top: 1px solid rgba(212, 175, 55, 0.1);
+        .copyright {
             opacity: 0.7;
-            font-size: 0.9rem;
         }
 
-        /* ANIMATIONS */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(50px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        /* RESPONSIVE */
+        /* Mobile */
         @media (max-width: 768px) {
-            .nav-menu {
-                display: none;
+            .hamburger {
+                display: flex;
             }
 
-            .hero h1 {
-                font-size: 2.8rem;
+            .nav-links {
+                position: fixed;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: rgba(0,0,0,0.95);
+                flex-direction: column;
+                padding: 2rem;
+                gap: 2rem;
+                transform: translateY(-100%);
+                opacity: 0;
+                visibility: hidden;
+                transition: all 0.4s ease;
+            }
+
+            .nav-links.active {
+                transform: translateY(0);
+                opacity: 1;
+                visibility: visible;
+            }
+
+            .hero-title {
+                font-size: 2.5rem;
             }
 
             .section-title {
                 font-size: 2.5rem;
             }
 
-            .logo-hero {
-                width: 220px;
-            }
-
             .products-grid {
-                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-                gap: 2rem;
+                grid-template-columns: 1fr;
             }
         }
 
-        /* SCROLLBAR CUSTOM */
-        ::-webkit-scrollbar {
-            width: 10px;
-        }
-
-        ::-webkit-scrollbar-track {
-            background: var(--bg-secondary);
-        }
-
-        ::-webkit-scrollbar-thumb {
-            background: var(--gold-primary);
-            border-radius: 5px;
-        }
-
-        ::-webkit-scrollbar-thumb:hover {
-            background: var(--gold-secondary);
+        /* Scroll behavior */
+        html {
+            scroll-behavior: smooth;
         }
     </style>
 </head>
 <body>
-    <!-- NAVBAR -->
+    <!-- Preloader -->
+    <div class="preloader" id="preloader">
+        <div class="preloader-logo">GEOVENTAS</div>
+        <div class="progress-bar">
+            <div class="progress-fill"></div>
+        </div>
+    </div>
+
+    <!-- Custom Cursor -->
+    <div class="cursor" id="cursor"></div>
+    <div class="cursor-follower" id="cursorFollower"></div>
+
+    <!-- Navbar -->
     <nav class="navbar">
         <div class="nav-container">
-            <a href="#inicio" class="nav-logo">GeoVentas</a>
-            <ul class="nav-menu">
-                <li><a href="#inicio" class="nav-link">Inicio</a></li>
-                <li><a href="#productos" class="nav-link">Productos</a></li>
-                <li><a href="#contacto" class="nav-link">Contacto</a></li>
+            <div class="logo">GEOVENTAS</div>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#nosotros">Nosotros</a></li>
+                <li><a href="#objetivos">Objetivos</a></li>
+                <li><a href="#seguridad">Seguridad</a></li>
+                <li><a href="#faq">FAQ</a></li>
+                <li><a href="#productos">Productos</a></li>
             </ul>
-            <div class="social-icons">
-                <a href="https://instagram.com/geoventas" target="_blank" class="social-icon">
-                    <i class="fab fa-instagram"></i>
-                </a>
-                <a href="https://facebook.com/geoventas" target="_blank" class="social-icon">
-                    <i class="fab fa-facebook-f"></i>
-                </a>
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
             </div>
         </div>
     </nav>
 
-    <!-- HERO -->
+    <!-- Hero -->
     <section id="inicio" class="hero">
-        <div class="hero-content">
-            <img src="1000032322.webp" alt="GeoVentas Logo" class="logo-hero">
-            <h1>Tecnología Premium<br>en Hualpén</h1>
-            <p>Tu tienda local de confianza en Hualpén y Concepción. Accesorios premium para celular con entregas rápidas y servicio cercano.</p>
-            <a href="#contacto" class="cta-button">Contactar WhatsApp</a>
+        <h1 class="hero-title" id="heroTitle">CATÁLOGO PREMIUM</h1>
+        <p class="hero-subtitle">Tecnología premium seleccionada minuciosamente. Entregas coordinadas en puntos de encuentro estratégicos en Hualpén y Concepción.</p>
+    </section>
+
+    <!-- Quiénes Somos -->
+    <section id="nosotros">
+        <h2 class="section-title">QUIÉNES SOMOS</h2>
+        <div class="content">
+            GEOVENTAS se posiciona como el referente indiscutible de tecnología premium en la Región del Biobío. Seleccionamos meticulosamente dispositivos de última generación que combinan diseño excepcional, rendimiento superior y garantía extendida. Nuestra filosofía se basa en ofrecer experiencias completas, no solo productos. Cada adquisición es un statement de elegancia tecnológica.
         </div>
     </section>
 
-    <!-- QUIÉNES SOMOS -->
-    <section class="section">
-        <div class="container">
-            <h2 class="section-title">¿Quiénes Somos?</h2>
-            <div class="about-grid">
-                <div class="about-card">
-                    <i class="fas fa-store-alt"></i>
-                    <h3>Tienda Local</h3>
-                    <p>Situados en Hualpén, somos especialistas en tecnología y accesorios premium para el Gran Concepción.</p>
+    <!-- Objetivos -->
+    <section id="objetivos">
+        <h2 class="section-title">NUESTRO OBJETIVO</h2>
+        <div class="content">
+            Ofrecer una experiencia de compra exclusiva y segura en el Biobío. Nos enfocamos en tres pilares estratégicos: Calidad Exclusiva (dispositivos de élite verificados manualmente), Puntos de Encuentro Seguros (recogida coordinada de forma privada en Hualpén y Concepción para máxima comodidad y discreción), y Asesoría VIP Personalizada para guiarte en cada decisión técnica.
+        </div>
+    </section>
+
+    <!-- Seguridad -->
+    <section id="seguridad">
+        <h2 class="section-title">POLÍTICA DE SEGURIDAD</h2>
+        <div class="content">
+            Tu tranquilidad y confianza son nuestra máxima prioridad. Para garantizar transacciones 100% confiables y discretas, todas nuestras entregas se realizan exclusivamente en puntos de encuentro estratégicos y previamente coordinados en las zonas de Hualpén y Concepción. No realizamos envíos desatendidos ni entregas en rutas inseguras; verificamos cada paso junto al cliente para asegurar que recibas tu producto premium en perfectas condiciones y en un entorno controlado.
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq">
+        <h2 class="section-title">PREGUNTAS FRECUENTES</h2>
+        <div class="faq-container">
+            <div class="faq-item">
+                <button class="faq-question">¿Cómo coordinar la entrega? <span>+</span></button>
+                <div class="faq-answer">
+                    Al presionar el botón de compra, te conectarás directamente con nuestro equipo por WhatsApp para agendar el punto de encuentro en Hualpén o Concepción que más te acomode.
                 </div>
-                <div class="about-card">
-                    <i class="fas fa-shipping-fast"></i>
-                    <h3>Entregas Rápidas</h3>
-                    <p>Servicio express en Hualpén y Concepción. Tu pedido llega en horas, no días.</p>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question">¿Los productos tienen garantía? <span>+</span></button>
+                <div class="faq-answer">
+                    Sí, todos nuestros equipos tecnológicos premium cuentan con garantía extendida y certificación de calidad revisada manualmente.
                 </div>
-                <div class="about-card">
-                    <i class="fas fa-users"></i>
-                    <h3>Servicio Cercano</h3>
-                    <p>Atención personalizada como en el barrio, pero con productos de calidad premium.</p>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question">¿Cuáles son los medios de pago? <span>+</span></button>
+                <div class="faq-answer">
+                    Aceptamos transferencias electrónicas seguras y efectivo al momento de verificar tu producto en el punto de entrega.
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- SERVICIOS -->
-    <section class="section">
-        <div class="container">
-            <h2 class="section-title">Nuestros Servicios</h2>
-            <div class="services-grid">
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-mobile-alt"></i>
-                    </div>
-                    <h3>Accesorios Premium</h3>
-                    <p>Selección curada de los mejores accesorios para tu celular y dispositivos.</p>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-truck"></i>
-                    </div>
-                    <h3>Entrega a Domicilio</h3>
-                    <p>Cobertura completa en Hualpén y Concepción con seguimiento en tiempo real.</p>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-headset"></i>
-                    </div>
-                    <h3>Asesoría Personal</h3>
-                    <p>Te guiamos para elegir exactamente lo que necesitas.</p>
-                </div>
+    <!-- Productos -->
+    <section id="productos">
+        <h2 class="section-title">NUESTROS PRODUCTOS</h2>
+        <div class="products-grid">
+            <div class="card-luxury">
+                <div class="product-image">🎧</div>
+                <h3 class="product-title">Audífonos Wireless</h3>
+                <div class="product-price">$49.990</div>
+                <a href="https://wa.me/56912345678?text=Hola%20quiero%20comprar%20los%20Audífonos%20Wireless%20por%20$49.990" class="buy-btn" target="_blank">COMPRAR AHORA</a>
+            </div>
+            <div class="card-luxury">
+                <div class="product-image">⚡</div>
+                <h3 class="product-title">Cargador Turbo 65W</h3>
+                <div class="product-price">$19.990</div>
+                <a href="https://wa.me/56912345678?text=Hola%20quiero%20comprar%20el%20Cargador%20Turbo%2065W%20por%20$19.990" class="buy-btn" target="_blank">COMPRAR AHORA</a>
+            </div>
+            <div class="card-luxury">
+                <div class="product-image">💡</div>
+                <h3 class="product-title">Lámpara LED Inteligente</h3>
+                <div class="product-price">$29.990</div>
+                <a href="https://wa.me/56912345678?text=Hola%20quiero%20comprar%20la%20Lámpara%20LED%20Inteligente%20por%20$29.990" class="buy-btn" target="_blank">COMPRAR AHORA</a>
+            </div>
+            <div class="card-luxury">
+                <div class="product-image">⌚</div>
+                <h3 class="product-title">Smartwatch Premium</h3>
+                <div class="product-price">$89.990</div>
+                <a href="https://wa.me/56912345678?text=Hola%20quiero%20comprar%20el%20Smartwatch%20Premium%20por%20$89.990" class="buy-btn" target="_blank">COMPRAR AHORA</a>
             </div>
         </div>
     </section>
 
-    <!-- ZONA TECNOLOGÍA -->
-    <section id="productos" class="section products-section">
-        <div class="container">
-            <h2 class="section-title">Zona Tecnología</h2>
-            <p class="section-subtitle">Productos más demandados</p>
-            <div class="products-grid">
-                <div class="product-card">
-                    <div class="product-image">
-                        <i class="fas fa-headphones"></i>
-                    </div>
-                    <h3>Audífonos Pro</h3>
-                    <p>Sonido profesional para música y llamadas.</p>
-                    <a href="https://wa.me/56912345678?text=Hola%20GeoVentas%2C%20consulto%20por%20Audífonos%20Pro" class="whatsapp-btn" target="_blank">
-                        Consultar WhatsApp
-                    </a>
-                </div>
-                <div class="product-card">
-                    <div class="product-image">
-                        <i class="fas fa-bolt"></i>
-                    </div>
-                    <h3>Cargadores Rápidos</h3>
-                    <p>Carga completa en 30 minutos.</p>
-                    <a href="https://wa.me/56912345678?text=Hola%20GeoVentas%2C%20consulto%20por%20Cargadores%20Rápidos" class="whatsapp-btn" target="_blank">
-                        Consultar WhatsApp
-                    </a>
-                </div>
-                <div class="product-card">
-                    <div class="product-image">
-                        <i class="fas fa-car-side"></i>
-                    </div>
-                    <h3>Soportes de Auto</h3>
-                    <p>Seguridad y manos libres perfecto.</p>
-                    <a href="https://wa.me/56912345678?text=Hola%20GeoVentas%2C%20consulto%20por%20Soportes%20de%20Auto" class="whatsapp-btn" target="_blank">
-                        Consultar WhatsApp
-                    </a>
-                </div>
-                <div class="product-card">
-                    <div class="product-image">
-                        <i class="fas fa-plug-circle-bolt"></i>
-                    </div>
-                    <h3>Cables Premium</h3>
-                    <p>Durabilidad x10 vs cables comunes.</p>
-                    <a href="https://wa.me/56912345678?text=Hola%20GeoVentas%2C%20consulto%20por%20Cables%20Premium" class="whatsapp-btn" target="_blank">
-                        Consultar WhatsApp
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- CONTACTO -->
-    <section id="contacto" class="section">
-        <div class="container">
-            <h2 class="section-title">Contacto Directo</h2>
-            <div class="contact-grid">
-                <div class="contact-item whatsapp-primary">
-                    <i class="fab fa-whatsapp"></i>
-                    <h3>WhatsApp 24/7</h3>
-                    <p><strong>+56 9 1234 5678</strong></p>
-                    <a href="https://wa.me/56912345678?text=¡Hola!%20Quiero%20hacer%20mi%20pedido%20con%20GeoVentas" class="whatsapp-btn" target="_blank">
-                        Hablar Ahora
-                    </a>
-                </div>
-                <div class="contact-item">
-                    <i class="fas fa-map-location-dot"></i>
-                    <h3>Hualpén / Concepción</h3>
-                    <p>Servicio local<br>Gran Concepción<br>Chile</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- FOOTER -->
+    <!-- Footer -->
     <footer class="footer">
-        <div class="footer-container">
-            <div class="footer-links">
-                <a href="#inicio" class="footer-link">Inicio</a>
-                <a href="#productos" class="footer-link">Productos</a>
-                <a href="#contacto" class="footer-link">Contacto</a>
-                <a href="https://instagram.com/geoventas" class="footer-link" target="_blank">Instagram</a>
-                <a href="https://facebook.com/geoventas" class="footer-link" target="_blank">Facebook</a>
-            </div>
-            <div class="footer-contact">
-                <p><strong>GeoVentas Hualpén</strong></p>
-                <p>WhatsApp: <a href="https://wa.me/56912345678">+56 9 1234 5678</a></p>
-                <p>Hualpén / Concepción - Chile</p>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2024 GeoVentas. Tu tienda local de tecnología premium. Todos los derechos reservados.</p>
-            </div>
+        <div class="social-links">
+            <a href="https://instagram.com" target="_blank">📸</a>
+            <a href="https://facebook.com" target="_blank">📘</a>
         </div>
+        <p class="copyright">&copy; 2026 GEOVENTAS. Todos los derechos reservados.</p>
     </footer>
 
     <script>
-        // Smooth scrolling
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                target?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        // Preloader
+        window.addEventListener('load', () => {
+            const preloader = document.getElementById('preloader');
+            setTimeout(() => {
+                preloader.style.opacity = '0';
+                setTimeout(() => {
+                    preloader.style.display = 'none';
+                }, 800);
+            }, 3500);
+        });
+
+        // Hero title animation
+        const heroTitle = document.getElementById('heroTitle');
+        const text = heroTitle.textContent;
+        heroTitle.innerHTML = '';
+        text.split('').forEach((char, i) => {
+            const span = document.createElement('span');
+            span.textContent = char === ' ' ? '\u00A0' : char;
+            span.style.animationDelay = `${i * 0.1}s`;
+            heroTitle.appendChild(span);
+        });
+        heroTitle.style.opacity = '1';
+
+        // Custom Cursor
+        const cursor = document.getElementById('cursor');
+        const cursorFollower = document.getElementById('cursorFollower');
+        let mouseX = 0, mouseY = 0;
+        let cursorX = 0, cursorY = 0;
+
+        document.addEventListener('mousemove', (e) => {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+        });
+
+        function animateCursor() {
+            cursorX += (mouseX - cursorX) * 0.1;
+            cursorY += (mouseY - cursorY) * 0.1;
+            cursor.style.left = cursorX + 'px';
+            cursor.style.top = cursorY + 'px';
+            
+            cursorFollower.style.left = mouseX + 'px';
+            cursorFollower.style.top = mouseY + 'px';
+            requestAnimationFrame(animateCursor);
+        }
+        animateCursor();
+
+        // Hover effects for cursor
+        const hoverElements = document.querySelectorAll('a, button, .card-luxury');
+        hoverElements.forEach(el => {
+            el.addEventListener('mouseenter', () => {
+                cursor.style.transform = 'scale(2)';
+                cursorFollower.style.transform = 'scale(0.5)';
+            });
+            el.addEventListener('mouseleave', () => {
+                cursor.style.transform = 'scale(1)';
+                cursorFollower.style.transform = 'scale(1)';
+            });
+        });
+
+        // Mobile Menu
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('navLinks');
+
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            hamburger.classList.toggle('active');
+        });
+
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                hamburger.classList.remove('active');
+            });
+        });
+
+        // FAQ Accordion
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', () => {
+                const answer = question.nextElementSibling;
+                const isActive = answer.classList.contains('active');
+                
+                // Close all others
+                document.querySelectorAll('.faq-answer').forEach(a => {
+                    a.classList.remove('active');
+                });
+                document.querySelectorAll('.faq-question span').forEach(span => {
+                    span.textContent = '+';
+                });
+                
+                // Toggle current
+                if (!isActive) {
+                    answer.classList.add('active');
+                    question.querySelector('span').textContent = '−';
+                }
             });
         });
 
         // Navbar scroll effect
         window.addEventListener('scroll', () => {
             const navbar = document.querySelector('.navbar');
-            if (window.scrollY > 50) {
-                navbar.style.background = 'rgba(5, 5, 5, 0.98)';
-                navbar.style.borderBottomColor = 'rgba(212, 175, 55, 0.3)';
+            if (window.scrollY > 100) {
+                navbar.style.background = 'rgba(0,0,0,0.9)';
+                navbar.style.backdropFilter = 'blur(30px)';
             } else {
-                navbar.style.background = 'rgba(5, 5, 5, 0.95)';
-                navbar.style.borderBottomColor = 'transparent';
+                navbar.style.background = 'rgba(0,0,0,0.3)';
+                navbar.style.backdropFilter = 'blur(20px)';
             }
         });
 
-        // Intersection Observer para animaciones
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
@@ -782,64 +698,153 @@
                     entry.target.style.transform = 'translateY(0)';
                 }
             });
-        }, { threshold: 0.1 });
+        }, observerOptions);
 
-        document.querySelectorAll('.about-card, .service-card, .product-card, .contact-item').forEach(el => {
+        // Observe content sections
+        document.querySelectorAll('section .content, .card-luxury').forEach(el => {
             el.style.opacity = '0';
             el.style.transform = 'translateY(30px)';
-            el.style.transition = 'all 0.6s ease';
+            el.style.transition = 'all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
             observer.observe(el);
         });
-                <div class="product-card">
-                    <div class="product-image">
-                        <i class="fas fa-plug"></i>
-                    </div>
-                    <h3>Cables Premium</h3>
-                    <p>Carga rápida y durabilidad extrema.</p>
-                    <a href="https://wa.me/569XXXXXXXX?text=Hola%20GeoVentas%2C%20quiero%20los%20Cables%20Premium" class="whatsapp-btn" target="_blank">
-                        Consultar disponibilidad
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
 
-    <section id="contacto" class="section">
-        <div class="container">
-            <h2 class="section-title">Contacto</h2>
-            <div class="contact-grid">
-                <div class="contact-item whatsapp-primary">
-                    <i class="fab fa-whatsapp"></i>
-                    <h3>WhatsApp Ventas</h3>
-                    <p>+56 9 XXXXXXXX</p>
-                    <a href="https://wa.me/569XXXXXXXX" class="whatsapp-btn" target="_blank">Escribir ahora</a>
-                </div>
-                <div class="contact-item">
-                    <i class="fas fa-map-marker-alt"></i>
-                    <h3>Ubicación</h3>
-                    <p>Hualpén / Concepción<br>Región del Biobío</p>
-                </div>
-            </div>
-        </div>
-    </section>
+             <script>
+        // 1. CONTROL DEL PRELOADER
+        window.addEventListener('load', () => {
+            const preloader = document.getElementById('preloader');
+            // Un pequeño retraso para que se aprecie la barra premium antes de entrar
+            setTimeout(() => {
+                preloader.style.opacity = '0';
+                setTimeout(() => {
+                    preloader.style.display = 'none';
+                }, 800);
+            }, 3000); 
+        });
 
-    <footer class="footer">
-        <div class="footer-container">
-            <p>&copy; 2026 GeoVentas Hualpén. Todos los derechos reservados.</p>
-        </div>
-    </footer>
-
-    <script>
-        // Efecto de scroll para la navbar
-        window.addEventListener('scroll', function() {
-            const nav = document.querySelector('.navbar');
-            if (window.scrollY > 50) {
-                nav.style.borderBottom = '1px solid #d4af37';
-            } else {
-                nav.style.borderBottom = '1px solid transparent';
+        // 2. ANIMACIÓN LETRA POR LETRA DEL HERO
+        const heroTitle = document.getElementById('heroTitle');
+        const text = heroTitle.textContent;
+        heroTitle.innerHTML = '';
+        
+        // Estilos base dinámicos para la animación CSS inline
+        const style = document.createElement('style');
+        style.innerHTML = `
+            #heroTitle span {
+                display: inline-block;
+                opacity: 0;
+                transform: translateY(50px);
+                animation: luxuryFadeIn 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+                background: linear-gradient(45deg, #d4af37, #f1c40f);
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+                background-clip: text;
             }
+            @keyframes luxuryFadeIn {
+                to { opacity: 1; transform: translateY(0); }
+            }
+        `;
+        document.head.appendChild(style);
+
+        text.split('').forEach((char, i) => {
+            const span = document.createElement('span');
+            span.textContent = char === ' ' ? '\u00A0' : char;
+            span.style.animationDelay = `${i * 0.08}s`;
+            heroTitle.appendChild(span);
+        });
+        heroTitle.style.opacity = '1';
+
+        // 3. SISTEMA DE CURSOR PERSONALIZADO (ARREGLADO Y COMPLETO)
+        const cursor = document.getElementById('cursor');
+        const cursorFollower = document.getElementById('cursorFollower');
+        let mouseX = 0, mouseY = 0;
+        let followerX = 0, followerY = 0;
+
+        document.addEventListener('mousemove', (e) => {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+            
+            // El aro exterior reacciona inmediatamente
+            cursor.style.left = mouseX - 12 + 'px';
+            cursor.style.top = mouseY - 12 + 'px';
+        });
+
+        // El punto interno sigue al mouse con retraso elegante (smooth trail)
+        function animateFollower() {
+            followerX += (mouseX - followerX) * 0.15;
+            followerY += (mouseY - followerY) * 0.15;
+            
+            cursorFollower.style.left = followerX - 6 + 'px';
+            cursorFollower.style.top = followerY - 6 + 'px';
+            
+            requestAnimationFrame(animateFollower);
+        }
+        animateFollower();
+
+        // Efecto hover: El cursor se expande al tocar elementos interactivos
+        const interactiveElements = document.querySelectorAll('a, button, .faq-question');
+        interactiveElements.forEach(el => {
+            el.addEventListener('mouseenter', () => {
+                cursor.style.transform = 'scale(2.5)';
+                cursor.style.background = 'rgba(212, 175, 55, 0.1)';
+            });
+            el.addEventListener('mouseleave', () => {
+                cursor.style.transform = 'scale(1)';
+                cursor.style.background = 'radial-gradient(circle, rgba(212,175,55,0.3) 0%, transparent 70%)';
+            });
+        });
+
+        // 4. MENU RESPONSIVO (HAMBURGUESA)
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('navLinks');
+
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            
+            // Animación visual de las líneas del botón hamburguesa
+            const spans = hamburger.querySelectorAll('span');
+            if(navLinks.classList.contains('active')) {
+                spans[0].style.transform = 'rotate(45deg) translate(5px, 5px)';
+                spans[1].style.opacity = '0';
+                spans[2].style.transform = 'rotate(-45deg) translate(5px, -5px)';
+            } else {
+                spans[0].style.transform = 'none';
+                spans[1].style.opacity = '1';
+                spans[2].style.transform = 'none';
+            }
+        });
+
+        // Cerrar el menú automáticamente al hacer clic en un enlace (Móviles)
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                const spans = hamburger.querySelectorAll('span');
+                spans[0].style.transform = 'none';
+                spans[1].style.opacity = '1';
+                spans[2].style.transform = 'none';
+            });
+        });
+
+        // 5. ACORDEÓN DE PREGUNTAS FRECUENTES (FAQ)
+        const faqQuestions = document.querySelectorAll('.faq-question');
+
+        faqQuestions.forEach(question => {
+            question.addEventListener('click', () => {
+                const answer = question.nextElementSibling;
+                const icon = question.querySelector('span');
+                
+                // Alternar estado activo de la respuesta
+                answer.classList.toggle('active');
+                
+                // Cambiar el signo + por - de forma elegante
+                if (answer.classList.contains('active')) {
+                    icon.textContent = '−';
+                    question.style.color = '#d4af37';
+                } else {
+                    icon.textContent = '+';
+                    question.style.color = 'rgba(255,255,255,0.92)';
+                }
+            });
         });
     </script>
 </body>
 </html>
-
