@@ -810,11 +810,62 @@
                 spans[2].style.transform = 'rotate(-45deg) translate(5px, -5px)';
             } else {
                 
-                    <script>
+                        <script>
+        // 1. Control del Preloader (Quita la pantalla negra)
+        window.addEventListener('load', () => {
+            const preloader = document.getElementById('preloader');
+            if (preloader) {
+                setTimeout(() => {
+                    preloader.style.opacity = '0';
+                    setTimeout(() => {
+                        preloader.style.display = 'none';
+                    }, 800);
+                }, 1000); // Se quita después de 1 segundo
+            }
+        });
+
+        // 2. Sistema del Cursor Personalizado
+        const cursor = document.getElementById('cursor');
+        const cursorFollower = document.getElementById('cursorFollower');
+        let mouseX = 0, mouseY = 0;
+        let followerX = 0, followerY = 0;
+
+        if (cursor && cursorFollower) {
+            document.addEventListener('mousemove', (e) => {
+                mouseX = e.clientX;
+                mouseY = e.clientY;
+                cursor.style.left = mouseX - 12 + 'px';
+                cursor.style.top = mouseY - 12 + 'px';
+            });
+
+            function animateFollower() {
+                followerX += (mouseX - followerX) * 0.15;
+                followerY += (mouseY - followerY) * 0.15;
+                cursorFollower.style.left = followerX - 6 + 'px';
+                cursorFollower.style.top = followerY - 6 + 'px';
+                requestAnimationFrame(animateFollower);
+            }
+            animateFollower();
+
+            // Efecto Hover para los botones
+            const interactiveElements = document.querySelectorAll('a, button, .faq-question');
+            interactiveElements.forEach(el => {
+                el.addEventListener('mouseenter', () => {
+                    cursor.style.transform = 'scale(2.5)';
+                    cursor.style.background = 'rgba(212, 175, 55, 0.1)';
+                });
+                el.addEventListener('mouseleave', () => {
+                    cursor.style.transform = 'scale(1)';
+                    cursor.style.background = 'radial-gradient(circle, rgba(212,175,55,0.3) 0%, transparent 70%)';
+                });
+            });
+        }
+
+        // 3. Menú móvil (Hamburguesa)
         const hamburger = document.getElementById('hamburger');
         const navLinks = document.getElementById('navLinks');
 
-        if(hamburger && navLinks) {
+        if (hamburger && navLinks) {
             hamburger.addEventListener('click', () => {
                 navLinks.classList.toggle('active');
             });
