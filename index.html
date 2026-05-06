@@ -6,8 +6,10 @@
     <title>CATÁLOGO PREMIUM - GEOVENTAS</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Inter:wght@300;400;600&display=swap');
+
         * {
             margin: 0;
             padding: 0;
@@ -18,72 +20,91 @@
             background: #000000;
             color: rgba(255,255,255,0.92);
             font-family: 'Inter', sans-serif;
-            line-height: 1.7;
+            font-weight: 300;
+            line-height: 1.8;
             overflow-x: hidden;
             cursor: none;
         }
 
-        /* Preloader */
+        body.lock-scroll {
+            overflow: hidden;
+        }
+
         .preloader {
             position: fixed;
             top: 0;
             left: 0;
-            width: 100%;
-            height: 100%;
+            width: 100vw;
+            height: 100vh;
             background: #000000;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            z-index: 9999;
-            transition: opacity 0.8s ease-out;
+            z-index: 99999;
+            transition: opacity 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .preloader.hidden {
+            opacity: 0;
+            pointer-events: none;
         }
 
         .preloader-logo {
             font-family: 'Playfair Display', serif;
-            font-size: 3rem;
+            font-weight: 900;
+            font-size: clamp(3rem, 12vw, 6rem);
+            background: linear-gradient(135deg, #d4af37 0%, #f9e79d 50%, #b8860b 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: 0.1em;
+            margin-bottom: 4rem;
+            animation: logoGlow 2s ease-in-out infinite alternate;
+            text-shadow: 0 0 50px rgba(212, 175, 55, 0.6);
+        }
+
+        .btn-entrar {
+            background: transparent;
             color: #d4af37;
-            margin-bottom: 2rem;
-            animation: glow 2s ease-in-out infinite alternate;
+            border: 2px solid #d4af37;
+            padding: 1.5rem 4rem;
+            border-radius: 50px;
+            font-family: 'Inter', sans-serif;
+            font-weight: 600;
+            font-size: 1.2rem;
+            letter-spacing: 0.1em;
+            cursor: none;
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            text-transform: uppercase;
+            text-decoration: none;
+            display: inline-block;
+            box-shadow: 0 0 30px rgba(212, 175, 55, 0.3);
         }
 
-        .progress-bar {
-            width: 300px;
-            height: 4px;
-            background: rgba(255,255,255,0.1);
-            border-radius: 2px;
-            overflow: hidden;
+        .btn-entrar:hover {
+            background: linear-gradient(135deg, #d4af37 0%, #f9e79d 50%, #b8860b 100%);
+            color: #000000;
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 20px 50px rgba(212, 175, 55, 0.6);
         }
 
-        .progress-fill {
-            height: 100%;
-            background: linear-gradient(90deg, #d4af37, #f1c40f);
-            width: 0%;
-            animation: load 3s ease-out forwards;
-            border-radius: 2px;
+        @keyframes logoGlow {
+            0% { text-shadow: 0 0 30px rgba(212, 175, 55, 0.4); }
+            100% { text-shadow: 0 0 60px rgba(212, 175, 55, 0.8), 0 0 100px rgba(212, 175, 55, 0.4); }
         }
 
-        @keyframes glow {
-            from { text-shadow: 0 0 20px #d4af37; }
-            to { text-shadow: 0 0 40px #d4af37, 0 0 60px #d4af37; }
-        }
-
-        @keyframes load {
-            to { width: 100%; }
-        }
-
-        /* Custom Cursor */
         .cursor {
             position: fixed;
             width: 24px;
             height: 24px;
-            background: radial-gradient(circle, rgba(212,175,55,0.3) 0%, transparent 70%);
             border: 2px solid #d4af37;
             border-radius: 50%;
             pointer-events: none;
-            z-index: 9998;
-            transition: transform 0.1s ease-out;
+            z-index: 99998;
+            transition: transform 0.15s ease-out;
             mix-blend-mode: difference;
+            background: radial-gradient(circle, rgba(212,175,55,0.2) 0%, transparent 70%);
         }
 
         .cursor-follower {
@@ -93,19 +114,19 @@
             background: #d4af37;
             border-radius: 50%;
             pointer-events: none;
-            z-index: 9998;
+            z-index: 99998;
             transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            box-shadow: 0 0 15px rgba(212, 175, 55, 0.6);
         }
 
-        /* Navbar */
         .navbar {
             position: fixed;
             top: 0;
             width: 100%;
-            padding: 1rem 5%;
-            backdrop-filter: blur(20px);
-            background: rgba(0,0,0,0.3);
-            border-bottom: 1px solid rgba(212,175,55,0.2);
+            padding: 1.5rem 5%;
+            backdrop-filter: blur(25px);
+            background: rgba(0,0,0,0.4);
+            border-bottom: 1px solid rgba(212,175,55,0.15);
             z-index: 1000;
             transition: all 0.4s ease;
         }
@@ -120,9 +141,9 @@
 
         .logo {
             font-family: 'Playfair Display', serif;
-            font-size: 2rem;
-            font-weight: 700;
-            background: linear-gradient(45deg, #d4af37, #f1c40f);
+            font-weight: 900;
+            font-size: 2.2rem;
+            background: linear-gradient(135deg, #d4af37 0%, #f9e79d 50%, #b8860b 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -138,14 +159,16 @@
             color: rgba(255,255,255,0.92);
             text-decoration: none;
             font-weight: 500;
+            font-size: 1rem;
             position: relative;
             transition: all 0.3s ease;
+            letter-spacing: 0.05em;
         }
 
         .nav-links a::after {
             content: '';
             position: absolute;
-            bottom: -5px;
+            bottom: -8px;
             left: 0;
             width: 0;
             height: 2px;
@@ -159,13 +182,14 @@
 
         .nav-links a:hover {
             color: #d4af37;
+            text-shadow: 0 0 20px rgba(212, 175, 55, 0.5);
         }
 
         .hamburger {
             display: none;
             flex-direction: column;
             cursor: pointer;
-            gap: 4px;
+            gap: 5px;
         }
 
         .hamburger span {
@@ -173,9 +197,9 @@
             height: 3px;
             background: #d4af37;
             transition: all 0.3s ease;
+            border-radius: 2px;
         }
 
-        /* Hero */
         .hero {
             height: 100vh;
             display: flex;
@@ -184,25 +208,37 @@
             align-items: center;
             text-align: center;
             padding: 0 5%;
-            position: relative;
         }
 
         .hero-title {
             font-family: 'Playfair Display', serif;
-            font-size: clamp(3rem, 8vw, 8rem);
-            font-weight: 700;
+            font-weight: 900;
+            font-size: clamp(4rem, 10vw, 8rem);
             margin-bottom: 2rem;
             opacity: 0;
+            letter-spacing: -0.02em;
+            line-height: 0.9;
+            transform: translateY(30px);
+            animation: heroReveal 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards 0.5s;
         }
 
         .hero-subtitle {
-            font-size: 1.3rem;
+            font-size: clamp(1.1rem, 2vw, 1.3rem);
             max-width: 800px;
             opacity: 0;
-            animation-delay: 1s;
+            font-weight: 300;
+            letter-spacing: 0.02em;
+            transform: translateY(30px);
+            animation: heroReveal 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards 0.8s;
         }
 
-        /* Sections */
+        @keyframes heroReveal {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
         section {
             padding: 120px 5%;
             max-width: 1400px;
@@ -211,13 +247,15 @@
 
         .section-title {
             font-family: 'Playfair Display', serif;
-            font-size: 3.5rem;
+            font-weight: 900;
+            font-size: clamp(3rem, 7vw, 5rem);
             text-align: center;
             margin-bottom: 4rem;
-            background: linear-gradient(45deg, #d4af37, #f1c40f);
+            background: linear-gradient(135deg, #d4af37 0%, #f9e79d 50%, #b8860b 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
+            letter-spacing: -0.01em;
         }
 
         .content {
@@ -226,9 +264,9 @@
             margin: 0 auto;
             text-align: center;
             line-height: 1.8;
+            font-weight: 300;
         }
 
-        /* FAQ Accordion */
         .faq-container {
             max-width: 800px;
             margin: 0 auto;
@@ -236,18 +274,21 @@
 
         .faq-item {
             margin-bottom: 1.5rem;
-            border: 1px solid rgba(212,175,55,0.2);
+            border: 1px solid rgba(212,175,55,0.15);
+            border-radius: 16px;
+            overflow: hidden;
+            backdrop-filter: blur(15px);
+            background: rgba(255,255,255,0.03);
         }
 
         .faq-question {
             width: 100%;
-            padding: 1.5rem;
+            padding: 2rem;
             background: none;
             border: none;
-            font-family: 'Inter', sans-serif;
-            font-size: 1.1rem;
             font-weight: 600;
-            color: rgba(255,255,255,0.92);
+            font-size: 1.1rem;
+            color: rgba(255,255,255,0.95);
             text-align: left;
             cursor: pointer;
             display: flex;
@@ -257,26 +298,32 @@
         }
 
         .faq-question:hover {
-            color: #d4af37;
+            background: rgba(212,175,55,0.05);
+            color: #ffffff;
+        }
+
+        .faq-question span {
+            font-size: 1.5rem;
+            transition: transform 0.3s ease;
         }
 
         .faq-answer {
             max-height: 0;
             overflow: hidden;
-            transition: all 0.4s ease;
-            padding: 0 1.5rem;
+            transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            padding: 0 2rem;
+            font-weight: 300;
         }
 
         .faq-answer.active {
-            max-height: 200px;
-            padding: 1.5rem;
+            max-height: 250px;
+            padding: 2rem;
         }
 
-        /* Products Grid */
         .products-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2.5rem;
             margin-top: 4rem;
         }
 
@@ -284,10 +331,10 @@
             background: rgba(255,255,255,0.05);
             backdrop-filter: blur(20px);
             border: 1px solid rgba(212,175,55,0.2);
-            border-radius: 20px;
-            padding: 2rem;
+            border-radius: 24px;
+            padding: 2.5rem;
             text-align: center;
-            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
             position: relative;
             overflow: hidden;
         }
@@ -299,8 +346,8 @@
             left: -100%;
             width: 100%;
             height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(212,175,55,0.1), transparent);
-            transition: left 0.6s;
+            background: linear-gradient(90deg, transparent, rgba(212,175,55,0.15), transparent);
+            transition: left 0.7s;
         }
 
         .card-luxury:hover::before {
@@ -308,99 +355,106 @@
         }
 
         .card-luxury:hover {
-            transform: translateY(-20px) scale(1.02);
+            transform: translateY(-25px);
             border-color: #d4af37;
-            box-shadow: 0 40px 80px rgba(212,175,55,0.2);
+            box-shadow: 0 40px 80px rgba(212,175,55,0.3);
         }
 
         .product-image {
-            width: 120px;
-            height: 120px;
-            background: linear-gradient(45deg, #d4af37, #f1c40f);
+            width: 130px;
+            height: 130px;
+            background: linear-gradient(135deg, #d4af37 0%, #f9e79d 50%, #b8860b 100%);
             border-radius: 20px;
             margin: 0 auto 1.5rem;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 3rem;
+            font-size: 3.5rem;
             color: #000;
-            font-weight: bold;
+            font-weight: 900;
         }
 
         .product-title {
             font-family: 'Playfair Display', serif;
-            font-size: 1.5rem;
+            font-weight: 900;
+            font-size: 1.8rem;
             margin-bottom: 1rem;
+            letter-spacing: -0.01em;
         }
 
         .product-price {
-            font-size: 2rem;
-            font-weight: 700;
-            background: linear-gradient(45deg, #d4af37, #f1c40f);
+            font-size: 2.2rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #d4af37 0%, #f9e79d 50%, #b8860b 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            margin-bottom: 1.5rem;
+            margin-bottom: 2rem;
         }
 
         .buy-btn {
-            background: linear-gradient(45deg, #d4af37, #f1c40f);
-            color: #000;
+            background: linear-gradient(135deg, #d4af37 0%, #f9e79d 50%, #b8860b 100%);
+            color: #000 !important;
             border: none;
-            padding: 1rem 2.5rem;
+            padding: 1.2rem 3rem;
             border-radius: 50px;
             font-weight: 600;
             font-size: 1.1rem;
             cursor: none;
-            transition: all 0.3s ease;
+            transition: all 0.4s ease;
             text-decoration: none;
             display: inline-block;
-        }
-
-        .buy-btn:hover {
-            transform: scale(1.05);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
             box-shadow: 0 10px 30px rgba(212,175,55,0.4);
         }
 
-        /* Footer */
+        .buy-btn:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 20px 50px rgba(212,175,55,0.6);
+        }
+
         .footer {
-            background: rgba(0,0,0,0.5);
+            background: rgba(0,0,0,0.6);
             padding: 4rem 5% 2rem;
             text-align: center;
             border-top: 1px solid rgba(212,175,55,0.2);
+            margin-top: 80px;
         }
 
         .social-links {
             display: flex;
             justify-content: center;
-            gap: 2rem;
+            gap: 2.5rem;
             margin-bottom: 2rem;
         }
 
         .social-links a {
-            width: 60px;
-            height: 60px;
-            background: linear-gradient(45deg, #d4af37, #f1c40f);
+            width: 65px;
+            height: 65px;
+            background: linear-gradient(135deg, #d4af37 0%, #f9e79d 50%, #b8860b 100%);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.5rem;
+            font-size: 1.8rem;
             color: #000;
             text-decoration: none;
             transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(212,175,55,0.4);
         }
 
         .social-links a:hover {
-            transform: scale(1.2) rotate(10deg);
-            box-shadow: 0 15px 40px rgba(212,175,55,0.4);
+            transform: translateY(-10px) scale(1.1);
+            box-shadow: 0 20px 50px rgba(212,175,55,0.6);
         }
 
         .copyright {
-            opacity: 0.7;
+            opacity: 0.8;
+            font-weight: 300;
+            letter-spacing: 0.05em;
         }
 
-        /* Mobile */
         @media (max-width: 768px) {
             .hamburger {
                 display: flex;
@@ -408,17 +462,18 @@
 
             .nav-links {
                 position: fixed;
-                top: 100%;
+                top: 75px;
                 left: 0;
                 width: 100%;
-                background: rgba(0,0,0,0.95);
+                background: rgba(0,0,0,0.98);
                 flex-direction: column;
-                padding: 2rem;
+                padding: 3rem 5%;
                 gap: 2rem;
-                transform: translateY(-100%);
+                transform: translateY(-150%);
                 opacity: 0;
                 visibility: hidden;
-                transition: all 0.4s ease;
+                transition: all 0.5s ease;
+                border-bottom: 1px solid rgba(212,175,55,0.15);
             }
 
             .nav-links.active {
@@ -428,72 +483,34 @@
             }
 
             .hero-title {
-                font-size: 2.5rem;
+                font-size: clamp(2.5rem, 9vw, 4.5rem);
             }
 
             .section-title {
-                font-size: 2.5rem;
+                font-size: clamp(2.2rem, 6vw, 3.5rem);
             }
 
             .products-grid {
                 grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            section {
+                padding: 100px 5%;
             }
         }
-
-        /* Scroll behavior */
-        html {
-            scroll-behavior: smooth;
-        }
-        /* --- ESTILOS DEL PRELOADER --- */
-.preloader {
-     position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: #000000;
-    z-index: 99999;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    transition: opacity 0.8s ease, visibility 0.8s ease;
-}
-
-.preloader-logo {
-    color: #d4af37;
-    font-size: 2.5rem;
-    font-weight: bold;
-    letter-spacing: 3px;
-    margin-bottom: 20px;
-}
-
-.progress-bar {
-    width: 200px;
-    height: 4px;
-    background-color: #222;
-    border-radius: 2px;
-    overflow: hidden;
-}
-
-.progress-fill {
-    height: 100%;
-    background-color: #d4af37;
-    width: 0;
-    transition: width 1s ease;
-}
-        
     </style>
 </head>
-<body>
-        <div class="preloader" id="preloader" style="transition: opacity 0.8s ease-in-out;">
+<body class="lock-scroll">
+
+    <div class="preloader" id="preloader">
         <div class="preloader-logo">GEOVENTAS</div>
-        <div class="progress-bar">
-            <div class="progress-fill" style="width: 100%; transition: width 1s ease;"></div>
-        </div>
-        </div>
-    
-    <!-- Navbar -->
+        <button class="btn-entrar" id="btnEntrar">ENTRAR</button>
+    </div>
+
+    <div class="cursor" id="cursor"></div>
+    <div class="cursor-follower" id="cursorFollower"></div>
+
     <nav class="navbar">
         <div class="nav-container">
             <div class="logo">GEOVENTAS</div>
@@ -513,13 +530,11 @@
         </div>
     </nav>
 
-    <!-- Hero -->
     <section id="inicio" class="hero">
         <h1 class="hero-title" id="heroTitle">CATÁLOGO PREMIUM</h1>
         <p class="hero-subtitle">Tecnología premium seleccionada minuciosamente. Entregas coordinadas en puntos de encuentro estratégicos en Hualpén y Concepción.</p>
     </section>
 
-    <!-- Quiénes Somos -->
     <section id="nosotros">
         <h2 class="section-title">QUIÉNES SOMOS</h2>
         <div class="content">
@@ -527,7 +542,6 @@
         </div>
     </section>
 
-    <!-- Objetivos -->
     <section id="objetivos">
         <h2 class="section-title">NUESTRO OBJETIVO</h2>
         <div class="content">
@@ -535,261 +549,88 @@
         </div>
     </section>
 
-    <!-- Seguridad -->
     <section id="seguridad">
-        <h2 class="section-title">POLÍTICA DE SEGURIDAD</h2>
+        <h2 class="section-header section-title">POLÍTICA DE SEGURIDAD</h2>
         <div class="content">
-            Tu tranquilidad y confianza son nuestra máxima prioridad. Para garantizar transacciones 100% confiables y discretas, todas nuestras entregas se realizan exclusivamente en puntos de encuentro estratégicos y previamente coordinados en las zonas de Hualpén y Concepción. No realizamos envíos desatendidos ni entregas en rutas inseguras; verificamos cada paso junto al cliente para asegurar que recibas tu producto premium en perfectas condiciones y en un entorno controlado.
+            Tu tranquilidad y confianza son nuestra máxima prioridad. Para garantizar transacciones 100% confiables y discretas, todas nuestras entregas se realizan exclusivamente en puntos de encuentro estratégicos y previamente coordinados en las zonas de Hualpén y Concepción. No realizamos envíos desatendidos ni entregas en rutas unsafe; verificamos cada paso junto al cliente para asegurar que recibas tu producto premium en perfectas condiciones y en un entorno controlado.
         </div>
     </section>
 
-    <!-- FAQ -->
     <section id="faq">
         <h2 class="section-title">PREGUNTAS FRECUENTES</h2>
         <div class="faq-container">
             <div class="faq-item">
                 <button class="faq-question">¿Cómo coordinar la entrega? <span>+</span></button>
                 <div class="faq-answer">
-                    Al presionar el botón de compra, te conectarás directamente con nuestro equipo por WhatsApp para agendar el punto de encuentro en Hualpén o Concepción que más te acomode.
+                    <p>Al presionar el botón de compra, te conectarás directamente con nuestro equipo por WhatsApp para agendar el punto de encuentro en Hualpén o Concepción que más te acomode.</p>
                 </div>
             </div>
             <div class="faq-item">
                 <button class="faq-question">¿Los productos tienen garantía? <span>+</span></button>
                 <div class="faq-answer">
-                    Sí, todos nuestros equipos tecnológicos premium cuentan con garantía extendida y certificación de calidad revisada manualmente.
+                    <p>Sí, todos nuestros equipos tecnológicos premium cuentan con garantía extendida y certificación de calidad revisada manualmente.</p>
                 </div>
             </div>
             <div class="faq-item">
                 <button class="faq-question">¿Cuáles son los medios de pago? <span>+</span></button>
                 <div class="faq-answer">
-                    Aceptamos transferencias electrónicas seguras y efectivo al momento de verificar tu producto en el punto de entrega.
+                    <p>Aceptamos transferencias electrónicas seguras y efectivo al momento de verificar tu producto en el punto de entrega.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Productos -->
     <section id="productos">
         <h2 class="section-title">NUESTROS PRODUCTOS</h2>
         <div class="products-grid">
-            <div class="products-grid">
-    <div class="card-luxury">
-        <div class="product-image">🎧</div>
-        <h3 class="product-title">Audífonos Wireless</h3>
-        <div class="product-price">$49.990</div>
-        <a href="https://linktr.ee/geoventas" class="buy-btn" target="_blank">COMPRAR AHORA</a>
-    </div>
-    <div class="card-luxury">
-        <div class="product-image">⚡</div>
-        <h3 class="product-title">Cargador Turbo 65W</h3>
-        <div class="product-price">$19.990</div>
-        <a href="https://linktr.ee/geoventas" class="buy-btn" target="_blank">COMPRAR AHORA</a>
-    </div>
-    <div class="card-luxury">
-        <div class="product-image">💡</div>
-        <h3 class="product-title">Lámpara LED Inteligente</h3>
-        <div class="product-price">$29.990</div>
-        <a href="https://linktr.ee/geoventas" class="buy-btn" target="_blank">COMPRAR AHORA</a>
-    </div>
-    <div class="card-luxury">
-        <div class="product-image">⌚</div>
-        <h3 class="product-title">Smartwatch Premium</h3>
-        <div class="product-price">$89.990</div>
-        <a href="https://linktr.ee/geoventas" class="buy-btn" target="_blank">COMPRAR AHORA</a>
-    </div>
-</div>
-    
+            <div class="card-luxury">
+                <div class="product-image">🎧</div>
+                <h3 class="product-title">Audífonos Wireless</h3>
+                <div class="product-price">$49.990</div>
+                <a href="https://wa.me/56912345678?text=Hola%20quiero%20los%20Audífonos%20Wireless%20$49.990" class="buy-btn" target="_blank">COMPRAR</a>
+            </div>
+            <div class="card-luxury">
+                <div class="product-image">⚡</div>
+                <h3 class="product-title">Cargador Turbo 65W</h3>
+                <div class="product-price">$19.990</div>
+                <a href="https://wa.me/56912345678?text=Hola%20quiero%20el%20Cargador%20Turbo%2065W%20$19.990" class="buy-btn" target="_blank">COMPRAR</a>
+            </div>
+            <div class="card-luxury">
+                <div class="product-image">💡</div>
+                <h3 class="product-title">Lámpara LED Inteligente</h3>
+                <div class="product-price">$29.990</div>
+                <a href="https://wa.me/56912345678?text=Hola%20quiero%20la%20Lámpara%20LED%20Inteligente%20$29.990" class="buy-btn" target="_blank">COMPRAR</a>
+            </div>
+            <div class="card-luxury">
+                <div class="product-image">🖥️</div>
+                <h3 class="product-title">Soporte Tecnológico</h3>
+                <div class="product-price">$34.990</div>
+                <a href="https://wa.me/56912345678?text=Hola%20quiero%20el%20Soporte%20Tecnológico%20$34.990" class="buy-btn" target="_blank">COMPRAR</a>
+            </div>
+        </div>
     </section>
 
-    <!-- Footer -->
     <footer class="footer">
         <div class="social-links">
-            <a href="https://instagram.com" target="_blank">📸</a>
-            <a href="https://facebook.com" target="_blank">📘</a>
+            <a href="https://instagram.com" target="_blank"><i class="font-awesome-icon">📸</i></a>
+            <a href="https://facebook.com" target="_blank"><i class="font-awesome-icon">👥</i></a>
         </div>
-        <p class="copyright">&copy; 2026 GEOVENTAS. Todos los derechos reservados.</p>
+        <p class="copyright">&copy; 2026 GEOVENTAS. Todos los derechos reservados. Elegancia y Seguridad Tecnológica.</p>
     </footer>
 
     <script>
-        // Preloader
-        window.addEventListener('load', () => {
-            const preloader = document.getElementById('preloader');
-            setTimeout(() => {
-                preloader.style.opacity = '0';
-                setTimeout(() => {
-                    preloader.style.display = 'none';
-                }, 800);
-            }, 3500);
-        });
+        // 1. Control del Preloader Manual
+        const preloader = document.getElementById('preloader') || document.getElementById('precargador');
+        const btnEntrar = document.getElementById('btnEntrar') || document.getElementById('botón Entrar');
 
-        // Hero title animation
-        const heroTitle = document.getElementById('heroTitle');
-        const text = heroTitle.textContent;
-        heroTitle.innerHTML = '';
-        text.split('').forEach((char, i) => {
-            const span = document.createElement('span');
-            span.textContent = char === ' ' ? '\u00A0' : char;
-            span.style.animationDelay = `${i * 0.1}s`;
-            heroTitle.appendChild(span);
-        });
-        heroTitle.style.opacity = '1';
-
-        // Custom Cursor
-        const cursor = document.getElementById('cursor');
-        const cursorFollower = document.getElementById('cursorFollower');
-        let mouseX = 0, mouseY = 0;
-        let cursorX = 0, cursorY = 0;
-
-        document.addEventListener('mousemove', (e) => {
-            mouseX = e.clientX;
-            mouseY = e.clientY;
-        });
-
-        function animateCursor() {
-            cursorX += (mouseX - cursorX) * 0.1;
-            cursorY += (mouseY - cursorY) * 0.1;
-            cursor.style.left = cursorX + 'px';
-            cursor.style.top = cursorY + 'px';
-            
-            cursorFollower.style.left = mouseX + 'px';
-            cursorFollower.style.top = mouseY + 'px';
-            requestAnimationFrame(animateCursor);
+        if (btnEntrar && preloader) {
+            btnEntrar.addEventListener('click', () => {
+                preloader.classList.add('hidden');
+                document.body.classList.remove('lock-scroll');
+            });
         }
-        animateCursor();
 
-        // Hover effects for cursor
-        const hoverElements = document.querySelectorAll('a, button, .card-luxury');
-        hoverElements.forEach(el => {
-            el.addEventListener('mouseenter', () => {
-                cursor.style.transform = 'scale(2)';
-                cursorFollower.style.transform = 'scale(0.5)';
-            });
-            el.addEventListener('mouseleave', () => {
-                cursor.style.transform = 'scale(1)';
-                cursorFollower.style.transform = 'scale(1)';
-            });
-        });
-
-        // Mobile Menu
-        const hamburger = document.getElementById('hamburger');
-        const navLinks = document.getElementById('navLinks');
-
-        hamburger.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
-            hamburger.classList.toggle('active');
-        });
-
-        // Close mobile menu when clicking on a link
-        document.querySelectorAll('.nav-links a').forEach(link => {
-            link.addEventListener('click', () => {
-                navLinks.classList.remove('active');
-                hamburger.classList.remove('active');
-            });
-        });
-
-        // FAQ Accordion
-        document.querySelectorAll('.faq-question').forEach(question => {
-            question.addEventListener('click', () => {
-                const answer = question.nextElementSibling;
-                const isActive = answer.classList.contains('active');
-                
-                // Close all others
-                document.querySelectorAll('.faq-answer').forEach(a => {
-                    a.classList.remove('active');
-                });
-                document.querySelectorAll('.faq-question span').forEach(span => {
-                    span.textContent = '+';
-                });
-                
-                // Toggle current
-                if (!isActive) {
-                    answer.classList.add('active');
-                    question.querySelector('span').textContent = '−';
-                }
-            });
-        });
-
-        // Navbar scroll effect
-        window.addEventListener('scroll', () => {
-            const navbar = document.querySelector('.navbar');
-            if (window.scrollY > 100) {
-                navbar.style.background = 'rgba(0,0,0,0.9)';
-                navbar.style.backdropFilter = 'blur(30px)';
-            } else {
-                navbar.style.background = 'rgba(0,0,0,0.3)';
-                navbar.style.backdropFilter = 'blur(20px)';
-            }
-        });
-
-        // Intersection Observer for animations
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
-                }
-            });
-        }, observerOptions);
-
-        // Observe content sections
-        document.querySelectorAll('section .content, .card-luxury').forEach(el => {
-            el.style.opacity = '0';
-            el.style.transform = 'translateY(30px)';
-            el.style.transition = 'all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
-            observer.observe(el);
-        });
-
-             <script>
-        // 1. CONTROL DEL PRELOADER
-        window.addEventListener('load', () => {
-            const preloader = document.getElementById('preloader');
-            // Un pequeño retraso para que se aprecie la barra premium antes de entrar
-            setTimeout(() => {
-                preloader.style.opacity = '0';
-                setTimeout(() => {
-                    preloader.style.display = 'none';
-                }, 800);
-            }, 3000); 
-        });
-
-        // 2. ANIMACIÓN LETRA POR LETRA DEL HERO
-        const heroTitle = document.getElementById('heroTitle');
-        const text = heroTitle.textContent;
-        heroTitle.innerHTML = '';
-        
-        // Estilos base dinámicos para la animación CSS inline
-        const style = document.createElement('style');
-        style.innerHTML = `
-            #heroTitle span {
-                display: inline-block;
-                opacity: 0;
-                transform: translateY(50px);
-                animation: luxuryFadeIn 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
-                background: linear-gradient(45deg, #d4af37, #f1c40f);
-                -webkit-background-clip: text;
-                -webkit-text-fill-color: transparent;
-                background-clip: text;
-            }
-            @keyframes luxuryFadeIn {
-                to { opacity: 1; transform: translateY(0); }
-            }
-        `;
-        document.head.appendChild(style);
-
-        text.split('').forEach((char, i) => {
-            const span = document.createElement('span');
-            span.textContent = char === ' ' ? '\u00A0' : char;
-            span.style.animationDelay = `${i * 0.08}s`;
-            heroTitle.appendChild(span);
-        });
-        heroTitle.style.opacity = '1';
-
-        // 3. SISTEMA DE CURSOR PERSONALIZADO (ARREGLADO Y COMPLETO)
+        // 2. Control de Movimiento del Cursor Personalizado (Smooth Trail)
         const cursor = document.getElementById('cursor');
         const cursorFollower = document.getElementById('cursorFollower');
         let mouseX = 0, mouseY = 0;
@@ -798,104 +639,24 @@
         document.addEventListener('mousemove', (e) => {
             mouseX = e.clientX;
             mouseY = e.clientY;
-            
-            // El aro exterior reacciona inmediatamente
-            cursor.style.left = mouseX - 12 + 'px';
-            cursor.style.top = mouseY - 12 + 'px';
-        });
-
-        // El punto interno sigue al mouse con retraso elegante (smooth trail)
-        function animateFollower() {
-            followerX += (mouseX - followerX) * 0.15;
-            followerY += (mouseY - followerY) * 0.15;
-            
-            cursorFollower.style.left = followerX - 6 + 'px';
-            cursorFollower.style.top = followerY - 6 + 'px';
-            
-            requestAnimationFrame(animateFollower);
-        }
-        animateFollower();
-
-        // Efecto hover: El cursor se expande al tocar elementos interactivos
-        const interactiveElements = document.querySelectorAll('a, button, .faq-question');
-        interactiveElements.forEach(el => {
-            el.addEventListener('mouseenter', () => {
-                cursor.style.transform = 'scale(2.5)';
-                cursor.style.background = 'rgba(212, 175, 55, 0.1)';
-            });
-            el.addEventListener('mouseleave', () => {
-                cursor.style.transform = 'scale(1)';
-                cursor.style.background = 'radial-gradient(circle, rgba(212,175,55,0.3) 0%, transparent 70%)';
-            });
-        });
-
-        // 4. MENU RESPONSIVO (HAMBURGUESA)
-        const hamburger = document.getElementById('hamburger');
-        const navLinks = document.getElementById('navLinks');
-
-        hamburger.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
-            
-            // Animación visual de las líneas del botón hamburguesa
-            const spans = hamburger.querySelectorAll('span');
-            if(navLinks.classList.contains('active')) {
-                spans[0].style.transform = 'rotate(45deg) translate(5px, 5px)';
-                spans[1].style.opacity = '0';
-                spans[2].style.transform = 'rotate(-45deg) translate(5px, -5px)';
-            } else {
-                
-    <script>
-        // 1. Control del Preloader (Quita la pantalla negra)
-        window.addEventListener('load', () => {
-            const preloader = document.getElementById('preloader');
-            if (preloader) {
-                setTimeout(() => {
-                    preloader.style.opacity = '0';
-                    setTimeout(() => {
-                        preloader.style.display = 'none';
-                    }, 800);
-                }, 1000); // Se quita después de 1 segundo
-            }
-        });
-
-        // 2. Sistema del Cursor Personalizado
-        const cursor = document.getElementById('cursor');
-        const cursorFollower = document.getElementById('cursorFollower');
-        let mouseX = 0, mouseY = 0;
-        let followerX = 0, followerY = 0;
-
-        if (cursor && cursorFollower) {
-            document.addEventListener('mousemove', (e) => {
-                mouseX = e.clientX;
-                mouseY = e.clientY;
+            if (cursor) {
                 cursor.style.left = mouseX - 12 + 'px';
                 cursor.style.top = mouseY - 12 + 'px';
-            });
+            }
+        });
 
-            function animateFollower() {
-                followerX += (mouseX - followerX) * 0.15;
-                followerY += (mouseY - followerY) * 0.15;
+        function updateFollowerAnimation() {
+            followerX += (mouseX - followerX) * 0.12;
+            followerY += (mouseY - followerY) * 0.12;
+            if (cursorFollower) {
                 cursorFollower.style.left = followerX - 6 + 'px';
                 cursorFollower.style.top = followerY - 6 + 'px';
-                requestAnimationFrame(animateFollower);
             }
-            animateFollower();
-
-            // Efecto Hover para los botones
-            const interactiveElements = document.querySelectorAll('a, button, .faq-question');
-            interactiveElements.forEach(el => {
-                el.addEventListener('mouseenter', () => {
-                    cursor.style.transform = 'scale(2.5)';
-                    cursor.style.background = 'rgba(212, 175, 55, 0.1)';
-                });
-                el.addEventListener('mouseleave', () => {
-                    cursor.style.transform = 'scale(1)';
-                    cursor.style.background = 'radial-gradient(circle, rgba(212,175,55,0.3) 0%, transparent 70%)';
-                });
-            });
+            requestAnimationFrame(updateFollowerAnimation);
         }
+        updateFollowerAnimation();
 
-        // 3. Menú móvil (Hamburguesa)
+        // 3. Menú Móvil Funcional (Hamburger)
         const hamburger = document.getElementById('hamburger');
         const navLinks = document.getElementById('navLinks');
 
@@ -903,7 +664,37 @@
             hamburger.addEventListener('click', () => {
                 navLinks.classList.toggle('active');
             });
+            // Cerrar menú al hacer clic en un enlace
+            navLinks.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => {
+                    navLinks.classList.remove('active');
+                });
+            });
         }
+
+        // 4. Sistema Interactivos de Acordeones (FAQ)
+        const faqQuestions = document.querySelectorAll('.faq-question');
+        faqQuestions.forEach(question => {
+            question.addEventListener('click', () => {
+                const answer = question.nextElementSibling;
+                const span = question.querySelector('span');
+                
+                // Cierra los demás acordeones abiertos
+                faqQuestions.forEach(otherQuestion => {
+                    if (otherQuestion !== question) {
+                        otherQuestion.nextElementSibling.classList.remove('active');
+                        otherQuestion.querySelector('span').textContent = '+';
+                    }
+                });
+
+                answer.classList.toggle('active');
+                if (answer.classList.contains('active')) {
+                    span.textContent = '−';
+                } else {
+                    span.textContent = '+';
+                }
+            });
+        });
     </script>
 </body>
 </html>
