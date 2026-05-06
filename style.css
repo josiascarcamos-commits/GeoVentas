@@ -1,21 +1,5 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GeoVentas Hualpén | Tecnología Premium Concepción</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --black-deep: #050505;
-            --black-secondary: #0a0a0a;
-            --white-primary: #ffffff;
-            --gold-premium: #d4af37;
-            --gold-light: #f0d47a;
-            --gold-glow: rgba(212, 175, 55, 0.3);
-            --glass-bg: rgba(255, 255, 255, 0.05);
-        }
+<style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Inter:wght@300;400;600&display=swap');
 
         * {
             margin: 0;
@@ -24,744 +8,594 @@
         }
 
         body {
+            background: #000000;
+            color: rgba(255,255,255,0.92);
             font-family: 'Inter', sans-serif;
-            background: var(--black-deep);
-            color: var(--white-primary);
-            line-height: 1.6;
+            font-weight: 300;
+            line-height: 1.8;
             overflow-x: hidden;
+            cursor: none;
         }
 
-        /* NAVBAR CRISTAL */
+        /* Preloader */
+        .preloader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #000000;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .preloader-logo {
+            font-family: 'Playfair Display', serif;
+            font-weight: 900;
+            font-size: clamp(2.5rem, 8vw, 4rem);
+            background: linear-gradient(135deg, #d4af37 0%, #f9e27d 50%, #b8860b 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: 0.1em;
+            margin-bottom: 3rem;
+            text-shadow: 0 0 40px rgba(212, 175, 55, 0.5);
+            animation: logoPulse 2.5s ease-in-out infinite alternate;
+        }
+
+        .progress-bar {
+            width: clamp(250px, 30vw, 400px);
+            height: 3px;
+            background: rgba(255,255,255,0.08);
+            border-radius: 2px;
+            overflow: hidden;
+            box-shadow: inset 0 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #d4af37 0%, #f9e27d 50%, #b8860b 100%);
+            width: 0%;
+            border-radius: 2px;
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.6);
+            animation: progressLoad 3.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+        }
+
+        @keyframes logoPulse {
+            0% { transform: scale(1); text-shadow: 0 0 40px rgba(212, 175, 55, 0.5); }
+            100% { transform: scale(1.05); text-shadow: 0 0 60px rgba(212, 175, 55, 0.8), 0 0 80px rgba(212, 175, 55, 0.4); }
+        }
+
+        @keyframes progressLoad {
+            0% { width: 0%; }
+            50% { width: 70%; }
+            100% { width: 100%; }
+        }
+
+        /* Custom Cursor */
+        .cursor {
+            position: fixed;
+            width: 28px;
+            height: 28px;
+            background: radial-gradient(circle at 30% 30%, rgba(212,175,55,0.4) 0%, transparent 60%);
+            border: 2px solid rgba(212,175,55,0.8);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 9998;
+            transition: all 0.15s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            mix-blend-mode: screen;
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
+        }
+
+        .cursor-follower {
+            position: fixed;
+            width: 14px;
+            height: 14px;
+            background: linear-gradient(135deg, #d4af37, #f9e27d);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 9998;
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            box-shadow: 0 0 15px rgba(212, 175, 55, 0.6);
+        }
+
+        /* Navbar Crystal */
         .navbar {
             position: fixed;
             top: 0;
             width: 100%;
-            background: rgba(5, 5, 5, 0.95);
+            padding: 1.2rem 5%;
             backdrop-filter: blur(25px);
             -webkit-backdrop-filter: blur(25px);
-            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+            background: rgba(0,0,0,0.4);
+            border-bottom: 1px solid rgba(212,175,55,0.15);
             z-index: 1000;
-            transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
         }
 
         .nav-container {
-            max-width: 1300px;
+            max-width: 1600px;
             margin: 0 auto;
-            padding: 1rem 5%;
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
 
-        .nav-logo {
-            font-size: 1.8rem;
-            font-weight: 700;
-            background: linear-gradient(135deg, var(--gold-premium), var(--gold-light));
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-weight: 900;
+            font-size: clamp(1.8rem, 4vw, 2.5rem);
+            background: linear-gradient(135deg, #d4af37 0%, #f9e27d 50%, #b8860b 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            text-decoration: none;
+            letter-spacing: 0.05em;
+            text-shadow: 0 0 30px rgba(212, 175, 55, 0.5);
         }
 
-        .nav-menu {
+        .nav-links {
             display: flex;
             list-style: none;
-            gap: 2.5rem;
-        }
-
-        .nav-link {
-            color: var(--white-primary);
-            text-decoration: none;
-            font-weight: 500;
-            position: relative;
-            transition: all 0.3s ease;
-        }
-
-        .nav-link::after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 2px;
-            bottom: -5px;
-            left: 50%;
-            background: linear-gradient(90deg, var(--gold-premium), var(--gold-light));
-            transition: all 0.3s ease;
-            transform: translateX(-50%);
-        }
-
-        .nav-link:hover::after {
-            width: 100%;
-        }
-
-        .nav-link:hover {
-            color: var(--gold-premium);
-        }
-
-        .social-icons {
-            display: flex;
-            gap: 1rem;
-        }
-
-        .social-icon {
-            color: var(--white-primary);
-            font-size: 1.4rem;
-            padding: 0.5rem;
-            transition: all 0.3s ease;
-        }
-
-        .social-icon:hover {
-            color: var(--gold-premium);
-            transform: scale(1.2);
-        }
-
-        /* HERO SECTION */
-        .hero {
-            height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            position: relative;
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: 
-                radial-gradient(circle at 20% 50%, rgba(212, 175, 55, 0.08) 0%, transparent 50%),
-                radial-gradient(circle at 80% 20%, rgba(212, 175, 55, 0.06) 0%, transparent 50%);
-        }
-
-        .hero-content {
-            position: relative;
-            z-index: 2;
-            max-width: 800px;
-            padding: 0 2rem;
-        }
-
-        .logo-hero {
-            width: 260px;
-            height: auto;
-            margin-bottom: 2.5rem;
-            display: block;
-            filter: drop-shadow(0 0 30px var(--gold-glow));
-            animation: logoFloat 5s ease-in-out infinite;
-        }
-
-        @keyframes logoFloat {
-            0%, 100% { transform: translateY(0px) rotate(0deg); }
-            50% { transform: translateY(-15px) rotate(1deg); }
-        }
-
-        .hero h1 {
-            font-size: 3.8rem;
-            font-weight: 700;
-            margin-bottom: 1.2rem;
-            background: linear-gradient(135deg, var(--gold-premium), var(--gold-light));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .hero p {
-            font-size: 1.25rem;
-            opacity: 0.9;
-            margin-bottom: 3rem;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .cta-main {
-            display: inline-block;
-            background: linear-gradient(135deg, var(--gold-premium), var(--gold-light));
-            color: var(--black-deep);
-            padding: 1.1rem 2.8rem;
-            font-size: 1.1rem;
-            font-weight: 600;
-            text-decoration: none;
-            border-radius: 50px;
-            box-shadow: 0 15px 35px var(--gold-glow);
-            transition: all 0.3s ease;
-        }
-
-        .cta-main:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 25px 50px rgba(212, 175, 55, 0.4);
-        }
-
-        /* SECTION GENERAL */
-        .section {
-            padding: 110px 0;
-        }
-
-        .container {
-            max-width: 1300px;
-            margin: 0 auto;
-            padding: 0 5%;
-        }
-
-        .section-title {
-            font-size: 3.2rem;
-            font-weight: 700;
-            text-align: center;
-            margin-bottom: 4rem;
-            background: linear-gradient(135deg, var(--gold-premium), var(--gold-light));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        /* ABOUT & SERVICES CARDS */
-        .cards-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
-            gap: 2.5rem;
-            margin-top: 3rem;
-        }
-
-        .card-base {
-            background: var(--glass-bg);
-            backdrop-filter: blur(15px);
-            border: 1px solid rgba(212, 175, 55, 0.15);
-            border-radius: 20px;
-            padding: 2.8rem 2rem;
-            text-align: center;
-            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .card-base::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 3px;
-            background: linear-gradient(90deg, var(--gold-premium), var(--gold-light));
-        }
-
-        .card-base:hover {
-            transform: translateY(-12px);
-            border-color: var(--gold-premium);
-            box-shadow: 0 30px 60px var(--gold-glow);
-        }
-
-        .card-icon {
-            font-size: 3.5rem;
-            color: var(--gold-premium);
-            margin-bottom: 1.2rem;
-            display: block;
-        }
-
-        .card-base h3 {
-            font-size: 1.5rem;
-            font-weight: 600;
-            margin-bottom: 1rem;
-        }
-
-        /* ZONA TECNOLOGÍA - PRODUCTOS */
-        .products-section {
-            background: rgba(10, 10, 10, 0.6);
-        }
-
-        .products-subtitle {
-            text-align: center;
-            font-size: 1.2rem;
-            color: #b0b0b0;
-            margin-bottom: 2rem;
+            gap: 3.5rem;
             font-weight: 400;
         }
 
-        .products-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
-            gap: 2.5rem;
-            margin-top: 2rem;
-        }
-
-        /* PRODUCT CARD SYSTEM */
-        .product-card {
-            background: var(--black-secondary);
-            border: 2px solid rgba(212, 175, 55, 0.2);
-            border-radius: 24px;
-            overflow: hidden;
-            transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-            cursor: pointer;
-            position: relative;
-        }
-
-        .product-card:hover {
-            transform: translateY(-18px) scale(1.02);
-            border-color: var(--gold-premium);
-            box-shadow: 0 40px 80px var(--gold-glow);
-        }
-
-        /* CONTENEDOR DE IMAGEN CON FALLBACK */
-        .product-img-container {
-            height: 220px;
-            overflow: hidden;
-            position: relative;
-            background: rgba(212, 175, 55, 0.05);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .product-img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.6s ease;
-        }
-
-        .product-card:hover .product-img {
-            transform: scale(1.1);
-        }
-
-        /* FALLBACK ICONO */
-        .product-fallback {
-            position: absolute;
-            font-size: 4rem;
-            color: var(--gold-premium);
-            opacity: 0;
-            transition: all 0.3s ease;
-            z-index: 2;
-        }
-
-        .product-img-failed .product-fallback {
-            opacity: 1;
-        }
-
-        .product-img-failed .product-img {
-            opacity: 0;
-        }
-
-        /* SHINE EFFECT */
-        .product-card::after {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: linear-gradient(45deg, 
-                transparent 30%, 
-                rgba(255, 255, 255, 0.4) 50%, 
-                transparent 70%);
-            transform: rotate(45deg);
-            transition: all 0.8s ease;
-            opacity: 0;
-            pointer-events: none;
-        }
-
-        .product-card:hover::after {
-            animation: shineSlide 1s ease-in-out;
-            opacity: 1;
-        }
-
-        @keyframes shineSlide {
-            0% {
-                transform: translateX(-100%) translateY(-100%) rotate(45deg);
-                opacity: 0;
-            }
-            50% {
-                opacity: 1;
-            }
-            100% {
-                transform: translateX(100%) translateY(100%) rotate(45deg);
-                opacity: 0;
-            }
-        }
-
-        .product-content {
-            padding: 2rem;
-        }
-
-        .product-content h3 {
-            font-size: 1.6rem;
+        .nav-links a {
+            color: rgba(255,255,255,0.92);
+            text-decoration: none;
             font-weight: 600;
-            margin-bottom: 0.8rem;
-        }
-
-        .product-content p {
-            color: #b8b8b8;
-            margin-bottom: 1.5rem;
+            position: relative;
+            letter-spacing: 0.02em;
+            transition: all 0.4s ease;
             font-size: 0.95rem;
         }
 
-        .whatsapp-product {
-            background: linear-gradient(135deg, var(--gold-premium), var(--gold-light));
-            color: var(--black-deep);
-            border: none;
-            padding: 1rem 1.8rem;
-            border-radius: 30px;
-            font-weight: 600;
-            font-size: 1rem;
-            cursor: pointer;
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(135deg, #d4af37, #f9e27d);
+            transition: width 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            box-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
+        }
+
+        .nav-links a:hover::after {
             width: 100%;
-            text-decoration: none;
-            display: block;
-            transition: all 0.3s ease;
-            box-shadow: 0 8px 25px rgba(212, 175, 55, 0.3);
         }
 
-        .whatsapp-product:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 15px 35px rgba(212, 175, 55, 0.4);
+        .nav-links a:hover {
+            color: #ffffff;
+            text-shadow: 0 0 15px rgba(212, 175, 55, 0.8);
         }
 
-        /* CONTACT */
-        .contact-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 3rem;
-            margin-top: 4rem;
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 5px;
+            padding: 5px;
         }
 
-        /* FOOTER */
-        .footer {
-            background: var(--black-secondary);
-            padding: 3rem 0 1.5rem;
-            border-top: 1px solid rgba(212, 175, 55, 0.2);
+        .hamburger span {
+            width: 32px;
+            height: 3px;
+            background: linear-gradient(135deg, #d4af37, #f9e27d);
+            border-radius: 2px;
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            box-shadow: 0 0 10px rgba(212, 175, 55, 0.4);
         }
 
-        .footer-container {
-            max-width: 1300px;
-            margin: 0 auto;
-            padding: 0 5%;
+        /* Hero */
+        .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
             text-align: center;
+            padding: 0 5%;
+            position: relative;
         }
 
-        .footer-links {
+        .hero-title {
+            font-family: 'Playfair Display', serif;
+            font-weight: 900;
+            font-size: clamp(4rem, 10vw, 9rem);
+            background: linear-gradient(135deg, #d4af37 0%, #f9e27d 50%, #b8860b 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: -0.02em;
+            margin-bottom: 2.5rem;
+            line-height: 0.9;
+            opacity: 0;
+            text-shadow: 0 0 60px rgba(212, 175, 55, 0.4);
+        }
+
+        .hero-subtitle {
+            font-family: 'Inter', sans-serif;
+            font-weight: 300;
+            font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+            max-width: 900px;
+            opacity: 0;
+            letter-spacing: 0.02em;
+            text-shadow: 0 0 20px rgba(0,0,0,0.8);
+        }
+
+        /* Sections */
+        section {
+            padding: 140px 5%;
+            max-width: 1600px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-weight: 900;
+            font-size: clamp(3rem, 7vw, 5rem);
+            text-align: center;
+            margin-bottom: 5rem;
+            background: linear-gradient(135deg, #d4af37 0%, #f9e27d 50%, #b8860b 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: -0.01em;
+            line-height: 0.95;
+            text-shadow: 0 0 50px rgba(212, 175, 55, 0.3);
+        }
+
+        .content {
+            font-family: 'Inter', sans-serif;
+            font-weight: 300;
+            font-size: clamp(1.1rem, 2vw, 1.25rem);
+            max-width: 1000px;
+            margin: 0 auto;
+            text-align: center;
+            line-height: 1.9;
+            letter-spacing: 0.015em;
+        }
+
+        /* FAQ Crystal Accordion */
+        .faq-container {
+            max-width: 900px;
+            margin: 0 auto 6rem;
+        }
+
+        .faq-item {
+            margin-bottom: 2rem;
+            border: 1px solid rgba(212,175,55,0.08);
+            border-radius: 20px;
+            overflow: hidden;
+            backdrop-filter: blur(15px);
+            background: rgba(255,255,255,0.02);
+            transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .faq-item:hover {
+            border-color: rgba(212,175,55,0.2);
+            box-shadow: 0 20px 60px rgba(212, 175, 55, 0.15);
+        }
+
+        .faq-question {
+            width: 100%;
+            padding: 2.5rem 2.5rem;
+            background: none;
+            border: none;
+            font-family: 'Inter', sans-serif;
+            font-weight: 600;
+            font-size: 1.15rem;
+            color: rgba(255,255,255,0.95);
+            text-align: left;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.4s ease;
+            letter-spacing: 0.02em;
+        }
+
+        .faq-question:hover {
+            color: #ffffff;
+            background: rgba(212,175,55,0.05);
+        }
+
+        .faq-question span {
+            font-size: 1.5rem;
+            font-weight: 300;
+            transition: all 0.4s ease;
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: rgba(212,175,55,0.1);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            padding: 0 2.5rem;
+            font-weight: 300;
+            font-size: 1.05rem;
+            line-height: 1.7;
+        }
+
+        .faq-answer.active {
+            max-height: 300px;
+            padding: 2.5rem;
+        }
+
+        /* Luxury Product Cards */
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+            gap: 3rem;
+            margin-top: 6rem;
+        }
+
+        .card-luxury {
+            background: rgba(255,255,255,0.035);
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
+            border: 1px solid rgba(212,175,55,0.12);
+            border-radius: 28px;
+            padding: 3rem 2.5rem;
+            text-align: center;
+            transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card-luxury::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -120%;
+            width: 120%;
+            height: 100%;
+            background: linear-gradient(135deg, 
+                transparent 0%, 
+                rgba(255,255,255,0.15) 50%, 
+                rgba(212,175,55,0.2) 60%, 
+                transparent 100%);
+            transition: left 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            z-index: 2;
+        }
+
+        .card-luxury:hover::before {
+            left: 120%;
+        }
+
+        .card-luxury:hover {
+            transform: translateY(-25px);
+            border-color: rgba(212,175,55,0.6);
+            box-shadow: 
+                0 40px 100px rgba(212, 175, 55, 0.25),
+                0 0 60px rgba(212, 175, 55, 0.15),
+                inset 0 1px 0 rgba(255,255,255,0.1);
+        }
+
+        .product-image {
+            width: 140px;
+            height: 140px;
+            background: linear-gradient(135deg, #d4af37 0%, #f9e27d 50%, #b8860b 100%);
+            border-radius: 24px;
+            margin: 0 auto 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3.5rem;
+            color: #000000;
+            font-weight: 900;
+            box-shadow: 0 20px 40px rgba(212, 175, 55, 0.3);
+            transition: all 0.4s ease;
+        }
+
+        .card-luxury:hover .product-image {
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        .product-title {
+            font-family: 'Playfair Display', serif;
+            font-weight: 900;
+            font-size: clamp(1.6rem, 3vw, 2.2rem);
+            margin-bottom: 1.2rem;
+            letter-spacing: -0.01em;
+            line-height: 1.1;
+        }
+
+        .product-price {
+            font-family: 'Inter', sans-serif;
+            font-weight: 800;
+            font-size: clamp(1.8rem, 4vw, 2.5rem);
+            background: linear-gradient(135deg, #d4af37 0%, #f9e27d 50%, #b8860b 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 2.5rem;
+            letter-spacing: -0.02em;
+            text-shadow: 0 0 30px rgba(212, 175, 55, 0.5);
+        }
+
+        .buy-btn {
+            background: linear-gradient(135deg, #d4af37 0%, #f9e27d 50%, #b8860b 100%);
+            color: #000000 !important;
+            border: none;
+            padding: 1.3rem 3.5rem;
+            border-radius: 50px;
+            font-family: 'Inter', sans-serif;
+            font-weight: 800;
+            font-size: 1.1rem;
+            letter-spacing: 0.05em;
+            cursor: none;
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            text-decoration: none;
+            display: inline-block;
+            text-transform: uppercase;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 
+                0 10px 30px rgba(212, 175, 55, 0.4),
+                inset 0 1px 0 rgba(255,255,255,0.3);
+        }
+
+        .buy-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+            transition: left 0.6s;
+        }
+
+        .buy-btn:hover::before {
+            left: 100%;
+        }
+
+        .buy-btn:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 
+                0 20px 50px rgba(212, 175, 55, 0.6),
+                0 0 40px rgba(212, 175, 55, 0.4),
+                inset 0 1px 0 rgba(255,255,255,0.4);
+        }
+
+        /* Footer */
+        .footer {
+            background: rgba(0,0,0,0.7);
+            backdrop-filter: blur(20px);
+            padding: 5rem 5% 3rem;
+            text-align: center;
+            border-top: 1px solid rgba(212,175,55,0.15);
+        }
+
+        .social-links {
             display: flex;
             justify-content: center;
-            gap: 2rem;
-            margin-bottom: 2rem;
-            flex-wrap: wrap;
+            gap: 3rem;
+            margin-bottom: 3rem;
         }
 
-        .footer-link {
-            color: #b8b8b8;
+        .social-links a {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, #d4af37 0%, #f9e27d 50%, #b8860b 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            color: #000000;
             text-decoration: none;
-            font-weight: 500;
-            transition: color 0.3s ease;
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            box-shadow: 0 15px 40px rgba(212, 175, 55, 0.3);
         }
 
-        .footer-link:hover {
-            color: var(--gold-premium);
+        .social-links a:hover {
+            transform: translateY(-10px) scale(1.15) rotate(180deg);
+            box-shadow: 0 25px 60px rgba(212, 175, 55, 0.5);
         }
 
-        /* RESPONSIVE */
+        .copyright {
+            font-weight: 300;
+            opacity: 0.8;
+            letter-spacing: 0.05em;
+            font-size: 0.95rem;
+        }
+
+        /* Mobile Optimization */
         @media (max-width: 768px) {
-            .nav-menu { display: none; }
-            .hero h1 { font-size: 2.6rem; }
-            .section-title { font-size: 2.4rem; }
-            .logo-hero { width: 200px; }
-            .products-grid { grid-template-columns: 1fr; gap: 2rem; }
-            .contact-grid { grid-template-columns: 1fr; }
+            .hamburger {
+                display: flex;
+            }
+
+            .nav-links {
+                position: fixed;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: rgba(0,0,0,0.98);
+                backdrop-filter: blur(30px);
+                flex-direction: column;
+                padding: 3rem 5%;
+                gap: 2.5rem;
+                transform: translateY(-100vh);
+                opacity: 0;
+                visibility: hidden;
+                transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            }
+
+            .nav-links.active {
+                transform: translateY(0);
+                opacity: 1;
+                visibility: visible;
+            }
+
+            .nav-links a {
+                font-size: 1.3rem;
+                padding: 1rem 0;
+                border-bottom: 1px solid rgba(212,175,55,0.1);
+            }
+
+            section {
+                padding: 100px 5%;
+            }
+
+            .hero-title {
+                font-size: clamp(2.8rem, 8vw, 4.5rem);
+                margin-bottom: 2rem;
+            }
+
+            .section-title {
+                font-size: clamp(2.2rem, 6vw, 3.5rem);
+                margin-bottom: 3rem;
+            }
+
+            .products-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+                margin-top: 4rem;
+            }
+
+            .card-luxury {
+                padding: 2.5rem 2rem;
+                margin: 0 1rem;
+            }
+
+            .faq-question {
+                padding: 2rem 2rem;
+                font-size: 1.05rem;
+            }
+
+            .social-links {
+                gap: 2rem;
+            }
+
+            .social-links a {
+                width: 60px;
+                height: 60px;
+                font-size: 1.5rem;
+            }
         }
 
-        /* ANIMATIONS */
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(40px); }
-            to { opacity: 1; transform: translateY(0); }
+        /* Scroll behavior */
+        html {
+            scroll-behavior: smooth;
         }
 
-        .fade-in {
-            opacity: 0;
-            transform: translateY(40px);
-            transition: all 0.8s ease;
-        }
-
-        .fade-in.visible {
-            opacity: 1;
-            transform: translateY(0);
+        /* Performance optimizations */
+        .card-luxury, .buy-btn, .faq-item {
+            will-change: transform;
         }
     </style>
-</head>
-<body>
-    <!-- NAVBAR -->
-    <nav class="navbar">
-        <div class="nav-container">
-            <a href="#home" class="nav-logo">GeoVentas</a>
-            <ul class="nav-menu">
-                <li><a href="#home" class="nav-link">Inicio</a></li>
-                <li><a href="#productos" class="nav-link">Productos</a></li>
-                <li><a href="#contacto" class="nav-link">Contacto</a></li>
-            </ul>
-            <div class="social-icons">
-                <a href="https://instagram.com/geoventas" target="_blank" class="social-icon">
-                    <i class="fab fa-instagram"></i>
-                </a>
-                <a href="https://facebook.com/geoventas" target="_blank" class="social-icon">
-                    <i class="fab fa-facebook-f"></i>
-                </a>
-            </div>
-        </div>
-    </nav>
-
-    <!-- HERO -->
-    <section id="home" class="hero">
-        <div class="hero-content">
-            <img src="1000032322.webp" alt="Logo GeoVentas Hualpén" class="logo-hero">
-            <h1>Tecnología Premium<br>Hualpén Concepción</h1>
-            <p>Tienda local especializada en accesorios de celular y electrónica premium. Entregas rápidas en el Gran Concepción.</p>
-            <a href="#contacto" class="cta-main">Contactar WhatsApp</a>
-        </div>
-    </section>
-
-    <!-- QUIÉNES SOMOS -->
-    <section class="section">
-        <div class="container">
-            <h2 class="section-title">¿Quiénes Somos?</h2>
-            <div class="cards-grid">
-                <div class="card-base fade-in">
-                    <i class="fas fa-store card-icon"></i>
-                    <h3>Tienda Local Hualpén</h3>
-                    <p>Tu negocio de confianza en Hualpén para tecnología y accesorios premium del Gran Concepción.</p>
-                </div>
-                <div class="card-base fade-in">
-                    <i class="fas fa-motorcycle card-icon"></i>
-                    <h3>Entregas Rápidas</h3>
-                    <p>Servicio express en Hualpén y Concepción. Recibe tu pedido el mismo día.</p>
-                </div>
-                <div class="card-base fade-in">
-                    <i class="fas fa-handshake card-icon"></i>
-                    <h3>Servicio Cercano</h3>
-                    <p>Atención personalizada como en el barrio, productos premium como en la ciudad.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- SERVICIOS -->
-    <section class="section">
-        <div class="container">
-            <h2 class="section-title">Servicios</h2>
-            <div class="cards-grid">
-                <div class="card-base fade-in">
-                    <i class="fas fa-mobile-retro card-icon"></i>
-                    <h3>Accesorios Celular</h3>
-                    <p>Selección premium de fundas, cargadores y accesorios para todos los modelos.</p>
-                </div>
-                <div class="card-base fade-in">
-                    <i class="fas fa-truck-fast card-icon"></i>
-                    <h3>Delivery Local</h3>
-                    <p>Entregas rápidas y seguras en Hualpén y Gran Concepción.</p>
-                </div>
-                <div class="card-base fade-in">
-                    <i class="fas fa-comments card-icon"></i>
-                    <h3>Asesoría Técnica</h3>
-                    <p>Te ayudamos a elegir el mejor accesorio para tus necesidades.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ZONA TECNOLOGÍA -->
-    <section id="productos" class="section products-section">
-        <div class="container">
-            <h2 class="section-title">Zona Tecnología</h2>
-            <p class="products-subtitle">Nuestros productos estrella</p>
-            <div class="products-grid">
-                
-                <!-- AUDÍFONOS PRO -->
-                <div class="product-card fade-in">
-                    <div class="product-img-container">
-                        <img src="audifonos-pro.jpg" alt="Audífonos Pro" class="product-img" 
-                             onerror="this.parentElement.classList.add('product-img-failed')">
-                        <i class="fas fa-headphones product-fallback"></i>
-                    </div>
-                    <div class="product-content">
-                        <h3>Audífonos Pro</h3>
-                        <p>Sonido profesional y cancelación de ruido activa.</p>
-                        <a href="https://wa.me/56912345678?text=Hola%20GeoVentas%2C%20consulto%20por%20Audífonos%20Pro" 
-                           class="whatsapp-product" target="_blank">Consultar WhatsApp</a>
-                    </div>
-                </div>
-
-                <!-- CARGADORES RÁPIDOS -->
-                <div class="product-card fade-in">
-                    <div class="product-img-container">
-                        <img src="cargadores-rapidos.jpg" alt="Cargadores Rápidos" class="product-img" 
-                             onerror="this.parentElement.classList.add('product-img-failed')">
-                        <i class="fas fa-bolt product-fallback"></i>
-                    </div>
-                    <div class="product-content">
-                        <h3>Cargadores Rápidos</h3>
-                        <p>Carga 0-100% en 30 minutos. Compatible universal.</p>
-                        <a href="https://wa.me/56912345678?text=Hola%20GeoVentas%2C%20consulto%20por%20Cargadores%20Rápidos" 
-                           class="whatsapp-product" target="_blank">Consultar WhatsApp</a>
-                    </div>
-                </div>
-
-                <!-- SOPORTES AUTO -->
-                <div class="product-card fade-in">
-                    <div class="product-img-container">
-                        <img src="soportes-auto.jpg" alt="Soportes de Auto" class="product-img" 
-                             onerror="this.parentElement.classList.add('product-img-failed')">
-                        <i class="fas fa-car-side product-fallback"></i>
-                    </div>
-                    <div class="product-content">
-                        <h3>Soportes de Auto</h3>
-                        <p>Manos libres seguro y estable para navegación.</p>
-                        <a href="https://wa.me/56912345678?text=Hola%20GeoVentas%2C%20consulto%20por%20Soportes%20de%20Auto" 
-                           class="whatsapp-product" target="_blank">Consultar WhatsApp</a>
-                    </div>
-                </div>
-
-                <!-- CABLES PREMIUM -->
-                <div class="product-card fade-in">
-                    <div class="product-img-container">
-                        <img src="cables-premium.jpg" alt="Cables Premium" class="product-img" 
-                             onerror="this.parentElement.classList.add('product-img-failed')">
-                        <i class="fas fa-plug-circle-bolt product-fallback"></i>
-                    </div>
-                    <div class="product-content">
-                        <h3>Cables Premium</h3>
-                        <p>Resistentes al doblez. Carga + datos ultra rápida.</p>
-                        <a href="https://wa.me/56912345678?text=Hola%20GeoVentas%2C%20consulto%20por%20Cables%20Premium" 
-                           class="whatsapp-product" target="_blank">Consultar WhatsApp</a>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </section>
-
-    <!-- CONTACTO -->
-    <section id="contacto" class="section">
-        <div class="container">
-            <h2 class="section-title">Contacto</h2>
-            <div class="contact-grid">
-                <div class="card-base fade-in">
-                    <i class="fab fa-whatsapp card-icon" style="color: #25D366;"></i>
-                    <h3>WhatsApp Directo</h3>
-                    <p><strong>+56 9 1234 5678</strong><br>Hualpén / Concepción</p>
-                    <a href="https://wa.me/56912345678?text=¡Hola!%20Quiero%20cotizar%20con%20GeoVentas" class="whatsapp-product" target="_blank" style="margin-top: 1rem;">Escribir Ahora</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- FOOTER -->
-    <footer class="footer">
-        <div class="footer-container">
-            <div class="footer-links">
-                <a href="#home" class="footer-link">Inicio</a>
-                <a href="#productos" class="footer-link">Productos</a>
-                <a href="#contacto" class="footer-link">Contacto</a>
-            </div>
-            <p style="margin-top: 2rem; opacity: 0.8;">© 2024 GeoVentas Hualpén. Tecnología local premium.</p>
-        </div>
-    </footer>
-
-    <script>
-        // Smooth scroll
-        document.querySelectorAll('a[href^="#"]').forEach(link => {
-            link.addEventListener('click', e => {
-                e.preventDefault();
-                document.querySelector(link.getAttribute('href'))?.scrollIntoView({
-                    behavior: 'smooth'
-                });
-            });
-        });
-
-        // Fade in animation
-        const observer = new IntersectionObserver(entries => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
-            });
-        });
-
-        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
-
-        // Navbar scroll effect
-        window.addEventListener('scroll', () => {
-            const navbar = document.querySelector('.navbar');
-            navbar.style.background = window.scrollY > 100 
-                ? 'rgba(5, 5, 5, 0.98)' 
-                : 'rgba(5, 5, 5, 0.95)';
-        });
-    </script>
-                            <div class="product-card fade-in">
-                    <div class="product-img-container">
-                        <img src="cables-premium.jpg" alt="Cables Premium" class="product-img" 
-                             onerror="this.parentElement.classList.add('product-img-failed')">
-                        <i class="fas fa-plug product-fallback"></i>
-                    </div>
-                    <div class="product-content">
-                        <h3>Cables Premium</h3>
-                        <p>Reforzados con Kevlar para durabilidad extrema.</p>
-                        <a href="https://wa.me/569XXXXXXXX?text=Hola%20GeoVentas%2C%20consulto%20por%20Cables%20Premium" 
-                           class="whatsapp-product" target="_blank">Consultar WhatsApp</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="contacto" class="section">
-        <div class="container">
-            <h2 class="section-title">Contacto</h2>
-            <div class="contact-grid">
-                <div class="card-base fade-in">
-                    <i class="fab fa-whatsapp card-icon"></i>
-                    <h3>Ventas WhatsApp</h3>
-                    <p>+56 9 XXXXXXXX</p>
-                    <a href="https://wa.me/569XXXXXXXX" class="whatsapp-product" style="background: #25D366; color: white;">Escribir ahora</a>
-                </div>
-                <div class="card-base fade-in">
-                    <i class="fas fa-location-dot card-icon"></i>
-                    <h3>Ubicación</h3>
-                    <p>Hualpén / Concepción<br>Región del Biobío, Chile</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <footer class="footer">
-        <div class="footer-container">
-            <div class="footer-links">
-                <a href="#home" class="footer-link">Inicio</a>
-                <a href="#productos" class="footer-link">Productos</a>
-                <a href="#contacto" class="footer-link">Contacto</a>
-            </div>
-            <p style="color: #b8b8b8;">&copy; 2026 GeoVentas Hualpén. Tecnología Premium a tu alcance.</p>
-        </div>
-    </footer>
-
-    <script>
-        // Animación al hacer scroll (Intersection Observer)
-        const observerOptions = { threshold: 0.1 };
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
-            });
-        }, observerOptions);
-
-        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
-
-        // Smooth Scroll
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
-            });
-        });
-    </script>
-</body>
-</html>
-            
