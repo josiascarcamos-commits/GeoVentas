@@ -441,7 +441,7 @@
             color: #000;
             text-decoration: none;
             transition: all 0.3s ease;
-            box-shadow: 0 10px 30px rgba(212,175,55,0.4);
+            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.4);
         }
 
         .social-links a:hover {
@@ -550,9 +550,9 @@
     </section>
 
     <section id="seguridad">
-        <h2 class="section-header section-title">POLÍTICA DE SEGURIDAD</h2>
+        <h2 class="section-title">POLÍTICA DE SEGURIDAD</h2>
         <div class="content">
-            Tu tranquilidad y confianza son nuestra máxima prioridad. Para garantizar transacciones 100% confiables y discretas, todas nuestras entregas se realizan exclusivamente en puntos de encuentro estratégicos y previamente coordinados en las zonas de Hualpén y Concepción. No realizamos envíos desatendidos ni entregas en rutas unsafe; verificamos cada paso junto al cliente para asegurar que recibas tu producto premium en perfectas condiciones y en un entorno controlado.
+            Tu tranquilidad y confianza son nuestra máxima prioridad. Para garantizar transacciones 100% confiables y discretas, todas nuestras entregas se realizan exclusivamente en puntos de encuentro estratégicos y previamente coordinados en las zonas de Hualpén y Concepción. No realizamos envíos desatendidos ni entregas en rutas inseguras; verificamos cada paso junto al cliente para asegurar que recibas tu producto premium en perfectas condiciones y en un entorno controlado.
         </div>
     </section>
 
@@ -587,41 +587,41 @@
                 <div class="product-image">🎧</div>
                 <h3 class="product-title">Audífonos Wireless</h3>
                 <div class="product-price">$49.990</div>
-                <a href="https://wa.me/56912345678?text=Hola%20quiero%20los%20Audífonos%20Wireless%20$49.990" class="buy-btn" target="_blank">COMPRAR</a>
+                <a href="https://linktr.ee/GeoVentas" class="buy-btn" target="_blank">COMPRAR</a>
             </div>
             <div class="card-luxury">
                 <div class="product-image">⚡</div>
                 <h3 class="product-title">Cargador Turbo 65W</h3>
                 <div class="product-price">$19.990</div>
-                <a href="https://wa.me/56912345678?text=Hola%20quiero%20el%20Cargador%20Turbo%2065W%20$19.990" class="buy-btn" target="_blank">COMPRAR</a>
+                <a href="https://linktr.ee/GeoVentas" class="buy-btn" target="_blank">COMPRAR</a>
             </div>
             <div class="card-luxury">
                 <div class="product-image">💡</div>
                 <h3 class="product-title">Lámpara LED Inteligente</h3>
                 <div class="product-price">$29.990</div>
-                <a href="https://wa.me/56912345678?text=Hola%20quiero%20la%20Lámpara%20LED%20Inteligente%20$29.990" class="buy-btn" target="_blank">COMPRAR</a>
+               a href="https://linktr.ee/GeoVentas" class="buy-btn" target="_blank">COMPRAR</a>
             </div>
             <div class="card-luxury">
                 <div class="product-image">🖥️</div>
                 <h3 class="product-title">Soporte Tecnológico</h3>
                 <div class="product-price">$34.990</div>
-                <a href="https://wa.me/56912345678?text=Hola%20quiero%20el%20Soporte%20Tecnológico%20$34.990" class="buy-btn" target="_blank">COMPRAR</a>
+                <a href="https://linktr.ee/GeoVentas" class="buy-btn" target="_blank">COMPRAR</a>
             </div>
         </div>
     </section>
 
     <footer class="footer">
         <div class="social-links">
-            <a href="https://instagram.com" target="_blank"><i class="font-awesome-icon">📸</i></a>
-            <a href="https://facebook.com" target="_blank"><i class="font-awesome-icon">👥</i></a>
+            <a href="https://linktr.ee/GeoVentas" target="_blank" title="Linktree GeoVentas"><i class="font-awesome-icon">🔗</i></a>
+            <a href="https://linktr.ee/GeoVentas" target="_blank" title="Contacto GeoVentas"><i class="font-awesome-icon">📱</i></a>
         </div>
         <p class="copyright">&copy; 2026 GEOVENTAS. Todos los derechos reservados. Elegancia y Seguridad Tecnológica.</p>
     </footer>
 
     <script>
         // 1. Control del Preloader Manual
-        const preloader = document.getElementById('preloader') || document.getElementById('precargador');
-        const btnEntrar = document.getElementById('btnEntrar') || document.getElementById('botón Entrar');
+        const preloader = document.getElementById('preloader');
+        const btnEntrar = document.getElementById('btnEntrar');
 
         if (btnEntrar && preloader) {
             btnEntrar.addEventListener('click', () => {
@@ -664,7 +664,6 @@
             hamburger.addEventListener('click', () => {
                 navLinks.classList.toggle('active');
             });
-            // Cerrar menú al hacer clic en un enlace
             navLinks.querySelectorAll('a').forEach(link => {
                 link.addEventListener('click', () => {
                     navLinks.classList.remove('active');
@@ -679,7 +678,6 @@
                 const answer = question.nextElementSibling;
                 const span = question.querySelector('span');
                 
-                // Cierra los demás acordeones abiertos
                 faqQuestions.forEach(otherQuestion => {
                     if (otherQuestion !== question) {
                         otherQuestion.nextElementSibling.classList.remove('active');
