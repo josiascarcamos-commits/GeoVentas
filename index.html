@@ -809,44 +809,16 @@
                 spans[1].style.opacity = '0';
                 spans[2].style.transform = 'rotate(-45deg) translate(5px, -5px)';
             } else {
-                spans[0].style.transform = 'none';
-                spans[1].style.opacity = '1';
-                spans[2].style.transform = 'none';
-            }
-        });
-
-        // Cerrar el menú automáticamente al hacer clic en un enlace (Móviles)
-        document.querySelectorAll('.nav-links a').forEach(link => {
-            link.addEventListener('click', () => {
-                navLinks.classList.remove('active');
-                const spans = hamburger.querySelectorAll('span');
-                spans[0].style.transform = 'none';
-                spans[1].style.opacity = '1';
-                spans[2].style.transform = 'none';
-            });
-        });
-
-        // 5. ACORDEÓN DE PREGUNTAS FRECUENTES (FAQ)
-        const faqQuestions = document.querySelectorAll('.faq-question');
-
-        faqQuestions.forEach(question => {
-            question.addEventListener('click', () => {
-                const answer = question.nextElementSibling;
-                const icon = question.querySelector('span');
                 
-                // Alternar estado activo de la respuesta
-                answer.classList.toggle('active');
-                
-                // Cambiar el signo + por - de forma elegante
-                if (answer.classList.contains('active')) {
-                    icon.textContent = '−';
-                    question.style.color = '#d4af37';
-                } else {
-                    icon.textContent = '+';
-                    question.style.color = 'rgba(255,255,255,0.92)';
-                }
+                    <script>
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('navLinks');
+
+        if(hamburger && navLinks) {
+            hamburger.addEventListener('click', () => {
+                navLinks.classList.toggle('active');
             });
-        });
+        }
     </script>
 </body>
 </html>
