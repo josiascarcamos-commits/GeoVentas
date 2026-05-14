@@ -580,35 +580,34 @@
         </div>
     </section>
 
-    <section id="productos">
+        <section id="productos">
         <h2 class="section-title">NUESTROS PRODUCTOS</h2>
         <div class="products-grid">
+            <!-- Producto 1 -->
             <div class="card-luxury">
                 <div class="product-image">🎧</div>
-                <h3 class="product-title">Audífonos Wireless</h3>
+                <h3 class="product-title">Auriculares Inalámbricos</h3>
                 <div class="product-price">$49.990</div>
                 <a href="https://linktr.ee/GeoVentas" class="buy-btn" target="_blank">COMPRAR</a>
             </div>
+
+            <!-- Producto 2 -->
             <div class="card-luxury">
                 <div class="product-image">⚡</div>
                 <h3 class="product-title">Cargador Turbo 65W</h3>
                 <div class="product-price">$19.990</div>
                 <a href="https://linktr.ee/GeoVentas" class="buy-btn" target="_blank">COMPRAR</a>
             </div>
-            <div class="card-luxury">
-                <div class="product-image">💡</div>
-                <h3 class="product-title">Lámpara LED Inteligente</h3>
-                <div class="product-price">$29.990</div>
-               a href="https://linktr.ee/GeoVentas" class="buy-btn" target="_blank">COMPRAR</a>
-            </div>
+
+            <!-- Producto 3 -->
             <div class="card-luxury">
                 <div class="product-image">🖥️</div>
                 <h3 class="product-title">Soporte Tecnológico</h3>
                 <div class="product-price">$34.990</div>
                 <a href="https://linktr.ee/GeoVentas" class="buy-btn" target="_blank">COMPRAR</a>
             </div>
-        </div>
-    </section>
+        </div> <!-- Cierra la cuadrícula -->
+    </section> <!-- Cierra la sección -->
 
     <footer class="footer">
         <div class="social-links">
@@ -617,6 +616,26 @@
         </div>
         <p class="copyright">&copy; 2026 GEOVENTAS. Todos los derechos reservados. Elegancia y Seguridad Tecnológica.</p>
     </footer>
+    <script>
+        // Este código quita la pantalla negra cuando haces clic en ENTRAR
+        const btnEntrar = document.getElementById('btnEntrar');
+        const preloader = document.getElementById('preloader');
+
+        btnEntrar.addEventListener('click', () => {
+            preloader.classList.add('hidden');
+            document.body.classList.remove('lock-scroll');
+        });
+
+        // Este hace que las preguntas frecuentes se abran
+        document.querySelectorAll('.faq-question').forEach(button => {
+            button.addEventListener('click', () => {
+                const answer = button.nextElementSibling;
+                answer.classList.toggle('active');
+            });
+        });
+    </script>
+</body>
+</html>
 
     <script>
         // 1. Control del Preloader Manual
