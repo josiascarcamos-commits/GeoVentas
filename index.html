@@ -7,6 +7,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Inter:wght@300;400;600&display=swap');
 
@@ -190,6 +191,7 @@
             flex-direction: column;
             cursor: pointer;
             gap: 5px;
+            z-index: 1001;
         }
 
         .hamburger span {
@@ -446,7 +448,7 @@
 
         .social-links a:hover {
             transform: translateY(-10px) scale(1.1);
-            box-shadow: 0 20px 50px rgba(212,175,55,0.6);
+            box-shadow: 0 20px 50px rgba(212, 175, 55, 0.6);
         }
 
         .copyright {
@@ -462,22 +464,26 @@
 
             .nav-links {
                 position: fixed;
-                top: 75px;
+                top: 0;
                 left: 0;
                 width: 100%;
+                height: 100vh;
                 background: rgba(0,0,0,0.98);
                 flex-direction: column;
+                justify-content: center;
+                align-items: center;
                 padding: 3rem 5%;
-                gap: 2rem;
-                transform: translateY(-150%);
+                gap: 2.5rem;
+                transform: translateX(100%);
                 opacity: 0;
                 visibility: hidden;
-                transition: all 0.5s ease;
-                border-bottom: 1px solid rgba(212,175,55,0.15);
+                transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+                border-bottom: none;
+                z-index: 1000;
             }
 
             .nav-links.active {
-                transform: translateY(0);
+                transform: translateX(0);
                 opacity: 1;
                 visibility: visible;
             }
@@ -531,7 +537,7 @@
     </nav>
 
     <section id="inicio" class="hero">
-        <h1 class="hero-title" id="heroTitle">CATÁLOGO PREMIUM</h1>
+        <h1 class="hero-title">CATÁLOGO PREMIUM</h1>
         <p class="hero-subtitle">Tecnología premium seleccionada minuciosamente. Entregas coordinadas en puntos de encuentro estratégicos en Hualpén y Concepción.</p>
     </section>
 
@@ -580,136 +586,98 @@
         </div>
     </section>
 
-        <section id="productos">
+    <section id="productos">
         <h2 class="section-title">NUESTROS PRODUCTOS</h2>
         <div class="products-grid">
-            <!-- Producto 1 -->
             <div class="card-luxury">
                 <div class="product-image">🎧</div>
                 <h3 class="product-title">Auriculares Inalámbricos</h3>
                 <div class="product-price">$49.990</div>
                 <a href="https://linktr.ee/GeoVentas" class="buy-btn" target="_blank">COMPRAR</a>
             </div>
-
-            <!-- Producto 2 -->
             <div class="card-luxury">
                 <div class="product-image">⚡</div>
                 <h3 class="product-title">Cargador Turbo 65W</h3>
                 <div class="product-price">$19.990</div>
-                <a href="https://linktr.ee/GeoVentas" class="buy-btn" target="_blank">COMPRAR</a>
+                <a href="https://linktr.ee/GeoVentas" class="buy-btn" target=_blank">COMPRAR</a>
             </div>
-
-            <!-- Producto 3 -->
             <div class="card-luxury">
                 <div class="product-image">🖥️</div>
                 <h3 class="product-title">Soporte Tecnológico</h3>
                 <div class="product-price">$34.990</div>
                 <a href="https://linktr.ee/GeoVentas" class="buy-btn" target="_blank">COMPRAR</a>
             </div>
-        </div> <!-- Cierra la cuadrícula -->
-    </section> <!-- Cierra la sección -->
+        </div>
+    </section>
 
     <footer class="footer">
         <div class="social-links">
-            <a href="https://linktr.ee/GeoVentas" target="_blank" title="Linktree GeoVentas"><i class="font-awesome-icon">🔗</i></a>
-            <a href="https://linktr.ee/GeoVentas" target="_blank" title="Contacto GeoVentas"><i class="font-awesome-icon">📱</i></a>
+            <a href="https://linktr.ee/GeoVentas" target="_blank" title="Linktree GeoVentas">🔗</a>
+            <a href="https://linktr.ee/GeoVentas" target="_blank" title="Contacto GeoVentas">📱</a>
         </div>
         <p class="copyright">&copy; 2026 GEOVENTAS. Todos los derechos reservados. Elegancia y Seguridad Tecnológica.</p>
     </footer>
+
     <script>
-        // Este código quita la pantalla negra cuando haces clic en ENTRAR
-        const btnEntrar = document.getElementById('btnEntrar');
+        // 1. Control del Preloader
         const preloader = document.getElementById('preloader');
+        const btnEntrar = document.getElementById('btnEntrar');
 
         btnEntrar.addEventListener('click', () => {
             preloader.classList.add('hidden');
             document.body.classList.remove('lock-scroll');
         });
 
-        // Este hace que las preguntas frecuentes se abran
-        document.querySelectorAll('.faq-question').forEach(button => {
-            button.addEventListener('click', () => {
-                const answer = button.nextElementSibling;
-                answer.classList.toggle('active');
-            });
-        });
-    </script>
-</body>
-</html>
-
-    <script>
-        // 1. Control del Preloader Manual
-        const preloader = document.getElementById('preloader');
-        const btnEntrar = document.getElementById('btnEntrar');
-
-        if (btnEntrar && preloader) {
-            btnEntrar.addEventListener('click', () => {
-                preloader.classList.add('hidden');
-                document.body.classList.remove('lock-scroll');
-            });
-        }
-
-        // 2. Control de Movimiento del Cursor Personalizado (Smooth Trail)
+        // 2. Control del Cursor
         const cursor = document.getElementById('cursor');
         const cursorFollower = document.getElementById('cursorFollower');
-        let mouseX = 0, mouseY = 0;
-        let followerX = 0, followerY = 0;
+        let mouseX = 0, mouseY = 0, followerX = 0, followerY = 0;
 
         document.addEventListener('mousemove', (e) => {
             mouseX = e.clientX;
             mouseY = e.clientY;
-            if (cursor) {
-                cursor.style.left = mouseX - 12 + 'px';
-                cursor.style.top = mouseY - 12 + 'px';
-            }
+            cursor.style.left = mouseX - 12 + 'px';
+            cursor.style.top = mouseY - 12 + 'px';
         });
 
-        function updateFollowerAnimation() {
+        function animateFollower() {
             followerX += (mouseX - followerX) * 0.12;
             followerY += (mouseY - followerY) * 0.12;
-            if (cursorFollower) {
-                cursorFollower.style.left = followerX - 6 + 'px';
-                cursorFollower.style.top = followerY - 6 + 'px';
-            }
-            requestAnimationFrame(updateFollowerAnimation);
+            cursorFollower.style.left = followerX - 6 + 'px';
+            cursorFollower.style.top = followerY - 6 + 'px';
+            requestAnimationFrame(animateFollower);
         }
-        updateFollowerAnimation();
+        animateFollower();
 
-        // 3. Menú Móvil Funcional (Hamburger)
+        // 3. Menú Móvil (Hamburger)
         const hamburger = document.getElementById('hamburger');
         const navLinks = document.getElementById('navLinks');
 
-        if (hamburger && navLinks) {
-            hamburger.addEventListener('click', () => {
-                navLinks.classList.toggle('active');
-            });
-            navLinks.querySelectorAll('a').forEach(link => {
-                link.addEventListener('click', () => {
-                    navLinks.classList.remove('active');
-                });
-            });
-        }
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
 
-        // 4. Sistema Interactivos de Acordeones (FAQ)
-        const faqQuestions = document.querySelectorAll('.faq-question');
-        faqQuestions.forEach(question => {
-            question.addEventListener('click', () => {
-                const answer = question.nextElementSibling;
-                const span = question.querySelector('span');
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+            });
+        });
+
+        // 4. Acordeones FAQ
+        document.querySelectorAll('.faq-question').forEach(button => {
+            button.addEventListener('click', () => {
+                const answer = button.nextElementSibling;
+                const span = button.querySelector('span');
                 
-                faqQuestions.forEach(otherQuestion => {
-                    if (otherQuestion !== question) {
-                        otherQuestion.nextElementSibling.classList.remove('active');
-                        otherQuestion.querySelector('span').textContent = '+';
+                document.querySelectorAll('.faq-answer').forEach(other => {
+                    if (other !== answer) {
+                        other.classList.remove('active');
+                        other.previousElementSibling.querySelector('span').textContent = '+';
                     }
                 });
 
                 answer.classList.toggle('active');
-                if (answer.classList.contains('active')) {
-                    span.textContent = '−';
-                } else {
-                    span.textContent = '+';
-                }
+                span.textContent = answer.classList.contains('active') ? '−' : '+';
             });
         });
     </script>
