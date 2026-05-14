@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GeoVentas - Catálogo Premium | Hualpén • Concepción</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --bg-primary: #000000;
+            --gold-primary: #d4af37;
+            --gold-secondary: #f1c640;
+            --glass-bg: rgba(0, 0, 0, 0.85);
+            --glass-border: rgba(212, 175, 55, 0.3);
+            --text-primary: #ffffff;
+            --text-secondary: #b8b8b8;
+            --shadow-gold: 0 8px 32px rgba(212, 175, 55, 0.3);
+            --shadow-card: 0 20px 40px rgba(0, 0, 0, 0.5);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Navbar Glassmorphism */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            backdrop-filter: blur(20px);
+            background: var(--glass-bg);
+            border-bottom: 1px solid var(--glass-border);
+            z-index: 1000;
+            padding: 1rem 0;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--gold-primary), var(--gold-secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-link {
+            color: var(--text-primary);
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .nav-link.active {
+            color: var(--gold-primary);
+            font-weight: 700;
+        }
+
+        .whatsapp-btn {
+            background: linear-gradient(135deg, var(--gold-primary), var(--gold-secondary));
+            color: var(--bg-primary);
+            padding: 0.75rem 1.5rem;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow-gold);
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 2rem;
+            margin-top: 80px;
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(3rem, 8vw, 6rem);
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--gold-primary), var(--gold-secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* Product Grid */
+        .catalog-section {
+            max-width: 1400px;
+            margin: 5rem auto;
+            padding: 0 2rem;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            text-align: center;
+            margin-bottom: 4rem;
+            background: linear-gradient(135deg, var(--gold-primary), var(--gold-secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2.5rem;
+            margin-bottom: 5rem;
+        }
+
+        .product-card {
+            background: linear-gradient(145deg, rgba(10, 10, 10, 0.9), rgba(20, 20, 20, 0.9));
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            padding: 2.5rem 2rem;
+            text-align: center;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+        }
+
+        .product-card:hover {
+            transform: translateY(-15px);
+            box-shadow: var(--shadow-card), var(--shadow-gold);
+            border-color: var(--gold-primary);
+        }
+
+        .product-icon {
+            font-size: 4.5rem;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, var(--gold-primary), var(--gold-secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .product-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .product-price {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: var(--gold-primary);
+            margin-bottom: 2rem;
+        }
+
+        .order-btn {
+            background: linear-gradient(135deg, var(--gold-primary), var(--gold-secondary));
+            color: var(--bg-primary);
+            border: none;
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-block;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+        }
+
+        .order-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 20px rgba(212,175,55,0.4);
+        }
+
+        .footer {
+            background: var(--glass-bg);
+            border-top: 1px solid var(--glass-border);
+            text-align: center;
+            padding: 3rem 2rem;
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">GeoVentas</div>
+            <ul class="nav-links">
+                <li><a href="index.html" class="nav-link">Inicio</a></li>
+                <li><a href="productos.html" class="nav-link active">Catálogo</a></li>
+                <li><a href="https://linktr.ee/GeoVentas" class="nav-link" target="_blank">Contacto</a></li>
+            </ul>
+            <!-- RECUERDA CAMBIAR EL NÚMERO AQUÍ ABAJO -->
+            <a href="https://wa.me/569XXXXXXXX?text=Hola%20GeoVentas!" class="whatsapp-btn" target="_blank">
+                <i class="fab fa-whatsapp"></i> WhatsApp
+            </a>
+        </div>
+    </nav>
+
+    <section class="hero" id="inicio">
+        <h1>Catálogo Premium</h1>
+        <p>Hualpén • Concepción</p>
+    </section>
+
+    <section class="catalog-section" id="catalogo">
+        <h2 class="section-title">Nuestros Productos</h2>
+        <div class="products-grid">
+            
+            <div class="product-card">
+                <div class="product-icon"><i class="fas fa-headphones"></i></div>
+                <h3 class="product-title">Auriculares Wireless</h3>
+                <div class="product-price">$29.990</div>
+                <a href="https://linktr.ee/GeoVentas" class="order-btn">ORDENAR</a>
+            </div>
+
+            <div class="product-card">
+                <div class="product-icon"><i class="fas fa-bolt"></i></div>
+                <h3 class="product-title">Cargador Turbo 65W</h3>
+                <div class="product-price">$19.990</div>
+                <a href="https://linktr.ee/GeoVentas" class="order-btn">ORDENAR</a>
+            </div>
+
+            <div class="product-card">
+                <div class="product-icon"><i class="fas fa-keyboard"></i></div>
+                <h3 class="product-title">Teclado Mecánico</h3>
+                <div class="product-price">$34.990</div>
+                <a href="https://linktr.ee/GeoVentas" class="order-btn">ORDENAR</a>
+            </div>
+
+        </div>
+    </section>
+
+    <footer class="footer">
+        <p>© 2026 GeoVentas. Hualpén • Concepción</p>
+    </footer>
+
+</body>
+</html>
