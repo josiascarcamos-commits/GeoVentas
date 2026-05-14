@@ -62,6 +62,15 @@
             background-clip: text;
         }
 
+        /* --- MEJORA: Estilos del Botón de Menú --- */
+        .menu-icon {
+            display: none;
+            color: var(--gold-primary);
+            font-size: 1.8rem;
+            cursor: pointer;
+            order: 2;
+        }
+
         .nav-links {
             display: flex;
             gap: 2rem;
@@ -90,6 +99,30 @@
             font-weight: 600;
             transition: all 0.3s ease;
             box-shadow: var(--shadow-gold);
+        }
+
+        /* --- MEJORA: Responsive para Celulares --- */
+        @media (max-width: 768px) {
+            .menu-icon { display: block; }
+            .whatsapp-btn { display: none; } /* Oculto en móvil para dar espacio */
+
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: var(--glass-bg);
+                padding: 2rem;
+                text-align: center;
+                border-bottom: 1px solid var(--glass-border);
+                backdrop-filter: blur(20px);
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
         }
 
         /* Hero Section */
@@ -210,12 +243,18 @@
     <nav class="navbar">
         <div class="nav-container">
             <div class="logo">GeoVentas</div>
-            <ul class="nav-links">
+            
+            <!-- AGREGADO: El botón de las rayas -->
+            <div class="menu-icon" id="mobile-menu">
+                <i class="fas fa-bars"></i>
+            </div>
+
+            <ul class="nav-links" id="nav-list">
                 <li><a href="index.html" class="nav-link">Inicio</a></li>
                 <li><a href="productos.html" class="nav-link active">Catálogo</a></li>
                 <li><a href="https://linktr.ee/GeoVentas" class="nav-link" target="_blank">Contacto</a></li>
             </ul>
-            <!-- RECUERDA CAMBIAR EL NÚMERO AQUÍ ABAJO -->
+            
             <a href="https://wa.me/569XXXXXXXX?text=Hola%20GeoVentas!" class="whatsapp-btn" target="_blank">
                 <i class="fab fa-whatsapp"></i> WhatsApp
             </a>
@@ -258,16 +297,16 @@
     <footer class="footer">
         <p>© 2026 GeoVentas. Hualpén • Concepción</p>
     </footer>
-<script>
-    // Seleccionamos el botón de las rayas y la lista de enlaces
-    const menuBtn = document.querySelector('.menu-icon'); // O como se llame la clase de tu botón
-    const navLinks = document.querySelector('.nav-links');
 
-    // Al hacer clic, "activamos" o "desactivamos" el menú
-    menuBtn.addEventListener('click', () => {
-        navLinks.classList.toggle('active');
-    });
-</script>
+    <!-- SCRIPT CORREGIDO -->
+    <script>
+        const menuBtn = document.getElementById('mobile-menu');
+        const navList = document.getElementById('nav-list');
+
+        menuBtn.addEventListener('click', () => {
+            navList.classList.toggle('active');
+        });
+    </script>
 
 </body>
 </html>
