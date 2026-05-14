@@ -258,6 +258,16 @@
     <footer class="footer">
         <p>© 2026 GeoVentas. Hualpén • Concepción</p>
     </footer>
+<script>
+    // Seleccionamos el botón de las rayas y la lista de enlaces
+    const menuBtn = document.querySelector('.menu-icon'); // O como se llame la clase de tu botón
+    const navLinks = document.querySelector('.nav-links');
+
+    // Al hacer clic, "activamos" o "desactivamos" el menú
+    menuBtn.addEventListener('click', () => {
+        navLinks.classList.toggle('active');
+    });
+</script>
 
 </body>
 </html>
