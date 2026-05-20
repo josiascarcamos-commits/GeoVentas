@@ -3,11 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CATÁLOGO PREMIUM - GEOVENTAS</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>GeoVentas</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Inter:wght@300;400;600&display=swap');
 
@@ -27,113 +23,108 @@
             cursor: none;
         }
 
-        body.lock-scroll {
-            overflow: hidden;
-        }
-
+        /* Preloader */
         .preloader {
             position: fixed;
             top: 0;
             left: 0;
-            width: 100vw;
-            height: 100vh;
+            width: 100%;
+            height: 100%;
             background: #000000;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            z-index: 99999;
-            transition: opacity 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-        }
-
-        .preloader.hidden {
-            opacity: 0;
-            pointer-events: none;
+            z-index: 9999;
+            transition: opacity 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
         }
 
         .preloader-logo {
             font-family: 'Playfair Display', serif;
             font-weight: 900;
-            font-size: clamp(3rem, 12vw, 6rem);
-            background: linear-gradient(135deg, #d4af37 0%, #f9e79d 50%, #b8860b 100%);
+            font-size: clamp(2.5rem, 8vw, 4rem);
+            background: linear-gradient(135deg, #d4af37 0%, #f9e27d 50%, #b8860b 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
             letter-spacing: 0.1em;
-            margin-bottom: 4rem;
-            animation: logoGlow 2s ease-in-out infinite alternate;
-            text-shadow: 0 0 50px rgba(212, 175, 55, 0.6);
+            margin-bottom: 3rem;
+            text-shadow: 0 0 40px rgba(212, 175, 55, 0.5);
+            animation: logoPulse 2.5s ease-in-out infinite alternate;
         }
 
-        .btn-entrar {
-            background: transparent;
-            color: #d4af37;
-            border: 2px solid #d4af37;
-            padding: 1.5rem 4rem;
-            border-radius: 50px;
-            font-family: 'Inter', sans-serif;
-            font-weight: 600;
-            font-size: 1.2rem;
-            letter-spacing: 0.1em;
-            cursor: none;
-            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-            text-transform: uppercase;
-            text-decoration: none;
-            display: inline-block;
-            box-shadow: 0 0 30px rgba(212, 175, 55, 0.3);
+        .progress-bar {
+            width: clamp(250px, 30vw, 400px);
+            height: 3px;
+            background: rgba(255,255,255,0.08);
+            border-radius: 2px;
+            overflow: hidden;
+            box-shadow: inset 0 2px 4px rgba(0,0,0,0.5);
         }
 
-        .btn-entrar:hover {
-            background: linear-gradient(135deg, #d4af37 0%, #f9e79d 50%, #b8860b 100%);
-            color: #000000;
-            transform: translateY(-5px) scale(1.05);
-            box-shadow: 0 20px 50px rgba(212, 175, 55, 0.6);
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #d4af37 0%, #f9e27d 50%, #b8860b 100%);
+            width: 0%;
+            border-radius: 2px;
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.6);
+            animation: progressLoad 3.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
         }
 
-        @keyframes logoGlow {
-            0% { text-shadow: 0 0 30px rgba(212, 175, 55, 0.4); }
-            100% { text-shadow: 0 0 60px rgba(212, 175, 55, 0.8), 0 0 100px rgba(212, 175, 55, 0.4); }
+        @keyframes logoPulse {
+            0% { transform: scale(1); text-shadow: 0 0 40px rgba(212, 175, 55, 0.5); }
+            100% { transform: scale(1.05); text-shadow: 0 0 60px rgba(212, 175, 55, 0.8), 0 0 80px rgba(212, 175, 55, 0.4); }
         }
 
+        @keyframes progressLoad {
+            0% { width: 0%; }
+            50% { width: 70%; }
+            100% { width: 100%; }
+        }
+
+        /* Custom Cursor */
         .cursor {
             position: fixed;
-            width: 24px;
-            height: 24px;
-            border: 2px solid #d4af37;
+            width: 28px;
+            height: 28px;
+            background: radial-gradient(circle at 30% 30%, rgba(212,175,55,0.4) 0%, transparent 60%);
+            border: 2px solid rgba(212,175,55,0.8);
             border-radius: 50%;
             pointer-events: none;
-            z-index: 99998;
-            transition: transform 0.15s ease-out;
-            mix-blend-mode: difference;
-            background: radial-gradient(circle, rgba(212,175,55,0.2) 0%, transparent 70%);
+            z-index: 9998;
+            transition: all 0.15s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            mix-blend-mode: screen;
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
         }
 
         .cursor-follower {
             position: fixed;
-            width: 12px;
-            height: 12px;
-            background: #d4af37;
+            width: 14px;
+            height: 14px;
+            background: linear-gradient(135deg, #d4af37, #f9e27d);
             border-radius: 50%;
             pointer-events: none;
-            z-index: 99998;
-            transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            z-index: 9998;
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
             box-shadow: 0 0 15px rgba(212, 175, 55, 0.6);
         }
 
+        /* Navbar Crystal */
         .navbar {
             position: fixed;
             top: 0;
             width: 100%;
-            padding: 1.5rem 5%;
+            padding: 1.2rem 5%;
             backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
             background: rgba(0,0,0,0.4);
             border-bottom: 1px solid rgba(212,175,55,0.15);
             z-index: 1000;
-            transition: all 0.4s ease;
+            transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
         }
 
         .nav-container {
-            max-width: 1400px;
+            max-width: 1600px;
             margin: 0 auto;
             display: flex;
             justify-content: space-between;
@@ -143,27 +134,30 @@
         .logo {
             font-family: 'Playfair Display', serif;
             font-weight: 900;
-            font-size: 2.2rem;
-            background: linear-gradient(135deg, #d4af37 0%, #f9e79d 50%, #b8860b 100%);
+            font-size: clamp(1.8rem, 4vw, 2.5rem);
+            background: linear-gradient(135deg, #d4af37 0%, #f9e27d 50%, #b8860b 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
+            letter-spacing: 0.05em;
+            text-shadow: 0 0 30px rgba(212, 175, 55, 0.5);
         }
 
         .nav-links {
             display: flex;
             list-style: none;
-            gap: 3rem;
+            gap: 3.5rem;
+            font-weight: 400;
         }
 
         .nav-links a {
             color: rgba(255,255,255,0.92);
             text-decoration: none;
-            font-weight: 500;
-            font-size: 1rem;
+            font-weight: 600;
             position: relative;
-            transition: all 0.3s ease;
-            letter-spacing: 0.05em;
+            letter-spacing: 0.02em;
+            transition: all 0.4s ease;
+            font-size: 0.95rem;
         }
 
         .nav-links a::after {
@@ -173,8 +167,9 @@
             left: 0;
             width: 0;
             height: 2px;
-            background: #d4af37;
-            transition: width 0.3s ease;
+            background: linear-gradient(135deg, #d4af37, #f9e27d);
+            transition: width 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            box-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
         }
 
         .nav-links a:hover::after {
@@ -182,8 +177,8 @@
         }
 
         .nav-links a:hover {
-            color: #d4af37;
-            text-shadow: 0 0 20px rgba(212, 175, 55, 0.5);
+            color: #ffffff;
+            text-shadow: 0 0 15px rgba(212, 175, 55, 0.8);
         }
 
         .hamburger {
@@ -191,17 +186,19 @@
             flex-direction: column;
             cursor: pointer;
             gap: 5px;
-            z-index: 1001;
+            padding: 5px;
         }
 
         .hamburger span {
-            width: 30px;
+            width: 32px;
             height: 3px;
-            background: #d4af37;
-            transition: all 0.3s ease;
+            background: linear-gradient(135deg, #d4af37, #f9e27d);
             border-radius: 2px;
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            box-shadow: 0 0 10px rgba(212, 175, 55, 0.4);
         }
 
+        /* Hero */
         .hero {
             height: 100vh;
             display: flex;
@@ -210,40 +207,55 @@
             align-items: center;
             text-align: center;
             padding: 0 5%;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('IMG_20260513_074612_172.webp');
+            background-size: contain;
+            background-position: center;
+            background-repeat: no-repeat;
+            opacity: 0.75;
+            z-index: -1;
+            mix-blend-mode: screen;
         }
 
         .hero-title {
             font-family: 'Playfair Display', serif;
             font-weight: 900;
-            font-size: clamp(4rem, 10vw, 8rem);
-            margin-bottom: 2rem;
-            opacity: 0;
+            font-size: clamp(4rem, 10vw, 9rem);
+            background: linear-gradient(135deg, #d4af37 0%, #f9e27d 50%, #b8860b 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
             letter-spacing: -0.02em;
+            margin-bottom: 2.5rem;
             line-height: 0.9;
-            transform: translateY(30px);
-            animation: heroReveal 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards 0.5s;
+            opacity: 0;
+            text-shadow: 0 0 60px rgba(212, 175, 55, 0.4);
         }
 
         .hero-subtitle {
-            font-size: clamp(1.1rem, 2vw, 1.3rem);
-            max-width: 800px;
-            opacity: 0;
+            font-family: 'Inter', sans-serif;
             font-weight: 300;
+            font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+            max-width: 900px;
+            opacity: 0;
             letter-spacing: 0.02em;
-            transform: translateY(30px);
-            animation: heroReveal 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards 0.8s;
+            text-shadow: 0 0 20px rgba(0,0,0,0.8);
         }
 
-        @keyframes heroReveal {
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
+        /* Sections */
         section {
-            padding: 120px 5%;
-            max-width: 1400px;
+            padding: 140px 5%;
+            max-width: 1600px;
             margin: 0 auto;
         }
 
@@ -252,91 +264,125 @@
             font-weight: 900;
             font-size: clamp(3rem, 7vw, 5rem);
             text-align: center;
-            margin-bottom: 4rem;
-            background: linear-gradient(135deg, #d4af37 0%, #f9e79d 50%, #b8860b 100%);
+            margin-bottom: 5rem;
+            background: linear-gradient(135deg, #d4af37 0%, #f9e27d 50%, #b8860b 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
             letter-spacing: -0.01em;
+            line-height: 0.95;
+            text-shadow: 0 0 50px rgba(212, 175, 55, 0.3);
+        }
+
+        /* Contenedor optimizado para tu Logo en los títulos de sección */
+        .section-title-logo {
+            display: block;
+            margin: 0 auto 4rem;
+            max-width: clamp(200px, 45vw, 320px);
+            height: auto;
+            filter: drop-shadow(0 0 25px rgba(212, 175, 55, 0.5));
         }
 
         .content {
-            font-size: 1.2rem;
-            max-width: 900px;
+            font-family: 'Inter', sans-serif;
+            font-weight: 300;
+            font-size: clamp(1.1rem, 2vw, 1.25rem);
+            max-width: 1000px;
             margin: 0 auto;
             text-align: center;
-            line-height: 1.8;
-            font-weight: 300;
+            line-height: 1.9;
+            letter-spacing: 0.015em;
         }
 
+        /* FAQ Crystal Accordion */
         .faq-container {
-            max-width: 800px;
-            margin: 0 auto;
+            max-width: 900px;
+            margin: 0 auto 6rem;
         }
 
         .faq-item {
-            margin-bottom: 1.5rem;
-            border: 1px solid rgba(212,175,55,0.15);
-            border-radius: 16px;
+            margin-bottom: 2rem;
+            border: 1px solid rgba(212,175,55,0.08);
+            border-radius: 20px;
             overflow: hidden;
             backdrop-filter: blur(15px);
-            background: rgba(255,255,255,0.03);
+            background: rgba(255,255,255,0.02);
+            transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .faq-item:hover {
+            border-color: rgba(212,175,55,0.2);
+            box-shadow: 0 20px 60px rgba(212, 175, 55, 0.15);
         }
 
         .faq-question {
             width: 100%;
-            padding: 2rem;
+            padding: 2.5rem 2.5rem;
             background: none;
             border: none;
+            font-family: 'Inter', sans-serif;
             font-weight: 600;
-            font-size: 1.1rem;
+            font-size: 1.15rem;
             color: rgba(255,255,255,0.95);
             text-align: left;
             cursor: pointer;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            transition: all 0.3s ease;
+            transition: all 0.4s ease;
+            letter-spacing: 0.02em;
         }
 
         .faq-question:hover {
-            background: rgba(212,175,55,0.05);
             color: #ffffff;
+            background: rgba(212,175,55,0.05);
         }
 
         .faq-question span {
             font-size: 1.5rem;
-            transition: transform 0.3s ease;
+            font-weight: 300;
+            transition: all 0.4s ease;
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: rgba(212,175,55,0.1);
         }
 
         .faq-answer {
             max-height: 0;
             overflow: hidden;
-            transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-            padding: 0 2rem;
+            transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            padding: 0 2.5rem;
             font-weight: 300;
+            font-size: 1.05rem;
+            line-height: 1.7;
         }
 
         .faq-answer.active {
-            max-height: 250px;
-            padding: 2rem;
+            max-height: 300px;
+            padding: 2.5rem;
         }
 
+        /* Luxury Product Cards */
         .products-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2.5rem;
-            margin-top: 4rem;
+            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+            gap: 3rem;
+            margin-top: 6rem;
         }
 
         .card-luxury {
-            background: rgba(255,255,255,0.05);
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(212,175,55,0.2);
-            border-radius: 24px;
-            padding: 2.5rem;
+            background: rgba(255,255,255,0.035);
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
+            border: 1px solid rgba(212,175,55,0.12);
+            border-radius: 28px;
+            padding: 3rem 2.5rem;
             text-align: center;
-            transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
             position: relative;
             overflow: hidden;
         }
@@ -345,118 +391,162 @@
             content: '';
             position: absolute;
             top: 0;
-            left: -100%;
-            width: 100%;
+            left: -120%;
+            width: 120%;
             height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(212,175,55,0.15), transparent);
-            transition: left 0.7s;
+            background: linear-gradient(135deg, 
+                transparent 0%, 
+                rgba(255,255,255,0.15) 50%, 
+                rgba(212,175,55,0.2) 60%, 
+                transparent 100%);
+            transition: left 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            z-index: 2;
         }
 
         .card-luxury:hover::before {
-            left: 100%;
+            left: 120%;
         }
 
         .card-luxury:hover {
             transform: translateY(-25px);
-            border-color: #d4af37;
-            box-shadow: 0 40px 80px rgba(212,175,55,0.3);
+            border-color: rgba(212,175,55,0.6);
+            box-shadow: 
+                0 40px 100px rgba(212, 175, 55, 0.25),
+                0 0 60px rgba(212, 175, 55, 0.15),
+                inset 0 1px 0 rgba(255,255,255,0.1);
         }
 
         .product-image {
-            width: 130px;
-            height: 130px;
-            background: linear-gradient(135deg, #d4af37 0%, #f9e79d 50%, #b8860b 100%);
-            border-radius: 20px;
-            margin: 0 auto 1.5rem;
+            width: 140px;
+            height: 140px;
+            background: linear-gradient(135deg, #d4af37 0%, #f9e27d 50%, #b8860b 100%);
+            border-radius: 24px;
+            margin: 0 auto 2rem;
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 3.5rem;
-            color: #000;
+            color: #000000;
             font-weight: 900;
+            box-shadow: 0 20px 40px rgba(212, 175, 55, 0.3);
+            transition: all 0.4s ease;
+        }
+
+        .card-luxury:hover .product-image {
+            transform: scale(1.1) rotate(5deg);
         }
 
         .product-title {
             font-family: 'Playfair Display', serif;
             font-weight: 900;
-            font-size: 1.8rem;
-            margin-bottom: 1rem;
+            font-size: clamp(1.6rem, 3vw, 2.2rem);
+            margin-bottom: 1.2rem;
             letter-spacing: -0.01em;
+            line-height: 1.1;
         }
 
         .product-price {
-            font-size: 2.2rem;
+            font-family: 'Inter', sans-serif;
             font-weight: 800;
-            background: linear-gradient(135deg, #d4af37 0%, #f9e79d 50%, #b8860b 100%);
+            font-size: clamp(1.8rem, 4vw, 2.5rem);
+            background: linear-gradient(135deg, #d4af37 0%, #f9e27d 50%, #b8860b 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            margin-bottom: 2rem;
+            margin-bottom: 2.5rem;
+            letter-spacing: -0.02em;
+            text-shadow: 0 0 30px rgba(212, 175, 55, 0.5);
         }
 
         .buy-btn {
-            background: linear-gradient(135deg, #d4af37 0%, #f9e79d 50%, #b8860b 100%);
-            color: #000 !important;
+            background: linear-gradient(135deg, #d4af37 0%, #f9e27d 50%, #b8860b 100%);
+            color: #000000 !important;
             border: none;
-            padding: 1.2rem 3rem;
+            padding: 1.3rem 3.5rem;
             border-radius: 50px;
-            font-weight: 600;
+            font-family: 'Inter', sans-serif;
+            font-weight: 800;
             font-size: 1.1rem;
+            letter-spacing: 0.05em;
             cursor: none;
-            transition: all 0.4s ease;
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
             text-decoration: none;
             display: inline-block;
             text-transform: uppercase;
-            letter-spacing: 0.1em;
-            box-shadow: 0 10px 30px rgba(212,175,55,0.4);
+            position: relative;
+            overflow: hidden;
+            box-shadow: 
+                0 10px 30px rgba(212, 175, 55, 0.4),
+                inset 0 1px 0 rgba(255,255,255,0.3);
+        }
+
+        .buy-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+            transition: left 0.6s;
+        }
+
+        .buy-btn:hover::before {
+            left: 100%;
         }
 
         .buy-btn:hover {
             transform: translateY(-3px) scale(1.05);
-            box-shadow: 0 20px 50px rgba(212,175,55,0.6);
+            box-shadow: 
+                0 20px 50px rgba(212, 175, 55, 0.6),
+                0 0 40px rgba(212, 175, 55, 0.4),
+                inset 0 1px 0 rgba(255,255,255,0.4);
         }
 
+        /* Footer */
         .footer {
-            background: rgba(0,0,0,0.6);
-            padding: 4rem 5% 2rem;
+            background: rgba(0,0,0,0.7);
+            backdrop-filter: blur(20px);
+            padding: 5rem 5% 3rem;
             text-align: center;
-            border-top: 1px solid rgba(212,175,55,0.2);
-            margin-top: 80px;
+            border-top: 1px solid rgba(212,175,55,0.15);
         }
 
         .social-links {
             display: flex;
             justify-content: center;
-            gap: 2.5rem;
-            margin-bottom: 2rem;
+            gap: 3rem;
+            margin-bottom: 3rem;
         }
 
         .social-links a {
-            width: 65px;
-            height: 65px;
-            background: linear-gradient(135deg, #d4af37 0%, #f9e79d 50%, #b8860b 100%);
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, #d4af37 0%, #f9e27d 50%, #b8860b 100%);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 1.8rem;
-            color: #000;
+            color: #000000;
             text-decoration: none;
-            transition: all 0.3s ease;
-            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.4);
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            box-shadow: 0 15px 40px rgba(212, 175, 55, 0.3);
         }
 
         .social-links a:hover {
-            transform: translateY(-10px) scale(1.1);
-            box-shadow: 0 20px 50px rgba(212, 175, 55, 0.6);
+            transform: translateY(-10px) scale(1.15) rotate(180deg);
+            box-shadow: 0 25px 60px rgba(212, 175, 55, 0.5);
         }
 
         .copyright {
-            opacity: 0.8;
             font-weight: 300;
+            opacity: 0.8;
             letter-spacing: 0.05em;
+            font-size: 0.95rem;
         }
 
+        /* Mobile Optimization */
         @media (max-width: 768px) {
             .hamburger {
                 display: flex;
@@ -464,130 +554,89 @@
 
             .nav-links {
                 position: fixed;
-                top: 0;
+                top: 100%;
                 left: 0;
                 width: 100%;
-                height: 100vh;
                 background: rgba(0,0,0,0.98);
+                backdrop-filter: blur(30px);
                 flex-direction: column;
-                justify-content: center;
-                align-items: center;
                 padding: 3rem 5%;
                 gap: 2.5rem;
-                transform: translateX(100%);
+                transform: translateY(-100vh);
                 opacity: 0;
                 visibility: hidden;
-                transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-                border-bottom: none;
-                z-index: 1000;
+                transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
             }
 
             .nav-links.active {
-                transform: translateX(0);
+                transform: translateY(0);
                 opacity: 1;
                 visibility: visible;
             }
 
-            .hero-title {
-                font-size: clamp(2.5rem, 9vw, 4.5rem);
-            }
-
-            .section-title {
-                font-size: clamp(2.2rem, 6vw, 3.5rem);
-            }
-
-            .products-grid {
-                grid-template-columns: 1fr;
-                gap: 2rem;
+            .nav-links a {
+                font-size: 1.3rem;
+                padding: 1rem 0;
+                border-bottom: 1px solid rgba(212,175,55,0.1);
             }
 
             section {
                 padding: 100px 5%;
             }
+
+            .hero-title {
+                font-size: clamp(2.8rem, 8vw, 4.5rem);
+                margin-bottom: 2rem;
+            }
+
+            .section-title {
+                font-size: clamp(2.2rem, 6vw, 3.5rem);
+                margin-bottom: 3rem;
+            }
+
+            .products-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+                margin-top: 4rem;
+            }
+
+            .card-luxury {
+                padding: 2.5rem 2rem;
+                margin: 0 1rem;
+            }
+
+            .faq-question {
+                padding: 2rem 2rem;
+                font-size: 1.05rem;
+            }
+
+            .social-links {
+                gap: 2rem;
+            }
+
+            .social-links a {
+                width: 60px;
+                height: 60px;
+                font-size: 1.5rem;
+            }
+        }
+
+        /* Scroll behavior */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Performance optimizations */
+        .card-luxury, .buy-btn, .faq-item {
+            will-change: transform;
         }
     </style>
 </head>
-<body class="lock-scroll">
-
-    <div class="preloader" id="preloader">
-        <div class="preloader-logo">GEOVENTAS</div>
-        <button class="btn-entrar" id="btnEntrar">ENTRAR</button>
-    </div>
-
-    <div class="cursor" id="cursor"></div>
-    <div class="cursor-follower" id="cursorFollower"></div>
-
-    <nav class="navbar">
-        <div class="nav-container">
-            <div class="logo">GEOVENTAS</div>
-            <ul class="nav-links" id="navLinks">
-                <li><a href="#inicio">Inicio</a></li>
-                <li><a href="#nosotros">Nosotros</a></li>
-                <li><a href="#objetivos">Objetivos</a></li>
-                <li><a href="#seguridad">Seguridad</a></li>
-                <li><a href="#faq">FAQ</a></li>
-                <li><a href="productos.html">Productos</a></li>
-            </ul>
-            <div class="hamburger" id="hamburger">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-        </div>
-    </nav>
-
-    <section id="inicio" class="hero">
-        <h1 class="hero-title">CATÁLOGO PREMIUM</h1>
-        <p class="hero-subtitle">Tecnología premium seleccionada minuciosamente. Entregas coordinadas en puntos de encuentro estratégicos en Hualpén y Concepción.</p>
-    </section>
-
-    <section id="nosotros">
-        <h2 class="section-title">QUIÉNES SOMOS</h2>
-        <div class="content">
-            GEOVENTAS se posiciona como el referente indiscutible de tecnología premium en la Región del Biobío. Seleccionamos meticulosamente dispositivos de última generación que combinan diseño excepcional, rendimiento superior y garantía extendida. Nuestra filosofía se basa en ofrecer experiencias completas, no solo productos. Cada adquisición es un statement de elegancia tecnológica.
-        </div>
-    </section>
-
-    <section id="objetivos">
-        <h2 class="section-title">NUESTRO OBJETIVO</h2>
-        <div class="content">
-            Ofrecer una experiencia de compra exclusiva y segura en el Biobío. Nos enfocamos en tres pilares estratégicos: Calidad Exclusiva (dispositivos de élite verificados manualmente), Puntos de Encuentro Seguros (recogida coordinada de forma privada en Hualpén y Concepción para máxima comodidad y discreción), y Asesoría VIP Personalizada para guiarte en cada decisión técnica.
-        </div>
-    </section>
-
-    <section id="seguridad">
-        <h2 class="section-title">POLÍTICA DE SEGURIDAD</h2>
-        <div class="content">
-            Tu tranquilidad y confianza son nuestra máxima prioridad. Para garantizar transacciones 100% confiables y discretas, todas nuestras entregas se realizan exclusivamente en puntos de encuentro estratégicos y previamente coordinados en las zonas de Hualpén y Concepción. No realizamos envíos desatendidos ni entregas en rutas inseguras; verificamos cada paso junto al cliente para asegurar que recibas tu producto premium en perfectas condiciones y en un entorno controlado.
-        </div>
-    </section>
-
-    <section id="faq">
-        <h2 class="section-title">PREGUNTAS FRECUENTES</h2>
-        <div class="faq-container">
-            <div class="faq-item">
-                <button class="faq-question">¿Cómo coordinar la entrega? <span>+</span></button>
-                <div class="faq-answer">
-                    <p>Al presionar el botón de compra, te conectarás directamente con nuestro equipo por WhatsApp para agendar el punto de encuentro en Hualpén o Concepción que más te acomode.</p>
-                </div>
-            </div>
-            <div class="faq-item">
-                <button class="faq-question">¿Los productos tienen garantía? <span>+</span></button>
-                <div class="faq-answer">
-                    <p>Sí, todos nuestros equipos tecnológicos premium cuentan con garantía extendida y certificación de calidad revisada manualmente.</p>
-                </div>
-            </div>
-            <div class="faq-item">
-                <button class="faq-question">¿Cuáles son los medios de pago? <span>+</span></button>
-                <div class="faq-answer">
-                    <p>Aceptamos transferencias electrónicas seguras y efectivo al momento de verificar tu producto en el punto de entrega.</p>
-                </div>
-            </div>
-        </div>
-    </section>
+<body>
 
     <section id="productos">
-        <h2 class="section-title">PRODUCTOS DESTACADOS</h2>
+        <img src="IMG_20260513_074612_172.webp" alt="GeoVentas Logo" class="section-title-logo">
+
         <div class="products-grid">
             <div class="card-luxury">
                 <div class="product-image">🎧</div>
@@ -623,10 +672,12 @@
         const preloader = document.getElementById('preloader');
         const btnEntrar = document.getElementById('btnEntrar');
 
-        btnEntrar.addEventListener('click', () => {
-            preloader.classList.add('hidden');
-            document.body.classList.remove('lock-scroll');
-        });
+        if(btnEntrar && preloader) {
+            btnEntrar.addEventListener('click', () => {
+                preloader.classList.add('hidden');
+                document.body.classList.remove('lock-scroll');
+            });
+        }
 
         // 2. Control del Cursor
         const cursor = document.getElementById('cursor');
@@ -636,15 +687,19 @@
         document.addEventListener('mousemove', (e) => {
             mouseX = e.clientX;
             mouseY = e.clientY;
-            cursor.style.left = mouseX - 12 + 'px';
-            cursor.style.top = mouseY - 12 + 'px';
+            if(cursor) {
+                cursor.style.left = mouseX - 12 + 'px';
+                cursor.style.top = mouseY - 12 + 'px';
+            }
         });
 
         function animateFollower() {
             followerX += (mouseX - followerX) * 0.12;
             followerY += (mouseY - followerY) * 0.12;
-            cursorFollower.style.left = followerX - 6 + 'px';
-            cursorFollower.style.top = followerY - 6 + 'px';
+            if(cursorFollower) {
+                cursorFollower.style.left = followerX - 6 + 'px';
+                cursorFollower.style.top = followerY - 6 + 'px';
+            }
             requestAnimationFrame(animateFollower);
         }
         animateFollower();
@@ -653,13 +708,15 @@
         const hamburger = document.getElementById('hamburger');
         const navLinks = document.getElementById('navLinks');
 
-        hamburger.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
-        });
+        if(hamburger && navLinks) {
+            hamburger.addEventListener('click', () => {
+                navLinks.classList.toggle('active');
+            });
+        }
 
         document.querySelectorAll('.nav-links a').forEach(link => {
             link.addEventListener('click', () => {
-                navLinks.classList.remove('active');
+                if(navLinks) navLinks.classList.remove('active');
             });
         });
 
@@ -672,12 +729,15 @@
                 document.querySelectorAll('.faq-answer').forEach(other => {
                     if (other !== answer) {
                         other.classList.remove('active');
-                        other.previousElementSibling.querySelector('span').textContent = '+';
+                        const otherSpan = other.previousElementSibling.querySelector('span');
+                        if(otherSpan) otherSpan.textContent = '+';
                     }
                 });
 
-                answer.classList.toggle('active');
-                span.textContent = answer.classList.contains('active') ? '−' : '+';
+                if(answer) {
+                    answer.classList.toggle('active');
+                    if(span) span.textContent = answer.classList.contains('active') ? '−' : '+';
+                }
             });
         });
     </script>
