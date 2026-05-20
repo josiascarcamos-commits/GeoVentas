@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GeoVentas</title>
+    <title>GeoVentas - Inicio</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Inter:wght@300;400;600&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght=700;900&family=Inter:wght=300;400;600&display=swap');
 
         * {
             margin: 0;
@@ -234,7 +234,7 @@
             box-shadow: 0 0 10px rgba(212, 175, 55, 0.4);
         }
 
-        /* Hero (Corregido sin duplicaciones de fondo) */
+        /* Hero */
         .hero {
             height: 100vh;
             display: flex;
@@ -248,7 +248,6 @@
             background: #000000;
         }
 
-        /* Logo principal adaptativo */
         .hero-logo-main {
             max-width: clamp(240px, 55vw, 400px);
             height: auto;
@@ -286,14 +285,6 @@
             letter-spacing: -0.01em;
             line-height: 1.1;
             text-shadow: 0 0 40px rgba(212, 175, 55, 0.25);
-        }
-
-        .section-title-logo {
-            display: block;
-            margin: 0 auto 3rem;
-            max-width: clamp(180px, 40vw, 260px);
-            height: auto;
-            filter: drop-shadow(0 0 20px rgba(212, 175, 55, 0.4));
         }
 
         .content {
@@ -380,10 +371,18 @@
             font-family: 'Playfair Display', serif;
             font-weight: 700;
             font-size: clamp(1.5rem, 2.5vw, 2rem);
-            margin-bottom: 2.5rem;
+            margin-bottom: 1.5rem;
             color: #ffffff;
             letter-spacing: -0.01em;
             line-height: 1.2;
+        }
+
+        .product-status {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: rgba(255,255,255,0.5);
+            margin-bottom: 2.5rem;
         }
 
         .buy-btn {
@@ -566,7 +565,8 @@
             <ul class="nav-links" id="navLinks">
                 <li><a href="#inicio">Inicio</a></li>
                 <li><a href="#nosotros">Quiénes Somos</a></li>
-                <li><a href="#destacados">Productos Destacados</a></li>
+                <li><a href="#destacados">Destacados</a></li>
+                <li><a href="productos.html">Productos</a></li>
                 <li><a href="#faq">Preguntas Frecuentes</a></li>
             </ul>
             <div class="hamburger" id="hamburger">
@@ -591,23 +591,24 @@
 
     <section id="destacados">
         <h2 class="section-title">Productos Destacados</h2>
-        <img src="IMG_20260513_074612_172 (1).png" alt="GeoVentas Logo Sección" class="section-title-logo">
-
         <div class="products-grid">
             <div class="card-luxury">
                 <div class="product-image">🎧</div>
-                <h3 class="product-title">Auriculares Inalámbricos</h3>
-                <a href="https://linktr.ee/GeoVentas" class="buy-btn" target="_blank">Consultar</a>
+                <h3 class="product-title">Audífonos Inalámbricos</h3>
+                <p class="product-status" style="margin-bottom: 2.5rem;">Calidad de audio premium</p>
+                <a href="productos.html" class="buy-btn">Ver Catálogo</a>
             </div>
             <div class="card-luxury">
                 <div class="product-image">⚡</div>
                 <h3 class="product-title">Cargadores Turbo</h3>
-                <a href="https://linktr.ee/GeoVentas" class="buy-btn" target="_blank">Consultar</a>
+                <p class="product-status" style="margin-bottom: 2.5rem;">Carga ultra rápida certificada</p>
+                <a href="productos.html" class="buy-btn">Ver Catálogo</a>
             </div>
             <div class="card-luxury">
                 <div class="product-image">📱</div>
-                <h3 class="product-title">Accesorios Premium</h3>
-                <a href="https://linktr.ee/GeoVentas" class="buy-btn" target="_blank">Consultar</a>
+                <h3 class="product-title">Cables de Datos de Lujo</h3>
+                <p class="product-status" style="margin-bottom: 2.5rem;">Alta resistencia y velocidad</p>
+                <a href="productos.html" class="buy-btn">Ver Catálogo</a>
             </div>
         </div>
     </section>
