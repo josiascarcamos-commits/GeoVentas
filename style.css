@@ -202,10 +202,10 @@
             text-align: center;
             padding: 0 5%;
             position: relative;
-            z-index: 1; /* Agregado para mantener el texto sobre la marca de agua */
+            z-index: 1; /* Mantiene el título por encima del fondo */
         }
 
-        /* NUEVO CÓDIGO: Fondo del logo como marca de agua */
+        /* Capa del fondo: Modificada con opacidad alta y mezcla de color */
         .hero::before {
             content: '';
             position: absolute;
@@ -214,11 +214,12 @@
             width: 100%;
             height: 100%;
             background-image: url('IMG_20260513_074612_172.webp');
-            background-size: 60%; /* Si lo quieres más grande, puedes subir a 80% o cambiar a 'cover' */
+            background-size: contain; /* Cambiado a contain para que el logo completo se ajuste al centro */
             background-position: center;
             background-repeat: no-repeat;
-            opacity: 0.15; /* Transparencia para que no estorbe la lectura */
+            opacity: 0.75; /* Opacidad alta para asegurar que no se pierda con el negro puro */
             z-index: -1;
+            mix-blend-mode: screen; /* Si la imagen tiene bordes oscuros, esto los fusionará con el fondo */
         }
 
         .hero-title {
