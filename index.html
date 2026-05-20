@@ -23,6 +23,10 @@
             cursor: none;
         }
 
+        body.lock-scroll {
+            overflow: hidden;
+        }
+
         /* Preloader */
         .preloader {
             position: fixed;
@@ -36,7 +40,13 @@
             justify-content: center;
             align-items: center;
             z-index: 9999;
-            transition: opacity 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            transition: opacity 1s cubic-bezier(0.25, 0.46, 0.45, 0.94), visibility 1s;
+        }
+
+        .preloader.hidden {
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
         }
 
         .preloader-logo {
@@ -60,6 +70,7 @@
             border-radius: 2px;
             overflow: hidden;
             box-shadow: inset 0 2px 4px rgba(0,0,0,0.5);
+            margin-bottom: 2rem;
         }
 
         .progress-fill {
@@ -68,7 +79,32 @@
             width: 0%;
             border-radius: 2px;
             box-shadow: 0 0 20px rgba(212, 175, 55, 0.6);
-            animation: progressLoad 3.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+            animation: progressLoad 2.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+        }
+
+        .enter-btn {
+            background: transparent;
+            color: #d4af37;
+            border: 1px solid rgba(212, 175, 55, 0.4);
+            padding: 0.8rem 2.5rem;
+            border-radius: 50px;
+            font-family: 'Inter', sans-serif;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            cursor: pointer;
+            opacity: 0;
+            animation: fadeInBtn 0.5s ease 2s forwards;
+            transition: all 0.3s ease;
+        }
+
+        .enter-btn:hover {
+            background: linear-gradient(135deg, #d4af37, #f9e27d);
+            color: #000000;
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.4);
+        }
+
+        @keyframes fadeInBtn {
+            to { opacity: 1; }
         }
 
         @keyframes logoPulse {
@@ -77,8 +113,6 @@
         }
 
         @keyframes progressLoad {
-            0% { width: 0%; }
-            50% { width: 70%; }
             100% { width: 100%; }
         }
 
@@ -92,9 +126,10 @@
             border-radius: 50%;
             pointer-events: none;
             z-index: 9998;
-            transition: all 0.15s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            transition: transform 0.08s ease-out;
             mix-blend-mode: screen;
             box-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
+            transform: translate(-50%, -50%);
         }
 
         .cursor-follower {
@@ -105,14 +140,16 @@
             border-radius: 50%;
             pointer-events: none;
             z-index: 9998;
-            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            mix-blend-mode: screen;
             box-shadow: 0 0 15px rgba(212, 175, 55, 0.6);
+            transform: translate(-50%, -50%);
         }
 
         /* Navbar Crystal */
         .navbar {
             position: fixed;
             top: 0;
+            left: 0;
             width: 100%;
             padding: 1.2rem 5%;
             backdrop-filter: blur(25px);
@@ -120,7 +157,6 @@
             background: rgba(0,0,0,0.4);
             border-bottom: 1px solid rgba(212,175,55,0.15);
             z-index: 1000;
-            transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
         }
 
         .nav-container {
@@ -141,13 +177,13 @@
             background-clip: text;
             letter-spacing: 0.05em;
             text-shadow: 0 0 30px rgba(212, 175, 55, 0.5);
+            text-decoration: none;
         }
 
         .nav-links {
             display: flex;
             list-style: none;
             gap: 3.5rem;
-            font-weight: 400;
         }
 
         .nav-links a {
@@ -227,19 +263,12 @@
             mix-blend-mode: screen;
         }
 
-        .hero-title {
-            font-family: 'Playfair Display', serif;
-            font-weight: 900;
-            font-size: clamp(4rem, 10vw, 9rem);
-            background: linear-gradient(135deg, #d4af37 0%, #f9e27d 50%, #b8860b 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            letter-spacing: -0.02em;
+        /* Contenedor adaptativo del logo principal del Hero */
+        .hero-logo-main {
+            max-width: clamp(250px, 60vw, 450px);
+            height: auto;
             margin-bottom: 2.5rem;
-            line-height: 0.9;
-            opacity: 0;
-            text-shadow: 0 0 60px rgba(212, 175, 55, 0.4);
+            filter: drop-shadow(0 0 35px rgba(212, 175, 55, 0.4));
         }
 
         .hero-subtitle {
@@ -247,7 +276,6 @@
             font-weight: 300;
             font-size: clamp(1.1rem, 2.5vw, 1.4rem);
             max-width: 900px;
-            opacity: 0;
             letter-spacing: 0.02em;
             text-shadow: 0 0 20px rgba(0,0,0,0.8);
         }
@@ -259,22 +287,7 @@
             margin: 0 auto;
         }
 
-        .section-title {
-            font-family: 'Playfair Display', serif;
-            font-weight: 900;
-            font-size: clamp(3rem, 7vw, 5rem);
-            text-align: center;
-            margin-bottom: 5rem;
-            background: linear-gradient(135deg, #d4af37 0%, #f9e27d 50%, #b8860b 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            letter-spacing: -0.01em;
-            line-height: 0.95;
-            text-shadow: 0 0 50px rgba(212, 175, 55, 0.3);
-        }
-
-        /* Contenedor optimizado para tu Logo en los títulos de sección */
+        /* Contenedor para tu Logo en los títulos de sección */
         .section-title-logo {
             display: block;
             margin: 0 auto 4rem;
@@ -283,95 +296,12 @@
             filter: drop-shadow(0 0 25px rgba(212, 175, 55, 0.5));
         }
 
-        .content {
-            font-family: 'Inter', sans-serif;
-            font-weight: 300;
-            font-size: clamp(1.1rem, 2vw, 1.25rem);
-            max-width: 1000px;
-            margin: 0 auto;
-            text-align: center;
-            line-height: 1.9;
-            letter-spacing: 0.015em;
-        }
-
-        /* FAQ Crystal Accordion */
-        .faq-container {
-            max-width: 900px;
-            margin: 0 auto 6rem;
-        }
-
-        .faq-item {
-            margin-bottom: 2rem;
-            border: 1px solid rgba(212,175,55,0.08);
-            border-radius: 20px;
-            overflow: hidden;
-            backdrop-filter: blur(15px);
-            background: rgba(255,255,255,0.02);
-            transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-        }
-
-        .faq-item:hover {
-            border-color: rgba(212,175,55,0.2);
-            box-shadow: 0 20px 60px rgba(212, 175, 55, 0.15);
-        }
-
-        .faq-question {
-            width: 100%;
-            padding: 2.5rem 2.5rem;
-            background: none;
-            border: none;
-            font-family: 'Inter', sans-serif;
-            font-weight: 600;
-            font-size: 1.15rem;
-            color: rgba(255,255,255,0.95);
-            text-align: left;
-            cursor: pointer;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            transition: all 0.4s ease;
-            letter-spacing: 0.02em;
-        }
-
-        .faq-question:hover {
-            color: #ffffff;
-            background: rgba(212,175,55,0.05);
-        }
-
-        .faq-question span {
-            font-size: 1.5rem;
-            font-weight: 300;
-            transition: all 0.4s ease;
-            width: 30px;
-            height: 30px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 50%;
-            background: rgba(212,175,55,0.1);
-        }
-
-        .faq-answer {
-            max-height: 0;
-            overflow: hidden;
-            transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-            padding: 0 2.5rem;
-            font-weight: 300;
-            font-size: 1.05rem;
-            line-height: 1.7;
-        }
-
-        .faq-answer.active {
-            max-height: 300px;
-            padding: 2.5rem;
-        }
-
         /* Luxury Product Cards */
         .products-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
             gap: 3rem;
-            margin-top: 6rem;
+            margin-top: 4rem;
         }
 
         .card-luxury {
@@ -584,14 +514,9 @@
                 padding: 100px 5%;
             }
 
-            .hero-title {
-                font-size: clamp(2.8rem, 8vw, 4.5rem);
+            .hero-logo-main {
+                max-width: 280px;
                 margin-bottom: 2rem;
-            }
-
-            .section-title {
-                font-size: clamp(2.2rem, 6vw, 3.5rem);
-                margin-bottom: 3rem;
             }
 
             .products-grid {
@@ -605,11 +530,6 @@
                 margin: 0 1rem;
             }
 
-            .faq-question {
-                padding: 2rem 2rem;
-                font-size: 1.05rem;
-            }
-
             .social-links {
                 gap: 2rem;
             }
@@ -621,21 +541,50 @@
             }
         }
 
-        /* Scroll behavior */
         html {
             scroll-behavior: smooth;
         }
 
-        /* Performance optimizations */
-        .card-luxury, .buy-btn, .faq-item {
+        .card-luxury, .buy-btn {
             will-change: transform;
         }
     </style>
 </head>
-<body>
+<body class="lock-scroll">
+
+    <div class="preloader" id="preloader">
+        <div class="preloader-logo">GEOVENTAS</div>
+        <div class="progress-bar">
+            <div class="progress-fill"></div>
+        </div>
+        <button class="enter-btn" id="btnEntrar">ENTRAR</button>
+    </div>
+
+    <div class="cursor" id="cursor"></div>
+    <div class="cursor-follower" id="cursorFollower"></div>
+
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo">GEOVENTAS</a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#productos">Productos</a></li>
+            </ul>
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <header class="hero" id="inicio">
+        <img src="IMG_20260513_074612_172.webp" alt="GeoVentas Logo Principal" class="hero-logo-main">
+        <p class="hero-subtitle">Tecnología premium seleccionada minuciosamente. Entregas coordinadas en puntos de encuentro estratégicos en Hualpén y Concepción.</p>
+    </header>
 
     <section id="productos">
-        <img src="IMG_20260513_074612_172.webp" alt="GeoVentas Logo" class="section-title-logo">
+        <img src="IMG_20260513_074612_172.webp" alt="GeoVentas Logo Sección" class="section-title-logo">
 
         <div class="products-grid">
             <div class="card-luxury">
@@ -668,7 +617,7 @@
     </footer>
 
     <script>
-        // 1. Control del Preloader
+        // Control del Preloader
         const preloader = document.getElementById('preloader');
         const btnEntrar = document.getElementById('btnEntrar');
 
@@ -679,7 +628,7 @@
             });
         }
 
-        // 2. Control del Cursor
+        // Control del Cursor
         const cursor = document.getElementById('cursor');
         const cursorFollower = document.getElementById('cursorFollower');
         let mouseX = 0, mouseY = 0, followerX = 0, followerY = 0;
@@ -688,8 +637,8 @@
             mouseX = e.clientX;
             mouseY = e.clientY;
             if(cursor) {
-                cursor.style.left = mouseX - 12 + 'px';
-                cursor.style.top = mouseY - 12 + 'px';
+                cursor.style.left = mouseX + 'px';
+                cursor.style.top = mouseY + 'px';
             }
         });
 
@@ -697,14 +646,14 @@
             followerX += (mouseX - followerX) * 0.12;
             followerY += (mouseY - followerY) * 0.12;
             if(cursorFollower) {
-                cursorFollower.style.left = followerX - 6 + 'px';
-                cursorFollower.style.top = followerY - 6 + 'px';
+                cursorFollower.style.left = followerX + 'px';
+                cursorFollower.style.top = followerY + 'px';
             }
             requestAnimationFrame(animateFollower);
         }
         animateFollower();
 
-        // 3. Menú Móvil (Hamburger)
+        // Menú Móvil (Hamburger)
         const hamburger = document.getElementById('hamburger');
         const navLinks = document.getElementById('navLinks');
 
@@ -717,27 +666,6 @@
         document.querySelectorAll('.nav-links a').forEach(link => {
             link.addEventListener('click', () => {
                 if(navLinks) navLinks.classList.remove('active');
-            });
-        });
-
-        // 4. Acordeones FAQ
-        document.querySelectorAll('.faq-question').forEach(button => {
-            button.addEventListener('click', () => {
-                const answer = button.nextElementSibling;
-                const span = button.querySelector('span');
-                
-                document.querySelectorAll('.faq-answer').forEach(other => {
-                    if (other !== answer) {
-                        other.classList.remove('active');
-                        const otherSpan = other.previousElementSibling.querySelector('span');
-                        if(otherSpan) otherSpan.textContent = '+';
-                    }
-                });
-
-                if(answer) {
-                    answer.classList.toggle('active');
-                    if(span) span.textContent = answer.classList.contains('active') ? '−' : '+';
-                }
             });
         });
     </script>
