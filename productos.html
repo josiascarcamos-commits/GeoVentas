@@ -14,7 +14,7 @@
             --gold-primary: #d4af37;
             --gold-secondary: #f1c640;
             --glass-bg: rgba(0, 0, 0, 0.85);
-            --glass-border: rgba(212, 175, 55, 0.3);
+            --glass-border: rgba(212, 175, 55, 0.2);
             --text-primary: #ffffff;
             --text-secondary: #b8b8b8;
             --shadow-gold: 0 8px 32px rgba(212, 175, 55, 0.3);
@@ -29,6 +29,36 @@
             color: var(--text-primary);
             line-height: 1.6;
             overflow-x: hidden;
+            cursor: none; /* Oculta cursor original para activar el premium */
+        }
+
+        /* Custom Cursor */
+        .cursor {
+            position: fixed;
+            width: 28px;
+            height: 28px;
+            background: radial-gradient(circle at 30% 30%, rgba(212,175,55,0.4) 0%, transparent 60%);
+            border: 2px solid rgba(212,175,55,0.8);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 9998;
+            transition: transform 0.08s ease-out;
+            mix-blend-mode: screen;
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
+            transform: translate(-50%, -50%);
+        }
+
+        .cursor-follower {
+            position: fixed;
+            width: 14px;
+            height: 14px;
+            background: linear-gradient(135deg, var(--gold-primary), var(--gold-secondary));
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 9998;
+            mix-blend-mode: screen;
+            box-shadow: 0 0 15px rgba(212, 175, 55, 0.6);
+            transform: translate(-50%, -50%);
         }
 
         /* Navbar Glassmorphism */
@@ -36,33 +66,36 @@
             position: fixed;
             top: 0;
             width: 100%;
-            backdrop-filter: blur(20px);
-            background: var(--glass-bg);
-            border-bottom: 1px solid var(--glass-border);
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
+            background: rgba(0,0,0,0.4);
+            border-bottom: 1px solid rgba(212,175,55,0.15);
             z-index: 1000;
-            padding: 1rem 0;
+            padding: 1.2rem 0;
         }
 
         .nav-container {
-            max-width: 1200px;
+            max-width: 1600px;
             margin: 0 auto;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 0 2rem;
+            padding: 0 5%;
         }
 
         .logo {
             font-family: 'Playfair Display', serif;
-            font-size: 1.8rem;
-            font-weight: 700;
+            font-size: 2.2rem;
+            font-weight: 900;
             background: linear-gradient(135deg, var(--gold-primary), var(--gold-secondary));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
+            letter-spacing: 0.05em;
+            text-shadow: 0 0 30px rgba(212, 175, 55, 0.5);
+            text-decoration: none;
         }
 
-        /* --- MEJORA: Estilos del Botón de Menú --- */
         .menu-icon {
             display: none;
             color: var(--gold-primary);
@@ -73,38 +106,63 @@
 
         .nav-links {
             display: flex;
-            gap: 2rem;
+            gap: 3.5rem;
             list-style: none;
         }
 
         .nav-link {
-            color: var(--text-primary);
+            color: rgba(255,255,255,0.92);
             text-decoration: none;
-            font-weight: 500;
-            padding: 0.5rem 1rem;
-            transition: all 0.3s ease;
+            font-weight: 600;
+            font-size: 0.95rem;
+            position: relative;
+            letter-spacing: 0.02em;
+            transition: all 0.4s ease;
         }
 
-        .nav-link.active {
-            color: var(--gold-primary);
-            font-weight: 700;
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(135deg, var(--gold-primary), var(--gold-secondary));
+            transition: width 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            box-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
+        }
+
+        .nav-link:hover::after, .nav-link.active::after {
+            width: 100%;
+        }
+
+        .nav-link:hover, .nav-link.active {
+            color: #ffffff;
+            text-shadow: 0 0 15px rgba(212, 175, 55, 0.8);
         }
 
         .whatsapp-btn {
             background: linear-gradient(135deg, var(--gold-primary), var(--gold-secondary));
             color: var(--bg-primary);
-            padding: 0.75rem 1.5rem;
-            border-radius: 25px;
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
             text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s ease;
+            font-family: 'Inter', sans-serif;
+            font-weight: 800;
+            letter-spacing: 0.05em;
+            transition: all 0.4s ease;
             box-shadow: var(--shadow-gold);
         }
 
-        /* --- MEJORA: Responsive para Celulares --- */
+        .whatsapp-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 20px 50px rgba(212, 175, 55, 0.6);
+        }
+
+        /* Responsive para Celulares */
         @media (max-width: 768px) {
             .menu-icon { display: block; }
-            .whatsapp-btn { display: none; } /* Oculto en móvil para dar espacio */
+            .whatsapp-btn { display: none; }
 
             .nav-links {
                 display: none;
@@ -113,11 +171,12 @@
                 top: 100%;
                 left: 0;
                 width: 100%;
-                background: var(--glass-bg);
-                padding: 2rem;
+                background: rgba(0,0,0,0.98);
+                padding: 3rem 5%;
+                gap: 2.5rem;
                 text-align: center;
                 border-bottom: 1px solid var(--glass-border);
-                backdrop-filter: blur(20px);
+                backdrop-filter: blur(30px);
             }
 
             .nav-links.active {
@@ -127,132 +186,197 @@
 
         /* Hero Section */
         .hero {
-            height: 100vh;
+            height: 60vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             text-align: center;
-            padding: 0 2rem;
-            margin-top: 80px;
+            padding: 0 5%;
+            margin-top: 40px;
         }
 
         .hero h1 {
             font-family: 'Playfair Display', serif;
-            font-size: clamp(3rem, 8vw, 6rem);
-            margin-bottom: 1rem;
-            background: linear-gradient(135deg, var(--gold-primary), var(--gold-secondary));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        /* Product Grid */
-        .catalog-section {
-            max-width: 1400px;
-            margin: 5rem auto;
-            padding: 0 2rem;
-        }
-
-        .section-title {
-            font-family: 'Playfair Display', serif;
-            font-size: 3.5rem;
-            text-align: center;
-            margin-bottom: 4rem;
-            background: linear-gradient(135deg, var(--gold-primary), var(--gold-secondary));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .products-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 2.5rem;
-            margin-bottom: 5rem;
-        }
-
-        .product-card {
-            background: linear-gradient(145deg, rgba(10, 10, 10, 0.9), rgba(20, 20, 20, 0.9));
-            border: 1px solid var(--glass-border);
-            border-radius: 20px;
-            padding: 2.5rem 2rem;
-            text-align: center;
-            transition: all 0.4s ease;
-            position: relative;
-            overflow: hidden;
-            backdrop-filter: blur(10px);
-        }
-
-        .product-card:hover {
-            transform: translateY(-15px);
-            box-shadow: var(--shadow-card), var(--shadow-gold);
-            border-color: var(--gold-primary);
-        }
-
-        .product-icon {
-            font-size: 4.5rem;
+            font-size: clamp(3.2rem, 7vw, 5.5rem);
+            font-weight: 900;
             margin-bottom: 1.5rem;
             background: linear-gradient(135deg, var(--gold-primary), var(--gold-secondary));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
+            text-shadow: 0 0 40px rgba(212, 175, 55, 0.25);
+        }
+
+        .hero p {
+            font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+            font-weight: 300;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--text-secondary);
+        }
+
+        /* Product Grid */
+        .catalog-section {
+            max-width: 1600px;
+            margin: 0 auto 8rem;
+            padding: 0 5%;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-weight: 900;
+            font-size: clamp(2.8rem, 6vw, 4rem);
+            text-align: center;
+            margin-bottom: 5rem;
+            background: linear-gradient(135deg, var(--gold-primary), var(--gold-secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 0 0 40px rgba(212, 175, 55, 0.25);
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 3rem;
+        }
+
+        .product-card {
+            background: rgba(255,255,255,0.035);
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
+            border: 1px solid rgba(212,175,55,0.12);
+            border-radius: 28px;
+            padding: 4rem 2.5rem;
+            text-align: center;
+            transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .product-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -120%;
+            width: 120%;
+            height: 100%;
+            background: linear-gradient(135deg, 
+                transparent 0%, 
+                rgba(255,255,255,0.15) 50%, 
+                rgba(212,175,55,0.2) 60%, 
+                transparent 100%);
+            transition: left 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            z-index: 2;
+        }
+
+        .product-card:hover::before {
+            left: 120%;
+        }
+
+        .product-card:hover {
+            transform: translateY(-20px);
+            border-color: rgba(212,175,55,0.6);
+            box-shadow: 
+                0 40px 100px rgba(212, 175, 55, 0.25),
+                0 0 60px rgba(212, 175, 55, 0.15);
+        }
+
+        .product-icon {
+            width: 130px;
+            height: 130px;
+            background: linear-gradient(135deg, var(--gold-primary) 0%, var(--gold-secondary) 100%);
+            border-radius: 24px;
+            margin: 0 auto 2.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3.2rem;
+            color: #000000;
+            box-shadow: 0 20px 40px rgba(212, 175, 55, 0.3);
+            transition: all 0.4s ease;
+        }
+
+        .product-card:hover .product-icon {
+            transform: scale(1.1) rotate(5deg);
         }
 
         .product-title {
             font-family: 'Playfair Display', serif;
-            font-size: 1.8rem;
-            margin-bottom: 1rem;
+            font-weight: 700;
+            font-size: clamp(1.6rem, 2.5vw, 2rem);
+            margin-bottom: 1.5rem;
+            color: #ffffff;
+            letter-spacing: -0.01em;
         }
 
         .product-price {
+            font-family: 'Playfair Display', serif;
             font-size: 2.2rem;
             font-weight: 700;
-            color: var(--gold-primary);
-            margin-bottom: 2rem;
+            color: var(--gold-secondary);
+            margin-bottom: 2.5rem;
+            text-shadow: 0 0 15px rgba(212,175,55,0.4);
         }
 
         .order-btn {
             background: linear-gradient(135deg, var(--gold-primary), var(--gold-secondary));
-            color: var(--bg-primary);
+            color: var(--bg-primary) !important;
             border: none;
-            padding: 1rem 2.5rem;
+            padding: 1.2rem 3.5rem;
             border-radius: 50px;
             text-decoration: none;
-            font-weight: 600;
+            font-family: 'Inter', sans-serif;
+            font-weight: 800;
+            font-size: 1rem;
+            letter-spacing: 0.05em;
             display: inline-block;
             text-transform: uppercase;
-            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.4);
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
         }
 
         .order-btn:hover {
             transform: scale(1.05);
-            box-shadow: 0 10px 20px rgba(212,175,55,0.4);
+            box-shadow: 0 20px 50px rgba(212, 175, 55, 0.6);
         }
 
         .footer {
-            background: var(--glass-bg);
-            border-top: 1px solid var(--glass-border);
+            background: rgba(0,0,0,0.7);
+            backdrop-filter: blur(20px);
+            border-top: 1px solid rgba(212,175,55,0.15);
             text-align: center;
-            padding: 3rem 2rem;
+            padding: 4rem 2rem;
+        }
+
+        .footer p {
+            font-weight: 300;
+            opacity: 0.8;
+            letter-spacing: 0.05em;
+            font-size: 0.95rem;
         }
     </style>
 </head>
 <body>
 
+    <div class="cursor" id="cursor"></div>
+    <div class="cursor-follower" id="cursorFollower"></div>
+
     <nav class="navbar">
         <div class="nav-container">
-            <div class="logo">GeoVentas</div>
+            <a href="index.html" class="logo">GeoVentas</a>
             
-            <!-- AGREGADO: El botón de las rayas -->
             <div class="menu-icon" id="mobile-menu">
                 <i class="fas fa-bars"></i>
             </div>
 
             <ul class="nav-links" id="nav-list">
-                <li><a href="index.html" class="nav-link">Inicio</a></li>
+                <li><a href="index.html#inicio" class="nav-link">Inicio</a></li>
+                <li><a href="index.html#nosotros" class="nav-link">Quiénes Somos</a></li>
+                <li><a href="index.html#destacados" class="nav-link">Destacados</a></li>
                 <li><a href="productos.html" class="nav-link active">Catálogo</a></li>
-                <li><a href="https://linktr.ee/GeoVentas" class="nav-link" target="_blank">Contacto</a></li>
+                <li><a href="index.html#faq" class="nav-link">Preguntas Frecuentes</a></li>
             </ul>
             
             <a href="https://wa.me/569XXXXXXXX?text=Hola%20GeoVentas!" class="whatsapp-btn" target="_blank">
@@ -274,38 +398,65 @@
                 <div class="product-icon"><i class="fas fa-headphones"></i></div>
                 <h3 class="product-title">Auriculares Wireless</h3>
                 <div class="product-price">$29.990</div>
-                <a href="https://linktr.ee/GeoVentas" class="order-btn">ORDENAR</a>
+                <a href="https://linktr.ee/GeoVentas" class="order-btn" target="_blank">ORDENAR</a>
             </div>
 
             <div class="product-card">
                 <div class="product-icon"><i class="fas fa-bolt"></i></div>
                 <h3 class="product-title">Cargador Turbo 65W</h3>
                 <div class="product-price">$19.990</div>
-                <a href="https://linktr.ee/GeoVentas" class="order-btn">ORDENAR</a>
+                <a href="https://linktr.ee/GeoVentas" class="order-btn" target="_blank">ORDENAR</a>
             </div>
 
             <div class="product-card">
                 <div class="product-icon"><i class="fas fa-keyboard"></i></div>
                 <h3 class="product-title">Teclado Mecánico</h3>
                 <div class="product-price">$34.990</div>
-                <a href="https://linktr.ee/GeoVentas" class="order-btn">ORDENAR</a>
+                <a href="https://linktr.ee/GeoVentas" class="order-btn" target="_blank">ORDENAR</a>
             </div>
 
         </div>
     </section>
 
     <footer class="footer">
-        <p>© 2026 GeoVentas. Hualpén • Concepción</p>
+        <p>© 2026 GeoVentas. Elegancia y Seguridad Tecnológica en Hualpén • Concepción</p>
     </footer>
 
-    <!-- SCRIPT CORREGIDO -->
     <script>
+        // Control de Menú Responsive Móvil
         const menuBtn = document.getElementById('mobile-menu');
         const navList = document.getElementById('nav-list');
 
-        menuBtn.addEventListener('click', () => {
-            navList.classList.toggle('active');
+        if(menuBtn && navList) {
+            menuBtn.addEventListener('click', () => {
+                navList.classList.toggle('active');
+            });
+        }
+
+        // Sistema Interactivo de Cursor Luxury
+        const cursor = document.getElementById('cursor');
+        const cursorFollower = document.getElementById('cursorFollower');
+        let mouseX = 0, mouseY = 0, followerX = 0, followerY = 0;
+
+        document.addEventListener('mousemove', (e) => {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+            if(cursor) {
+                cursor.style.left = mouseX + 'px';
+                cursor.style.top = mouseY + 'px';
+            }
         });
+
+        function animateFollower() {
+            followerX += (mouseX - followerX) * 0.12;
+            followerY += (mouseY - followerY) * 0.12;
+            if(cursorFollower) {
+                cursorFollower.style.left = followerX + 'px';
+                cursorFollower.style.top = followerY + 'px';
+            }
+            requestAnimationFrame(animateFollower);
+        }
+        animateFollower();
     </script>
 
 </body>
