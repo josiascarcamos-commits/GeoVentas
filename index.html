@@ -194,6 +194,9 @@
             list-style: none;
             gap: 3.5rem;
         }
+<button id="theme-toggle" style="cursor: pointer; padding: 8px 16px; border-radius: 50px; background: linear-gradient(135deg, #d4af37 0%, #f9e27d 100%); color: #000000; border: none; font-family: 'Inter', sans-serif; font-weight: 600; font-size: 0.85rem; z-index: 1001; margin-left: 20px;">
+  🌙 Modo Oscuro
+</button>
 
         .nav-links a {
             color: rgba(255,255,255,0.92);
@@ -697,7 +700,28 @@
                 if(navLinks) navLinks.classList.remove('active');
             });
         });
+<script>
+    const toggleBtn = document.getElementById('theme-toggle');
+    const currentTheme = localStorage.getItem('theme');
 
+    if (currentTheme === 'light') {
+        document.documentElement.setAttribute('data-theme', 'light');
+        toggleBtn.textContent = '☀️ Modo Claro';
+    }
+
+    toggleBtn.addEventListener('click', () => {
+        let theme = document.documentElement.getAttribute('data-theme');
+        if (theme === 'light') {
+            document.documentElement.removeAttribute('data-theme');
+            localStorage.setItem('theme', 'dark');
+            toggleBtn.textContent = '🌙 Modo Oscuro';
+        } else {
+            document.documentElement.setAttribute('data-theme', 'light');
+            localStorage.setItem('theme', 'light');
+            toggleBtn.textContent = '☀️ Modo Claro';
+        }
+    });
+    
         // FAQ Acordeón
         document.querySelectorAll('.faq-question').forEach(button => {
             button.addEventListener('click', () => {
