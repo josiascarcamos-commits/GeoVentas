@@ -1,5 +1,16 @@
-<style>
+<
         @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Inter:wght@300;400;600&display=swap');
+:root {
+    --bg-main: #000000;              /* Negro original */
+    --text-main: rgba(255,255,255,0.92); /* Blanco original */
+    --card-bg: rgba(255,255,255,0.035);  /* Fondo transparente original */
+}
+
+[data-theme="light"] {
+    --bg-main: #ffffff;              /* Blanco para el día */
+    --text-main: #121212;            /* Texto oscuro */
+    --card-bg: #f4f4f6;              /* Tarjetas gris claro */
+}
 
         * {
             margin: 0;
@@ -8,13 +19,14 @@
         }
 
         body {
-            background: #000000;
-            color: rgba(255,255,255,0.92);
-            font-family: 'Inter', sans-serif;
-            font-weight: 300;
-            line-height: 1.8;
-            overflow-x: hidden;
-            cursor: none;
+    background: var(--bg-main);
+    color: var(--text-main);
+    transition: background 0.3s ease, color 0.3s ease;
+    font-family: 'Inter', sans-serif;
+    font-weight: 300;
+    line-height: 1.8;
+    overflow-x: hidden;
+    cursor: none;
         }
 
         /* Preloader */
@@ -587,9 +599,10 @@
             }
 
             .card-luxury {
-                padding: 2.5rem 2rem;
-                margin: 0 1rem;
+    padding: 2.5rem 2rem;
+    margin: 0 1rem;
             }
+                
 
             .faq-question {
                 padding: 2rem 2rem;
