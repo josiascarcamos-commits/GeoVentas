@@ -1,4 +1,4 @@
-!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
     <!-- Google tag (gtag.js) -->
@@ -261,17 +261,18 @@
 
         .product-card:hover::before { left: 120%; }
 
-        /* Estructura del Slider de Imágenes */
+        /* CORRECCIÓN: Contenedor adaptativo y escalado proporcional sin cortes */
         .product-web-slider {
             position: relative;
             width: 100%;
-            height: 260px;
+            aspect-ratio: 1 / 1; /* Forzamos un contenedor perfectamente cuadrado */
+            max-height: 280px;
             overflow-x: auto;
             scroll-snap-type: x mandatory;
             scroll-behavior: smooth;
             border-radius: 20px;
             margin-bottom: 1.5rem;
-            background: rgba(0, 0, 0, 0.4);
+            background: rgba(0, 0, 0, 0.2);
             border: 1px solid rgba(212,175,55,0.1);
         }
 
@@ -293,16 +294,17 @@
             overflow: hidden;
         }
 
+        /* CORRECCIÓN: "contain" evita el corte y encaja la imagen completa */
         .magnify-img {
             width: 100%;
             height: 100%;
-            object-fit: cover;
+            object-fit: contain; 
             transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1);
             cursor: zoom-in;
         }
 
         .magnify-img:active {
-            transform: scale(1.3);
+            transform: scale(1.25);
             cursor: grabbing;
         }
 
@@ -311,7 +313,7 @@
             bottom: 12px;
             left: 50%;
             transform: translateX(-50%);
-            background: rgba(0, 0, 0, 0.8);
+            background: rgba(0, 0, 0, 0.85);
             border: 1px solid rgba(212, 175, 55, 0.3);
             color: var(--gold-secondary);
             padding: 4px 14px;
@@ -395,7 +397,7 @@
             .nav-links.active { display: flex; }
             
             .product-card { padding: 2rem 1.5rem 2.5rem 1.5rem; }
-            .product-web-slider { height: 210px; }
+            .product-web-slider { max-height: 260px; }
             .product-card:hover { transform: translateY(-5px) scale(1.01); }
         }
 
@@ -412,7 +414,6 @@
             font-size: 0.9rem;
         }
 
-        /* REPARACIÓN: Animaciones */
         @keyframes cardReveal {
             to {
                 opacity: 1;
@@ -453,8 +454,8 @@
     </nav>
 
     <header class="hero" id="inicio">
-        <!-- RUTA DEL LOGO ACTUALIZADA -->
-        <img src="logo-geoventas.png" alt="GeoVentas Logo Oficial" class="hero-logo">
+        <!-- SE RESTABLECE TU LOGO ANTERIOR -->
+        <img src="IMG_20260513_074612_172 (1).png" alt="GeoVentas Logo Oficial" class="hero-logo">
         <p>Hualpén • Concepción</p>
     </header>
 
@@ -467,10 +468,10 @@
                 <div class="product-web-slider">
                     <div class="slider-track">
                         <div class="slide-item">
-                            <img src="cargador-essager-1.png" alt="Cargador de Auto Essager 30W" class="magnify-img">
+                            <img src="cargador-principal.png" alt="Cargador de Auto Essager 30W" class="magnify-img">
                         </div>
                         <div class="slide-item">
-                            <img src="cargador-essager-2.png" alt="Compatibilidad Cargador Essager" class="magnify-img">
+                            <img src="cargador-compatibilidad.png" alt="Compatibilidad Cargador Essager" class="magnify-img">
                         </div>
                     </div>
                     <div class="slider-indicator"><i class="fas fa-left-right"></i> Desliza para ver más</div>
@@ -487,16 +488,16 @@
                 <div class="product-web-slider">
                     <div class="slider-track">
                         <div class="slide-item">
-                            <img src="parlante-g200-1.png" alt="Parlante Inalámbrico G200" class="magnify-img">
+                            <img src="parlante-principal.png" alt="Parlante Inalámbrico G200" class="magnify-img">
                         </div>
                         <div class="slide-item">
-                            <img src="parlante-g200-2.png" alt="GeoVentas Parlante G200" class="magnify-img">
+                            <img src="parlante-vista-mesa.png" alt="GeoVentas Parlante G200" class="magnify-img">
                         </div>
                         <div class="slide-item">
-                            <img src="parlante-g200-3.png" alt="Soporte Magnético Imán" class="magnify-img">
+                            <img src="parlante-iman-magnetico.png" alt="Soporte Magnético Imán" class="magnify-img">
                         </div>
                         <div class="slide-item">
-                            <img src="parlante-g200-4.png" alt="Luz RGB y Batería" class="magnify-img">
+                            <img src="parlante-luces-bateria.png" alt="Luz RGB y Batería" class="magnify-img">
                         </div>
                     </div>
                     <div class="slider-indicator"><i class="fas fa-left-right"></i> Desliza para ver más</div>
