@@ -173,7 +173,6 @@
             text-align: center;
             padding: 0 5%;
             margin-top: 60px;
-            /* Animación de entrada suave para el logo */
             animation: fadeInHero 1.2s cubic-bezier(0.215, 0.610, 0.355, 1) forwards;
         }
 
@@ -219,7 +218,6 @@
             gap: 3rem;
         }
 
-        /* --- NUEVO: Animación de Entrada Escalada para las Tarjetas --- */
         .product-card {
             background: rgba(255,255,255,0.035);
             backdrop-filter: blur(25px);
@@ -230,21 +228,17 @@
             text-align: center;
             position: relative;
             overflow: hidden;
-            opacity: 0; /* Comienza invisible */
+            opacity: 0;
             transform: translateY(40px) scale(0.95);
-            /* Transición combinada para cargas y hovers */
             transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1), 
                         border-color 0.5s ease, 
                         box-shadow 0.5s ease;
             animation: cardReveal 0.8s cubic-bezier(0.25, 1, 0.5, 1) forwards;
         }
 
-        /* Tiempos desfasados para que entren una por una de forma fluida */
         .product-card:nth-child(1) { animation-delay: 0.2s; }
         .product-card:nth-child(2) { animation-delay: 0.4s; }
-        .product-card:nth-child(3) { animation-delay: 0.6s; }
 
-        /* Destello metálico diagonal incorporado */
         .product-card::before {
             content: '';
             position: absolute;
@@ -261,15 +255,13 @@
             z-index: 2;
         }
 
-        /* --- NUEVO: Animación Dinámica al Tocar / Hover --- */
         .product-card:hover {
-            transform: translateY(-15px) scale(1.02); /* Se eleva y expande un poco */
+            transform: translateY(-15px) scale(1.02);
             border-color: rgba(212,175,55,0.7);
             box-shadow: 0 30px 70px rgba(212, 175, 55, 0.25),
                         0 0 40px rgba(212, 175, 55, 0.1);
         }
 
-        /* Al hacer clic o mantener presionado en celulares */
         .product-card:active {
             transform: translateY(-5px) scale(0.99);
             transition: transform 0.1s ease;
@@ -277,28 +269,6 @@
 
         .product-card:hover::before {
             left: 120%;
-        }
-
-        /* Animación del Icono de la Caja */
-        .product-icon {
-            width: 130px;
-            height: 130px;
-            background: linear-gradient(135deg, var(--gold-primary) 0%, var(--gold-secondary) 100%);
-            border-radius: 24px;
-            margin: 0 auto 2.5rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 3.2rem;
-            color: #000000;
-            box-shadow: 0 20px 40px rgba(212, 175, 55, 0.2);
-            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease;
-        }
-
-        /* El icono salta e inclina ligeramente al activarse */
-        .product-card:hover .product-icon {
-            transform: scale(1.12) rotate(4deg);
-            box-shadow: 0 25px 50px rgba(212, 175, 55, 0.4);
         }
 
         .product-title {
@@ -329,7 +299,6 @@
             transform: scale(1.05);
         }
 
-        /* Botón de Ordenar Premium */
         .order-btn {
             background: linear-gradient(135deg, var(--gold-primary), var(--gold-secondary));
             color: var(--bg-primary) !important;
@@ -352,7 +321,94 @@
             box-shadow: 0 15px 40px rgba(212, 175, 55, 0.5);
         }
 
-        /* --- KEYFRAMES CSS PARA LAS ANIMACIONES --- */
+        /* --- ESTILOS EXCLUSIVOS DEL SLIDER WEB --- */
+        .card-with-slider {
+            padding: 2.5rem 2rem 3.5rem 2rem !important;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .product-web-slider {
+            position: relative;
+            width: 100%;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            scroll-behavior: smooth;
+            border-radius: 18px;
+            margin-bottom: 2rem;
+            border: 1px solid rgba(212,175,55,0.05);
+            background: rgba(0, 0, 0, 0.3);
+        }
+
+        .product-web-slider::-webkit-scrollbar {
+            display: none;
+        }
+
+        .slider-track {
+            display: flex;
+            width: 100%;
+        }
+
+        .slide-item {
+            min-width: 100%;
+            scroll-snap-align: start;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .magnify-img {
+            width: 100%;
+            height: auto;
+            display: block;
+            object-fit: cover;
+            transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+            cursor: zoom-in;
+        }
+
+        .magnify-img:active {
+            transform: scale(1.4);
+            cursor: grabbing;
+        }
+
+        .slider-indicator {
+            position: absolute;
+            bottom: 12px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0, 0, 0, 0.75);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            color: var(--gold-secondary);
+            padding: 4px 14px;
+            border-radius: 30px;
+            font-size: 0.7rem;
+            font-weight: 500;
+            letter-spacing: 0.05em;
+            pointer-events: none;
+            opacity: 0.8;
+            transition: opacity 0.3s ease;
+            white-space: nowrap;
+        }
+
+        .product-card:hover .slider-indicator {
+            opacity: 1;
+            border-color: var(--gold-primary);
+        }
+
+        .product-description-text {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            font-weight: 300;
+            margin-bottom: 1.5rem;
+            padding: 0 0.5rem;
+            line-height: 1.5;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
         @keyframes cardReveal {
             to {
                 opacity: 1;
@@ -361,14 +417,8 @@
         }
 
         @keyframes fadeInHero {
-            from {
-                opacity: 0;
-                transform: scale(0.97);
-            }
-            to {
-                opacity: 1;
-                transform: scale(1);
-            }
+            from { opacity: 0; transform: scale(0.97); }
+            to { opacity: 1; transform: scale(1); }
         }
 
         /* Responsive Móvil */
@@ -393,7 +443,6 @@
 
             .nav-links.active { display: flex; }
             
-            /* Ajuste de animación en móvil para mejor rendimiento */
             .product-card:hover {
                 transform: translateY(-8px) scale(1.01);
             }
@@ -451,24 +500,49 @@
         <h2 class="section-title">Nuestros Productos</h2>
         <div class="products-grid">
             
-            <div class="product-card">
-                <div class="product-icon"><i class="fas fa-headphones"></i></div>
-                <h3 class="product-title">Auriculares Wireless</h3>
-                <div class="product-price">$29.990</div>
+            <!-- PRODUCTO 1: CARGADOR DE AUTO ESSAGER 30W -->
+            <div class="product-card card-with-slider">
+                <div class="product-web-slider">
+                    <div class="slider-track">
+                        <div class="slide-item">
+                            <img src="img/2_20260525_210820_0001.png" alt="Cargador de Auto Essager 30W" class="magnify-img">
+                        </div>
+                        <div class="slide-item">
+                            <img src="img/1_20260525_210820_0000.png" alt="Compatibilidad Cargador Essager" class="magnify-img">
+                        </div>
+                    </div>
+                    <div class="slider-indicator"><i class="fas fa-left-right"></i> Desliza para especificaciones</div>
+                </div>
+
+                <h3 class="product-title">Cargador de Auto 30W Max</h3>
+                <p class="product-description-text">Doble puerto inteligente (Type-C + USB). Carga rápida y eficiente para smartphone, tablet y laptop en ruta.</p>
+                <div class="product-price">$14.990</div>
                 <a href="https://linktr.ee/GeoVentas" class="order-btn" target="_blank">ORDENAR</a>
             </div>
 
-            <div class="product-card">
-                <div class="product-icon"><i class="fas fa-bolt"></i></div>
-                <h3 class="product-title">Cargador Turbo 65W</h3>
-                <div class="product-price">$19.990</div>
-                <a href="https://linktr.ee/GeoVentas" class="order-btn" target="_blank">ORDENAR</a>
-            </div>
+            <!-- PRODUCTO 2: PARLANTE INALÁMBRICO G200 -->
+            <div class="product-card card-with-slider">
+                <div class="product-web-slider">
+                    <div class="slider-track">
+                        <div class="slide-item">
+                            <img src="img/4_20260525_210820_0003.png" alt="Parlante Inalámbrico G200" class="magnify-img">
+                        </div>
+                        <div class="slide-item">
+                            <img src="img/5_20260525_210820_0004.png" alt="GeoVentas Parlante G200" class="magnify-img">
+                        </div>
+                        <div class="slide-item">
+                            <img src="img/6_20260525_210820_0005.png" alt="Soporte Magnético Imán" class="magnify-img">
+                        </div>
+                        <div class="slide-item">
+                            <img src="img/3_20260525_210820_0002.png" alt="Luz RGB y Batería" class="magnify-img">
+                        </div>
+                    </div>
+                    <div class="slider-indicator"><i class="fas fa-left-right"></i> Desliza para ver detalles</div>
+                </div>
 
-            <div class="product-card">
-                <div class="product-icon"><i class="fas fa-keyboard"></i></div>
-                <h3 class="product-title">Teclado Mecánico</h3>
-                <div class="product-price">$34.990</div>
+                <h3 class="product-title">Parlante Magnético G200</h3>
+                <p class="product-description-text">Sonido de alta fidelidad, fijación con imán fuerte de alta densidad y luces RGB rítmicas con 5-8h de batería continua.</p>
+                <div class="product-price">$24.990</div>
                 <a href="https://linktr.ee/GeoVentas" class="order-btn" target="_blank">ORDENAR</a>
             </div>
 
