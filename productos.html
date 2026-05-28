@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-XX3Q937933"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XX3Q937933"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
@@ -165,46 +164,45 @@
 
         /* Hero Section */
         .hero {
-            height: 65vh;
+            height: clamp(250px, 45vh, 400px);
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             text-align: center;
             padding: 0 5%;
-            margin-top: 60px;
+            margin-top: 80px;
             animation: fadeInHero 1.2s cubic-bezier(0.215, 0.610, 0.355, 1) forwards;
         }
 
         .hero-logo {
-            max-width: clamp(200px, 45vw, 320px);
+            max-width: clamp(160px, 40vw, 260px);
             height: auto;
-            margin-bottom: 1.5rem;
+            margin-bottom: 1rem;
             filter: drop-shadow(0 0 35px rgba(212, 175, 55, 0.4));
         }
 
         .hero p {
-            font-size: clamp(1rem, 2.2vw, 1.25rem);
+            font-size: 0.9rem;
             font-weight: 300;
             letter-spacing: 0.2em;
             text-transform: uppercase;
             color: var(--text-secondary);
-            margin-top: 0.5rem;
         }
 
         /* Product Grid & Section */
         .catalog-section {
             max-width: 1600px;
-            margin: 0 auto 8rem;
+            margin: 0 auto 6rem;
             padding: 0 5%;
         }
 
         .section-title {
             font-family: 'Playfair Display', serif;
             font-weight: 900;
-            font-size: clamp(2.5rem, 5.5vw, 3.8rem);
+            font-size: clamp(2.2rem, 5vw, 3.5rem);
             text-align: center;
-            margin-bottom: 5rem;
+            margin-bottom: 4rem;
             background: linear-gradient(135deg, var(--gold-primary), var(--gold-secondary));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -214,8 +212,8 @@
 
         .products-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 3rem;
+            grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
+            gap: 2.5rem;
         }
 
         .product-card {
@@ -224,7 +222,7 @@
             -webkit-backdrop-filter: blur(25px);
             border: 1px solid rgba(212,175,55,0.12);
             border-radius: 28px;
-            padding: 4rem 2.5rem;
+            padding: 2.5rem 2rem 3rem 2rem;
             text-align: center;
             position: relative;
             overflow: hidden;
@@ -234,6 +232,9 @@
                         border-color 0.5s ease, 
                         box-shadow 0.5s ease;
             animation: cardReveal 0.8s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
         }
 
         .product-card:nth-child(1) { animation-delay: 0.2s; }
@@ -246,128 +247,61 @@
             left: -120%;
             width: 120%;
             height: 100%;
-            background: linear-gradient(135deg, 
-                transparent 0%, 
-                rgba(255,255,255,0.1) 50%, 
-                rgba(212,175,55,0.15) 60%, 
-                transparent 100%);
+            background: linear-gradient(135deg, transparent 0%, rgba(255,255,255,0.1) 50%, rgba(212,175,55,0.15) 60%, transparent 100%);
             transition: left 0.7s cubic-bezier(0.25, 1, 0.5, 1);
             z-index: 2;
         }
 
         .product-card:hover {
-            transform: translateY(-15px) scale(1.02);
+            transform: translateY(-12px) scale(1.02);
             border-color: rgba(212,175,55,0.7);
-            box-shadow: 0 30px 70px rgba(212, 175, 55, 0.25),
-                        0 0 40px rgba(212, 175, 55, 0.1);
+            box-shadow: 0 30px 70px rgba(212, 175, 55, 0.25);
         }
 
-        .product-card:active {
-            transform: translateY(-5px) scale(0.99);
-            transition: transform 0.1s ease;
-        }
+        .product-card:hover::before { left: 120%; }
 
-        .product-card:hover::before {
-            left: 120%;
-        }
-
-        .product-title {
-            font-family: 'Playfair Display', serif;
-            font-weight: 700;
-            font-size: clamp(1.6rem, 2.5vw, 2rem);
-            margin-bottom: 1.5rem;
-            color: #ffffff;
-            letter-spacing: -0.01em;
-            transition: color 0.3s ease;
-        }
-        
-        .product-card:hover .product-title {
-            color: var(--gold-secondary);
-        }
-
-        .product-price {
-            font-family: 'Playfair Display', serif;
-            font-size: 2.2rem;
-            font-weight: 700;
-            color: var(--gold-secondary);
-            margin-bottom: 2.5rem;
-            text-shadow: 0 0 15px rgba(212,175,55,0.3);
-            transition: transform 0.3s ease;
-        }
-
-        .product-card:hover .product-price {
-            transform: scale(1.05);
-        }
-
-        .order-btn {
-            background: linear-gradient(135deg, var(--gold-primary), var(--gold-secondary));
-            color: var(--bg-primary) !important;
-            border: none;
-            padding: 1.2rem 3.5rem;
-            border-radius: 50px;
-            text-decoration: none;
-            font-family: 'Inter', sans-serif;
-            font-weight: 800;
-            font-size: 1rem;
-            letter-spacing: 0.05em;
-            display: inline-block;
-            text-transform: uppercase;
-            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.3);
-            transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
-        }
-
-        .order-btn:hover {
-            transform: scale(1.08);
-            box-shadow: 0 15px 40px rgba(212, 175, 55, 0.5);
-        }
-
-        /* --- ESTILOS EXCLUSIVOS DEL SLIDER WEB --- */
-        .card-with-slider {
-            padding: 2.5rem 2rem 3.5rem 2rem !important;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-        }
-
+        /* Estructura del Slider de Imágenes */
         .product-web-slider {
             position: relative;
             width: 100%;
+            height: 260px;
             overflow-x: auto;
             scroll-snap-type: x mandatory;
             scroll-behavior: smooth;
-            border-radius: 18px;
-            margin-bottom: 2rem;
-            border: 1px solid rgba(212,175,55,0.05);
-            background: rgba(0, 0, 0, 0.3);
+            border-radius: 20px;
+            margin-bottom: 1.5rem;
+            background: rgba(0, 0, 0, 0.4);
+            border: 1px solid rgba(212,175,55,0.1);
         }
 
-        .product-web-slider::-webkit-scrollbar {
-            display: none;
-        }
+        .product-web-slider::-webkit-scrollbar { display: none; }
 
         .slider-track {
             display: flex;
             width: 100%;
+            height: 100%;
         }
 
         .slide-item {
             min-width: 100%;
+            height: 100%;
             scroll-snap-align: start;
-            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             overflow: hidden;
         }
 
         .magnify-img {
             width: 100%;
-            height: auto;
-            display: block;
+            height: 100%;
             object-fit: cover;
             transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1);
             cursor: zoom-in;
         }
 
         .magnify-img:active {
-            transform: scale(1.4);
+            transform: scale(1.3);
             cursor: grabbing;
         }
 
@@ -376,53 +310,70 @@
             bottom: 12px;
             left: 50%;
             transform: translateX(-50%);
-            background: rgba(0, 0, 0, 0.75);
+            background: rgba(0, 0, 0, 0.8);
             border: 1px solid rgba(212, 175, 55, 0.3);
             color: var(--gold-secondary);
             padding: 4px 14px;
             border-radius: 30px;
-            font-size: 0.7rem;
-            font-weight: 500;
-            letter-spacing: 0.05em;
+            font-size: 0.75rem;
             pointer-events: none;
-            opacity: 0.8;
-            transition: opacity 0.3s ease;
             white-space: nowrap;
+            z-index: 5;
         }
 
-        .product-card:hover .slider-indicator {
-            opacity: 1;
-            border-color: var(--gold-primary);
+        .product-title {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            font-size: 1.7rem;
+            margin-bottom: 1rem;
+            color: #ffffff;
         }
+        
+        .product-card:hover .product-title { color: var(--gold-secondary); }
 
         .product-description-text {
             color: var(--text-secondary);
             font-size: 0.9rem;
             font-weight: 300;
             margin-bottom: 1.5rem;
-            padding: 0 0.5rem;
             line-height: 1.5;
-            display: -webkit-box;
-            -webkit-line-clamp: 3;
-            -webkit-box-orient: vertical;
-            overflow: hidden;
-            text-overflow: ellipsis;
+            padding: 0 0.5rem;
         }
 
-        @keyframes cardReveal {
-            to {
-                opacity: 1;
-                transform: translateY(0) scale(1);
-            }
+        .product-price {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: var(--gold-secondary);
+            margin-bottom: 2rem;
         }
 
-        @keyframes fadeInHero {
-            from { opacity: 0; transform: scale(0.97); }
-            to { opacity: 1; transform: scale(1); }
+        .order-btn {
+            background: linear-gradient(135deg, var(--gold-primary), var(--gold-secondary));
+            color: var(--bg-primary) !important;
+            border: none;
+            padding: 1rem 3rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-family: 'Inter', sans-serif;
+            font-weight: 800;
+            font-size: 0.95rem;
+            letter-spacing: 0.05em;
+            display: inline-block;
+            text-transform: uppercase;
+            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.3);
+            transition: all 0.3s ease;
         }
 
-        /* Responsive Móvil */
+        .order-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 15px 40px rgba(212, 175, 55, 0.5);
+        }
+
         @media (max-width: 768px) {
+            body { cursor: default; }
+            .cursor, .cursor-follower { display: none; }
+            
             .menu-icon { display: block; }
             .whatsapp-btn { display: none; }
 
@@ -438,19 +389,17 @@
                 gap: 2.5rem;
                 text-align: center;
                 border-bottom: 1px solid var(--glass-border);
-                backdrop-filter: blur(30px);
             }
 
             .nav-links.active { display: flex; }
             
-            .product-card:hover {
-                transform: translateY(-8px) scale(1.01);
-            }
+            .product-card { padding: 2rem 1.5rem 2.5rem 1.5rem; }
+            .product-web-slider { height: 210px; }
+            .product-card:hover { transform: translateY(-5px) scale(1.01); }
         }
 
         .footer {
             background: rgba(0,0,0,0.7);
-            backdrop-filter: blur(20px);
             border-top: 1px solid rgba(212,175,55,0.15);
             text-align: center;
             padding: 4rem 2rem;
@@ -459,8 +408,7 @@
         .footer p {
             font-weight: 300;
             opacity: 0.8;
-            letter-spacing: 0.05em;
-            font-size: 0.95rem;
+            font-size: 0.9rem;
         }
     </style>
 </head>
@@ -500,18 +448,17 @@
         <h2 class="section-title">Nuestros Productos</h2>
         <div class="products-grid">
             
-            <!-- PRODUCTO 1: CARGADOR DE AUTO ESSAGER 30W -->
-            <div class="product-card card-with-slider">
+            <div class="product-card">
                 <div class="product-web-slider">
                     <div class="slider-track">
                         <div class="slide-item">
-                            <img src="2_20260525_210820_0001.png" alt="Cargador de Auto Essager 30W" class="magnify-img">
+                            <img src="2_20260525_210820_0001.PNG" alt="Cargador de Auto Essager 30W" class="magnify-img">
                         </div>
                         <div class="slide-item">
-                            <img src="1_20260525_210820_0000.png" alt="Compatibilidad Cargador Essager" class="magnify-img">
+                            <img src="1_20260525_210820_0000.PNG" alt="Compatibilidad Cargador Essager" class="magnify-img">
                         </div>
                     </div>
-                    <div class="slider-indicator"><i class="fas fa-left-right"></i> Desliza para especificaciones</div>
+                    <div class="slider-indicator"><i class="fas fa-left-right"></i> Desliza para ver más</div>
                 </div>
 
                 <h3 class="product-title">Cargador de Auto 30W Max</h3>
@@ -520,28 +467,27 @@
                 <a href="https://linktr.ee/GeoVentas" class="order-btn" target="_blank">ORDENAR</a>
             </div>
 
-            <!-- PRODUCTO 2: PARLANTE INALÁMBRICO G200 -->
-            <div class="product-card card-with-slider">
+            <div class="product-card">
                 <div class="product-web-slider">
                     <div class="slider-track">
                         <div class="slide-item">
-                            <img src="4_20260525_210820_0003.png" alt="Parlante Inalámbrico G200" class="magnify-img">
+                            <img src="4_20260525_210820_0003.PNG" alt="Parlante Inalámbrico G200" class="magnify-img">
                         </div>
                         <div class="slide-item">
-                            <img src="5_20260525_210820_0004.png" alt="GeoVentas Parlante G200" class="magnify-img">
+                            <img src="5_20260525_210820_0004.PNG" alt="GeoVentas Parlante G200" class="magnify-img">
                         </div>
                         <div class="slide-item">
-                            <img src="6_20260525_210820_0005.png" alt="Soporte Magnético Imán" class="magnify-img">
+                            <img src="6_20260525_210820_0005.PNG" alt="Soporte Magnético Imán" class="magnify-img">
                         </div>
                         <div class="slide-item">
-                            <img src="3_20260525_210820_0002.png" alt="Luz RGB y Batería" class="magnify-img">
+                            <img src="3_20260525_210820_0002.PNG" alt="Luz RGB y Batería" class="magnify-img">
                         </div>
                     </div>
-                    <div class="slider-indicator"><i class="fas fa-left-right"></i> Desliza para ver detalles</div>
+                    <div class="slider-indicator"><i class="fas fa-left-right"></i> Desliza para ver más</div>
                 </div>
 
                 <h3 class="product-title">Parlante Magnético G200</h3>
-                <p class="product-description-text">Sonido de alta fidelidad, fijación con imán fuerte de alta densidad y luces RGB rítmicas con 5-8h de batería continua.</p>
+                <p class="product-description-text">Sonido de alta fidelidad, fijación con imán de alta densidad y luces RGB rítmicas con 5-8h de batería continua.</p>
                 <div class="product-price">$24.990</div>
                 <a href="https://linktr.ee/GeoVentas" class="order-btn" target="_blank">ORDENAR</a>
             </div>
@@ -564,30 +510,32 @@
             });
         }
 
-        // Animación de los Cursores Dorados
+        // Animación de los Cursores Dorados (Solo en PC)
         const cursor = document.getElementById('cursor');
         const cursorFollower = document.getElementById('cursorFollower');
         let mouseX = 0, mouseY = 0, followerX = 0, followerY = 0;
 
-        document.addEventListener('mousemove', (e) => {
-            mouseX = e.clientX;
-            mouseY = e.clientY;
-            if(cursor) {
-                cursor.style.left = mouseX + 'px';
-                cursor.style.top = mouseY + 'px';
-            }
-        });
+        if (window.innerWidth > 768) {
+            document.addEventListener('mousemove', (e) => {
+                mouseX = e.clientX;
+                mouseY = e.clientY;
+                if(cursor) {
+                    cursor.style.left = mouseX + 'px';
+                    cursor.style.top = mouseY + 'px';
+                }
+            });
 
-        function animateFollower() {
-            followerX += (mouseX - followerX) * 0.12;
-            followerY += (mouseY - followerY) * 0.12;
-            if(cursorFollower) {
-                cursorFollower.style.left = followerX + 'px';
-                cursorFollower.style.top = followerY + 'px';
+            function animateFollower() {
+                followerX += (mouseX - followerX) * 0.12;
+                followerY += (mouseY - followerY) * 0.12;
+                if(cursorFollower) {
+                    cursorFollower.style.left = followerX + 'px';
+                    cursorFollower.style.top = followerY + 'px';
+                }
+                requestAnimationFrame(animateFollower);
             }
-            requestAnimationFrame(animateFollower);
+            animateFollower();
         }
-        animateFollower();
     </script>
 
 </body>
