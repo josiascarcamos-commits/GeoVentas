@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XX3Q937933"></script>
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XX3Q937933"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
@@ -410,6 +411,18 @@
             opacity: 0.8;
             font-size: 0.9rem;
         }
+
+        /* REPARACIÓN: Definición de animaciones faltantes */
+        @keyframes cardReveal {
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+        @keyframes fadeInHero {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
     </style>
 </head>
 <body>
@@ -448,6 +461,7 @@
         <h2 class="section-title">Nuestros Productos</h2>
         <div class="products-grid">
             
+            <!-- PRODUCTO 1: CARGADOR DE AUTO ESSAGER 30W -->
             <div class="product-card">
                 <div class="product-web-slider">
                     <div class="slider-track">
@@ -467,6 +481,7 @@
                 <a href="https://linktr.ee/GeoVentas" class="order-btn" target="_blank">ORDENAR</a>
             </div>
 
+            <!-- PRODUCTO 2: PARLANTE INALÁMBRICO G200 -->
             <div class="product-card">
                 <div class="product-web-slider">
                     <div class="slider-track">
