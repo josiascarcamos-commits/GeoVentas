@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-XX3Q937933"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XX3Q937933"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
@@ -261,11 +260,11 @@
 
         .product-card:hover::before { left: 120%; }
 
-        /* CORRECCIÓN: Contenedor adaptativo y escalado proporcional sin cortes */
+        /* Contenedor adaptativo */
         .product-web-slider {
             position: relative;
             width: 100%;
-            aspect-ratio: 1 / 1; /* Forzamos un contenedor perfectamente cuadrado */
+            aspect-ratio: 1 / 1; 
             max-height: 280px;
             overflow-x: auto;
             scroll-snap-type: x mandatory;
@@ -294,7 +293,7 @@
             overflow: hidden;
         }
 
-        /* CORRECCIÓN: "contain" evita el corte y encaja la imagen completa */
+        /* "object-fit: contain" evita que las imágenes cuadradas de AliExpress se corten en móvil */
         .magnify-img {
             width: 100%;
             height: 100%;
@@ -454,7 +453,6 @@
     </nav>
 
     <header class="hero" id="inicio">
-        <!-- SE RESTABLECE TU LOGO ANTERIOR -->
         <img src="IMG_20260513_074612_172 (1).png" alt="GeoVentas Logo Oficial" class="hero-logo">
         <p>Hualpén • Concepción</p>
     </header>
@@ -463,18 +461,14 @@
         <h2 class="section-title">Nuestros Productos</h2>
         <div class="products-grid">
             
-            <!-- PRODUCTO 1: CARGADOR DE AUTO ESSAGER 30W -->
             <div class="product-card">
                 <div class="product-web-slider">
                     <div class="slider-track">
                         <div class="slide-item">
-                            <img src="cargador-principal.png" alt="Cargador de Auto Essager 30W" class="magnify-img">
-                        </div>
-                        <div class="slide-item">
-                            <img src="cargador-compatibilidad.png" alt="Compatibilidad Cargador Essager" class="magnify-img">
+                            <img src="cargador-essager-1.png" alt="Cargador de Auto Essager 30W" class="magnify-img">
                         </div>
                     </div>
-                    <div class="slider-indicator"><i class="fas fa-left-right"></i> Desliza para ver más</div>
+                    <div class="slider-indicator"><i class="fas fa-left-right"></i> Vista de producto</div>
                 </div>
 
                 <h3 class="product-title">Cargador de Auto 30W Max</h3>
@@ -483,21 +477,20 @@
                 <a href="https://linktr.ee/GeoVentas" class="order-btn" target="_blank">ORDENAR</a>
             </div>
 
-            <!-- PRODUCTO 2: PARLANTE INALÁMBRICO G200 -->
             <div class="product-card">
                 <div class="product-web-slider">
                     <div class="slider-track">
                         <div class="slide-item">
-                            <img src="parlante-principal.png" alt="Parlante Inalámbrico G200" class="magnify-img">
+                            <img src="parlante-g200-1.png" alt="Parlante Inalámbrico G200 - Vista 1" class="magnify-img">
                         </div>
                         <div class="slide-item">
-                            <img src="parlante-vista-mesa.png" alt="GeoVentas Parlante G200" class="magnify-img">
+                            <img src="parlante-g200-2.png" alt="Parlante Inalámbrico G200 - Vista 2" class="magnify-img">
                         </div>
                         <div class="slide-item">
-                            <img src="parlante-iman-magnetico.png" alt="Soporte Magnético Imán" class="magnify-img">
+                            <img src="parlante-g200-3.png" alt="Parlante Inalámbrico G200 - Vista 3" class="magnify-img">
                         </div>
                         <div class="slide-item">
-                            <img src="parlante-luces-bateria.png" alt="Luz RGB y Batería" class="magnify-img">
+                            <img src="parlante-g200-4.png" alt="Parlante Inalámbrico G200 - Vista 4" class="magnify-img">
                         </div>
                     </div>
                     <div class="slider-indicator"><i class="fas fa-left-right"></i> Desliza para ver más</div>
