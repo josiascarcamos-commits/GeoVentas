@@ -237,9 +237,6 @@
             justify-content: space-between;
         }
 
-        .product-card:nth-child(1) { animation-delay: 0.2s; }
-        .product-card:nth-child(2) { animation-delay: 0.4s; }
-
         .product-card::before {
             content: '';
             position: absolute;
@@ -293,7 +290,6 @@
             overflow: hidden;
         }
 
-        /* "object-fit: contain" evita que las imágenes cuadradas de AliExpress se corten en móvil */
         .magnify-img {
             width: 100%;
             height: 100%;
@@ -348,6 +344,15 @@
             font-weight: 700;
             color: var(--gold-secondary);
             margin-bottom: 2rem;
+        }
+
+        .price-subtext {
+            display: block;
+            font-size: 1rem;
+            color: var(--text-secondary);
+            font-family: 'Inter', sans-serif;
+            font-weight: 400;
+            margin-top: 0.3rem;
         }
 
         .order-btn {
@@ -461,6 +466,7 @@
         <h2 class="section-title">Nuestros Productos</h2>
         <div class="products-grid">
             
+            <!-- PRODUCTO 1: CARGADOR DE AUTO -->
             <div class="product-card">
                 <div class="product-web-slider">
                     <div class="slider-track">
@@ -473,10 +479,11 @@
 
                 <h3 class="product-title">Cargador de Auto 30W Max</h3>
                 <p class="product-description-text">Doble puerto inteligente (Type-C + USB). Carga rápida y eficiente para smartphone, tablet y laptop en ruta.</p>
-                <div class="product-price">$14.990</div>
+                <div class="product-price">$4.990</div>
                 <a href="https://linktr.ee/GeoVentas" class="order-btn" target="_blank">ORDENAR</a>
             </div>
 
+            <!-- PRODUCTO 2: PARLANTE MAGNÉTICO -->
             <div class="product-card">
                 <div class="product-web-slider">
                     <div class="slider-track">
@@ -498,7 +505,76 @@
 
                 <h3 class="product-title">Parlante Magnético G200</h3>
                 <p class="product-description-text">Sonido de alta fidelidad, fijación con imán de alta densidad y luces RGB rítmicas con 5-8h de batería continua.</p>
-                <div class="product-price">$24.990</div>
+                <div class="product-price">$4.990</div>
+                <a href="https://linktr.ee/GeoVentas" class="order-btn" target="_blank">ORDENAR</a>
+            </div>
+
+            <!-- PRODUCTO 3: CARGADOR UGREEN GAN (Utiliza 6_20260602_233201_0005.png y 7_20260602_233201_0006.png) -->
+            <div class="product-card">
+                <div class="product-web-slider">
+                    <div class="slider-track">
+                        <div class="slide-item">
+                            <img src="6_20260602_233201_0005.png" alt="Cargador Ugreen GaN 30W Portada" class="magnify-img">
+                        </div>
+                        <div class="slide-item">
+                            <img src="7_20260602_233201_0006.png" alt="Infografía Ugreen GaN" class="magnify-img">
+                        </div>
+                    </div>
+                    <div class="slider-indicator"><i class="fas fa-left-right"></i> Desliza para ver detalles</div>
+                </div>
+
+                <h3 class="product-title">Cargador Ugreen GaN 30W</h3>
+                <p class="product-description-text">Tecnología de Nitruro de Galio para máxima eficiencia, velocidad de carga superior y control estricto de temperatura.</p>
+                <div class="product-price">$13.990</div>
+                <a href="https://linktr.ee/GeoVentas" class="order-btn" target="_blank">ORDENAR</a>
+            </div>
+
+            <!-- PRODUCTO 4: AUDÍFONOS KZ EDX PRO (Utiliza 1_20260602_233200_0000.png, 2_20260602_233201_0001.png y 3_20260602_233201_0002.png) -->
+            <div class="product-card">
+                <div class="product-web-slider">
+                    <div class="slider-track">
+                        <div class="slide-item">
+                            <img src="1_20260602_233200_0000.png" alt="Audífonos KZ eDX Pro Estilo" class="magnify-img">
+                        </div>
+                        <div class="slide-item">
+                            <img src="2_20260602_233201_0001.png" alt="KZ eDX Pro Diseño Premium" class="magnify-img">
+                        </div>
+                        <div class="slide-item">
+                            <img src="3_20260602_233201_0002.png" alt="KZ eDX Pro Detalles Técnicos" class="magnify-img">
+                        </div>
+                    </div>
+                    <div class="slider-indicator"><i class="fas fa-left-right"></i> Desliza para ver galerías</div>
+                </div>
+
+                <h3 class="product-title">Audífonos KZ eDX Pro</h3>
+                <p class="product-description-text">Audio de alta fidelidad (Hi-Fi) con cable de cobre desmontable. Diseño ergonómico premium para monitoreo y gaming.</p>
+                <div class="product-price">
+                    $10.990
+                    <span class="price-subtext">+ Estuche Rígido KZ: $12.990</span>
+                </div>
+                <a href="https://linktr.ee/GeoVentas" class="order-btn" target="_blank">ORDENAR</a>
+            </div>
+
+            <!-- PRODUCTO 5: CABLE ESSAGER (Utiliza 4_20260602_233201_0003.png y 5_20260602_233201_0004.png) -->
+            <div class="product-card">
+                <div class="product-web-slider">
+                    <div class="slider-track">
+                        <div class="slide-item">
+                            <img src="4_20260602_233201_0003.png" alt="Cable Essager 2mts TYPE-C" class="magnify-img">
+                        </div>
+                        <div class="slide-item">
+                            <img src="5_20260602_233201_0004.png" alt="Sello Calidad Premium GeoVentas" class="magnify-img">
+                        </div>
+                    </div>
+                    <div class="slider-indicator"><i class="fas fa-left-right"></i> Ver detalles</div>
+                </div>
+
+                <h3 class="product-title">Cable Essager 2Mts</h3>
+                <p class="product-description-text">Conector TYPE-C a TYPE-C reforzado de alta resistencia. Soporta hasta 100W Max con pantalla digital de potencia incorporada.</p>
+                <div class="product-price">
+                    $5.990
+                    <span class="price-subtext">🔥 Promoción Especial: 2x $10.000</span>
+                </div>
                 <a href="https://linktr.ee/GeoVentas" class="order-btn" target="_blank">ORDENAR</a>
             </div>
 
