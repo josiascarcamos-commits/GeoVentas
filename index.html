@@ -62,38 +62,58 @@
             pointer-events: none;
         }
 
-        /* DISEÑO DE LETRAS ACTUALIZADO: Elegante, Limpio y en Movimiento Constante */
+        /* EVOLUCIÓN: Glitch Holográfico Premium - Innovador, Limpio y Altamente Llamativo */
         .preloader-logo {
             font-family: 'Playfair Display', serif;
             font-weight: 900;
             font-size: clamp(2.5rem, 8vw, 4.2rem);
-            letter-spacing: 0.15em;
+            letter-spacing: 0.2em;
             margin-bottom: 3rem;
             text-align: center;
+            position: relative;
             
-            /* Efecto de Oro Líquido Reflectivo en movimiento continuo */
-            background: linear-gradient(
-                90deg, 
-                #b8880b 0%, 
-                #d4af37 25%, 
-                #f9e27d 50%, 
-                #d4af37 75%, 
-                #b8880b 100%
-            );
-            background-size: 200% auto;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            /* Color base: Oro puro y limpio */
+            color: #d4af37;
             
-            /* Sombra suave y limpia de respaldo */
-            filter: drop-shadow(0 2px 20px rgba(212, 175, 55, 0.2));
+            /* Sombra de neón tecnológica base */
+            text-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
             
-            /* Llamado a las animaciones de movimiento y brillo */
+            /* Mezcla de animaciones: Encendido cyber, pulso estético y aberración cromática controlada */
             animation: 
-                shineGold 4s linear infinite, 
-                elegantPulse 3s ease-in-out infinite alternate;
+                cyberBoot 0.8s ease-out forwards,
+                hologramPulse 4s ease-in-out infinite 0.8s,
+                chromaticGlitch 2.5s linear infinite 1s;
         }
 
+        /* Capas fantasmas para simular el relieve del glitch sin recargar el diseño */
+        .preloader-logo::before,
+        .preloader-logo::after {
+            content: 'GEOVENTAS';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #000000;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0); 
+        }
+
+        /* Capa cian/tecnológica */
+        .preloader-logo::before {
+            left: -2px;
+            text-shadow: 2px 0 #00e5ff;
+            animation: glitchLines 3s linear infinite alternate-reverse;
+        }
+
+        /* Capa dorada/reflejo */
+        .preloader-logo::after {
+            left: 2px;
+            text-shadow: -2px 0 #ffbd59;
+            animation: glitchLines 2s linear infinite alternate;
+        }
+
+        /* Mantenemos la barra de carga exactamente igual */
         .progress-bar {
             width: clamp(250px, 30vw, 400px);
             height: 3px;
@@ -138,29 +158,52 @@
             to { opacity: 1; }
         }
 
-        /* NUEVAS ANIMACIONES PARA EL TEXTO */
-        /* Desplazamiento continuo del brillo dorado metálico */
-        @keyframes shineGold {
+        /* NUEVAS ANIMACIONES INNOVADORAS */
+        
+        /* 1. Animación de "Encendido" o arranque digital */
+        @keyframes cyberBoot {
+            0% { opacity: 0; transform: scale(0.9) var(--skew, skew(0deg)); filter: blur(10px); }
+            30% { opacity: 0.8; transform: scale(1.02) skew(5deg); filter: blur(0px); }
+            35% { opacity: 0.3; transform: scale(0.98) skew(-3deg); }
+            40% { opacity: 1; transform: scale(1) skew(0deg); }
+            100% { opacity: 1; transform: scale(1); }
+        }
+
+        /* 2. Respiración Holográfica Avanzada */
+        @keyframes hologramPulse {
             0% {
-                background-position: 0% center;
+                transform: scale(1);
+                letter-spacing: 0.18em;
+                filter: drop-shadow(0 0 15px rgba(212, 175, 55, 0.2));
+            }
+            50% {
+                transform: scale(1.01);
+                letter-spacing: 0.22em;
+                filter: drop-shadow(0 0 30px rgba(212, 175, 55, 0.4)) contrast(1.1);
             }
             100% {
-                background-position: -200% center;
+                transform: scale(1);
+                letter-spacing: 0.18em;
+                filter: drop-shadow(0 0 15px rgba(212, 175, 55, 0.2));
             }
         }
 
-        /* Movimiento de respiración elegante con expansión de letras y aura sutil */
-        @keyframes elegantPulse {
-            0% {
-                transform: scale(0.98);
-                letter-spacing: 0.13em;
-                filter: drop-shadow(0 2px 15px rgba(212, 175, 55, 0.15));
-            }
-            100% {
-                transform: scale(1.02);
-                letter-spacing: 0.17em;
-                filter: drop-shadow(0 2px 35px rgba(249, 226, 125, 0.4));
-            }
+        /* 3. Micro-distorsión cromática limpia (sin romper la elegancia) */
+        @keyframes chromaticGlitch {
+            0%, 92%, 100% { text-shadow: 0 0 20px rgba(212, 175, 55, 0.3); }
+            93% { text-shadow: 2px 1px #00e5ff, -2px -1px #ffbd59; }
+            95% { text-shadow: -3px 2px #00e5ff, 2px -2px #ffbd59; }
+            97% { text-shadow: 1px -1px #00e5ff, -1px 2px #ffbd59; }
+        }
+
+        /* 4. Escaneo sutil de líneas horizontales internas */
+        @keyframes glitchLines {
+            0% { clip: rect(12px, 9999px, 25px, 0); }
+            20% { clip: rect(45px, 9999px, 56px, 0); }
+            40% { clip: rect(5px, 9999px, 18px, 0); }
+            60% { clip: rect(85px, 9999px, 92px, 0); }
+            80% { clip: rect(33px, 9999px, 40px, 0); }
+            100% { clip: rect(60px, 9999px, 72px, 0); }
         }
 
         @keyframes progressLoad {
@@ -590,7 +633,7 @@
             }
             section { padding: 80px 5%; }
             .hero-logo-main { max-width: 250px; }
-            .products-grid { grid-template-columns: 1fr; gap: 2rem; }
+             .products-grid { grid-template-columns: 1fr; gap: 2rem; }
         }
 
         html { scroll-behavior: smooth; }
@@ -599,8 +642,9 @@
 </head>
 <body class="lock-scroll">
 
+    <!-- Preloader Avanzado con Efecto Holográfico Glitch -->
     <div class="preloader" id="preloader">
-        <div class="preloader-logo">GEOVENTAS</div>
+        <div class="preloader-logo" data-text="GEOVENTAS">GEOVENTAS</div>
         <div class="progress-bar">
             <div class="progress-fill"></div>
         </div>
