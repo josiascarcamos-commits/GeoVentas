@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+    <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-XX3Q937933"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -16,7 +17,6 @@
     <link rel="shortcut icon" href="IMG_20260513_074612_172 (1).png">
 
     <style>
-        /* Agregamos Cinzel, una tipografía serif de lujo absoluta, perfecta para marcas premium */
         @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Inter:wght@300;400;600&display=swap');
 
         * {
@@ -67,7 +67,7 @@
             border: 2px solid rgba(212,175,55,0.4);
             padding: 1.2rem 4.5rem;
             border-radius: 50px;
-            font-family: 'Cinzel', serif; /* Cambiada a la tipografía elegante */
+            font-family: 'Cinzel', serif;
             font-weight: 700;
             font-size: 1.2rem;
             letter-spacing: 0.2em;
@@ -85,7 +85,7 @@
             box-shadow: 0 0 40px rgba(212, 175, 55, 0.6);
         }
 
-        /* --- INTRO ESTILO NETFLIX --- */
+        /* --- NUEVA ANIMACIÓN FLUIDA CINEMÁTICA --- */
         .netflix-intro {
             position: fixed;
             top: 0;
@@ -105,7 +105,8 @@
         .netflix-intro.active {
             opacity: 1;
             visibility: visible;
-            animation: fadeOutContainer 0.8s cubic-bezier(0.7, 0, 0.3, 1) 3.5s forwards;
+            /* Desvanecimiento suave del contenedor al terminar */
+            animation: fadeOutContainer 0.6s cubic-bezier(0.25, 1, 0.5, 1) 3.3s forwards;
         }
 
         .netflix-container {
@@ -113,101 +114,57 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            perspective: 1000px;
         }
 
+        /* Animación ultra fluida combinando escala suave y brillo progresivo */
         .netflix-intro.active .netflix-logo-wrapper {
-            animation: 
-                netflixTudum 1.2s cubic-bezier(0.25, 1, 0.5, 1) 0.2s forwards,
-                netflixZoomMain 2.2s cubic-bezier(0.7, 0, 0.3, 1) 1.4s forwards;
+            animation: ultraFluidIntro 3.2s cubic-bezier(0.215, 0.610, 0.355, 1) forwards;
         }
 
         .netflix-logo-wrapper {
             display: flex;
             flex-direction: column;
             align-items: center;
-            transform: scale(0.6) translateZ(-200px);
             opacity: 0;
+            will-change: transform, opacity, filter; /* Optimiza el uso de tarjeta gráfica */
         }
 
-        /* Agrandamos el logo de la animación de Netflix de 220px a 290px */
+        /* Se eliminó por completo el texto "GEOVENTAS" de aquí, dejando solo el Logo */
         .netflix-img {
-            max-width: clamp(180px, 45vw, 290px);
+            max-width: clamp(200px, 50vw, 320px);
             height: auto;
-            margin-bottom: 2rem;
-            filter: drop-shadow(0 0 35px rgba(212, 175, 55, 0.45));
-            animation: logoGlowPulse 2s ease-in-out infinite alternate;
+            filter: drop-shadow(0 0 30px rgba(212, 175, 55, 0.3));
         }
 
-        /* Modificada con la nueva tipografía de alta costura 'Cinzel' */
-        .netflix-text {
-            font-family: 'Cinzel', serif;
-            font-weight: 900;
-            font-size: clamp(3rem, 9vw, 5rem);
-            letter-spacing: 0.2em; /* Espaciado de letras expandido premium */
-            text-align: center;
-            background: linear-gradient(135deg, #d4af37 0%, #f9e27d 50%, #b8860b 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            filter: drop-shadow(0 4px 15px rgba(0,0,0,0.9));
-        }
-
-        .netflix-scanline {
-            position: absolute;
-            width: 100%;
-            height: 4px;
-            background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.3), transparent);
-            animation: scanMove 1.5s linear infinite;
-        }
-
-        /* --- KEYFRAMES --- */
-        @keyframes netflixTudum {
+        /* --- KEYFRAMES DE ALTO RENDIMIENTO (60FPS) --- */
+        @keyframes ultraFluidIntro {
             0% {
                 opacity: 0;
-                transform: scale(0.65) translateZ(-150px);
-                filter: brightness(0.3) blur(4px);
+                transform: scale(0.85);
+                filter: brightness(0.5) blur(4px);
             }
-            50% {
+            15% {
                 opacity: 1;
-                filter: brightness(1.6) blur(0px);
+                filter: brightness(1.2) blur(0px);
+            }
+            30% {
+                transform: scale(1);
+                filter: brightness(1) drop-shadow(0 0 35px rgba(212, 175, 55, 0.4));
+            }
+            75% {
+                opacity: 1;
+                filter: brightness(1.1) drop-shadow(0 0 50px rgba(212, 175, 55, 0.6));
             }
             100% {
-                opacity: 1;
-                transform: scale(1) translateZ(0);
-                filter: brightness(1);
-            }
-        }
-
-        @keyframes netflixZoomMain {
-            0% {
-                transform: scale(1) translateZ(0);
-                filter: blur(0px) brightness(1);
-            }
-            40% {
-                filter: brightness(1.2);
-            }
-            100% {
-                transform: scale(3.5) translateZ(400px);
-                filter: blur(12px) brightness(0);
                 opacity: 0;
+                transform: scale(1.25); /* Zoom elegante hacia adelante libre de tirones */
+                filter: brightness(1.5) blur(2px);
             }
-        }
-
-        @keyframes logoGlowPulse {
-            0% { filter: drop-shadow(0 0 25px rgba(212, 175, 55, 0.35)); }
-            100% { filter: drop-shadow(0 0 55px rgba(212, 175, 55, 0.75)); }
-        }
-
-        @keyframes scanMove {
-            0% { top: 0%; opacity: 0; }
-            50% { opacity: 1; }
-            100% { top: 100%; opacity: 0; }
         }
 
         @keyframes fadeOutContainer {
-            0% { opacity: 1; transform: scale(1); filter: blur(0px); }
-            100% { opacity: 0; transform: scale(1.05); filter: blur(10px); visibility: hidden; }
+            0% { opacity: 1; }
+            100% { opacity: 0; visibility: hidden; }
         }
 
         /* Custom Cursor */
@@ -261,7 +218,6 @@
             align-items: center;
         }
 
-        /* Nueva fuente también en el pequeño logo del menú */
         .logo {
             font-family: 'Cinzel', serif;
             font-weight: 900;
@@ -340,7 +296,6 @@
             background: #000000;
         }
 
-        /* Agrandamos notablemente el logo principal del Home de 400px a 500px */
         .hero-logo-main {
             max-width: clamp(280px, 65vw, 500px);
             height: auto;
@@ -366,7 +321,7 @@
         }
 
         .section-title {
-            font-family: 'Cinzel', serif; /* Cambiada a Cinzel para unificar la estética de lujo */
+            font-family: 'Cinzel', serif;
             font-weight: 900;
             font-size: clamp(2.5rem, 6vw, 4.2rem);
             text-align: center;
@@ -449,7 +404,7 @@
 
         .card-luxury:hover .product-image { transform: scale(1.1) rotate(5deg); }
         .product-title {
-            font-family: 'Cinzel', serif; /* Consistencia de marca */
+            font-family: 'Cinzel', serif;
             font-weight: 700;
             font-size: clamp(1.4rem, 2.2vw, 1.8rem);
             margin-bottom: 1.5rem;
@@ -601,23 +556,25 @@
 </head>
 <body class="lock-scroll">
 
+    <!-- 1. PANTALLA DE ENTRADA CON BOTÓN -->
     <div class="welcome-screen" id="welcomeScreen">
         <button class="enter-btn" id="enterBtn">Entrar</button>
     </div>
 
+    <!-- 2. NUEVA INTRO ULTRA FLUIDA (SÓLO EL LOGO ENORME, SIN TEXTO ABAJO) -->
     <div class="netflix-intro" id="netflixIntro">
-        <div class="netflix-scanline"></div>
         <div class="netflix-container">
             <div class="netflix-logo-wrapper">
                 <img src="IMG_20260513_074612_172 (1) (2).png" alt="GeoVentas Logo Intro" class="netflix-img">
-                <div class="netflix-text">GEOVENTAS</div>
             </div>
         </div>
     </div>
 
+    <!-- CURSORES -->
     <div class="cursor" id="cursor"></div>
     <div class="cursor-follower" id="cursorFollower"></div>
 
+    <!-- MENÚ / NAVBAR -->
     <nav class="navbar">
         <div class="nav-container">
             <a href="#" class="logo">GEOVENTAS</a>
@@ -636,6 +593,7 @@
         </div>
     </nav>
 
+    <!-- CONTENIDO PRINCIPAL DE LA WEB -->
     <header class="hero" id="inicio">
         <img src="IMG_20260513_074612_172 (1).png" alt="GeoVentas Logo Principal" class="hero-logo-main">
         <p class="hero-subtitle">Tecnología premium seleccionada minuciosamente. Entregas coordinadas en puntos de encuentro estratégicos en Hualpén y Concepción.</p>
@@ -699,7 +657,7 @@
     </footer>
 
     <script>
-        // Control de Flujo: Botón Inicial -> Animación Netflix -> Desbloqueo Web
+        // Ajustamos los tiempos de ejecución para acoplarlos perfectamente con la nueva animación fluida de 3.2s
         const welcomeScreen = document.getElementById('welcomeScreen');
         const netflixIntro = document.getElementById('netflixIntro');
         const enterBtn = document.getElementById('enterBtn');
@@ -709,9 +667,10 @@
                 welcomeScreen.classList.add('hidden');
                 netflixIntro.classList.add('active');
 
+                // Desbloquea el scroll justo cuando la animación del logo está terminando su fade-out
                 setTimeout(() => {
                     document.body.classList.remove('lock-scroll');
-                }, 4200);
+                }, 3500);
             });
         }
 
