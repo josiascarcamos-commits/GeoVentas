@@ -17,7 +17,7 @@
     <link rel="shortcut icon" href="IMG_20260513_074612_172 (1).png">
 
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Inter:wght=300;400;600&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Inter:wght@300;400;600&display=swap');
 
         * {
             margin: 0;
@@ -39,7 +39,54 @@
             overflow: hidden;
         }
 
-        /* --- INTRO ESTILO NETFLIX PREMIUM --- */
+        /* --- PANTALLA DE ENTRADA INICIAL --- */
+        .welcome-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #000000;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 10000;
+            transition: opacity 0.5s ease, visibility 0.5s ease;
+        }
+
+        .welcome-screen.hidden {
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+        }
+
+        .enter-btn {
+            background: transparent;
+            color: #d4af37;
+            border: 2px solid rgba(212,175,55,0.4);
+            padding: 1.2rem 4rem;
+            border-radius: 50px;
+            font-family: 'Inter', sans-serif;
+            font-weight: 600;
+            font-size: 1.1rem;
+            letter-spacing: 0.15em;
+            cursor: none;
+            text-transform: uppercase;
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.1);
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .enter-btn:hover {
+            background: linear-gradient(135deg, #d4af37 0%, #f9e27d 50%, #b8860b 100%);
+            color: #000000;
+            border-color: transparent;
+            transform: scale(1.05);
+            box-shadow: 0 0 35px rgba(212, 175, 55, 0.5);
+            font-weight: 800;
+        }
+
+        /* --- INTRO ESTILO NETFLIX (INACTIVA POR DEFECTO) --- */
         .netflix-intro {
             position: fixed;
             top: 0;
@@ -51,9 +98,16 @@
             justify-content: center;
             align-items: center;
             z-index: 9999;
-            /* La intro se desvanece y expande al terminar */
-            animation: fadeOutContainer 0.8s cubic-bezier(0.7, 0, 0.3, 1) 3.5s forwards;
+            opacity: 0;
+            visibility: hidden;
             pointer-events: none; 
+        }
+
+        /* Se activa mediante JS al presionar Entrar */
+        .netflix-intro.active {
+            opacity: 1;
+            visibility: visible;
+            animation: fadeOutContainer 0.8s cubic-bezier(0.7, 0, 0.3, 1) 3.5s forwards;
         }
 
         .netflix-container {
@@ -61,26 +115,28 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            perspective: 1000px; /* Habilita el efecto 3D */
+            perspective: 1000px;
         }
 
-        /* Animación del Logo: Parpadeo inicial de luz y un zoom masivo hacia la pantalla */
+        /* El logo wrapper solo anima si la intro está activa */
+        .netflix-intro.active .netflix-logo-wrapper {
+            animation: 
+                netflixTudum 1.2s cubic-bezier(0.25, 1, 0.5, 1) 0.2s forwards,
+                netflixZoomMain 2.2s cubic-bezier(0.7, 0, 0.3, 1) 1.4s forwards;
+        }
+
         .netflix-logo-wrapper {
             display: flex;
             flex-direction: column;
             align-items: center;
             transform: scale(0.6) translateZ(-200px);
             opacity: 0;
-            animation: 
-                netflixTudum 1.2s cubic-bezier(0.25, 1, 0.5, 1) 0.2s forwards,
-                netflixZoomMain 2.2s cubic-bezier(0.7, 0, 0.3, 1) 1.4s forwards;
         }
 
         .netflix-img {
             max-width: clamp(140px, 35vw, 220px);
             height: auto;
             margin-bottom: 1.5rem;
-            /* Sombra inicial que simula el haz de luz detrás del logo */
             filter: drop-shadow(0 0 30px rgba(212, 175, 55, 0.4));
             animation: logoGlowPulse 2s ease-in-out infinite alternate;
         }
@@ -95,11 +151,9 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            /* Fuerza el efecto de relieve metálico */
             filter: drop-shadow(0 4px 15px rgba(0,0,0,0.9));
         }
 
-        /* Lineas de carga sutiles que desaparecen rápido para no romper la estética cinematográfica */
         .netflix-scanline {
             position: absolute;
             width: 100%;
@@ -108,9 +162,7 @@
             animation: scanMove 1.5s linear infinite;
         }
 
-        /* --- KEYFRAMES DE LA ANIMACIÓN NETFLIX --- */
-        
-        /* 1. Aparece con un golpe sutil de luz y posicionamiento */
+        /* --- KEYFRAMES --- */
         @keyframes netflixTudum {
             0% {
                 opacity: 0;
@@ -128,7 +180,6 @@
             }
         }
 
-        /* 2. El icónico Zoom de Netflix: Se abalanza hacia el espectador rompiendo los bordes */
         @keyframes netflixZoomMain {
             0% {
                 transform: scale(1) translateZ(0);
@@ -144,22 +195,15 @@
             }
         }
 
-        /* Pulsación del aura dorada de fondo */
         @keyframes logoGlowPulse {
             0% { filter: drop-shadow(0 0 25px rgba(212, 175, 55, 0.35)); }
             100% { filter: drop-shadow(0 0 50px rgba(212, 175, 55, 0.7)); }
         }
 
-        /* Movimiento de la línea horizontal de escaneo */
         @keyframes scanMove {
             0% { top: 0%; opacity: 0; }
             50% { opacity: 1; }
             100% { top: 100%; opacity: 0; }
-        }
-
-        /* Desvanecimiento de todo el contenedor de la intro */
-        @keyframes outBlur {
-            to { filter: blur(10px); opacity: 0; }
         }
 
         @keyframes fadeOutContainer {
@@ -176,7 +220,7 @@
             border: 2px solid rgba(212,175,55,0.8);
             border-radius: 50%;
             pointer-events: none;
-            z-index: 9998;
+            z-index: 11000;
             transition: transform 0.08s ease-out;
             mix-blend-mode: screen;
             box-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
@@ -190,13 +234,13 @@
             background: linear-gradient(135deg, #d4af37, #f9e27d);
             border-radius: 50%;
             pointer-events: none;
-            z-index: 9998;
+            z-index: 11000;
             mix-blend-mode: screen;
             box-shadow: 0 0 15px rgba(212, 175, 55, 0.6);
             transform: translate(-50%, -50%);
         }
 
-        /* Navbar Crystal */
+        /* Navbar */
         .navbar {
             position: fixed;
             top: 0;
@@ -259,10 +303,7 @@
             box-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
         }
 
-        .nav-links a:hover::after {
-            width: 100%;
-        }
-
+        .nav-links a:hover::after { width: 100%; }
         .nav-links a:hover {
             color: #ffffff;
             text-shadow: 0 0 15px rgba(212, 175, 55, 0.8);
@@ -316,7 +357,7 @@
             padding: 0 10px;
         }
 
-        /* Sections generales */
+        /* Sections */
         section {
             padding: 120px 5%;
             max-width: 1600px;
@@ -349,7 +390,7 @@
             letter-spacing: 0.015em;
         }
 
-        /* Luxury Product Cards */
+        /* Grid */
         .products-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -382,10 +423,7 @@
             z-index: 2;
         }
 
-        .card-luxury:hover::before {
-            left: 120%;
-        }
-
+        .card-luxury:hover::before { left: 120%; }
         .card-luxury:hover {
             transform: translateY(-20px);
             border-color: rgba(212,175,55,0.6);
@@ -408,10 +446,7 @@
             transition: all 0.4s ease;
         }
 
-        .card-luxury:hover .product-image {
-            transform: scale(1.1) rotate(5deg);
-        }
-
+        .card-luxury:hover .product-image { transform: scale(1.1) rotate(5deg); }
         .product-title {
             font-family: 'Playfair Display', serif;
             font-weight: 700;
@@ -453,12 +488,8 @@
             box-shadow: 0 20px 50px rgba(212, 175, 55, 0.6);
         }
 
-        /* FAQ Crystal Accordion */
-        .faq-container {
-            max-width: 900px;
-            margin: 0 auto;
-        }
-
+        /* FAQ Accordion */
+        .faq-container { max-width: 900px; margin: 0 auto; }
         .faq-item {
             margin-bottom: 2rem;
             border: 1px solid rgba(212,175,55,0.08);
@@ -469,10 +500,7 @@
             transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
         }
 
-        .faq-item:hover {
-            border-color: rgba(212,175,55,0.2);
-        }
-
+        .faq-item:hover { border-color: rgba(212,175,55,0.2); }
         .faq-question {
             width: 100%;
             padding: 2.5rem;
@@ -512,10 +540,7 @@
             color: rgba(255,255,255,0.8);
         }
 
-        .faq-answer.active {
-            max-height: 300px;
-            padding: 0 2.5rem 2.5rem;
-        }
+        .faq-answer.active { max-height: 300px; padding: 0 2.5rem 2.5rem; }
 
         /* Footer */
         .footer {
@@ -526,13 +551,7 @@
             border-top: 1px solid rgba(212,175,55,0.15);
         }
 
-        .social-links {
-            display: flex;
-            justify-content: center;
-            gap: 3rem;
-            margin-bottom: 3rem;
-        }
-
+        .social-links { display: flex; justify-content: center; gap: 3rem; margin-bottom: 3rem; }
         .social-links a {
             width: 70px;
             height: 70px;
@@ -548,16 +567,8 @@
             box-shadow: 0 15px 40px rgba(212, 175, 55, 0.3);
         }
 
-        .social-links a:hover {
-            transform: translateY(-10px) scale(1.15) rotate(180deg);
-        }
-
-        .copyright {
-            font-weight: 300;
-            opacity: 0.8;
-            letter-spacing: 0.05em;
-            font-size: 0.95rem;
-        }
+        .social-links a:hover { transform: translateY(-10px) scale(1.15) rotate(180deg); }
+        .copyright { font-weight: 300; opacity: 0.8; letter-spacing: 0.05em; font-size: 0.95rem; }
 
         /* Mobile Optimization */
         @media (max-width: 768px) {
@@ -577,11 +588,7 @@
                 visibility: hidden;
                 transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
             }
-            .nav-links.active {
-                transform: translateY(0);
-                opacity: 1;
-                visibility: visible;
-            }
+            .nav-links.active { transform: translateY(0); opacity: 1; visibility: visible; }
             section { padding: 80px 5%; }
             .hero-logo-main { max-width: 250px; }
             .products-grid { grid-template-columns: 1fr; gap: 2rem; }
@@ -593,21 +600,28 @@
 </head>
 <body class="lock-scroll">
 
-    <!-- INTRO CINEMÁTICA ESTILO NETFLIX -->
+    <!-- 1. PANTALLA DE ENTRADA CON BOTÓN -->
+    <div class="welcome-screen" id="welcomeScreen">
+        <button class="enter-btn" id="enterBtn">Entrar</button>
+    </div>
+
+    <!-- 2. INTRO CINEMÁTICA ESTILO NETFLIX (USA EXCLUSIVAMENTE LA IMAGEN INTERNA) -->
     <div class="netflix-intro" id="netflixIntro">
         <div class="netflix-scanline"></div>
         <div class="netflix-container">
             <div class="netflix-logo-wrapper">
-                <!-- Tu logo oficial cargando con impacto -->
-                <img src="IMG_20260513_074612_172 (1).png" alt="GeoVentas Logo" class="netflix-img">
+                <!-- Se usa exactamente la variante de imagen solicitada para el zoom -->
+                <img src="IMG_20260513_074612_172 (1) (2).png" alt="GeoVentas Logo Intro" class="netflix-img">
                 <div class="netflix-text">GEOVENTAS</div>
             </div>
         </div>
     </div>
 
-    <div class="cursor" id="cursor"></div>
+    <!-- CURSORES -->
+     <div class="cursor" id="cursor"></div>
     <div class="cursor-follower" id="cursorFollower"></div>
 
+    <!-- MENÚ / NAVBAR -->
     <nav class="navbar">
         <div class="nav-container">
             <a href="#" class="logo">GEOVENTAS</a>
@@ -626,7 +640,8 @@
         </div>
     </nav>
 
-     <header class="hero" id="inicio">
+    <!-- CONTENIDO PRINCIPAL DE LA WEB (MANTIENE LA VERSIÓN COMPLETA DE IMAGEN) -->
+    <header class="hero" id="inicio">
         <img src="IMG_20260513_074612_172 (1).png" alt="GeoVentas Logo Principal" class="hero-logo-main">
         <p class="hero-subtitle">Tecnología premium seleccionada minuciosamente. Entregas coordinadas en puntos de encuentro estratégicos en Hualpén y Concepción.</p>
     </header>
@@ -689,13 +704,27 @@
     </footer>
 
     <script>
-        // Manejo automático de la Intro (Desbloquea el scroll tras la animación)
+        // Control de Flujo: Botón Inicial -> Animación Netflix -> Desbloqueo Web
+        const welcomeScreen = document.getElementById('welcomeScreen');
         const netflixIntro = document.getElementById('netflixIntro');
-        setTimeout(() => {
-            document.body.classList.remove('lock-scroll');
-        }, 4200); // Libera la web exactamente cuando termina el Zoom completo
+        const enterBtn = document.getElementById('enterBtn');
 
-        // Cursor
+        if (enterBtn) {
+            enterBtn.addEventListener('click', () => {
+                // Oculta la pantalla inicial del botón
+                welcomeScreen.classList.add('hidden');
+                
+                // Activa y arranca la intro estilo Netflix
+                netflixIntro.classList.add('active');
+
+                // Libera el scroll y activa la interacción exactamente cuando acaba el zoom (4.2 segundos totales)
+                setTimeout(() => {
+                    document.body.classList.remove('lock-scroll');
+                }, 4200);
+            });
+        }
+
+        // Sistema del Cursor Personalizado
         const cursor = document.getElementById('cursor');
         const cursorFollower = document.getElementById('cursorFollower');
         let mouseX = 0, mouseY = 0, followerX = 0, followerY = 0;
@@ -720,7 +749,7 @@
         }
         animateFollower();
 
-        // Menú Móvil
+        // Menú Móvil Hamburger
         const hamburger = document.getElementById('hamburger');
         const navLinks = document.getElementById('navLinks');
         if(hamburger && navLinks) {
