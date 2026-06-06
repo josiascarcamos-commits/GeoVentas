@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-XX3Q937933"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -17,7 +16,8 @@
     <link rel="shortcut icon" href="IMG_20260513_074612_172 (1).png">
 
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Inter:wght@300;400;600&display=swap');
+        /* Agregamos Cinzel, una tipografía serif de lujo absoluta, perfecta para marcas premium */
+        @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Inter:wght@300;400;600&display=swap');
 
         * {
             margin: 0;
@@ -65,12 +65,12 @@
             background: transparent;
             color: #d4af37;
             border: 2px solid rgba(212,175,55,0.4);
-            padding: 1.2rem 4rem;
+            padding: 1.2rem 4.5rem;
             border-radius: 50px;
-            font-family: 'Inter', sans-serif;
-            font-weight: 600;
-            font-size: 1.1rem;
-            letter-spacing: 0.15em;
+            font-family: 'Cinzel', serif; /* Cambiada a la tipografía elegante */
+            font-weight: 700;
+            font-size: 1.2rem;
+            letter-spacing: 0.2em;
             cursor: none;
             text-transform: uppercase;
             box-shadow: 0 0 20px rgba(212, 175, 55, 0.1);
@@ -82,11 +82,10 @@
             color: #000000;
             border-color: transparent;
             transform: scale(1.05);
-            box-shadow: 0 0 35px rgba(212, 175, 55, 0.5);
-            font-weight: 800;
+            box-shadow: 0 0 40px rgba(212, 175, 55, 0.6);
         }
 
-        /* --- INTRO ESTILO NETFLIX (INACTIVA POR DEFECTO) --- */
+        /* --- INTRO ESTILO NETFLIX --- */
         .netflix-intro {
             position: fixed;
             top: 0;
@@ -103,7 +102,6 @@
             pointer-events: none; 
         }
 
-        /* Se activa mediante JS al presionar Entrar */
         .netflix-intro.active {
             opacity: 1;
             visibility: visible;
@@ -118,7 +116,6 @@
             perspective: 1000px;
         }
 
-        /* El logo wrapper solo anima si la intro está activa */
         .netflix-intro.active .netflix-logo-wrapper {
             animation: 
                 netflixTudum 1.2s cubic-bezier(0.25, 1, 0.5, 1) 0.2s forwards,
@@ -133,19 +130,21 @@
             opacity: 0;
         }
 
+        /* Agrandamos el logo de la animación de Netflix de 220px a 290px */
         .netflix-img {
-            max-width: clamp(140px, 35vw, 220px);
+            max-width: clamp(180px, 45vw, 290px);
             height: auto;
-            margin-bottom: 1.5rem;
-            filter: drop-shadow(0 0 30px rgba(212, 175, 55, 0.4));
+            margin-bottom: 2rem;
+            filter: drop-shadow(0 0 35px rgba(212, 175, 55, 0.45));
             animation: logoGlowPulse 2s ease-in-out infinite alternate;
         }
 
+        /* Modificada con la nueva tipografía de alta costura 'Cinzel' */
         .netflix-text {
-            font-family: 'Playfair Display', serif;
+            font-family: 'Cinzel', serif;
             font-weight: 900;
-            font-size: clamp(2.8rem, 8vw, 4.5rem);
-            letter-spacing: 0.15em;
+            font-size: clamp(3rem, 9vw, 5rem);
+            letter-spacing: 0.2em; /* Espaciado de letras expandido premium */
             text-align: center;
             background: linear-gradient(135deg, #d4af37 0%, #f9e27d 50%, #b8860b 100%);
             -webkit-background-clip: text;
@@ -197,7 +196,7 @@
 
         @keyframes logoGlowPulse {
             0% { filter: drop-shadow(0 0 25px rgba(212, 175, 55, 0.35)); }
-            100% { filter: drop-shadow(0 0 50px rgba(212, 175, 55, 0.7)); }
+            100% { filter: drop-shadow(0 0 55px rgba(212, 175, 55, 0.75)); }
         }
 
         @keyframes scanMove {
@@ -262,15 +261,16 @@
             align-items: center;
         }
 
+        /* Nueva fuente también en el pequeño logo del menú */
         .logo {
-            font-family: 'Playfair Display', serif;
+            font-family: 'Cinzel', serif;
             font-weight: 900;
-            font-size: clamp(1.8rem, 4vw, 2.5rem);
+            font-size: clamp(1.8rem, 4vw, 2.3rem);
             background: linear-gradient(135deg, #d4af37 0%, #f9e27d 50%, #b8860b 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            letter-spacing: 0.05em;
+            letter-spacing: 0.1em;
             text-shadow: 0 0 30px rgba(212, 175, 55, 0.5);
             text-decoration: none;
         }
@@ -340,11 +340,12 @@
             background: #000000;
         }
 
+        /* Agrandamos notablemente el logo principal del Home de 400px a 500px */
         .hero-logo-main {
-            max-width: clamp(240px, 55vw, 400px);
+            max-width: clamp(280px, 65vw, 500px);
             height: auto;
-            margin-bottom: 2rem;
-            filter: drop-shadow(0 0 30px rgba(212, 175, 55, 0.35));
+            margin-bottom: 2.5rem;
+            filter: drop-shadow(0 0 40px rgba(212, 175, 55, 0.4));
         }
 
         .hero-subtitle {
@@ -365,17 +366,17 @@
         }
 
         .section-title {
-            font-family: 'Playfair Display', serif;
+            font-family: 'Cinzel', serif; /* Cambiada a Cinzel para unificar la estética de lujo */
             font-weight: 900;
-            font-size: clamp(2.8rem, 6.5vw, 4.5rem);
+            font-size: clamp(2.5rem, 6vw, 4.2rem);
             text-align: center;
             margin-bottom: 4rem;
             background: linear-gradient(135deg, #d4af37 0%, #f9e27d 50%, #b8860b 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            letter-spacing: -0.01em;
-            line-height: 1.1;
+            letter-spacing: 0.05em;
+            line-height: 1.2;
             text-shadow: 0 0 40px rgba(212, 175, 55, 0.25);
         }
 
@@ -448,12 +449,12 @@
 
         .card-luxury:hover .product-image { transform: scale(1.1) rotate(5deg); }
         .product-title {
-            font-family: 'Playfair Display', serif;
+            font-family: 'Cinzel', serif; /* Consistencia de marca */
             font-weight: 700;
-            font-size: clamp(1.5rem, 2.5vw, 2rem);
+            font-size: clamp(1.4rem, 2.2vw, 1.8rem);
             margin-bottom: 1.5rem;
             color: #ffffff;
-            letter-spacing: -0.01em;
+            letter-spacing: 0.05em;
             line-height: 1.2;
         }
 
@@ -590,7 +591,7 @@
             }
             .nav-links.active { transform: translateY(0); opacity: 1; visibility: visible; }
             section { padding: 80px 5%; }
-            .hero-logo-main { max-width: 250px; }
+            .hero-logo-main { max-width: 290px; }
             .products-grid { grid-template-columns: 1fr; gap: 2rem; }
         }
 
@@ -600,28 +601,23 @@
 </head>
 <body class="lock-scroll">
 
-    <!-- 1. PANTALLA DE ENTRADA CON BOTÓN -->
     <div class="welcome-screen" id="welcomeScreen">
         <button class="enter-btn" id="enterBtn">Entrar</button>
     </div>
 
-    <!-- 2. INTRO CINEMÁTICA ESTILO NETFLIX (USA EXCLUSIVAMENTE LA IMAGEN INTERNA) -->
     <div class="netflix-intro" id="netflixIntro">
         <div class="netflix-scanline"></div>
         <div class="netflix-container">
             <div class="netflix-logo-wrapper">
-                <!-- Se usa exactamente la variante de imagen solicitada para el zoom -->
                 <img src="IMG_20260513_074612_172 (1) (2).png" alt="GeoVentas Logo Intro" class="netflix-img">
                 <div class="netflix-text">GEOVENTAS</div>
             </div>
         </div>
     </div>
 
-    <!-- CURSORES -->
-     <div class="cursor" id="cursor"></div>
+    <div class="cursor" id="cursor"></div>
     <div class="cursor-follower" id="cursorFollower"></div>
 
-    <!-- MENÚ / NAVBAR -->
     <nav class="navbar">
         <div class="nav-container">
             <a href="#" class="logo">GEOVENTAS</a>
@@ -640,7 +636,6 @@
         </div>
     </nav>
 
-    <!-- CONTENIDO PRINCIPAL DE LA WEB (MANTIENE LA VERSIÓN COMPLETA DE IMAGEN) -->
     <header class="hero" id="inicio">
         <img src="IMG_20260513_074612_172 (1).png" alt="GeoVentas Logo Principal" class="hero-logo-main">
         <p class="hero-subtitle">Tecnología premium seleccionada minuciosamente. Entregas coordinadas en puntos de encuentro estratégicos en Hualpén y Concepción.</p>
@@ -711,13 +706,9 @@
 
         if (enterBtn) {
             enterBtn.addEventListener('click', () => {
-                // Oculta la pantalla inicial del botón
                 welcomeScreen.classList.add('hidden');
-                
-                // Activa y arranca la intro estilo Netflix
                 netflixIntro.classList.add('active');
 
-                // Libera el scroll y activa la interacción exactamente cuando acaba el zoom (4.2 segundos totales)
                 setTimeout(() => {
                     document.body.classList.remove('lock-scroll');
                 }, 4200);
