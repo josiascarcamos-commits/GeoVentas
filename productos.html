@@ -323,11 +323,37 @@
             font-family: 'Playfair Display', serif;
             font-weight: 700;
             font-size: 1.7rem;
-            margin-bottom: 1rem;
+            margin-bottom: 0.5rem;
             color: #ffffff;
         }
         
         .product-card:hover .product-title { color: var(--gold-secondary); }
+
+        /* Estilos de Stock Dinámicos */
+        .stock-indicator {
+            display: inline-block;
+            align-self: center;
+            padding: 0.35rem 1.2rem;
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            margin-bottom: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .stock-indicator.disponible {
+            background: rgba(46, 204, 113, 0.1);
+            color: #2ecc71;
+            border: 1px solid rgba(46, 204, 113, 0.25);
+        }
+
+        .stock-indicator.agotado {
+            background: rgba(231, 76, 60, 0.1);
+            color: #e74c3c;
+            border: 1px solid rgba(231, 76, 60, 0.25);
+        }
 
         .product-description-text {
             color: var(--text-secondary);
@@ -375,6 +401,14 @@
         .order-btn:hover {
             transform: scale(1.05);
             box-shadow: 0 15px 40px rgba(212, 175, 55, 0.5);
+        }
+
+        .order-btn.disabled {
+            background: rgba(255,255,255,0.05) !important;
+            color: rgba(255,255,255,0.2) !important;
+            border: 1px solid rgba(255,255,255,0.05);
+            box-shadow: none;
+            pointer-events: none;
         }
 
         @media (max-width: 768px) {
@@ -467,7 +501,7 @@
         <div class="products-grid">
             
             <!-- PRODUCTO 1: CARGADOR DE AUTO -->
-            <div class="product-card">
+            <div class="product-card" data-name="cargador de auto">
                 <div class="product-web-slider">
                     <div class="slider-track">
                         <div class="slide-item">
@@ -478,13 +512,14 @@
                 </div>
 
                 <h3 class="product-title">Cargador de Auto 30W Max</h3>
+                <div class="stock-container"></div>
                 <p class="product-description-text">Doble puerto inteligente (Type-C + USB). Carga rápida y eficiente para smartphone, tablet y laptop en ruta.</p>
                 <div class="product-price">$4.990</div>
                 <a href="https://linktr.ee/GeoVentas" class="order-btn" target="_blank">ORDENAR</a>
             </div>
 
             <!-- PRODUCTO 2: PARLANTE MAGNÉTICO -->
-            <div class="product-card">
+            <div class="product-card" data-name="parlante inalámbrico g200">
                 <div class="product-web-slider">
                     <div class="slider-track">
                         <div class="slide-item">
@@ -504,13 +539,14 @@
                 </div>
 
                 <h3 class="product-title">Parlante Magnético G200</h3>
+                <div class="stock-container"></div>
                 <p class="product-description-text">Sonido de alta fidelidad, fijación con imán de alta densidad y luces RGB rítmicas con 5-8h de batería continua.</p>
                 <div class="product-price">$4.990</div>
                 <a href="https://linktr.ee/GeoVentas" class="order-btn" target="_blank">ORDENAR</a>
             </div>
 
-            <!-- PRODUCTO 3: CARGADOR UGREEN GAN (Utiliza 6_20260602_233201_0005.png y 7_20260602_233201_0006.png) -->
-            <div class="product-card">
+            <!-- PRODUCTO 3: CARGADOR UGREEN GAN -->
+            <div class="product-card" data-name="cargador ugreen gan 30w">
                 <div class="product-web-slider">
                     <div class="slider-track">
                         <div class="slide-item">
@@ -524,13 +560,14 @@
                 </div>
 
                 <h3 class="product-title">Cargador Ugreen GaN 30W</h3>
+                <div class="stock-container"></div>
                 <p class="product-description-text">Tecnología de Nitruro de Galio para máxima eficiencia, velocidad de carga superior y control estricto de temperatura.</p>
                 <div class="product-price">$13.990</div>
                 <a href="https://linktr.ee/GeoVentas" class="order-btn" target="_blank">ORDENAR</a>
             </div>
 
-            <!-- PRODUCTO 4: AUDÍFONOS KZ EDX PRO (Utiliza 1_20260602_233200_0000.png, 2_20260602_233201_0001.png y 3_20260602_233201_0002.png) -->
-            <div class="product-card">
+            <!-- PRODUCTO 4: AUDÍFONOS KZ EDX PRO -->
+            <div class="product-card" data-name="audífonos kz edx">
                 <div class="product-web-slider">
                     <div class="slider-track">
                         <div class="slide-item">
@@ -547,6 +584,7 @@
                 </div>
 
                 <h3 class="product-title">Audífonos KZ eDX Pro</h3>
+                <div class="stock-container"></div>
                 <p class="product-description-text">Audio de alta fidelidad (Hi-Fi) con cable de cobre desmontable. Diseño ergonómico premium para monitoreo y gaming.</p>
                 <div class="product-price">
                     $10.990
@@ -555,8 +593,8 @@
                 <a href="https://linktr.ee/GeoVentas" class="order-btn" target="_blank">ORDENAR</a>
             </div>
 
-            <!-- PRODUCTO 5: CABLE ESSAGER (Utiliza 4_20260602_233201_0003.png y 5_20260602_233201_0004.png) -->
-            <div class="product-card">
+            <!-- PRODUCTO 5: CABLE ESSAGER -->
+            <div class="product-card" data-name="cable essager 2mts">
                 <div class="product-web-slider">
                     <div class="slider-track">
                         <div class="slide-item">
@@ -570,6 +608,7 @@
                 </div>
 
                 <h3 class="product-title">Cable Essager 2Mts</h3>
+                <div class="stock-container"></div>
                 <p class="product-description-text">Conector TYPE-C a TYPE-C reforzado de alta resistencia. Soporta hasta 100W Max con pantalla digital de potencia incorporada.</p>
                 <div class="product-price">
                     $5.990
@@ -586,6 +625,75 @@
     </footer>
 
     <script>
+        // ENLACE EXCLUSIVO DE TU GOOGLE SHEETS EN FORMATO CSV DE LECTURA AUTOMÁTICA
+        const URL_SHEETS = "https://docs.google.com/spreadsheets/d/1dSfV5WCRk2UqwXGoRy5afG3wsrcZUSSlfBKB_k8XP60/export?format=csv";
+
+        async function sincronizarStock() {
+            try {
+                const respuesta = await fetch(URL_SHEETS);
+                const datosTexto = await respuesta.text();
+                
+                // Procesamiento de CSV robusto para separar por comas de forma segura
+                const regexCSV = /,(?=(?:(?:[^"]*"){2})*[^"]*$)/;
+                const lineas = datosTexto.split("\n");
+                if (lineas.length < 3) return;
+
+                // Mapeamos las filas claves del formato horizontal que tienes en tu celular
+                const productosFila = lineas[0].split(regexCSV).map(v => v.replace(/^"|"$/g, '').trim().toLowerCase());
+                const stockFila = lineas[2].split(regexCSV).map(v => v.replace(/^"|"$/g, '').trim());
+
+                // Crear un objeto clave-valor para buscar el stock de forma veloz
+                const mapaStock = {};
+                for (let i = 1; i < productosFila.length; i++) {
+                    const nombreProd = productosFila[i];
+                    const cantStock = parseInt(stockFila[i]) || 0;
+                    if (nombreProd) {
+                        mapaStock[nombreProd] = cantStock;
+                    }
+                }
+
+                // Inyectar de manera elegante las etiquetas de stock e inhabilitar los botones si es necesario
+                document.querySelectorAll('.product-card').forEach(tarjeta => {
+                    const nombreBuscar = tarjeta.getAttribute('data-name');
+                    const contenedorStock = tarjeta.querySelector('.stock-container');
+                    const botonOrden = tarjeta.querySelector('.order-btn');
+                    
+                    let stockEncontrado = 0;
+                    let registrado = false;
+
+                    Object.keys(mapaStock).forEach(clave => {
+                        if (nombreBuscar && (nombreBuscar.includes(clave) || clave.includes(nombreBuscar))) {
+                            stockEncontrado = mapaStock[clave];
+                            registrado = true;
+                        }
+                    });
+
+                    if (registrado) {
+                        if (stockEncontrado > 0) {
+                            contenedorStock.innerHTML = `<span class="stock-indicator disponible">Disponible (${stockEncontrado} u)</span>`;
+                            if (botonOrden) {
+                                botonOrden.classList.remove('disabled');
+                                botonOrden.textContent = "ORDENAR";
+                            }
+                        } else {
+                            contenedorStock.innerHTML = `<span class="stock-indicator agotado">Agotado temporalmente</span>`;
+                            if (botonOrden) {
+                                botonOrden.classList.add('disabled');
+                                botonOrden.textContent = "SIN STOCK";
+                            }
+                        }
+                    }
+                });
+
+            } catch (error) {
+                console.error("Error al sincronizar el inventario:", error);
+            }
+        }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            sincronizarStock();
+        });
+
         // Menú Desplegable Móvil
         const menuBtn = document.getElementById('mobile-menu');
         const navList = document.getElementById('nav-list');
