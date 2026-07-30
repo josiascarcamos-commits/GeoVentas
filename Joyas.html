@@ -1,0 +1,277 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GeoVentas - Catálogo de Joyas</title>
+    
+    <link rel="shortcut icon" href="IMG_20260513_074612_172 (1).png">
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,400&family=Inter:wght@300;400;600&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #000000;
+            color: rgba(255,255,255,0.92);
+            font-family: 'Inter', sans-serif;
+            font-weight: 300;
+            line-height: 1.8;
+            overflow-x: hidden;
+        }
+
+        /* Navbar */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 1.2rem 5%;
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
+            background: rgba(0,0,0,0.6);
+            border-bottom: 1px solid rgba(212,175,55,0.15);
+            z-index: 1000;
+        }
+
+        .nav-container {
+            max-width: 1600px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-weight: 900;
+            font-size: clamp(1.8rem, 4vw, 2.3rem);
+            background: linear-gradient(135deg, #d4af37 0%, #f9e27d 50%, #b8860b 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: 0.05em;
+            text-decoration: none;
+        }
+
+        .back-btn {
+            color: #d4af37;
+            text-decoration: none;
+            font-weight: 600;
+            border: 1px solid rgba(212,175,55,0.4);
+            padding: 0.5rem 1.2rem;
+            border-radius: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .back-btn:hover {
+            background: #d4af37;
+            color: #000;
+        }
+
+        /* Catalogo Section */
+        .catalog-container {
+            padding: 140px 5% 80px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .catalog-title {
+            font-family: 'Playfair Display', serif;
+            font-weight: 900;
+            font-size: clamp(2.2rem, 5vw, 3.5rem);
+            text-align: center;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #e6e9f0 0%, #ffffff 50%, #b0b5bc 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .catalog-subtitle {
+            text-align: center;
+            color: rgba(255,255,255,0.6);
+            margin-bottom: 4rem;
+            font-size: 1.1rem;
+        }
+
+        .grid-joyas {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .card-joya {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.12);
+            border-radius: 20px;
+            overflow: hidden;
+            transition: all 0.4s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card-joya:hover {
+            transform: translateY(-8px);
+            border-color: rgba(212,175,55,0.5);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.5);
+        }
+
+        .joya-img-wrapper {
+            width: 100%;
+            height: 260px;
+            background: #111;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .joya-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .card-joya:hover .joya-img {
+            transform: scale(1.08);
+        }
+
+        .joya-info {
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .joya-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            color: #fff;
+            margin-bottom: 0.5rem;
+        }
+
+        .joya-material {
+            font-size: 0.85rem;
+            color: #d4af37;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+        }
+
+        .joya-price {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: #fff;
+            margin-top: auto;
+            margin-bottom: 1.2rem;
+        }
+
+        .btn-consultar {
+            display: block;
+            text-align: center;
+            background: linear-gradient(135deg, #d4af37 0%, #b8860b 100%);
+            color: #000;
+            text-decoration: none;
+            padding: 0.8rem;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: opacity 0.3s ease;
+        }
+
+        .btn-consultar:hover {
+            opacity: 0.9;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 3rem 5%;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: rgba(255,255,255,0.5);
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">GEOVENTAS</a>
+            <a href="index.html" class="back-btn">← Volver al Inicio</a>
+        </div>
+    </nav>
+
+    <main class="catalog-container">
+        <h1 class="catalog-title">Colección Plata Ley 925</h1>
+        <p class="catalog-subtitle">Joyería seleccionada. Entregas coordinadas en Hualpén y Concepción.</p>
+
+        <div class="grid-joyas">
+
+            <!-- Producto 1 -->
+            <div class="card-joya">
+                <div class="joya-img-wrapper">
+                    <img src="TU_FOTO_AQUI.jpg" alt="Joyas de Plata" class="joya-img">
+                </div>
+                <div class="joya-info">
+                    <h2 class="joya-name">Cadena de Plata Ley 925</h2>
+                    <span class="joya-material">Plata Fina 925</span>
+                    <div class="joya-price">$15.000</div>
+                    <a href="https://linktr.ee/GeoVentas" target="_blank" class="btn-consultar">Consultar Disponibilidad</a>
+                </div>
+            </div>
+
+            <!-- Producto 2 -->
+            <div class="card-joya">
+                <div class="joya-img-wrapper">
+                    <img src="TU_FOTO_AQUI.jpg" alt="Joyas de Plata" class="joya-img">
+                </div>
+                <div class="joya-info">
+                    <h2 class="joya-name">Pulsera de Plata Ley 925</h2>
+                    <span class="joya-material">Plata Fina 925</span>
+                    <div class="joya-price">$12.000</div>
+                    <a href="https://linktr.ee/GeoVentas" target="_blank" class="btn-consultar">Consultar Disponibilidad</a>
+                </div>
+            </div>
+
+            <!-- Producto 3 -->
+            <div class="card-joya">
+                <div class="joya-img-wrapper">
+                    <img src="TU_FOTO_AQUI.jpg" alt="Joyas de Plata" class="joya-img">
+                </div>
+                <div class="joya-info">
+                    <h2 class="joya-name">Anillo Elegante Plata 925</h2>
+                    <span class="joya-material">Plata Fina 925</span>
+                    <div class="joya-price">$10.000</div>
+                    <a href="https://linktr.ee/GeoVentas" target="_blank" class="btn-consultar">Consultar Disponibilidad</a>
+                </div>
+            </div>
+
+            <!-- Producto 4 -->
+            <div class="card-joya">
+                <div class="joya-img-wrapper">
+                    <img src="TU_FOTO_AQUI.jpg" alt="Joyas de Plata" class="joya-img">
+                </div>
+                <div class="joya-info">
+                    <h2 class="joya-name">Aros / Aritos Plata Ley 925</h2>
+                    <span class="joya-material">Plata Fina 925</span>
+                    <div class="joya-price">$8.000</div>
+                    <a href="https://linktr.ee/GeoVentas" target="_blank" class="btn-consultar">Consultar Disponibilidad</a>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 GEOVENTAS - Todos los derechos reservados.</p>
+    </footer>
+
+</body>
+</html>
