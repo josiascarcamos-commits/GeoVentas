@@ -38,6 +38,7 @@
             line-height: 1.6;
             overflow-x: hidden;
             cursor: none;
+            padding-bottom: 80px;
         }
 
         /* Custom Cursor */
@@ -160,6 +161,7 @@
             letter-spacing: 0.05em;
             transition: all 0.4s ease;
             box-shadow: var(--shadow-gold);
+            cursor: pointer;
         }
 
         /* Hero Section */
@@ -190,7 +192,7 @@
             color: var(--text-secondary);
         }
 
-        /* Product Grid & Section */
+        /* Catalog Section */
         .catalog-section {
             max-width: 1600px;
             margin: 0 auto 6rem;
@@ -257,7 +259,6 @@
 
         .product-card:hover::before { left: 120%; }
 
-        /* Contenedor adaptativo */
         .product-web-slider {
             position: relative;
             width: 100%;
@@ -333,7 +334,6 @@
         
         .product-card:hover .product-title { color: var(--gold-secondary); }
 
-        /* Estilos de Stock Dinámicos */
         .stock-indicator {
             display: inline-block;
             align-self: center;
@@ -373,7 +373,7 @@
             font-size: 2.2rem;
             font-weight: 700;
             color: var(--gold-secondary);
-            margin-bottom: 2rem;
+            margin-bottom: 1.5rem;
         }
 
         .price-subtext {
@@ -389,7 +389,7 @@
             background: linear-gradient(135deg, var(--gold-primary), var(--gold-secondary));
             color: var(--bg-primary) !important;
             border: none;
-            padding: 1rem 3rem;
+            padding: 1rem 2rem;
             border-radius: 50px;
             text-decoration: none;
             font-family: 'Inter', sans-serif;
@@ -400,6 +400,7 @@
             text-transform: uppercase;
             box-shadow: 0 10px 30px rgba(212, 175, 55, 0.3);
             transition: all 0.3s ease;
+            cursor: pointer;
         }
 
         .order-btn:hover {
@@ -414,6 +415,185 @@
             box-shadow: none;
             pointer-events: none;
         }
+
+        /* --- BOTÓN FLOTANTE Y MODAL DEL CARRITO --- */
+        .cart-trigger {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            background: linear-gradient(135deg, var(--gold-primary), var(--gold-secondary));
+            color: var(--bg-primary);
+            padding: 1rem 1.8rem;
+            border-radius: 50px;
+            font-weight: 800;
+            box-shadow: 0 10px 35px rgba(212, 175, 55, 0.5);
+            z-index: 2000;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            transition: all 0.3s ease;
+        }
+
+        .cart-trigger:hover { transform: scale(1.08); }
+
+        .cart-count {
+            background: #000;
+            color: #fff;
+            border-radius: 50%;
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+        }
+
+        .cart-modal {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 100%;
+            max-width: 450px;
+            height: 100vh;
+            background: rgba(10, 10, 10, 0.96);
+            backdrop-filter: blur(20px);
+            border-left: 1px solid rgba(212, 175, 55, 0.3);
+            z-index: 2001;
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: right 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+            box-shadow: -10px 0 40px rgba(0,0,0,0.8);
+        }
+
+        .cart-modal.open { right: 0; }
+
+        .cart-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+            padding-bottom: 1rem;
+        }
+
+        .cart-header h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            color: var(--gold-secondary);
+        }
+
+        .close-cart {
+            font-size: 1.5rem;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        .cart-items {
+            flex-grow: 1;
+            overflow-y: auto;
+            margin: 1.5rem 0;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(255,255,255,0.03);
+            padding: 0.8rem 1rem;
+            border-radius: 12px;
+            border: 1px solid rgba(212, 175, 55, 0.1);
+        }
+
+        .cart-item-title { font-weight: 600; font-size: 0.9rem; }
+        .cart-item-price { color: var(--gold-secondary); font-weight: 700; font-size: 0.95rem; }
+
+        .coupon-box {
+            background: rgba(255,255,255,0.02);
+            padding: 1rem;
+            border-radius: 14px;
+            border: 1px solid rgba(212, 175, 55, 0.15);
+            margin-bottom: 1.5rem;
+        }
+
+        .coupon-input-group {
+            display: flex;
+            gap: 8px;
+            margin-top: 8px;
+        }
+
+        .coupon-input-group input {
+            flex-grow: 1;
+            background: rgba(0, 0, 0, 0.6);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            border-radius: 8px;
+            padding: 8px 12px;
+            color: #fff;
+            outline: none;
+            text-transform: uppercase;
+        }
+
+        .coupon-input-group button {
+            background: var(--gold-primary);
+            color: #000;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 8px;
+            font-weight: 700;
+            cursor: pointer;
+        }
+
+        .coupon-msg {
+            font-size: 0.8rem;
+            margin-top: 6px;
+            font-weight: 600;
+        }
+
+        .cart-totals {
+            border-top: 1px solid rgba(212, 175, 55, 0.2);
+            padding-top: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .cart-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+            font-size: 0.95rem;
+        }
+
+        .cart-row.total-row {
+            font-size: 1.3rem;
+            font-weight: 800;
+            color: var(--gold-secondary);
+        }
+
+        .checkout-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .btn-send {
+            width: 100%;
+            padding: 1rem;
+            border: none;
+            border-radius: 50px;
+            font-weight: 800;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            text-decoration: none;
+        }
+
+        .btn-wa { background: #25D366; color: #fff; }
+        .btn-social { background: rgba(255,255,255,0.1); color: #fff; border: 1px solid rgba(212,175,55,0.4); }
 
         @media (max-width: 768px) {
             body { cursor: default; }
@@ -441,6 +621,8 @@
             .product-card { padding: 2rem 1.5rem 2.5rem 1.5rem; }
             .product-web-slider { max-height: 260px; }
             .product-card:hover { transform: translateY(-5px) scale(1.01); }
+            
+            .cart-modal { width: 100%; }
         }
 
         .footer {
@@ -489,9 +671,9 @@
                 <li><a href="index.html#faq" class="nav-link">Preguntas Frecuentes</a></li>
             </ul>
             
-            <a href="https://wa.me/569XXXXXXXX?text=Hola%20GeoVentas!" class="whatsapp-btn" target="_blank">
-                <i class="fab fa-whatsapp"></i> WhatsApp
-            </a>
+            <div class="whatsapp-btn" onclick="toggleCart()">
+                <i class="fas fa-shopping-cart"></i> Ver Carrito
+            </div>
         </div>
     </nav>
 
@@ -519,7 +701,7 @@
                 <div class="stock-container"></div>
                 <p class="product-description-text">Doble puerto inteligente (Type-C + USB). Carga rápida y eficiente para smartphone, tablet y laptop en ruta.</p>
                 <div class="product-price">$4.990</div>
-                <a href="https://linktr.ee/GeoVentas" class="order-btn" target="_blank">ORDENAR</a>
+                <button class="order-btn" onclick="agregarAlCarrito('Cargador de Auto 30W Max', 4990)">AÑADIR AL CARRO</button>
             </div>
 
             <!-- PRODUCTO 2: PARLANTE MAGNÉTICO -->
@@ -546,7 +728,7 @@
                 <div class="stock-container"></div>
                 <p class="product-description-text">Sonido de alta fidelidad, fijación con imán de alta densidad y luces RGB rítmicas con 5-8h de batería continua.</p>
                 <div class="product-price">$4.990</div>
-                <a href="https://linktr.ee/GeoVentas" class="order-btn" target="_blank">ORDENAR</a>
+                <button class="order-btn" onclick="agregarAlCarrito('Parlante Magnético G200', 4990)">AÑADIR AL CARRO</button>
             </div>
 
             <!-- PRODUCTO 3: CARGADOR UGREEN GAN -->
@@ -567,7 +749,7 @@
                 <div class="stock-container"></div>
                 <p class="product-description-text">Tecnología de Nitruro de Galio para máxima eficiencia, velocidad de carga superior y control estricto de temperatura.</p>
                 <div class="product-price">$13.990</div>
-                <a href="https://linktr.ee/GeoVentas" class="order-btn" target="_blank">ORDENAR</a>
+                <button class="order-btn" onclick="agregarAlCarrito('Cargador Ugreen GaN 30W', 13990)">AÑADIR AL CARRO</button>
             </div>
 
             <!-- PRODUCTO 4: AUDÍFONOS KZ EDX PRO -->
@@ -594,7 +776,7 @@
                     $9.990
                     <span class="price-subtext">+ Estuche Rígido KZ: $11.990</span>
                 </div>
-                <a href="https://linktr.ee/GeoVentas" class="order-btn" target="_blank">ORDENAR</a>
+                <button class="order-btn" onclick="agregarAlCarrito('Audífonos KZ eDX Pro', 9990)">AÑADIR AL CARRO</button>
             </div>
 
             <!-- PRODUCTO 5: AUDÍFONOS LENOVO GM2 PRO -->
@@ -615,7 +797,7 @@
                 <div class="stock-container"></div>
                 <p class="product-description-text">Bluetooth 5.3 con modo gamer de ultra baja latencia, sonido envolvente 360° y micrófono HD para llamadas y juegos.</p>
                 <div class="product-price">$12.990</div>
-                <a href="https://linktr.ee/GeoVentas" class="order-btn" target="_blank">ORDENAR</a>
+                <button class="order-btn" onclick="agregarAlCarrito('Lenovo GM2 Pro TWS', 12990)">AÑADIR AL CARRO</button>
             </div>
 
             <!-- PRODUCTO 6: CABLE ESSAGER -->
@@ -639,17 +821,219 @@
                     $5.990
                     <span class="price-subtext">🔥 Promoción Especial: 2x $10.000</span>
                 </div>
-                <a href="https://linktr.ee/GeoVentas" class="order-btn" target="_blank">ORDENAR</a>
+                <button class="order-btn" onclick="agregarAlCarrito('Cable Essager 2Mts', 5990)">AÑADIR AL CARRO</button>
             </div>
 
         </div>
     </section>
+
+    <!-- COMPONENTE FLOTANTE Y MODAL DEL CARRITO DE COMPRAS -->
+    <div class="cart-trigger" onclick="toggleCart()">
+        <i class="fas fa-shopping-bag"></i>
+        <span>Carrito</span>
+        <div class="cart-count" id="cartCount">0</div>
+    </div>
+
+    <div class="cart-modal" id="cartModal">
+        <div class="cart-header">
+            <h3>Tu Pedido</h3>
+            <div class="close-cart" onclick="toggleCart()"><i class="fas fa-times"></i></div>
+        </div>
+
+        <div class="cart-items" id="cartItems">
+            <p style="color: var(--text-secondary); text-align: center; margin-top: 2rem;">El carrito está vacío</p>
+        </div>
+
+        <div>
+            <!-- Caja de Tarjeta Rascable / Descuento -->
+            <div class="coupon-box">
+                <label style="font-size: 0.85rem; font-weight: 600;">¿Tienes una tarjeta rascable?</label>
+                <div class="coupon-input-group">
+                    <input type="text" id="couponCode" placeholder="Ej: GEO10">
+                    <button onclick="aplicarDescuento()">Aplicar</button>
+                </div>
+                <div class="coupon-msg" id="couponMsg"></div>
+            </div>
+
+            <!-- Totales Automatizados -->
+            <div class="cart-totals">
+                <div class="cart-row">
+                    <span>Subtotal:</span>
+                    <span id="subtotalVal">$0</span>
+                </div>
+                <div class="cart-row" id="rowDiscount" style="display:none; color: #2ecc71;">
+                    <span>Descuento:</span>
+                    <span id="discountVal">-$0</span>
+                </div>
+                <div class="cart-row total-row">
+                    <span>Total A Pagar:</span>
+                    <span id="totalVal">$0</span>
+                </div>
+            </div>
+
+            <div class="checkout-buttons">
+                <button class="btn-send btn-wa" onclick="enviarPedido('whatsapp')">
+                    <i class="fab fa-whatsapp"></i> Enviar Pedido por WhatsApp
+                </button>
+                <button class="btn-send btn-social" onclick="copiarPedidoRedes()">
+                    <i class="fas fa-copy"></i> Copiar Pedido para Instagram/FB
+                </button>
+            </div>
+        </div>
+    </div>
 
     <footer class="footer">
         <p>© 2026 GeoVentas. Elegancia y Seguridad Tecnológica en Hualpén • Concepción</p>
     </footer>
 
     <script>
+           // CONFIGURACIÓN DEL CARRITO Y DESCUENTOS RASCABLES
+        let carrito = [];
+        let descuentoPorcentaje = 0;
+        let codigoAplicado = "";
+
+        // LISTA DE CÓDIGOS RASCABLES VÁLIDOS (Puedes agregar o cambiar los tuyos)
+        const CÓDIGOS_VÁLIDOS = {
+            "GEO10": 0.10,  // 10% de descuento
+            "GEO15": 0.15,  // 15% de descuento
+            "GEO20": 0.20   // 20% de descuento
+        };
+
+        function toggleCart() {
+            document.getElementById('cartModal').classList.toggle('open');
+        }
+
+        function agregarAlCarrito(nombre, precio) {
+            carrito.push({ nombre, precio });
+            actualizarCarrito();
+            document.getElementById('cartModal').classList.add('open');
+        }
+
+        function eliminarDelCarrito(index) {
+            carrito.splice(index, 1);
+            actualizarCarrito();
+        }
+
+        function aplicarDescuento() {
+            const input = document.getElementById('couponCode').value.trim().toUpperCase();
+            const msg = document.getElementById('couponMsg');
+
+            if (CÓDIGOS_VÁLIDOS[input]) {
+                descuentoPorcentaje = CÓDIGOS_VÁLIDOS[input];
+                codigoAplicado = input;
+                msg.style.color = "#2ecc71";
+                msg.innerText = `¡Tarjeta Rascable de ${descuentoPorcentaje * 100}% activada!`;
+            } else {
+                descuentoPorcentaje = 0;
+                codigoAplicado = "";
+                msg.style.color = "#e74c3c";
+                msg.innerText = "Código no válido o no existe.";
+            }
+            actualizarCarrito();
+        }
+
+        function actualizarCarrito() {
+            const cartItems = document.getElementById('cartItems');
+            const cartCount = document.getElementById('cartCount');
+            const subtotalVal = document.getElementById('subtotalVal');
+            const discountVal = document.getElementById('discountVal');
+            const totalVal = document.getElementById('totalVal');
+            const rowDiscount = document.getElementById('rowDiscount');
+
+            cartCount.innerText = carrito.length;
+
+            if (carrito.length === 0) {
+                cartItems.innerHTML = `<p style="color: var(--text-secondary); text-align: center; margin-top: 2rem;">El carrito está vacío</p>`;
+                subtotalVal.innerText = "$0";
+                totalVal.innerText = "$0";
+                rowDiscount.style.display = "none";
+                return;
+            }
+
+            cartItems.innerHTML = "";
+            let subtotal = 0;
+
+            carrito.forEach((item, index) => {
+                subtotal += item.precio;
+                cartItems.innerHTML += `
+                    <div class="cart-item">
+                        <div>
+                            <div class="cart-item-title">${item.nombre}</div>
+                            <div class="cart-item-price">$${item.precio.toLocaleString('es-CL')}</div>
+                        </div>
+                        <i class="fas fa-trash" style="color: #e74c3c; cursor: pointer;" onclick="eliminarDelCarrito(${index})"></i>
+                    </div>
+                `;
+            });
+
+            let montoDescuento = subtotal * descuentoPorcentaje;
+            let total = subtotal - montoDescuento;
+
+            subtotalVal.innerText = `$${subtotal.toLocaleString('es-CL')}`;
+
+            if (descuentoPorcentaje > 0) {
+                rowDiscount.style.display = "flex";
+                discountVal.innerText = `-$${montoDescuento.toLocaleString('es-CL')}`;
+            } else {
+                rowDiscount.style.display = "none";
+            }
+
+            totalVal.innerText = `$${total.toLocaleString('es-CL')}`;
+        }
+
+        function generarTextoPedido() {
+            let subtotal = carrito.reduce((acc, item) => acc + item.precio, 0);
+            let montoDescuento = subtotal * descuentoPorcentaje;
+            let total = subtotal - montoDescuento;
+
+            let texto = `*¡Hola GeoVentas! Quiero realizar el siguiente pedido:*\n\n`;
+            
+            // Agrupar productos repetidos en el mensaje
+            let conteo = {};
+            carrito.forEach(i => conteo[i.nombre] = (conteo[i.nombre] || 0) + 1);
+            
+            for (let prod in conteo) {
+                texto += `• ${conteo[prod]}x ${prod}\n`;
+            }
+
+            texto += `\n💵 *Subtotal:* $${subtotal.toLocaleString('es-CL')}\n`;
+            
+            if (descuentoPorcentaje > 0) {
+                texto += `🏷️ *Tarjeta Rascable:* ${codigoAplicado} (-$${montoDescuento.toLocaleString('es-CL')})\n`;
+            }
+            
+            texto += `💰 *TOTAL A TRANSFERIR / EFECTIVO:* *$${total.toLocaleString('es-CL')}*\n\n`;
+            texto += `_Quedo atento a tus datos bancarios para transferir o coordinar la entrega._`;
+
+            return texto;
+        }
+
+        function enviarPedido(canal) {
+            if (carrito.length === 0) {
+                alert("Agrega productos a tu carrito primero.");
+                return;
+            }
+
+            const texto = generarTextoPedido();
+            const telefonoWhatsApp = "569XXXXXXXX"; // Reemplaza con tu número real de GeoVentas
+
+            if (canal === 'whatsapp') {
+                const url = `https://wa.me/${telefonoWhatsApp}?text=${encodeURIComponent(texto)}`;
+                window.open(url, '_blank');
+            }
+        }
+
+        function copiarPedidoRedes() {
+            if (carrito.length === 0) {
+                alert("Agrega productos a tu carrito primero.");
+                return;
+            }
+            const texto = generarTextoPedido();
+            navigator.clipboard.writeText(texto).then(() => {
+                alert("¡Texto del pedido copiado al portapapeles! Ahora pégalo en el chat de Instagram o Facebook de GeoVentas.");
+            });
+        }
+
         // ENLACE EXCLUSIVO DE TU GOOGLE SHEETS EN FORMATO CSV DE LECTURA AUTOMÁTICA
         const URL_SHEETS = "https://docs.google.com/spreadsheets/d/1dSfV5WCRk2UqwXGoRy5afG3wsrcZUSSlfBKB_k8XP60/export?format=csv";
 
@@ -658,16 +1042,13 @@
                 const respuesta = await fetch(URL_SHEETS);
                 const datosTexto = await respuesta.text();
                 
-                // Procesamiento de CSV robusto para separar por comas de forma segura
                 const regexCSV = /,(?=(?:(?:[^"]*"){2})*[^"]*$)/;
                 const lineas = datosTexto.split("\n");
                 if (lineas.length < 3) return;
 
-                // Mapeamos las filas claves del formato horizontal que tienes en tu celular
                 const productosFila = lineas[0].split(regexCSV).map(v => v.replace(/^"|"$/g, '').trim().toLowerCase());
                 const stockFila = lineas[2].split(regexCSV).map(v => v.replace(/^"|"$/g, '').trim());
 
-                // Crear un objeto clave-valor para buscar el stock de forma veloz
                 const mapaStock = {};
                 for (let i = 1; i < productosFila.length; i++) {
                     const nombreProd = productosFila[i];
@@ -677,7 +1058,6 @@
                     }
                 }
 
-                // Inyectar de manera elegante las etiquetas de stock e inhabilitar los botones si es necesario
                 document.querySelectorAll('.product-card').forEach(tarjeta => {
                     const nombreBuscar = tarjeta.getAttribute('data-name');
                     const contenedorStock = tarjeta.querySelector('.stock-container');
@@ -698,7 +1078,7 @@
                             contenedorStock.innerHTML = `<span class="stock-indicator disponible">Disponible (${stockEncontrado} u)</span>`;
                             if (botonOrden) {
                                 botonOrden.classList.remove('disabled');
-                                botonOrden.textContent = "ORDENAR";
+                                botonOrden.textContent = "AÑADIR AL CARRO";
                             }
                         } else {
                             contenedorStock.innerHTML = `<span class="stock-indicator agotado">Agotado temporalmente</span>`;
