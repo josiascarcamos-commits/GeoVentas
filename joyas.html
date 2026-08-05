@@ -1,42 +1,89 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XX3Q937933"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-XX3Q937933');
+    </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GeoVentas - Catálogo de Joyas</title>
+    <title>GeoVentas - Colección Joyas Plata Ley 925 | Hualpén • Concepción</title>
     
     <link rel="shortcut icon" href="IMG_20260513_074612_172 (1).png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,900&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,400&family=Inter:wght@300;400;600&display=swap');
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+        :root {
+            --bg-primary: #000000;
+            --gold-primary: #d4af37;
+            --gold-secondary: #f1c640;
+            --glass-bg: rgba(0, 0, 0, 0.85);
+            --glass-border: rgba(212, 175, 55, 0.2);
+            --text-primary: #ffffff;
+            --text-secondary: #b8b8b8;
+            --shadow-gold: 0 8px 32px rgba(212, 175, 55, 0.3);
+            --shadow-card: 0 20px 40px rgba(0, 0, 0, 0.5);
         }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
-            background: #000000;
-            color: rgba(255,255,255,0.92);
             font-family: 'Inter', sans-serif;
-            font-weight: 300;
-            line-height: 1.8;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
             overflow-x: hidden;
+            cursor: none;
+            padding-bottom: 80px;
         }
 
-        /* Navbar */
+        /* Custom Cursor */
+        .cursor {
+            position: fixed;
+            width: 28px;
+            height: 28px;
+            background: radial-gradient(circle at 30% 30%, rgba(212,175,55,0.4) 0%, transparent 60%);
+            border: 2px solid rgba(212,175,55,0.8);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 9998;
+            transition: transform 0.08s ease-out;
+            mix-blend-mode: screen;
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
+            transform: translate(-50%, -50%);
+        }
+
+        .cursor-follower {
+            position: fixed;
+            width: 14px;
+            height: 14px;
+            background: linear-gradient(135deg, var(--gold-primary), var(--gold-secondary));
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 9998;
+            mix-blend-mode: screen;
+            box-shadow: 0 0 15px rgba(212, 175, 55, 0.6);
+            transform: translate(-50%, -50%);
+        }
+
+        /* Navbar Glassmorphism */
         .navbar {
             position: fixed;
             top: 0;
-            left: 0;
             width: 100%;
-            padding: 1.2rem 5%;
             backdrop-filter: blur(25px);
             -webkit-backdrop-filter: blur(25px);
             background: rgba(0,0,0,0.6);
             border-bottom: 1px solid rgba(212,175,55,0.15);
             z-index: 1000;
+            padding: 1.2rem 0;
         }
 
         .nav-container {
@@ -45,38 +92,63 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            padding: 0 5%;
         }
 
         .logo {
             font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
             font-weight: 900;
-            font-size: clamp(1.8rem, 4vw, 2.3rem);
-            background: linear-gradient(135deg, #d4af37 0%, #f9e27d 50%, #b8860b 100%);
+            background: linear-gradient(135deg, var(--gold-primary), var(--gold-secondary));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+            background-clip: text;
             letter-spacing: 0.05em;
             text-decoration: none;
         }
 
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
         .back-btn {
-            color: #d4af37;
+            color: var(--gold-primary);
             text-decoration: none;
             font-weight: 600;
+            font-size: 0.9rem;
             border: 1px solid rgba(212,175,55,0.4);
             padding: 0.5rem 1.2rem;
-            border-radius: 20px;
+            border-radius: 50px;
             transition: all 0.3s ease;
         }
 
         .back-btn:hover {
-            background: #d4af37;
+            background: var(--gold-primary);
             color: #000;
+            box-shadow: var(--shadow-gold);
         }
 
-        /* Catalogo Section */
+        .whatsapp-btn {
+            background: linear-gradient(135deg, var(--gold-primary), var(--gold-secondary));
+            color: var(--bg-primary);
+            padding: 0.8rem 1.8rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-family: 'Inter', sans-serif;
+            font-weight: 800;
+            letter-spacing: 0.05em;
+            transition: all 0.4s ease;
+            box-shadow: var(--shadow-gold);
+            cursor: pointer;
+            font-size: 0.9rem;
+        }
+
+        /* Section Title & Layout */
         .catalog-container {
             padding: 140px 5% 80px;
-            max-width: 1400px;
+            max-width: 1600px;
             margin: 0 auto;
         }
 
@@ -85,80 +157,152 @@
             font-weight: 900;
             font-size: clamp(2.2rem, 5vw, 3.5rem);
             text-align: center;
-            margin-bottom: 1rem;
-            background: linear-gradient(135deg, #e6e9f0 0%, #ffffff 50%, #b0b5bc 100%);
+            margin-bottom: 0.5rem;
+            background: linear-gradient(135deg, var(--gold-primary), var(--gold-secondary));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 0 0 40px rgba(212, 175, 55, 0.25);
         }
 
         .catalog-subtitle {
             text-align: center;
-            color: rgba(255,255,255,0.6);
-            margin-bottom: 3rem;
-            font-size: 1.1rem;
+            color: var(--text-secondary);
+            margin-bottom: 4rem;
+            font-size: 1rem;
+            font-weight: 300;
+            letter-spacing: 0.05em;
         }
 
         .grid-joyas {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
             gap: 2.5rem;
         }
 
+        /* Product Cards */
         .card-joya {
-            background: rgba(255,255,255,0.03);
-            border: 1px solid rgba(255,255,255,0.12);
-            border-radius: 20px;
+            background: rgba(255,255,255,0.035);
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
+            border: 1px solid rgba(212,175,55,0.12);
+            border-radius: 28px;
+            padding: 2.5rem 2rem 3rem 2rem;
+            text-align: center;
+            position: relative;
             overflow: hidden;
-            transition: all 0.4s ease;
+            transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1), 
+                        border-color 0.5s ease, 
+                        box-shadow 0.5s ease;
             display: flex;
             flex-direction: column;
-            padding-bottom: 1.5rem;
-            text-align: center;
+            justify-content: space-between;
+        }
+
+        .card-joya::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -120%;
+            width: 120%;
+            height: 100%;
+            background: linear-gradient(135deg, transparent 0%, rgba(255,255,255,0.1) 50%, rgba(212,175,55,0.15) 60%, transparent 100%);
+            transition: left 0.7s cubic-bezier(0.25, 1, 0.5, 1);
+            z-index: 2;
         }
 
         .card-joya:hover {
-            transform: translateY(-8px);
-            border-color: rgba(212,175,55,0.5);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.5);
+            transform: translateY(-12px) scale(1.02);
+            border-color: rgba(212,175,55,0.7);
+            box-shadow: 0 30px 70px rgba(212, 175, 55, 0.25);
         }
 
+        .card-joya:hover::before { left: 120%; }
+
         .joya-img-wrapper {
+            position: relative;
             width: 100%;
-            height: 260px;
-            background: #111;
+            aspect-ratio: 1 / 1; 
+            max-height: 280px;
             overflow: hidden;
+            border-radius: 20px;
+            margin-bottom: 1.5rem;
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(212,175,55,0.1);
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-bottom: 1rem;
+            padding: 10px;
         }
 
         .joya-img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s ease;
+            max-width: 100%;
+            max-height: 100%;
+            width: auto;
+            height: auto;
+            object-fit: contain; 
+            transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+            cursor: zoom-in;
+            border-radius: 12px;
         }
 
-        .card-joya:hover .joya-img {
-            transform: scale(1.08);
-        }
-
-        .joya-info {
-            padding: 0 1.5rem;
-            display: flex;
-            flex-direction: column;
-            flex-grow: 1;
+        .joya-img:active {
+            transform: scale(1.25);
+            cursor: grabbing;
         }
 
         .joya-name {
             font-family: 'Playfair Display', serif;
-            font-size: 1.3rem;
-            color: #fff;
-            margin-bottom: 0.3rem;
+            font-weight: 700;
+            font-size: 1.7rem;
+            margin-bottom: 0.5rem;
+            color: #ffffff;
+        }
+        
+        .card-joya:hover .joya-name { color: var(--gold-secondary); }
+
+        /* Rating Stars System */
+        .rating-box {
+            background: rgba(0, 0, 0, 0.4);
+            border: 1px solid rgba(212, 175, 55, 0.15);
+            border-radius: 16px;
+            padding: 0.6rem 0.8rem;
+            margin-bottom: 1rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4px;
         }
 
-        /* Indicador de Stock igual al catálogo principal */
+        .stars-container {
+            display: flex;
+            gap: 4px;
+            color: rgba(255, 255, 255, 0.2);
+            font-size: 1.1rem;
+        }
+
+        .rating-box.unlocked .stars-container {
+            color: var(--gold-primary);
+            cursor: pointer;
+        }
+
+        .stars-container i.active {
+            color: var(--gold-secondary);
+            text-shadow: 0 0 10px rgba(212, 175, 55, 0.6);
+        }
+
+        .rating-text {
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            font-weight: 500;
+        }
+
+        .rating-box.locked .rating-text i {
+            color: var(--gold-primary);
+            margin-right: 4px;
+        }
+
+        /* Stock Status */
         .stock-indicator {
             display: inline-block;
             align-self: center;
@@ -185,53 +329,256 @@
         }
 
         .joya-price {
-            font-size: 1.4rem;
-            font-weight: 600;
-            color: #d4af37;
-            margin-top: auto;
-            margin-bottom: 1.2rem;
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: var(--gold-secondary);
+            margin-bottom: 1.5rem;
         }
 
-        .btn-consultar {
-            display: block;
-            text-align: center;
-            background: linear-gradient(135deg, #d4af37 0%, #b8860b 100%);
-            color: #000;
+        .order-btn {
+            background: linear-gradient(135deg, var(--gold-primary), var(--gold-secondary));
+            color: var(--bg-primary) !important;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 50px;
             text-decoration: none;
-            padding: 0.8rem;
-            border-radius: 12px;
-            font-weight: 600;
-            font-size: 0.9rem;
-            transition: opacity 0.3s ease;
+            font-family: 'Inter', sans-serif;
+            font-weight: 800;
+            font-size: 0.95rem;
+            letter-spacing: 0.05em;
+            display: inline-block;
+            text-transform: uppercase;
+            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.3);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            width: 100%;
         }
 
-        .btn-consultar.disabled {
+        .order-btn:hover {
+            transform: scale(1.03);
+            box-shadow: 0 15px 40px rgba(212, 175, 55, 0.5);
+        }
+
+        .order-btn.disabled {
             background: rgba(255,255,255,0.05) !important;
             color: rgba(255,255,255,0.2) !important;
             border: 1px solid rgba(255,255,255,0.05);
+            box-shadow: none;
             pointer-events: none;
         }
 
-        .btn-consultar:hover {
-            opacity: 0.9;
+        /* Cart Floating Trigger & Modal */
+        .cart-trigger {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            background: linear-gradient(135deg, var(--gold-primary), var(--gold-secondary));
+            color: var(--bg-primary);
+            padding: 1rem 1.8rem;
+            border-radius: 50px;
+            font-weight: 800;
+            box-shadow: 0 10px 35px rgba(212, 175, 55, 0.5);
+            z-index: 2000;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            transition: all 0.3s ease;
         }
 
-        /* Footer */
+        .cart-trigger:hover { transform: scale(1.08); }
+
+        .cart-count {
+            background: #000;
+            color: #fff;
+            border-radius: 50%;
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+        }
+
+        .cart-modal {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 100%;
+            max-width: 450px;
+            height: 100vh;
+            background: rgba(10, 10, 10, 0.96);
+            backdrop-filter: blur(20px);
+            border-left: 1px solid rgba(212, 175, 55, 0.3);
+            z-index: 2001;
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: right 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+            box-shadow: -10px 0 40px rgba(0,0,0,0.8);
+        }
+
+        .cart-modal.open { right: 0; }
+
+        .cart-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+            padding-bottom: 1rem;
+        }
+
+        .cart-header h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            color: var(--gold-secondary);
+        }
+
+        .close-cart {
+            font-size: 1.5rem;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        .cart-items {
+            flex-grow: 1;
+            overflow-y: auto;
+            margin: 1.5rem 0;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(255,255,255,0.03);
+            padding: 0.8rem 1rem;
+            border-radius: 12px;
+            border: 1px solid rgba(212, 175, 55, 0.1);
+        }
+
+        .cart-item-title { font-weight: 600; font-size: 0.9rem; }
+        .cart-item-price { color: var(--gold-secondary); font-weight: 700; font-size: 0.95rem; }
+
+        .coupon-box {
+            background: rgba(255,255,255,0.02);
+            padding: 1rem;
+            border-radius: 14px;
+            border: 1px solid rgba(212, 175, 55, 0.15);
+            margin-bottom: 1.5rem;
+        }
+
+        .coupon-input-group {
+            display: flex;
+            gap: 8px;
+            margin-top: 8px;
+        }
+
+        .coupon-input-group input {
+            flex-grow: 1;
+            background: rgba(0, 0, 0, 0.6);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            border-radius: 8px;
+            padding: 8px 12px;
+            color: #fff;
+            outline: none;
+            text-transform: uppercase;
+        }
+
+        .coupon-input-group button {
+            background: var(--gold-primary);
+            color: #000;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 8px;
+            font-weight: 700;
+            cursor: pointer;
+        }
+
+        .coupon-msg {
+            font-size: 0.8rem;
+            margin-top: 6px;
+            font-weight: 600;
+        }
+
+        .cart-totals {
+            border-top: 1px solid rgba(212, 175, 55, 0.2);
+            padding-top: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .cart-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+            font-size: 0.95rem;
+        }
+
+        .cart-row.total-row {
+            font-size: 1.3rem;
+            font-weight: 800;
+            color: var(--gold-secondary);
+        }
+
+        .checkout-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .btn-send {
+            width: 100%;
+            padding: 1rem;
+            border: none;
+            border-radius: 50px;
+            font-weight: 800;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            text-decoration: none;
+        }
+
+        .btn-wa { background: #25D366; color: #fff; }
+        .btn-social { background: rgba(255,255,255,0.1); color: #fff; border: 1px solid rgba(212,175,55,0.4); }
+
         footer {
+            background: rgba(0,0,0,0.7);
+            border-top: 1px solid rgba(212,175,55,0.15);
             text-align: center;
-            padding: 3rem 5%;
-            border-top: 1px solid rgba(255,255,255,0.1);
-            color: rgba(255,255,255,0.5);
+            padding: 3rem 2rem;
+            color: var(--text-secondary);
             font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            body { cursor: default; }
+            .cursor, .cursor-follower { display: none; }
+            .whatsapp-btn { display: none; }
+            .cart-modal { width: 100%; }
         }
     </style>
 </head>
 <body>
 
+    <div class="cursor" id="cursor"></div>
+    <div class="cursor-follower" id="cursorFollower"></div>
+
     <nav class="navbar">
         <div class="nav-container">
             <a href="index.html" class="logo">GEOVENTAS</a>
-            <a href="index.html" class="back-btn">← Volver al Inicio</a>
+            
+            <div class="nav-actions">
+                <a href="index.html" class="back-btn">← Inicio</a>
+                <div class="whatsapp-btn" onclick="toggleCart()">
+                    <i class="fas fa-shopping-cart"></i> Ver Carrito
+                </div>
+            </div>
         </div>
     </nav>
 
@@ -242,65 +589,374 @@
         <div class="grid-joyas">
 
             <!-- PRODUCTO 1 -->
-            <div class="card-joya" data-name="cadena de plata">
+            <div class="card-joya" data-name="cadena de plata" data-id="cadena-plata-925">
                 <div class="joya-img-wrapper">
                     <img src="foto_catalogo.jpg" alt="Cadena de Plata Ley 925" class="joya-img">
                 </div>
-                <div class="joya-info">
-                    <h2 class="joya-name">Cadena de Plata 925</h2>
-                    <div class="stock-container"></div>
-                    <div class="joya-price">$15.000</div>
-                    <a href="https://linktr.ee/GeoVentas" target="_blank" class="btn-consultar order-btn">ORDENAR</a>
+                <h2 class="joya-name">Cadena de Plata 925</h2>
+
+                <div class="rating-box locked" id="rating-cadena-plata-925">
+                    <div class="stars-container">
+                        <i class="fas fa-star" onclick="calificarProducto('cadena-plata-925', 1)"></i>
+                        <i class="fas fa-star" onclick="calificarProducto('cadena-plata-925', 2)"></i>
+                        <i class="fas fa-star" onclick="calificarProducto('cadena-plata-925', 3)"></i>
+                        <i class="fas fa-star" onclick="calificarProducto('cadena-plata-925', 4)"></i>
+                        <i class="fas fa-star" onclick="calificarProducto('cadena-plata-925', 5)"></i>
+                    </div>
+                    <div class="rating-text"><i class="fas fa-lock"></i> Califica al comprar este producto</div>
                 </div>
+
+                <div class="stock-container"></div>
+                <div class="joya-price">$15.000</div>
+                <button class="order-btn" onclick="agregarAlCarrito('Cadena de Plata 925', 15000, 'cadena-plata-925')">AÑADIR AL CARRO</button>
             </div>
 
             <!-- PRODUCTO 2 -->
-            <div class="card-joya" data-name="pulsera de plata">
+            <div class="card-joya" data-name="pulsera de plata" data-id="pulsera-plata-925">
                 <div class="joya-img-wrapper">
                     <img src="foto_catalogo.jpg" alt="Pulsera de Plata Ley 925" class="joya-img">
                 </div>
-                <div class="joya-info">
-                    <h2 class="joya-name">Pulsera de Plata 925</h2>
-                    <div class="stock-container"></div>
-                    <div class="joya-price">$12.000</div>
-                    <a href="https://linktr.ee/GeoVentas" target="_blank" class="btn-consultar order-btn">ORDENAR</a>
+                <h2 class="joya-name">Pulsera de Plata 925</h2>
+
+                <div class="rating-box locked" id="rating-pulsera-plata-925">
+                    <div class="stars-container">
+                        <i class="fas fa-star" onclick="calificarProducto('pulsera-plata-925', 1)"></i>
+                        <i class="fas fa-star" onclick="calificarProducto('pulsera-plata-925', 2)"></i>
+                        <i class="fas fa-star" onclick="calificarProducto('pulsera-plata-925', 3)"></i>
+                        <i class="fas fa-star" onclick="calificarProducto('pulsera-plata-925', 4)"></i>
+                        <i class="fas fa-star" onclick="calificarProducto('pulsera-plata-925', 5)"></i>
+                    </div>
+                    <div class="rating-text"><i class="fas fa-lock"></i> Califica al comprar este producto</div>
                 </div>
+
+                <div class="stock-container"></div>
+                <div class="joya-price">$12.000</div>
+                <button class="order-btn" onclick="agregarAlCarrito('Pulsera de Plata 925', 12000, 'pulsera-plata-925')">AÑADIR AL CARRO</button>
             </div>
 
             <!-- PRODUCTO 3 -->
-            <div class="card-joya" data-name="anillo de plata">
+            <div class="card-joya" data-name="anillo de plata" data-id="anillo-plata-925">
                 <div class="joya-img-wrapper">
                     <img src="foto_catalogo.jpg" alt="Anillo de Plata Ley 925" class="joya-img">
                 </div>
-                <div class="joya-info">
-                    <h2 class="joya-name">Anillo de Plata 925</h2>
-                    <div class="stock-container"></div>
-                    <div class="joya-price">$10.000</div>
-                    <a href="https://linktr.ee/GeoVentas" target="_blank" class="btn-consultar order-btn">ORDENAR</a>
+                <h2 class="joya-name">Anillo de Plata 925</h2>
+
+                <div class="rating-box locked" id="rating-anillo-plata-925">
+                    <div class="stars-container">
+                        <i class="fas fa-star" onclick="calificarProducto('anillo-plata-925', 1)"></i>
+                        <i class="fas fa-star" onclick="calificarProducto('anillo-plata-925', 2)"></i>
+                        <i class="fas fa-star" onclick="calificarProducto('anillo-plata-925', 3)"></i>
+                        <i class="fas fa-star" onclick="calificarProducto('anillo-plata-925', 4)"></i>
+                        <i class="fas fa-star" onclick="calificarProducto('anillo-plata-925', 5)"></i>
+                    </div>
+                    <div class="rating-text"><i class="fas fa-lock"></i> Califica al comprar este producto</div>
                 </div>
+
+                <div class="stock-container"></div>
+                <div class="joya-price">$10.000</div>
+                <button class="order-btn" onclick="agregarAlCarrito('Anillo de Plata 925', 10000, 'anillo-plata-925')">AÑADIR AL CARRO</button>
             </div>
 
             <!-- PRODUCTO 4 -->
-            <div class="card-joya" data-name="aros de plata">
+            <div class="card-joya" data-name="aros de plata" data-id="aros-plata-925">
                 <div class="joya-img-wrapper">
                     <img src="foto_catalogo.jpg" alt="Aros de Plata Ley 925" class="joya-img">
                 </div>
-                <div class="joya-info">
-                    <h2 class="joya-name">Aros de Plata 925</h2>
-                    <div class="stock-container"></div>
-                    <div class="joya-price">$8.000</div>
-                    <a href="https://linktr.ee/GeoVentas" target="_blank" class="btn-consultar order-btn">ORDENAR</a>
+                <h2 class="joya-name">Aros de Plata 925</h2>
+
+                <div class="rating-box locked" id="rating-aros-plata-925">
+                    <div class="stars-container">
+                        <i class="fas fa-star" onclick="calificarProducto('aros-plata-925', 1)"></i>
+                        <i class="fas fa-star" onclick="calificarProducto('aros-plata-925', 2)"></i>
+                        <i class="fas fa-star" onclick="calificarProducto('aros-plata-925', 3)"></i>
+                        <i class="fas fa-star" onclick="calificarProducto('aros-plata-925', 4)"></i>
+                        <i class="fas fa-star" onclick="calificarProducto('aros-plata-925', 5)"></i>
+                    </div>
+                    <div class="rating-text"><i class="fas fa-lock"></i> Califica al comprar este producto</div>
                 </div>
+
+                <div class="stock-container"></div>
+                <div class="joya-price">$8.000</div>
+                <button class="order-btn" onclick="agregarAlCarrito('Aros de Plata 925', 8000, 'aros-plata-925')">AÑADIR AL CARRO</button>
             </div>
 
         </div>
     </main>
 
+    <!-- CARRITO Y MODAL DE PAGOS -->
+    <div class="cart-trigger" onclick="toggleCart()">
+        <i class="fas fa-shopping-bag"></i>
+        <span>Carrito</span>
+        <div class="cart-count" id="cartCount">0</div>
+    </div>
+
+    <div class="cart-modal" id="cartModal">
+        <div class="cart-header">
+            <h3>Tu Pedido</h3>
+            <div class="close-cart" onclick="toggleCart()"><i class="fas fa-times"></i></div>
+        </div>
+
+        <div class="cart-items" id="cartItems">
+            <p style="color: var(--text-secondary); text-align: center; margin-top: 2rem;">El carrito está vacío</p>
+        </div>
+
+        <div>
+            <div class="coupon-box">
+                <label style="font-size: 0.85rem; font-weight: 600;">¿Tienes una tarjeta rascable?</label>
+                <div class="coupon-input-group">
+                    <input type="text" id="couponCode" placeholder="Ej: GEO10">
+                    <button onclick="aplicarDescuento()">Aplicar</button>
+                </div>
+                <div class="coupon-msg" id="couponMsg"></div>
+            </div>
+
+            <div class="cart-totals">
+                <div class="cart-row">
+                    <span>Subtotal:</span>
+                    <span id="subtotalVal">$0</span>
+                </div>
+                <div class="cart-row" id="rowDiscount" style="display:none; color: #2ecc71;">
+                    <span>Descuento:</span>
+                    <span id="discountVal">-$0</span>
+                </div>
+                <div class="cart-row total-row">
+                    <span>Total A Pagar:</span>
+                    <span id="totalVal">$0</span>
+                </div>
+            </div>
+
+            <div class="checkout-buttons">
+                <button class="btn-send btn-wa" onclick="enviarPedido('whatsapp')">
+                    <i class="fab fa-whatsapp"></i> Enviar Pedido por WhatsApp
+                </button>
+                <button class="btn-send btn-social" onclick="copiarPedidoRedes()">
+                    <i class="fas fa-copy"></i> Copiar Pedido para Instagram/FB
+                </button>
+            </div>
+        </div>
+    </div>
+
     <footer>
-        <p>&copy; 2026 GEOVENTAS - Todos los derechos reservados.</p>
+        <p>&copy; 2026 GEOVENTAS - Elegancia y Seguridad Tecnológica en Hualpén • Concepción</p>
     </footer>
 
     <script>
+        // CARRITO Y DESCUENTOS RASCABLES
+        let carrito = [];
+        let descuentoPorcentaje = 0;
+        let codigoAplicado = "";
+
+        const CÓDIGOS_VÁLIDOS = {
+            "GEO10": 0.10,
+            "GEO15": 0.15,
+            "GEO20": 0.20
+        };
+
+        function toggleCart() {
+            document.getElementById('cartModal').classList.toggle('open');
+        }
+
+        function agregarAlCarrito(nombre, precio, id) {
+            carrito.push({ nombre, precio, id });
+            actualizarCarrito();
+            document.getElementById('cartModal').classList.add('open');
+        }
+
+        function eliminarDelCarrito(index) {
+            carrito.splice(index, 1);
+            actualizarCarrito();
+        }
+
+        function aplicarDescuento() {
+            const input = document.getElementById('couponCode').value.trim().toUpperCase();
+            const msg = document.getElementById('couponMsg');
+
+            if (CÓDIGOS_VÁLIDOS[input]) {
+                descuentoPorcentaje = CÓDIGOS_VÁLIDOS[input];
+                codigoAplicado = input;
+                msg.style.color = "#2ecc71";
+                msg.innerText = `¡Tarjeta Rascable de ${descuentoPorcentaje * 100}% activada!`;
+            } else {
+                descuentoPorcentaje = 0;
+                codigoAplicado = "";
+                msg.style.color = "#e74c3c";
+                msg.innerText = "Código no válido o no existe.";
+            }
+            actualizarCarrito();
+        }
+
+        function actualizarCarrito() {
+            const cartItems = document.getElementById('cartItems');
+            const cartCount = document.getElementById('cartCount');
+            const subtotalVal = document.getElementById('subtotalVal');
+            const discountVal = document.getElementById('discountVal');
+            const totalVal = document.getElementById('totalVal');
+            const rowDiscount = document.getElementById('rowDiscount');
+
+            cartCount.innerText = carrito.length;
+
+            if (carrito.length === 0) {
+                cartItems.innerHTML = `<p style="color: var(--text-secondary); text-align: center; margin-top: 2rem;">El carrito está vacío</p>`;
+                subtotalVal.innerText = "$0";
+                totalVal.innerText = "$0";
+                rowDiscount.style.display = "none";
+                return;
+            }
+
+            cartItems.innerHTML = "";
+            let subtotal = 0;
+
+            carrito.forEach((item, index) => {
+                subtotal += item.precio;
+                cartItems.innerHTML += `
+                    <div class="cart-item">
+                        <div>
+                            <div class="cart-item-title">${item.nombre}</div>
+                            <div class="cart-item-price">$${item.precio.toLocaleString('es-CL')}</div>
+                        </div>
+                        <i class="fas fa-trash" style="color: #e74c3c; cursor: pointer;" onclick="eliminarDelCarrito(${index})"></i>
+                    </div>
+                `;
+            });
+
+            let montoDescuento = subtotal * descuentoPorcentaje;
+            let total = subtotal - montoDescuento;
+
+            subtotalVal.innerText = `$${subtotal.toLocaleString('es-CL')}`;
+
+            if (descuentoPorcentaje > 0) {
+                rowDiscount.style.display = "flex";
+                discountVal.innerText = `-$${montoDescuento.toLocaleString('es-CL')}`;
+            } else {
+                rowDiscount.style.display = "none";
+            }
+
+            totalVal.innerText = `$${total.toLocaleString('es-CL')}`;
+        }
+
+        function registrarCompra() {
+            let comprados = JSON.parse(localStorage.getItem('productosComprados') || '[]');
+            carrito.forEach(item => {
+                if (item.id && !comprados.includes(item.id)) {
+                    comprados.push(item.id);
+                }
+            });
+            localStorage.setItem('productosComprados', JSON.stringify(comprados));
+            actualizarEstadoEstrellas();
+        }
+
+        function generarTextoPedido() {
+            let subtotal = carrito.reduce((acc, item) => acc + item.precio, 0);
+            let montoDescuento = subtotal * descuentoPorcentaje;
+            let total = subtotal - montoDescuento;
+
+            let texto = `*¡Hola GeoVentas! Quiero realizar el siguiente pedido de joyería:*\n\n`;
+            
+            let conteo = {};
+            carrito.forEach(i => conteo[i.nombre] = (conteo[i.nombre] || 0) + 1);
+            
+            for (let prod in conteo) {
+                texto += `• ${conteo[prod]}x ${prod}\n`;
+            }
+
+            texto += `\n💵 *Subtotal:* $${subtotal.toLocaleString('es-CL')}\n`;
+            
+            if (descuentoPorcentaje > 0) {
+                texto += `🏷️ *Tarjeta Rascable:* ${codigoAplicado} (-$${montoDescuento.toLocaleString('es-CL')})\n`;
+            }
+            
+            texto += `💰 *TOTAL A TRANSFERIR / EFECTIVO:* *$${total.toLocaleString('es-CL')}*\n\n`;
+            texto += `_Quedo atento a tus datos bancarios para transferir o coordinar la entrega en Hualpén / Concepción._`;
+
+            return texto;
+        }
+
+        function enviarPedido(canal) {
+            if (carrito.length === 0) {
+                alert("Agrega productos a tu carrito primero.");
+                return;
+            }
+
+            registrarCompra();
+            const texto = generarTextoPedido();
+            const telefonoWhatsApp = "56929142859";
+
+            if (canal === 'whatsapp') {
+                const url = `https://wa.me/${telefonoWhatsApp}?text=${encodeURIComponent(texto)}`;
+                window.open(url, '_blank');
+            }
+        }
+
+        function copiarPedidoRedes() {
+            if (carrito.length === 0) {
+                alert("Agrega productos a tu carrito primero.");
+                return;
+            }
+            registrarCompra();
+            const texto = generarTextoPedido();
+            navigator.clipboard.writeText(texto).then(() => {
+                alert("¡Texto del pedido copiado al portapapeles! Ahora pégalo en el chat de Instagram o Facebook de GeoVentas.");
+            });
+        }
+
+        // CONTROL DE VALORACIÓN DESBLOQUEABLE
+        function actualizarEstadoEstrellas() {
+            let comprados = JSON.parse(localStorage.getItem('productosComprados') || '[]');
+            let calificaciones = JSON.parse(localStorage.getItem('calificacionesProductos') || '{}');
+
+            document.querySelectorAll('.rating-box').forEach(box => {
+                const idProd = box.id.replace('rating-', '');
+                const starsContainer = box.querySelector('.stars-container');
+                const ratingText = box.querySelector('.rating-text');
+
+                if (comprados.includes(idProd)) {
+                    box.classList.remove('locked');
+                    box.classList.add('unlocked');
+                    
+                    const notaGuardada = calificaciones[idProd];
+                    if (notaGuardada) {
+                        ratingText.innerText = `¡Tu valoración: ${notaGuardada}/5★!`;
+                        pintarEstrellas(starsContainer, notaGuardada);
+                    } else {
+                        ratingText.innerText = "¡Producto comprado! Haz clic para calificar";
+                    }
+                } else {
+                    box.classList.add('locked');
+                    box.classList.remove('unlocked');
+                    ratingText.innerHTML = `<i class="fas fa-lock"></i> Califica al comprar este producto`;
+                }
+            });
+        }
+
+        function calificarProducto(idProd, nota) {
+            let comprados = JSON.parse(localStorage.getItem('productosComprados') || '[]');
+            if (!comprados.includes(idProd)) return;
+
+            let calificaciones = JSON.parse(localStorage.getItem('calificacionesProductos') || '{}');
+            calificaciones[idProd] = nota;
+            localStorage.setItem('calificacionesProductos', JSON.stringify(calificaciones));
+
+            const box = document.getElementById(`rating-${idProd}`);
+            if (box) {
+                const starsContainer = box.querySelector('.stars-container');
+                const ratingText = box.querySelector('.rating-text');
+                ratingText.innerText = `¡Tu valoración: ${nota}/5★!`;
+                pintarEstrellas(starsContainer, nota);
+            }
+        }
+
+        function pintarEstrellas(container, cantidad) {
+            const estrellas = container.querySelectorAll('i');
+            estrellas.forEach((star, index) => {
+                if (index < cantidad) {
+                    star.classList.add('active');
+                } else {
+                    star.classList.remove('active');
+                }
+            });
+        }
+
+        // SINCRONIZACIÓN DE STOCK GOOGLE SHEETS
         const URL_SHEETS = "https://docs.google.com/spreadsheets/d/1dSfV5WCRk2UqwXGoRy5afG3wsrcZUSSlfBKB_k8XP60/export?format=csv";
 
         async function sincronizarStock() {
@@ -344,7 +1000,7 @@
                             contenedorStock.innerHTML = `<span class="stock-indicator disponible">Disponible (${stockEncontrado} u)</span>`;
                             if (botonOrden) {
                                 botonOrden.classList.remove('disabled');
-                                botonOrden.textContent = "ORDENAR";
+                                botonOrden.textContent = "AÑADIR AL CARRO";
                             }
                         } else {
                             contenedorStock.innerHTML = `<span class="stock-indicator agotado">Agotado temporalmente</span>`;
@@ -363,8 +1019,35 @@
 
         window.addEventListener('DOMContentLoaded', () => {
             sincronizarStock();
+            actualizarEstadoEstrellas();
         });
-    </script>
 
+        // Animación de Cursores Dorados
+        const cursor = document.getElementById('cursor');
+        const cursorFollower = document.getElementById('cursorFollower');
+        let mouseX = 0, mouseY = 0, followerX = 0, followerY = 0;
+
+        if (window.innerWidth > 768) {
+            document.addEventListener('mousemove', (e) => {
+                mouseX = e.clientX;
+                mouseY = e.clientY;
+                if(cursor) {
+                    cursor.style.left = mouseX + 'px';
+                    cursor.style.top = mouseY + 'px';
+                }
+            });
+
+            function animateFollower() {
+                followerX += (mouseX - followerX) * 0.12;
+                followerY += (mouseY - followerY) * 0.12;
+                if(cursorFollower) {
+                    cursorFollower.style.left = followerX + 'px';
+                    cursorFollower.style.top = followerY + 'px';
+                }
+                requestAnimationFrame(animateFollower);
+            }
+            animateFollower();
+        }
+    </script>
 </body>
 </html>
