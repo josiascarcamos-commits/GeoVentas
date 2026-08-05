@@ -334,6 +334,47 @@
         
         .product-card:hover .product-title { color: var(--gold-secondary); }
 
+        /* --- ESTILOS DE VALORACIÓN DESBLOQUEABLE (ESTRELLAS) --- */
+        .rating-box {
+            background: rgba(0, 0, 0, 0.4);
+            border: 1px solid rgba(212, 175, 55, 0.15);
+            border-radius: 16px;
+            padding: 0.6rem 0.8rem;
+            margin-bottom: 1rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .stars-container {
+            display: flex;
+            gap: 4px;
+            color: rgba(255, 255, 255, 0.2);
+            font-size: 1.1rem;
+        }
+
+        .rating-box.unlocked .stars-container {
+            color: var(--gold-primary);
+            cursor: pointer;
+        }
+
+        .stars-container i.active {
+            color: var(--gold-secondary);
+            text-shadow: 0 0 10px rgba(212, 175, 55, 0.6);
+        }
+
+        .rating-text {
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            font-weight: 500;
+        }
+
+        .rating-box.locked .rating-text i {
+            color: var(--gold-primary);
+            margin-right: 4px;
+        }
+
         .stock-indicator {
             display: inline-block;
             align-self: center;
@@ -687,7 +728,7 @@
         <div class="products-grid">
             
             <!-- PRODUCTO 1: CARGADOR DE AUTO -->
-            <div class="product-card" data-name="cargador de auto">
+            <div class="product-card" data-name="cargador de auto" data-id="cargador-auto-30w">
                 <div class="product-web-slider">
                     <div class="slider-track">
                         <div class="slide-item">
@@ -698,14 +739,27 @@
                 </div>
 
                 <h3 class="product-title">Cargador de Auto 30W Max</h3>
+
+                <!-- CAJA DE VALORACIÓN DESBLOQUEABLE -->
+                <div class="rating-box locked" id="rating-cargador-auto-30w">
+                    <div class="stars-container">
+                        <i class="fas fa-star" onclick="calificarProducto('cargador-auto-30w', 1)"></i>
+                        <i class="fas fa-star" onclick="calificarProducto('cargador-auto-30w', 2)"></i>
+                        <i class="fas fa-star" onclick="calificarProducto('cargador-auto-30w', 3)"></i>
+                        <i class="fas fa-star" onclick="calificarProducto('cargador-auto-30w', 4)"></i>
+                        <i class="fas fa-star" onclick="calificarProducto('cargador-auto-30w', 5)"></i>
+                    </div>
+                    <div class="rating-text"><i class="fas fa-lock"></i> Califica al comprar este producto</div>
+                </div>
+
                 <div class="stock-container"></div>
                 <p class="product-description-text">Doble puerto inteligente (Type-C + USB). Carga rápida y eficiente para smartphone, tablet y laptop en ruta.</p>
                 <div class="product-price">$4.990</div>
-                <button class="order-btn" onclick="agregarAlCarrito('Cargador de Auto 30W Max', 4990)">AÑADIR AL CARRO</button>
+                <button class="order-btn" onclick="agregarAlCarrito('Cargador de Auto 30W Max', 4990, 'cargador-auto-30w')">AÑADIR AL CARRO</button>
             </div>
 
             <!-- PRODUCTO 2: PARLANTE MAGNÉTICO -->
-            <div class="product-card" data-name="parlante inalámbrico g200">
+            <div class="product-card" data-name="parlante inalámbrico g200" data-id="parlante-g200">
                 <div class="product-web-slider">
                     <div class="slider-track">
                         <div class="slide-item">
@@ -725,14 +779,27 @@
                 </div>
 
                 <h3 class="product-title">Parlante Magnético G200</h3>
+
+                <!-- CAJA DE VALORACIÓN DESBLOQUEABLE -->
+                <div class="rating-box locked" id="rating-parlante-g200">
+                    <div class="stars-container">
+                        <i class="fas fa-star" onclick="calificarProducto('parlante-g200', 1)"></i>
+                        <i class="fas fa-star" onclick="calificarProducto('parlante-g200', 2)"></i>
+                        <i class="fas fa-star" onclick="calificarProducto('parlante-g200', 3)"></i>
+                        <i class="fas fa-star" onclick="calificarProducto('parlante-g200', 4)"></i>
+                        <i class="fas fa-star" onclick="calificarProducto('parlante-g200', 5)"></i>
+                    </div>
+                    <div class="rating-text"><i class="fas fa-lock"></i> Califica al comprar este producto</div>
+                </div>
+
                 <div class="stock-container"></div>
                 <p class="product-description-text">Sonido de alta fidelidad, fijación con imán de alta densidad y luces RGB rítmicas con 5-8h de batería continua.</p>
                 <div class="product-price">$4.990</div>
-                <button class="order-btn" onclick="agregarAlCarrito('Parlante Magnético G200', 4990)">AÑADIR AL CARRO</button>
+                <button class="order-btn" onclick="agregarAlCarrito('Parlante Magnético G200', 4990, 'parlante-g200')">AÑADIR AL CARRO</button>
             </div>
 
             <!-- PRODUCTO 3: CARGADOR UGREEN GAN -->
-            <div class="product-card" data-name="cargador ugreen gan 30w">
+            <div class="product-card" data-name="cargador ugreen gan 30w" data-id="cargador-ugreen-gan">
                 <div class="product-web-slider">
                     <div class="slider-track">
                         <div class="slide-item">
@@ -746,14 +813,27 @@
                 </div>
 
                 <h3 class="product-title">Cargador Ugreen GaN 30W</h3>
+
+                <!-- CAJA DE VALORACIÓN DESBLOQUEABLE -->
+                <div class="rating-box locked" id="rating-cargador-ugreen-gan">
+                    <div class="stars-container">
+                        <i class="fas fa-star" onclick="calificarProducto('cargador-ugreen-gan', 1)"></i>
+                        <i class="fas fa-star" onclick="calificarProducto('cargador-ugreen-gan', 2)"></i>
+                        <i class="fas fa-star" onclick="calificarProducto('cargador-ugreen-gan', 3)"></i>
+                        <i class="fas fa-star" onclick="calificarProducto('cargador-ugreen-gan', 4)"></i>
+                        <i class="fas fa-star" onclick="calificarProducto('cargador-ugreen-gan', 5)"></i>
+                    </div>
+                    <div class="rating-text"><i class="fas fa-lock"></i> Califica al comprar este producto</div>
+                </div>
+
                 <div class="stock-container"></div>
                 <p class="product-description-text">Tecnología de Nitruro de Galio para máxima eficiencia, velocidad de carga superior y control estricto de temperatura.</p>
                 <div class="product-price">$13.990</div>
-                <button class="order-btn" onclick="agregarAlCarrito('Cargador Ugreen GaN 30W', 13990)">AÑADIR AL CARRO</button>
+                <button class="order-btn" onclick="agregarAlCarrito('Cargador Ugreen GaN 30W', 13990, 'cargador-ugreen-gan')">AÑADIR AL CARRO</button>
             </div>
 
             <!-- PRODUCTO 4: AUDÍFONOS KZ EDX PRO -->
-            <div class="product-card" data-name="audífonos kz edx">
+            <div class="product-card" data-name="audífonos kz edx" data-id="audifonos-kz-edx-pro">
                 <div class="product-web-slider">
                     <div class="slider-track">
                         <div class="slide-item">
@@ -770,17 +850,30 @@
                 </div>
 
                 <h3 class="product-title">Audífonos KZ eDX Pro</h3>
+
+                <!-- CAJA DE VALORACIÓN DESBLOQUEABLE -->
+                <div class="rating-box locked" id="rating-audifonos-kz-edx-pro">
+                    <div class="stars-container">
+                        <i class="fas fa-star" onclick="calificarProducto('audifonos-kz-edx-pro', 1)"></i>
+                        <i class="fas fa-star" onclick="calificarProducto('audifonos-kz-edx-pro', 2)"></i>
+                        <i class="fas fa-star" onclick="calificarProducto('audifonos-kz-edx-pro', 3)"></i>
+                        <i class="fas fa-star" onclick="calificarProducto('audifonos-kz-edx-pro', 4)"></i>
+                        <i class="fas fa-star" onclick="calificarProducto('audifonos-kz-edx-pro', 5)"></i>
+                    </div>
+                    <div class="rating-text"><i class="fas fa-lock"></i> Califica al comprar este producto</div>
+                </div>
+
                 <div class="stock-container"></div>
                 <p class="product-description-text">Audio de alta fidelidad (Hi-Fi) con cable de cobre desmontable. Diseño ergonómico premium para monitoreo y gaming.</p>
                 <div class="product-price">
                     $9.990
                     <span class="price-subtext">+ Estuche Rígido KZ: $11.990</span>
                 </div>
-                <button class="order-btn" onclick="agregarAlCarrito('Audífonos KZ eDX Pro', 9990)">AÑADIR AL CARRO</button>
+                <button class="order-btn" onclick="agregarAlCarrito('Audífonos KZ eDX Pro', 9990, 'audifonos-kz-edx-pro')">AÑADIR AL CARRO</button>
             </div>
 
             <!-- PRODUCTO 5: AUDÍFONOS LENOVO GM2 PRO -->
-            <div class="product-card" data-name="lenovo gm2 pro">
+            <div class="product-card" data-name="lenovo gm2 pro" data-id="lenovo-gm2-pro">
                 <div class="product-web-slider">
                     <div class="slider-track">
                         <div class="slide-item">
@@ -794,14 +887,27 @@
                 </div>
 
                 <h3 class="product-title">Lenovo GM2 Pro TWS</h3>
+
+                <!-- CAJA DE VALORACIÓN DESBLOQUEABLE -->
+                <div class="rating-box locked" id="rating-lenovo-gm2-pro">
+                    <div class="stars-container">
+                        <i class="fas fa-star" onclick="calificarProducto('lenovo-gm2-pro', 1)"></i>
+                        <i class="fas fa-star" onclick="calificarProducto('lenovo-gm2-pro', 2)"></i>
+                        <i class="fas fa-star" onclick="calificarProducto('lenovo-gm2-pro', 3)"></i>
+                        <i class="fas fa-star" onclick="calificarProducto('lenovo-gm2-pro', 4)"></i>
+                        <i class="fas fa-star" onclick="calificarProducto('lenovo-gm2-pro', 5)"></i>
+                    </div>
+                    <div class="rating-text"><i class="fas fa-lock"></i> Califica al comprar este producto</div>
+                </div>
+
                 <div class="stock-container"></div>
                 <p class="product-description-text">Bluetooth 5.3 con modo gamer de ultra baja latencia, sonido envolvente 360° y micrófono HD para llamadas y juegos.</p>
                 <div class="product-price">$12.990</div>
-                <button class="order-btn" onclick="agregarAlCarrito('Lenovo GM2 Pro TWS', 12990)">AÑADIR AL CARRO</button>
+                <button class="order-btn" onclick="agregarAlCarrito('Lenovo GM2 Pro TWS', 12990, 'lenovo-gm2-pro')">AÑADIR AL CARRO</button>
             </div>
 
             <!-- PRODUCTO 6: CABLE ESSAGER -->
-            <div class="product-card" data-name="cable essager 2mts">
+            <div class="product-card" data-name="cable essager 2mts" data-id="cable-essager-2m">
                 <div class="product-web-slider">
                     <div class="slider-track">
                         <div class="slide-item">
@@ -815,13 +921,26 @@
                 </div>
 
                 <h3 class="product-title">Cable Essager 2Mts</h3>
+
+                <!-- CAJA DE VALORACIÓN DESBLOQUEABLE -->
+                <div class="rating-box locked" id="rating-cable-essager-2m">
+                    <div class="stars-container">
+                        <i class="fas fa-star" onclick="calificarProducto('cable-essager-2m', 1)"></i>
+                        <i class="fas fa-star" onclick="calificarProducto('cable-essager-2m', 2)"></i>
+                        <i class="fas fa-star" onclick="calificarProducto('cable-essager-2m', 3)"></i>
+                        <i class="fas fa-star" onclick="calificarProducto('cable-essager-2m', 4)"></i>
+                        <i class="fas fa-star" onclick="calificarProducto('cable-essager-2m', 5)"></i>
+                    </div>
+                    <div class="rating-text"><i class="fas fa-lock"></i> Califica al comprar este producto</div>
+                </div>
+
                 <div class="stock-container"></div>
                 <p class="product-description-text">Conector TYPE-C a TYPE-C reforzado de alta resistencia. Soporta hasta 100W Max con pantalla digital de potencia incorporada.</p>
                 <div class="product-price">
                     $5.990
                     <span class="price-subtext">🔥 Promoción Especial: 2x $10.000</span>
                 </div>
-                <button class="order-btn" onclick="agregarAlCarrito('Cable Essager 2Mts', 5990)">AÑADIR AL CARRO</button>
+                <button class="order-btn" onclick="agregarAlCarrito('Cable Essager 2Mts', 5990, 'cable-essager-2m')">AÑADIR AL CARRO</button>
             </div>
 
         </div>
@@ -887,24 +1006,23 @@
     </footer>
 
     <script>
-           // CONFIGURACIÓN DEL CARRITO Y DESCUENTOS RASCABLES
+        // CONFIGURACIÓN DEL CARRITO Y DESCUENTOS RASCABLES
         let carrito = [];
         let descuentoPorcentaje = 0;
         let codigoAplicado = "";
 
-        // LISTA DE CÓDIGOS RASCABLES VÁLIDOS (Puedes agregar o cambiar los tuyos)
         const CÓDIGOS_VÁLIDOS = {
-            "GEO10": 0.10,  // 10% de descuento
-            "GEO15": 0.15,  // 15% de descuento
-            "GEO20": 0.20   // 20% de descuento
+            "GEO10": 0.10,
+            "GEO15": 0.15,
+            "GEO20": 0.20
         };
 
         function toggleCart() {
             document.getElementById('cartModal').classList.toggle('open');
         }
 
-        function agregarAlCarrito(nombre, precio) {
-            carrito.push({ nombre, precio });
+        function agregarAlCarrito(nombre, precio, id) {
+            carrito.push({ nombre, precio, id });
             actualizarCarrito();
             document.getElementById('cartModal').classList.add('open');
         }
@@ -981,6 +1099,17 @@
             totalVal.innerText = `$${total.toLocaleString('es-CL')}`;
         }
 
+        function registrarCompra() {
+            let comprados = JSON.parse(localStorage.getItem('productosComprados') || '[]');
+            carrito.forEach(item => {
+                if (item.id && !comprados.includes(item.id)) {
+                    comprados.push(item.id);
+                }
+            });
+            localStorage.setItem('productosComprados', JSON.stringify(comprados));
+            actualizarEstadoEstrellas();
+        }
+
         function generarTextoPedido() {
             let subtotal = carrito.reduce((acc, item) => acc + item.precio, 0);
             let montoDescuento = subtotal * descuentoPorcentaje;
@@ -988,7 +1117,6 @@
 
             let texto = `*¡Hola GeoVentas! Quiero realizar el siguiente pedido:*\n\n`;
             
-            // Agrupar productos repetidos en el mensaje
             let conteo = {};
             carrito.forEach(i => conteo[i.nombre] = (conteo[i.nombre] || 0) + 1);
             
@@ -1014,8 +1142,9 @@
                 return;
             }
 
+            registrarCompra();
             const texto = generarTextoPedido();
-            const telefonoWhatsApp = "56929142859"; // Reemplaza con tu número real de GeoVentas
+            const telefonoWhatsApp = "56929142859";
 
             if (canal === 'whatsapp') {
                 const url = `https://wa.me/${telefonoWhatsApp}?text=${encodeURIComponent(texto)}`;
@@ -1028,13 +1157,71 @@
                 alert("Agrega productos a tu carrito primero.");
                 return;
             }
+            registrarCompra();
             const texto = generarTextoPedido();
             navigator.clipboard.writeText(texto).then(() => {
                 alert("¡Texto del pedido copiado al portapapeles! Ahora pégalo en el chat de Instagram o Facebook de GeoVentas.");
             });
         }
 
-        // ENLACE EXCLUSIVO DE TU GOOGLE SHEETS EN FORMATO CSV DE LECTURA AUTOMÁTICA
+        // CONTROL DE VALORACIÓN DESBLOQUEABLE
+        function actualizarEstadoEstrellas() {
+            let comprados = JSON.parse(localStorage.getItem('productosComprados') || '[]');
+            let calificaciones = JSON.parse(localStorage.getItem('calificacionesProductos') || '{}');
+
+            document.querySelectorAll('.rating-box').forEach(box => {
+                const idProd = box.id.replace('rating-', '');
+                const starsContainer = box.querySelector('.stars-container');
+                const ratingText = box.querySelector('.rating-text');
+
+                if (comprados.includes(idProd)) {
+                    box.classList.remove('locked');
+                    box.classList.add('unlocked');
+                    
+                    const notaGuardada = calificaciones[idProd];
+                    if (notaGuardada) {
+                        ratingText.innerText = `¡Tu valoración: ${notaGuardada}/5★!`;
+                        pintarEstrellas(starsContainer, notaGuardada);
+                    } else {
+                        ratingText.innerText = "¡Producto comprado! Haz clic para calificar";
+                    }
+                } else {
+                    box.classList.add('locked');
+                    box.classList.remove('unlocked');
+                    ratingText.innerHTML = `<i class="fas fa-lock"></i> Califica al comprar este producto`;
+                }
+            });
+        }
+
+        function calificarProducto(idProd, nota) {
+            let comprados = JSON.parse(localStorage.getItem('productosComprados') || '[]');
+            if (!comprados.includes(idProd)) return;
+
+            let calificaciones = JSON.parse(localStorage.getItem('calificacionesProductos') || '{}');
+            calificaciones[idProd] = nota;
+            localStorage.setItem('calificacionesProductos', JSON.stringify(calificaciones));
+
+            const box = document.getElementById(`rating-${idProd}`);
+            if (box) {
+                const starsContainer = box.querySelector('.stars-container');
+                const ratingText = box.querySelector('.rating-text');
+                ratingText.innerText = `¡Tu valoración: ${nota}/5★!`;
+                pintarEstrellas(starsContainer, nota);
+            }
+        }
+
+        function pintarEstrellas(container, cantidad) {
+            const estrellas = container.querySelectorAll('i');
+            estrellas.forEach((star, index) => {
+                if (index < cantidad) {
+                    star.classList.add('active');
+                } else {
+                    star.classList.remove('active');
+                }
+            });
+        }
+
+        // SINCRONIZACIÓN DE STOCK GOOGLE SHEETS
         const URL_SHEETS = "https://docs.google.com/spreadsheets/d/1dSfV5WCRk2UqwXGoRy5afG3wsrcZUSSlfBKB_k8XP60/export?format=csv";
 
         async function sincronizarStock() {
@@ -1097,6 +1284,7 @@
 
         window.addEventListener('DOMContentLoaded', () => {
             sincronizarStock();
+            actualizarEstadoEstrellas();
         });
 
         // Menú Desplegable Móvil
@@ -1109,7 +1297,7 @@
             });
         }
 
-        // Animación de los Cursores Dorados (Solo en PC)
+        // Animación de Cursores Dorados
         const cursor = document.getElementById('cursor');
         const cursorFollower = document.getElementById('cursorFollower');
         let mouseX = 0, mouseY = 0, followerX = 0, followerY = 0;
