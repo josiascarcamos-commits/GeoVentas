@@ -553,6 +553,43 @@
         .cart-item-title { font-weight: 600; font-size: 0.9rem; }
         .cart-item-price { color: var(--gold-secondary); font-weight: 700; font-size: 0.95rem; }
 
+        /* --- NUEVO: OPCIONES DE ENTREGA EN CARRITO --- */
+        .delivery-options {
+            background: rgba(255,255,255,0.02);
+            padding: 1rem;
+            border-radius: 14px;
+            border: 1px solid rgba(212, 175, 55, 0.15);
+            margin-bottom: 1rem;
+        }
+
+        .delivery-options label {
+            display: block;
+            color: var(--gold-primary);
+            font-weight: 700;
+            font-size: 0.85rem;
+            margin-bottom: 6px;
+        }
+
+        .delivery-options select {
+            width: 100%;
+            padding: 10px;
+            border-radius: 8px;
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            background: rgba(0, 0, 0, 0.8);
+            color: #fff;
+            outline: none;
+            font-size: 0.9rem;
+            cursor: pointer;
+        }
+
+        .delivery-notice {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            font-style: italic;
+            margin-top: 8px;
+            line-height: 1.3;
+        }
+
         .coupon-box {
             background: rgba(255,255,255,0.02);
             padding: 1rem;
@@ -964,6 +1001,20 @@
         </div>
 
         <div>
+            <!-- Selección de Lugar de Entrega y Aviso de Confirmación de Hora -->
+            <div class="delivery-options">
+                <label for="entregaSelect">📍 Lugar de entrega:</label>
+                <select id="entregaSelect">
+                    <option value="Hualpén">Hualpén</option>
+                    <option value="Concepción (Centro)">Concepción (Centro)</option>
+                    <option value="Talcahuano">Talcahuano</option>
+                    <option value="Envío a domicilio / Otra comuna">Envío a domicilio / Otra comuna</option>
+                </select>
+                <p class="delivery-notice">
+                    ⚠️ <strong>Nota:</strong> Se debe agendar una hora con anticipación para la confirmación de la entrega.
+                </p>
+            </div>
+
             <!-- Caja de Tarjeta Rascable / Descuento -->
             <div class="coupon-box">
                 <label style="font-size: 0.85rem; font-weight: 600;">¿Tienes una tarjeta rascable?</label>
@@ -1115,6 +1166,9 @@
             let montoDescuento = subtotal * descuentoPorcentaje;
             let total = subtotal - montoDescuento;
 
+            const lugarEntregaSelect = document.getElementById('entregaSelect');
+            const lugarEntrega = lugarEntregaSelect ? lugarEntregaSelect.value : "No especificado";
+
             let texto = `*¡Hola GeoVentas! Quiero realizar el siguiente pedido:*\n\n`;
             
             let conteo = {};
@@ -1123,6 +1177,9 @@
             for (let prod in conteo) {
                 texto += `• ${conteo[prod]}x ${prod}\n`;
             }
+
+            texto += `\n📍 *Lugar de entrega:* ${lugarEntrega}\n`;
+            texto += `⏰ *Horario:* Solicito agendar la hora con anticipación para la confirmación.\n`;
 
             texto += `\n💵 *Subtotal:* $${subtotal.toLocaleString('es-CL')}\n`;
             
@@ -1327,3 +1384,4 @@
 
 </body>
 </html>
+
