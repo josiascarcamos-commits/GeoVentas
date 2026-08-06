@@ -464,12 +464,12 @@
         .cart-item-title { font-weight: 600; font-size: 0.9rem; }
         .cart-item-price { color: var(--gold-secondary); font-weight: 700; font-size: 0.95rem; }
 
-        .coupon-box {
+        .delivery-box, .coupon-box {
             background: rgba(255,255,255,0.02);
             padding: 1rem;
             border-radius: 14px;
             border: 1px solid rgba(212, 175, 55, 0.15);
-            margin-bottom: 1.5rem;
+            margin-bottom: 1rem;
         }
 
         .coupon-input-group {
@@ -701,6 +701,25 @@
         </div>
 
         <div>
+            <!-- SELECTOR DE PUNTO DE ENTREGA -->
+            <div class="delivery-box">
+                <label for="selectPuntoEntrega" style="font-size: 0.85rem; font-weight: 600; display: block; margin-bottom: 6px; color: var(--gold-secondary);">
+                    📍 Selecciona tu punto de entrega:
+                </label>
+                <select id="selectPuntoEntrega" style="width: 100%; padding: 10px; background: rgba(0, 0, 0, 0.7); border: 1px solid rgba(212, 175, 55, 0.3); border-radius: 8px; color: #fff; font-size: 0.88rem; outline: none;">
+                    <option value="💬 A coordinar por chat">💬 Coordinar por chat</option>
+                    <option value="🏬 Mall del Centro Concepción">🏬 Mall del Centro Concepción</option>
+                    <option value="🏬 Mall Mirador Biobío (Costanera)">🏬 Mall Mirador Biobío (Costanera)</option>
+                    <option value="📍 Mallplaza Trébol">📍 Mallplaza Trébol</option>
+                    <option value="🚆 Estación Biotrén Padre Hurtado">🚆 Biotrén Padre Hurtado</option>
+                    <option value="🎓 Universidad de Concepción (UdeC)">🎓 Universidad de Concepción (UdeC)</option>
+                    <option value="🛒 Supermercado Alvi Colón (Hualpén)">🛒 Alvi Colón (Hualpén)</option>
+                    <option value="📍 Espacio Sur (Hualpén)">📍 Espacio Sur (Hualpén)</option>
+                    <option value="🏠 Retiro en Domicilio">🏠 Retiro en Domicilio</option>
+                </select>
+            </div>
+
+            <!-- TARJETA RASCABLE DE DESCUENTO -->
             <div class="coupon-box">
                 <label style="font-size: 0.85rem; font-weight: 600;">¿Tienes una tarjeta rascable?</label>
                 <div class="coupon-input-group">
@@ -746,7 +765,79 @@
         let descuentoPorcentaje = 0;
         let codigoAplicado = "";
 
-        const CÓDIGOS_VÁLIDOS = {
+        
+            
+                            if (lineas.length < 3) return;
+
+                const productosFila = lineas[0].split(regexCSV).map(v => v.replace(/^"|"$/g, '').trim().toLowerCase());
+                const stockFila = lineas[2].split(regexCSV).map(v => v.replace(/^"|"$/g, '').trim());
+
+                const mapaStock = {};
+                for (let i = 1; i < productosFila.length; i++) {
+                    const nombreProd = productosFila[i];
+                    const cantStock = parseInt(stockFila[i]) || 0;
+                    if (nombreProd) {
+                        mapaStock[nombreProd] = cantStock;
+                    }
+                }
+
+                document.querySelectorAll('.card-joya').forEach(tarjeta => {
+                    const nombreBuscar = tarjeta.getAttribute('data-name');
+                    const contenedorStock = tarjeta.querySelector('.stock-container');
+                    const botonOrden = tarjeta.querySelector('.order-btn');
+                    
+                    let stockEncontrado = 0;
+                    let registrado = false;
+
+                    Object.keys(mapaStock).forEach(clave => {
+                        if (nombreBuscar && (nombreBuscar.includes(clave) || clave.includes(nombreBuscar))) {
+                            stockEncontrado = mapaStock[clave];
+                            registrado = true;
+                        }
+                    });
+
+                    if (registrado) {
+                        if (stockEncontrado > 0) {
+                            contenedorStock.innerHTML = `<span class="stock-indicator disponible">Disponible (${stockEncontrado} u)</span>`;
+                            if (botonOrden) {
+                                botonOrden.classList.remove('disabled');
+                                botonOrden.textContent = "AÑADIR AL CARRO";
+                            }
+                        } else {
+                            contenedorStock.innerHTML = `<span class="stock-indicator agotado">Agotado temporalmente</span>`;
+                            if (botonOrden) {
+                                botonOrden.classList.add('disabled');
+                                botonOrden.textContent = "SIN STOCK";
+                            }
+                        }
+                    }
+                });
+
+            } catch (error) {
+                console.error("Error al sincronizar el inventario:", error);
+            }
+        }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            sincronizarStock();
+            actualizarEstadoEstrellas();
+        });
+
+        // Animación de Cursores Dorados
+        const cursor = document.getElementById('cursor');
+        const cursorFollower = document.getElementById('cursorFollower');
+        let mouseX = 0, mouseY = 0, followerX = 0, followerY = 0;
+
+        if (window.innerWidth > 768) {
+            document.addEventListener('mousemove', (e) => {
+                mouseX = e.clientX;
+                mouseY = e.clientY;
+                if(cursor) {
+                    cursor.style.left = mouseX + 'px';
+                    cursor.style.top = mouseY + 'px';
+
+
+const CÓDIGOS_VÁLIDOS = {
             "GEO10": 0.10,
             "GEO15": 0.15,
             "GEO20": 0.20
@@ -845,10 +936,16 @@
             actualizarEstadoEstrellas();
         }
 
+        function obtenerUbicacionSeleccionada() {
+            const selectUbicacion = document.getElementById('selectPuntoEntrega');
+            return selectUbicacion ? selectUbicacion.value : "💬 A coordinar por chat";
+        }
+
         function generarTextoPedido() {
             let subtotal = carrito.reduce((acc, item) => acc + item.precio, 0);
             let montoDescuento = subtotal * descuentoPorcentaje;
             let total = subtotal - montoDescuento;
+            let ubicacion = obtenerUbicacionSeleccionada();
 
             let texto = `*¡Hola GeoVentas! Quiero realizar el siguiente pedido de joyería:*\n\n`;
             
@@ -859,6 +956,7 @@
                 texto += `• ${conteo[prod]}x ${prod}\n`;
             }
 
+            texto += `\n📍 *PUNTO DE ENTREGA PREFERIDO:*\n${ubicacion}\n`;
             texto += `\n💵 *Subtotal:* $${subtotal.toLocaleString('es-CL')}\n`;
             
             if (descuentoPorcentaje > 0) {
@@ -866,7 +964,7 @@
             }
             
             texto += `💰 *TOTAL A TRANSFERIR / EFECTIVO:* *$${total.toLocaleString('es-CL')}*\n\n`;
-            texto += `_Quedo atento a tus datos bancarios para transferir o coordinar la entrega en Hualpén / Concepción._`;
+            texto += `_Quedo atento a tus datos bancarios para transferir o coordinar en el punto seleccionado._`;
 
             return texto;
         }
