@@ -553,7 +553,7 @@
         .cart-item-title { font-weight: 600; font-size: 0.9rem; }
         .cart-item-price { color: var(--gold-secondary); font-weight: 700; font-size: 0.95rem; }
 
-        /* --- NUEVO: OPCIONES DE ENTREGA EN CARRITO --- */
+        /* --- OPCIONES DE ENTREGA EN CARRITO --- */
         .delivery-options {
             background: rgba(255,255,255,0.02);
             padding: 1rem;
@@ -1001,17 +1001,22 @@
         </div>
 
         <div>
-            <!-- Selección de Lugar de Entrega y Aviso de Confirmación de Hora -->
+            <!-- Selector de Punto de Entrega Detallado -->
             <div class="delivery-options">
-                <label for="entregaSelect">📍 Lugar de entrega:</label>
-                <select id="entregaSelect">
-                    <option value="Hualpén">Hualpén</option>
-                    <option value="Concepción (Centro)">Concepción (Centro)</option>
-                    <option value="Talcahuano">Talcahuano</option>
-                    <option value="Envío a domicilio / Otra comuna">Envío a domicilio / Otra comuna</option>
+                <label for="selectPuntoEntrega">📍 Selecciona tu punto de entrega:</label>
+                <select id="selectPuntoEntrega">
+                    <option value="💬 A coordinar por chat">💬 Coordinar por chat</option>
+                    <option value="🏬 Mall del Centro Concepción">🏬 Mall del Centro Concepción</option>
+                    <option value="🏬 Mall Mirador Biobío (Costanera)">🏬 Mall Mirador Biobío (Costanera)</option>
+                    <option value="📍 Mallplaza Trébol">📍 Mallplaza Trébol</option>
+                    <option value="🚆 Estación Biotrén Padre Hurtado">🚆 Biotrén Padre Hurtado</option>
+                    <option value="🎓 Universidad de Concepción (UdeC)">🎓 Universidad de Concepción (UdeC)</option>
+                    <option value="🛒 Supermercado Alvi Colón (Hualpén)">🛒 Alvi Colón (Hualpén)</option>
+                    <option value="📍 Espacio Sur (Hualpén)">📍 Espacio Sur (Hualpén)</option>
+                    <option value="🏠 Retiro en Domicilio">🏠 Retiro en Domicilio</option>
                 </select>
                 <p class="delivery-notice">
-                    ⚠️ <strong>Nota:</strong> Se debe agendar una hora con anticipación para la confirmación de la entrega.
+                    ⚠️ <strong>Nota:</strong> Se debe agendar la hora con anticipación para la confirmación de la entrega.
                 </p>
             </div>
 
@@ -1161,13 +1166,17 @@
             actualizarEstadoEstrellas();
         }
 
+        function obtenerUbicacionSeleccionada() {
+            const selectUbicacion = document.getElementById('selectPuntoEntrega');
+            return selectUbicacion ? selectUbicacion.value : "💬 A coordinar por chat";
+        }
+
         function generarTextoPedido() {
             let subtotal = carrito.reduce((acc, item) => acc + item.precio, 0);
             let montoDescuento = subtotal * descuentoPorcentaje;
             let total = subtotal - montoDescuento;
 
-            const lugarEntregaSelect = document.getElementById('entregaSelect');
-            const lugarEntrega = lugarEntregaSelect ? lugarEntregaSelect.value : "No especificado";
+            let ubicacion = obtenerUbicacionSeleccionada();
 
             let texto = `*¡Hola GeoVentas! Quiero realizar el siguiente pedido:*\n\n`;
             
@@ -1178,8 +1187,8 @@
                 texto += `• ${conteo[prod]}x ${prod}\n`;
             }
 
-            texto += `\n📍 *Lugar de entrega:* ${lugarEntrega}\n`;
-            texto += `⏰ *Horario:* Solicito agendar la hora con anticipación para la confirmación.\n`;
+            texto += `\n📍 *PUNTO DE ENTREGA PREFERIDO:*\n${ubicacion}\n`;
+            texto += `⏰ *HORARIO:* Solicito agendar la hora con anticipación para la confirmación.\n`;
 
             texto += `\n💵 *Subtotal:* $${subtotal.toLocaleString('es-CL')}\n`;
             
@@ -1188,7 +1197,7 @@
             }
             
             texto += `💰 *TOTAL A TRANSFERIR / EFECTIVO:* *$${total.toLocaleString('es-CL')}*\n\n`;
-            texto += `_Quedo atento a tus datos bancarios para transferir o coordinar la entrega._`;
+            texto += `_Quedo atento a tus datos bancarios para transferir o coordinar en el punto seleccionado._`;
 
             return texto;
         }
@@ -1384,4 +1393,3 @@
 
 </body>
 </html>
-
