@@ -204,7 +204,7 @@
             transform: translate(-50%, -50%);
         }
 
-        /* --- NAVBAR IGUALADA A PRODUCTOS / JOYAS --- */
+        /* --- NAVBAR --- */
         .navbar {
             position: fixed;
             top: 0;
@@ -227,7 +227,6 @@
             padding: 0 5%;
         }
 
-        /* LOGO CON FORMATO IDÉNTICO AL CATALOGO */
         .logo {
             font-family: 'Playfair Display', serif;
             font-size: 2.2rem;
@@ -363,7 +362,7 @@
             box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
         }
 
-        /* Grid */
+        /* Grid Colecciones */
         .products-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
@@ -480,6 +479,49 @@
             box-shadow: 0 15px 40px rgba(212, 175, 55, 0.5);
         }
 
+        /* --- SECCIÓN MÉTODOS DE PAGO Y ENTREGAS --- */
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .info-card {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 24px;
+            padding: 2.5rem 1.8rem;
+            text-align: center;
+            backdrop-filter: blur(20px);
+            transition: all 0.4s ease;
+        }
+
+        .info-card:hover {
+            border-color: rgba(212,175,55,0.5);
+            transform: translateY(-5px);
+        }
+
+        .info-icon {
+            font-size: 2.5rem;
+            color: var(--gold-primary);
+            margin-bottom: 1.2rem;
+            display: inline-block;
+        }
+
+        .info-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+            color: #ffffff;
+            margin-bottom: 0.8rem;
+        }
+
+        .info-card p {
+            font-size: 0.95rem;
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.6;
+        }
+
         /* FAQ Accordion */
         .faq-container { max-width: 900px; margin: 0 auto; }
         .faq-item {
@@ -563,6 +605,31 @@
         .social-links a:hover { transform: translateY(-8px) scale(1.1); }
         .copyright { font-weight: 300; opacity: 0.85; letter-spacing: 0.05em; font-size: 0.9rem; }
 
+        /* BOTÓN FLOTANTE DIRECTO A LINKTREE / WHATSAPP */
+        .float-contact {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            background: #25d366;
+            color: #ffffff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            box-shadow: 0 10px 25px rgba(37, 211, 102, 0.4);
+            z-index: 999;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .float-contact:hover {
+            transform: scale(1.15) rotate(10deg);
+            box-shadow: 0 15px 35px rgba(37, 211, 102, 0.6);
+        }
+
         /* Mobile Optimization */
         @media (max-width: 768px) {
             body { cursor: default; }
@@ -589,6 +656,7 @@
             .hero-logo-main { max-width: 290px; }
             .products-grid { grid-template-columns: 1fr; gap: 2rem; }
             .content { padding: 2rem 1.5rem; }
+            .float-contact { bottom: 20px; right: 20px; width: 52px; height: 52px; font-size: 1.7rem; }
         }
 
         html { scroll-behavior: smooth; }
@@ -618,9 +686,11 @@
                 <li><a href="#inicio" class="active">Inicio</a></li>
                 <li><a href="#nosotros">Quiénes Somos</a></li>
                 <li><a href="#destacados">Destacados</a></li>
+                <li><a href="#servicio">Modalidad & Pagos</a></li>
                 <li><a href="productos.html">Tecnología</a></li>
                 <li><a href="joyas.html">Joyas</a></li>
-                <li><a href="#faq">Preguntas Frecuentes</a></li>
+                <li><a href="#linktree-section">Contacto</a></li>
+                <li><a href="#faq">FAQ</a></li>
             </ul>
             <div class="hamburger" id="hamburger">
                 <span></span>
@@ -632,20 +702,19 @@
 
     <header class="hero" id="inicio">
         <img src="IMG_20260513_074612_172 (1).png" alt="GeoVentas Logo Principal" class="hero-logo-main">
-        <p class="hero-subtitle">Tecnología premium y joyas exclusivas seleccionadas minuciosamente. Entregas coordinadas en puntos de encuentro estratégicos en Hualpén y Concepción.</p>
+        <p class="hero-subtitle">Tecnología premium y joyas de Plata Ley 925 seleccionadas minuciosamente. Entregas coordinadas en puntos estratégicos en Hualpén y Concepción.</p>
     </header>
 
     <section id="nosotros">
         <h2 class="section-title">Quiénes Somos</h2>
         <div class="content">
-            <p>En GeoVentas nos dedicamos a la distribución de accesorios tecnológicos de la más alta calidad y joyería fina de plata 925. Nuestro enfoque está diseñado para ofrecer una experiencia exclusiva, combinando la comodidad de entregas estratégicas en puntos clave con un catálogo seleccionado meticulosamente para satisfacer los estándares más exigentes del mercado.</p>
+            <p>En GeoVentas nos dedicamos a la distribución de accesorios tecnológicos de alta calidad y joyería fina de Plata Ley 925. Ofrecemos un servicio personal y seguro, permitiendo acordar entregas presenciales para tu máxima comodidad en el Gran Concepción.</p>
         </div>
     </section>
 
     <section id="destacados">
         <h2 class="section-title">Nuestras Colecciones</h2>
         <div class="products-grid">
-            <!-- Tarjeta 1: Joyas de Plata -->
             <a href="joyas.html" class="card-luxury-link">
                 <div class="card-luxury jewel-card">
                     <div class="product-image silver-icon"><i class="fas fa-gem"></i></div>
@@ -655,7 +724,6 @@
                 </div>
             </a>
 
-            <!-- Tarjeta 2: Audífonos -->
             <a href="productos.html" class="card-luxury-link">
                 <div class="card-luxury">
                     <div class="product-image"><i class="fas fa-headphones-alt"></i></div>
@@ -665,25 +733,52 @@
                 </div>
             </a>
 
-            <!-- Tarjeta 3: Cargadores -->
             <a href="productos.html" class="card-luxury-link">
                 <div class="card-luxury">
                     <div class="product-image"><i class="fas fa-bolt"></i></div>
                     <h3 class="product-title">Cargadores Turbo</h3>
-                    <p class="product-status">Carga ultra rápida certificada</p>
+                    <p class="product-status">Carga rápida y eficiente</p>
                     <span class="buy-btn">Ver Tecnología</span>
                 </div>
             </a>
 
-            <!-- Tarjeta 4: Cables -->
             <a href="productos.html" class="card-luxury-link">
                 <div class="card-luxury">
                     <div class="product-image"><i class="fas fa-plug"></i></div>
-                    <h3 class="product-title">Cables de Lujo</h3>
+                    <h3 class="product-title">Cables Reforzados</h3>
                     <p class="product-status">Alta resistencia y velocidad</p>
                     <span class="buy-btn">Ver Tecnología</span>
                 </div>
             </a>
+        </div>
+    </section>
+
+    <section id="servicio">
+        <h2 class="section-title">Modalidad de Compra</h2>
+        <div class="info-grid">
+            <div class="info-card">
+                <i class="fas fa-money-bill-wave info-icon"></i>
+                <h3>Métodos de Pago</h3>
+                <p>Transferencia bancaria o dinero en efectivo al momento de recibir tu producto presencialmente.</p>
+            </div>
+            <div class="info-card">
+                <i class="fas fa-handshake info-icon"></i>
+                <h3>Revisión In Situ</h3>
+                <p>Puedes verificar la joya o probar el dispositivo al momento de la entrega presencial para tu total tranquilidad.</p>
+            </div>
+            <div class="info-card">
+                <i class="fas fa-map-marked-alt info-icon"></i>
+                <h3>Puntos Estratégicos</h3>
+                <p>Entregas coordinadas en Hualpén, Mallplaza Trébol, centro de Concepción o estaciones del Biotrén.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECCIÓN LINKTREE EMBEBIDO DIRECTO -->
+    <section id="linktree-section">
+        <h2 class="section-title">Contacto Directo</h2>
+        <div style="max-width: 480px; margin: 0 auto; height: 580px; border-radius: 28px; overflow: hidden; border: 1px solid var(--glass-border); box-shadow: 0 20px 50px rgba(0,0,0,0.6);">
+            <iframe src="https://linktr.ee/GeoVentas" width="100%" height="100%" frameborder="0" style="background: #000000;"></iframe>
         </div>
     </section>
 
@@ -693,13 +788,19 @@
             <div class="faq-item">
                 <button class="faq-question">¿Cómo se coordinan las entregas? <span>+</span></button>
                 <div class="faq-answer">
-                    <p>Las entregas se coordinan de forma personalizada a través de WhatsApp o redes sociales, acordando un punto estratégico y seguro en Hualpén, Concepción, Malls o estaciones del Biotrén.</p>
+                    <p>Las entregas se acuerdan de forma directa por WhatsApp o Linktree, definiendo una hora y un punto seguro en Hualpén, Concepción, Malls o estaciones del Biotrén.</p>
                 </div>
             </div>
             <div class="faq-item">
-                <button class="faq-question">¿Los productos tienen garantía? <span>+</span></button>
+                <button class="faq-question">¿Puedo probar el producto al recibirlo? <span>+</span></button>
                 <div class="faq-answer">
-                    <p>Sí, todos nuestros dispositivos tecnológicos y piezas de joyería cuentan con garantía de satisfacción ante cualquier fallo técnico o defecto de fabricación.</p>
+                    <p>¡Por supuesto! Al realizar la entrega presencial puedes revisar el estado físico y funcionamiento del artículo para asegurarte de que todo esté en perfecto orden.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question">¿Qué medios de pago aceptan? <span>+</span></button>
+                <div class="faq-answer">
+                    <p>Aceptamos pago en efectivo al momento de la entrega o transferencia bancaria inmediata.</p>
                 </div>
             </div>
         </div>
@@ -708,10 +809,15 @@
     <footer class="footer">
         <div class="social-links">
             <a href="https://linktr.ee/GeoVentas" target="_blank" title="Linktree GeoVentas"><i class="fas fa-link"></i></a>
-            <a href="https://linktr.ee/GeoVentas" target="_blank" title="Contacto GeoVentas"><i class="fab fa-whatsapp"></i></a>
+            <a href="https://linktr.ee/GeoVentas" target="_blank" title="Contacto WhatsApp"><i class="fab fa-whatsapp"></i></a>
         </div>
-        <p class="copyright">&copy; 2026 GeoVentas. Elegancia y Seguridad Tecnológica en Hualpén • Concepción</p>
+        <p class="copyright">&copy; 2026 GeoVentas. Accesorios Tecnológicos & Joyas en Hualpén • Concepción</p>
     </footer>
+
+    <!-- BOTÓN FLOTANTE DIRECTO A LINKTREE / WHATSAPP -->
+    <a href="https://linktr.ee/GeoVentas" target="_blank" class="float-contact" title="Contactar a GeoVentas">
+        <i class="fab fa-whatsapp"></i>
+    </a>
 
     <script>
         const welcomeScreen = document.getElementById('welcomeScreen');
