@@ -577,7 +577,7 @@
 
         .faq-answer.active { max-height: 300px; padding: 0 2.5rem 2rem; }
 
-        /* Footer */
+        /* Footer / Centro de Direcciones */
         .footer {
             background: rgba(0,0,0,0.8);
             backdrop-filter: blur(20px);
@@ -586,16 +586,24 @@
             border-top: 1px solid rgba(212,175,55,0.15);
         }
 
-        .social-links { display: flex; justify-content: center; gap: 2rem; margin-bottom: 2.5rem; }
+        .footer-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            color: var(--gold-primary);
+            margin-bottom: 1.5rem;
+            letter-spacing: 0.05em;
+        }
+
+        .social-links { display: flex; justify-content: center; gap: 1.8rem; margin-bottom: 2.5rem; flex-wrap: wrap; }
         .social-links a {
-            width: 60px;
-            height: 60px;
+            width: 55px;
+            height: 55px;
             background: linear-gradient(135deg, var(--gold-primary), var(--gold-secondary));
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.5rem;
+            font-size: 1.4rem;
             color: #000000;
             text-decoration: none;
             transition: all 0.4s ease;
@@ -605,21 +613,21 @@
         .social-links a:hover { transform: translateY(-8px) scale(1.1); }
         .copyright { font-weight: 300; opacity: 0.85; letter-spacing: 0.05em; font-size: 0.9rem; }
 
-        /* BOTÓN FLOTANTE DIRECTO A LINKTREE / WHATSAPP */
+        /* BOTÓN FLOTANTE LINKTREE (CENTRO DE DIRECCIONES) */
         .float-contact {
             position: fixed;
             bottom: 30px;
             right: 30px;
             width: 60px;
             height: 60px;
-            background: #25d366;
-            color: #ffffff;
+            background: linear-gradient(135deg, var(--gold-primary), var(--gold-secondary));
+            color: #000000;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 2rem;
-            box-shadow: 0 10px 25px rgba(37, 211, 102, 0.4);
+            font-size: 1.8rem;
+            box-shadow: 0 10px 25px rgba(212, 175, 55, 0.4);
             z-index: 999;
             text-decoration: none;
             transition: all 0.3s ease;
@@ -627,7 +635,7 @@
 
         .float-contact:hover {
             transform: scale(1.15) rotate(10deg);
-            box-shadow: 0 15px 35px rgba(37, 211, 102, 0.6);
+            box-shadow: 0 15px 35px rgba(212, 175, 55, 0.6);
         }
 
         /* Mobile Optimization */
@@ -656,7 +664,7 @@
             .hero-logo-main { max-width: 290px; }
             .products-grid { grid-template-columns: 1fr; gap: 2rem; }
             .content { padding: 2rem 1.5rem; }
-            .float-contact { bottom: 20px; right: 20px; width: 52px; height: 52px; font-size: 1.7rem; }
+            .float-contact { bottom: 20px; right: 20px; width: 52px; height: 52px; font-size: 1.5rem; }
         }
 
         html { scroll-behavior: smooth; }
@@ -689,7 +697,7 @@
                 <li><a href="#servicio">Modalidad & Pagos</a></li>
                 <li><a href="productos.html">Tecnología</a></li>
                 <li><a href="joyas.html">Joyas</a></li>
-                <li><a href="#faq">Contacto</a></li>
+                <li><a href="#contacto">Contacto</a></li>
                 <li><a href="#faq">FAQ</a></li>
             </ul>
             <div class="hamburger" id="hamburger">
@@ -780,7 +788,7 @@
             <div class="faq-item">
                 <button class="faq-question">¿Cómo se coordinan las entregas? <span>+</span></button>
                 <div class="faq-answer">
-                    <p>Las entregas se acuerdan de forma directa por WhatsApp o Linktree, definiendo una hora y un punto seguro en Hualpén, Concepción, Malls o estaciones del Biotrén.</p>
+                    <p>Las entregas se acuerdan de forma directa por nuestros canales de contacto, definiendo una hora y un punto seguro en Hualpén, Concepción, Malls o estaciones del Biotrén.</p>
                 </div>
             </div>
             <div class="faq-item">
@@ -798,17 +806,21 @@
         </div>
     </section>
 
-    <footer class="footer">
+    <!-- PIE DE PÁGINA Y CENTRO DE DIRECCIONES / ENLACES -->
+    <footer class="footer" id="contacto">
+        <h3 class="footer-title">Centro de Enlaces & Contacto</h3>
         <div class="social-links">
-            <a href="https://linktr.ee/GeoVentas" target="_blank" title="Linktree GeoVentas"><i class="fas fa-link"></i></a>
-            <a href="https://linktr.ee/GeoVentas" target="_blank" title="Contacto WhatsApp"><i class="fab fa-whatsapp"></i></a>
+            <a href="https://linktr.ee/GeoVentas" target="_blank" title="Centro de Enlaces Linktree"><i class="fas fa-link"></i></a>
+            <a href="https://linktr.ee/GeoVentas" target="_blank" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+            <a href="https://linktr.ee/GeoVentas" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="https://linktr.ee/GeoVentas" target="_blank" title="Facebook"><i class="fab fa-facebook-f"></i></a>
         </div>
         <p class="copyright">&copy; 2026 GeoVentas. Accesorios Tecnológicos & Joyas en Hualpén • Concepción</p>
     </footer>
 
-    <!-- BOTÓN FLOTANTE DIRECTO A LINKTREE / WHATSAPP -->
-    <a href="https://linktr.ee/GeoVentas" target="_blank" class="float-contact" title="Contactar a GeoVentas">
-        <i class="fab fa-whatsapp"></i>
+    <!-- BOTÓN FLOTANTE AL CENTRO DE ENLACES -->
+    <a href="https://linktr.ee/GeoVentas" target="_blank" class="float-contact" title="Centro de Enlaces Linktree">
+        <i class="fas fa-link"></i>
     </a>
 
     <script>
