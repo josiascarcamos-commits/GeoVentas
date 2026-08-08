@@ -11,13 +11,25 @@
     
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GeoVentas - Inicio</title>
+    <title>GeoVentas - Inicio Premium | Hualpén • Concepción</title>
     
     <link rel="shortcut icon" href="IMG_20260513_074612_172 (1).png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
-        /* Importamos Playfair Display e Inter */
-        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,400&family=Inter:wght@300;400;600&display=swap');
+        :root {
+            --bg-primary: #000000;
+            --gold-primary: #d4af37;
+            --gold-secondary: #f1c640;
+            --glass-bg: rgba(255, 255, 255, 0.035);
+            --glass-border: rgba(212, 175, 55, 0.15);
+            --text-primary: #ffffff;
+            --text-secondary: rgba(255, 255, 255, 0.85);
+            --shadow-gold: 0 10px 35px rgba(212, 175, 55, 0.35);
+        }
 
         * {
             margin: 0;
@@ -26,8 +38,8 @@
         }
 
         body {
-            background: #000000;
-            color: rgba(255,255,255,0.92);
+            background: var(--bg-primary);
+            color: var(--text-secondary);
             font-family: 'Inter', sans-serif;
             font-weight: 300;
             line-height: 1.8;
@@ -52,7 +64,7 @@
             justify-content: center;
             align-items: center;
             z-index: 10000;
-            transition: opacity 0.5s ease, visibility 0.5s ease;
+            transition: opacity 0.6s cubic-bezier(0.25, 1, 0.5, 1), visibility 0.6s ease;
         }
 
         .welcome-screen.hidden {
@@ -63,7 +75,7 @@
 
         .enter-btn {
             background: transparent;
-            color: #d4af37;
+            color: var(--gold-primary);
             border: 2px solid rgba(212,175,55,0.4);
             padding: 1.2rem 4.5rem;
             border-radius: 50px;
@@ -73,19 +85,19 @@
             letter-spacing: 0.15em;
             cursor: none;
             text-transform: uppercase;
-            box-shadow: 0 0 20px rgba(212, 175, 55, 0.1);
+            box-shadow: 0 0 25px rgba(212, 175, 55, 0.15);
             transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
         }
 
         .enter-btn:hover {
-            background: linear-gradient(135deg, #d4af37 0%, #f9e27d 50%, #b8860b 100%);
+            background: linear-gradient(135deg, var(--gold-primary), var(--gold-secondary));
             color: #000000;
             border-color: transparent;
             transform: scale(1.05);
-            box-shadow: 0 0 40px rgba(212, 175, 55, 0.6);
+            box-shadow: 0 0 45px rgba(212, 175, 55, 0.6);
         }
 
-        /* --- ANIMACIÓN FLUIDA CINEMÁTICA --- */
+        /* --- ANIMACIÓN INTRO INTENSA --- */
         .netflix-intro {
             position: fixed;
             top: 0;
@@ -130,7 +142,7 @@
         .netflix-img {
             max-width: clamp(200px, 50vw, 320px);
             height: auto;
-            filter: drop-shadow(0 0 30px rgba(212, 175, 55, 0.3));
+            filter: drop-shadow(0 0 35px rgba(212, 175, 55, 0.4));
         }
 
         @keyframes ultraFluidIntro {
@@ -145,11 +157,11 @@
             }
             30% {
                 transform: scale(1);
-                filter: brightness(1) drop-shadow(0 0 35px rgba(212, 175, 55, 0.4));
+                filter: brightness(1) drop-shadow(0 0 40px rgba(212, 175, 55, 0.5));
             }
             75% {
                 opacity: 1;
-                filter: brightness(1.1) drop-shadow(0 0 50px rgba(212, 175, 55, 0.6));
+                filter: brightness(1.1) drop-shadow(0 0 55px rgba(212, 175, 55, 0.7));
             }
             100% {
                 opacity: 0;
@@ -183,7 +195,7 @@
             position: fixed;
             width: 14px;
             height: 14px;
-            background: linear-gradient(135deg, #d4af37, #f9e27d);
+            background: linear-gradient(135deg, var(--gold-primary), var(--gold-secondary));
             border-radius: 50%;
             pointer-events: none;
             z-index: 11000;
@@ -192,13 +204,13 @@
             transform: translate(-50%, -50%);
         }
 
-        /* Navbar */
+        /* --- NAVBAR IGUALADA A PRODUCTOS / JOYAS --- */
         .navbar {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
-            padding: 1.2rem 5%;
+            padding: 1.2rem 0;
             backdrop-filter: blur(25px);
             -webkit-backdrop-filter: blur(25px);
             background: rgba(0,0,0,0.4);
@@ -212,13 +224,15 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            padding: 0 5%;
         }
 
+        /* LOGO CON FORMATO IDÉNTICO AL CATALOGO */
         .logo {
             font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
             font-weight: 900;
-            font-size: clamp(1.8rem, 4vw, 2.3rem);
-            background: linear-gradient(135deg, #d4af37 0%, #f9e27d 50%, #b8860b 100%);
+            background: linear-gradient(135deg, var(--gold-primary), var(--gold-secondary));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -230,17 +244,17 @@
         .nav-links {
             display: flex;
             list-style: none;
-            gap: 2.5rem;
+            gap: 3.5rem;
         }
 
         .nav-links a {
             color: rgba(255,255,255,0.92);
             text-decoration: none;
             font-weight: 600;
+            font-size: 0.95rem;
             position: relative;
             letter-spacing: 0.02em;
             transition: all 0.4s ease;
-            font-size: 0.95rem;
         }
 
         .nav-links a::after {
@@ -250,13 +264,13 @@
             left: 0;
             width: 0;
             height: 2px;
-            background: linear-gradient(135deg, #d4af37, #f9e27d);
+            background: linear-gradient(135deg, var(--gold-primary), var(--gold-secondary));
             transition: width 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
             box-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
         }
 
-        .nav-links a:hover::after { width: 100%; }
-        .nav-links a:hover {
+        .nav-links a:hover::after, .nav-links a.active::after { width: 100%; }
+        .nav-links a:hover, .nav-links a.active {
             color: #ffffff;
             text-shadow: 0 0 15px rgba(212, 175, 55, 0.8);
         }
@@ -265,20 +279,20 @@
             display: none;
             flex-direction: column;
             cursor: pointer;
-            gap: 5px;
+            gap: 6px;
             padding: 5px;
         }
 
         .hamburger span {
-            width: 32px;
+            width: 30px;
             height: 3px;
-            background: linear-gradient(135deg, #d4af37, #f9e27d);
+            background: linear-gradient(135deg, var(--gold-primary), var(--gold-secondary));
             border-radius: 2px;
-            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            transition: all 0.4s ease;
             box-shadow: 0 0 10px rgba(212, 175, 55, 0.4);
         }
 
-        /* Hero */
+        /* Hero Section */
         .hero {
             height: 100vh;
             display: flex;
@@ -293,19 +307,20 @@
         }
 
         .hero-logo-main {
-            max-width: clamp(280px, 65vw, 500px);
+            max-width: clamp(280px, 65vw, 480px);
             height: auto;
             margin-bottom: 2.5rem;
-            filter: drop-shadow(0 0 40px rgba(212, 175, 55, 0.4));
+            filter: drop-shadow(0 0 45px rgba(212, 175, 55, 0.45));
         }
 
         .hero-subtitle {
             font-family: 'Inter', sans-serif;
             font-weight: 300;
-            font-size: clamp(1.05rem, 2.5vw, 1.35rem);
+            font-size: clamp(1.05rem, 2.5vw, 1.3rem);
             max-width: 850px;
             letter-spacing: 0.02em;
-            line-height: 1.7;
+            line-height: 1.8;
+            color: rgba(255,255,255,0.85);
             padding: 0 10px;
         }
 
@@ -319,10 +334,10 @@
         .section-title {
             font-family: 'Playfair Display', serif;
             font-weight: 900;
-            font-size: clamp(2.5rem, 6vw, 4.2rem);
+            font-size: clamp(2.3rem, 5vw, 3.8rem);
             text-align: center;
             margin-bottom: 4rem;
-            background: linear-gradient(135deg, #d4af37 0%, #f9e27d 50%, #b8860b 100%);
+            background: linear-gradient(135deg, var(--gold-primary), var(--gold-secondary));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -339,18 +354,23 @@
             margin: 0 auto;
             text-align: center;
             line-height: 1.9;
-            letter-spacing: 0.015em;
+            color: rgba(255,255,255,0.88);
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid var(--glass-border);
+            border-radius: 28px;
+            padding: 3rem 2.5rem;
+            backdrop-filter: blur(20px);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
         }
 
         /* Grid */
         .products-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
             gap: 2.5rem;
-            margin-top: 4rem;
+            margin-top: 3rem;
         }
 
-        /* Contenedor enlace para la tarjeta completa */
         .card-luxury-link {
             text-decoration: none;
             color: inherit;
@@ -359,20 +379,22 @@
         }
 
         .card-luxury {
-            background: rgba(255,255,255,0.035);
+            background: var(--glass-bg);
             backdrop-filter: blur(25px);
             -webkit-backdrop-filter: blur(25px);
-            border: 1px solid rgba(212,175,55,0.12);
+            border: 1px solid var(--glass-border);
             border-radius: 28px;
             padding: 3.5rem 2rem;
             text-align: center;
-            transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1);
             position: relative;
             overflow: hidden;
             height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
         }
 
-        /* Borde especial plateado para destacar la joya */
         .card-luxury.jewel-card {
             border: 1px solid rgba(220, 225, 230, 0.25);
             background: rgba(255, 255, 255, 0.045);
@@ -385,103 +407,101 @@
             left: -120%;
             width: 120%;
             height: 100%;
-            background: linear-gradient(135deg, transparent 0%, rgba(255,255,255,0.15) 50%, rgba(212,175,55,0.2) 60%, transparent 100%);
-            transition: left 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            background: linear-gradient(135deg, transparent 0%, rgba(255,255,255,0.1) 50%, rgba(212,175,55,0.15) 60%, transparent 100%);
+            transition: left 0.7s cubic-bezier(0.25, 1, 0.5, 1);
             z-index: 2;
         }
 
         .card-luxury-link:hover .card-luxury::before { left: 120%; }
         .card-luxury-link:hover .card-luxury {
-            transform: translateY(-15px);
-            border-color: rgba(212,175,55,0.6);
-            box-shadow: 0 40px 100px rgba(212, 175, 55, 0.25), 0 0 60px rgba(212, 175, 55, 0.15);
+            transform: translateY(-12px);
+            border-color: rgba(212,175,55,0.7);
+            box-shadow: 0 30px 70px rgba(212, 175, 55, 0.25);
         }
 
         .product-image {
-            width: 120px;
-            height: 120px;
-            background: linear-gradient(135deg, #d4af37 0%, #f9e27d 50%, #b8860b 100%);
+            width: 110px;
+            height: 110px;
+            background: linear-gradient(135deg, var(--gold-primary), var(--gold-secondary));
             border-radius: 24px;
-            margin: 0 auto 2.5rem;
+            margin: 0 auto 2rem;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 3rem;
+            font-size: 2.8rem;
             color: #000000;
             font-weight: 900;
-            box-shadow: 0 20px 40px rgba(212, 175, 55, 0.3);
+            box-shadow: 0 15px 35px rgba(212, 175, 55, 0.35);
             transition: all 0.4s ease;
         }
 
-        /* Gradiente plateado para el icono de joyas */
         .product-image.silver-icon {
-            background: linear-gradient(135deg, #e6e9f0 0%, #eef1f5 50%, #b0b5bc 100%);
-            box-shadow: 0 20px 40px rgba(255, 255, 255, 0.2);
+            background: linear-gradient(135deg, #e6e9f0 0%, #ffffff 50%, #b0b5bc 100%);
+            box-shadow: 0 15px 35px rgba(255, 255, 255, 0.25);
         }
 
-        .card-luxury-link:hover .product-image { transform: scale(1.1) rotate(5deg); }
+        .card-luxury-link:hover .product-image { transform: scale(1.1) rotate(4deg); }
         
         .product-title {
             font-family: 'Playfair Display', serif;
             font-weight: 700;
-            font-size: clamp(1.3rem, 2vw, 1.6rem);
-            margin-bottom: 1.2rem;
+            font-size: 1.6rem;
+            margin-bottom: 0.8rem;
             color: #ffffff;
             letter-spacing: 0.02em;
-            line-height: 1.2;
         }
 
         .product-status {
             font-size: 0.85rem;
             text-transform: uppercase;
-            letter-spacing: 0.1em;
-            color: rgba(255,255,255,0.5);
-            margin-bottom: 2.5rem;
+            letter-spacing: 0.12em;
+            color: rgba(255,255,255,0.55);
+            margin-bottom: 2rem;
         }
 
         .buy-btn {
-            background: linear-gradient(135deg, #d4af37 0%, #f9e27d 50%, #b8860b 100%);
+            background: linear-gradient(135deg, var(--gold-primary), var(--gold-secondary));
             color: #000000 !important;
             border: none;
-            padding: 1rem 2.8rem;
+            padding: 1rem 2.5rem;
             border-radius: 50px;
             font-family: 'Inter', sans-serif;
             font-weight: 800;
             font-size: 0.9rem;
             letter-spacing: 0.05em;
-            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            transition: all 0.3s ease;
             display: inline-block;
             text-transform: uppercase;
-            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.4);
+            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.3);
         }
 
         .card-luxury-link:hover .buy-btn {
             transform: scale(1.05);
-            box-shadow: 0 20px 50px rgba(212, 175, 55, 0.6);
+            box-shadow: 0 15px 40px rgba(212, 175, 55, 0.5);
         }
 
         /* FAQ Accordion */
         .faq-container { max-width: 900px; margin: 0 auto; }
         .faq-item {
-            margin-bottom: 2rem;
-            border: 1px solid rgba(212,175,55,0.08);
+            margin-bottom: 1.5rem;
+            border: 1px solid var(--glass-border);
             border-radius: 20px;
             overflow: hidden;
             backdrop-filter: blur(15px);
-            background: rgba(255,255,255,0.02);
-            transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            background: var(--glass-bg);
+            transition: all 0.4s ease;
         }
 
-        .faq-item:hover { border-color: rgba(212,175,55,0.2); }
+        .faq-item:hover { border-color: rgba(212,175,55,0.4); }
         .faq-question {
             width: 100%;
-            padding: 2.5rem;
+            padding: 2rem 2.5rem;
             background: none;
             border: none;
             font-family: 'Inter', sans-serif;
             font-weight: 600;
-            font-size: 1.15rem;
-            color: rgba(255,255,255,0.95);
+            font-size: 1.1rem;
+            color: #ffffff;
             text-align: left;
             cursor: pointer;
             display: flex;
@@ -490,84 +510,88 @@
         }
 
         .faq-question span {
-            font-size: 1.5rem;
-            width: 30px;
-            height: 30px;
+            font-size: 1.3rem;
+            width: 32px;
+            height: 32px;
             display: flex;
             align-items: center;
             justify-content: center;
             border-radius: 50%;
-            background: rgba(212,175,55,0.1);
-            color: #d4af37;
+            background: rgba(212,175,55,0.15);
+            color: var(--gold-primary);
+            transition: transform 0.3s ease;
         }
 
         .faq-answer {
             max-height: 0;
             overflow: hidden;
-            transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1);
             padding: 0 2.5rem;
             font-weight: 300;
-            font-size: 1.05rem;
+            font-size: 1rem;
             line-height: 1.7;
             color: rgba(255,255,255,0.8);
         }
 
-        .faq-answer.active { max-height: 300px; padding: 0 2.5rem 2.5rem; }
+        .faq-answer.active { max-height: 300px; padding: 0 2.5rem 2rem; }
 
         /* Footer */
         .footer {
-            background: rgba(0,0,0,0.7);
+            background: rgba(0,0,0,0.8);
             backdrop-filter: blur(20px);
-            padding: 5rem 5% 3rem;
+            padding: 4rem 5% 3rem;
             text-align: center;
             border-top: 1px solid rgba(212,175,55,0.15);
         }
 
-        .social-links { display: flex; justify-content: center; gap: 3rem; margin-bottom: 3rem; }
+        .social-links { display: flex; justify-content: center; gap: 2rem; margin-bottom: 2.5rem; }
         .social-links a {
-            width: 70px;
-            height: 70px;
-            background: linear-gradient(135deg, #d4af37 0%, #f9e27d 50%, #b8860b 100%);
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--gold-primary), var(--gold-secondary));
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.8rem;
+            font-size: 1.5rem;
             color: #000000;
             text-decoration: none;
-            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-            box-shadow: 0 15px 40px rgba(212, 175, 55, 0.3);
+            transition: all 0.4s ease;
+            box-shadow: var(--shadow-gold);
         }
 
-        .social-links a:hover { transform: translateY(-10px) scale(1.15) rotate(180deg); }
-        .copyright { font-weight: 300; opacity: 0.8; letter-spacing: 0.05em; font-size: 0.95rem; }
+        .social-links a:hover { transform: translateY(-8px) scale(1.1); }
+        .copyright { font-weight: 300; opacity: 0.85; letter-spacing: 0.05em; font-size: 0.9rem; }
 
         /* Mobile Optimization */
         @media (max-width: 768px) {
+            body { cursor: default; }
+            .cursor, .cursor-follower { display: none; }
             .hamburger { display: flex; }
+
             .nav-links {
-                position: fixed;
+                display: none;
+                flex-direction: column;
+                position: absolute;
                 top: 100%;
                 left: 0;
                 width: 100%;
                 background: rgba(0,0,0,0.98);
                 backdrop-filter: blur(30px);
-                flex-direction: column;
                 padding: 3rem 5%;
                 gap: 2.5rem;
-                transform: translateY(-100vh);
-                opacity: 0;
-                visibility: hidden;
-                transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+                text-align: center;
+                border-bottom: 1px solid var(--glass-border);
             }
-            .nav-links.active { transform: translateY(0); opacity: 1; visibility: visible; }
+
+            .nav-links.active { display: flex; }
             section { padding: 80px 5%; }
             .hero-logo-main { max-width: 290px; }
             .products-grid { grid-template-columns: 1fr; gap: 2rem; }
+            .content { padding: 2rem 1.5rem; }
         }
 
         html { scroll-behavior: smooth; }
-        .card-luxury, .buy-btn { will-change: transform; }
     </style>
 </head>
 <body class="lock-scroll">
@@ -589,9 +613,9 @@
 
     <nav class="navbar">
         <div class="nav-container">
-            <a href="#" class="logo">GEOVENTAS</a>
+            <a href="index.html" class="logo">GeoVentas</a>
             <ul class="nav-links" id="navLinks">
-                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#inicio" class="active">Inicio</a></li>
                 <li><a href="#nosotros">Quiénes Somos</a></li>
                 <li><a href="#destacados">Destacados</a></li>
                 <li><a href="productos.html">Tecnología</a></li>
@@ -621,40 +645,40 @@
     <section id="destacados">
         <h2 class="section-title">Nuestras Colecciones</h2>
         <div class="products-grid">
-            <!-- Tarjeta 1: Joyas de Plata -> Lleva a joyas.html -->
+            <!-- Tarjeta 1: Joyas de Plata -->
             <a href="joyas.html" class="card-luxury-link">
                 <div class="card-luxury jewel-card">
-                    <div class="product-image silver-icon">✨</div>
+                    <div class="product-image silver-icon"><i class="fas fa-gem"></i></div>
                     <h3 class="product-title">Joyería Plata Ley 925</h3>
                     <p class="product-status">Colección Fina y Elegante</p>
                     <span class="buy-btn">Ver Joyas</span>
                 </div>
             </a>
 
-            <!-- Tarjeta 2: Audífonos -> Lleva a productos.html -->
+            <!-- Tarjeta 2: Audífonos -->
             <a href="productos.html" class="card-luxury-link">
                 <div class="card-luxury">
-                    <div class="product-image">🎧</div>
+                    <div class="product-image"><i class="fas fa-headphones-alt"></i></div>
                     <h3 class="product-title">Audífonos Inalámbricos</h3>
                     <p class="product-status">Calidad de audio premium</p>
                     <span class="buy-btn">Ver Tecnología</span>
                 </div>
             </a>
 
-            <!-- Tarjeta 3: Cargadores -> Lleva a productos.html -->
+            <!-- Tarjeta 3: Cargadores -->
             <a href="productos.html" class="card-luxury-link">
                 <div class="card-luxury">
-                    <div class="product-image">⚡</div>
+                    <div class="product-image"><i class="fas fa-bolt"></i></div>
                     <h3 class="product-title">Cargadores Turbo</h3>
                     <p class="product-status">Carga ultra rápida certificada</p>
                     <span class="buy-btn">Ver Tecnología</span>
                 </div>
             </a>
 
-            <!-- Tarjeta 4: Cables -> Lleva a productos.html -->
+            <!-- Tarjeta 4: Cables -->
             <a href="productos.html" class="card-luxury-link">
                 <div class="card-luxury">
-                    <div class="product-image">📱</div>
+                    <div class="product-image"><i class="fas fa-plug"></i></div>
                     <h3 class="product-title">Cables de Lujo</h3>
                     <p class="product-status">Alta resistencia y velocidad</p>
                     <span class="buy-btn">Ver Tecnología</span>
@@ -669,13 +693,13 @@
             <div class="faq-item">
                 <button class="faq-question">¿Cómo se coordinan las entregas? <span>+</span></button>
                 <div class="faq-answer">
-                    <p>Las entregas se coordinan directamente de forma personalizada a través de nuestros canales de contacto oficiales, acordando un punto de encuentro estratégico y seguro dentro de las zonas de Hualpén y Concepción.</p>
+                    <p>Las entregas se coordinan de forma personalizada a través de WhatsApp o redes sociales, acordando un punto estratégico y seguro en Hualpén, Concepción, Malls o estaciones del Biotrén.</p>
                 </div>
             </div>
             <div class="faq-item">
                 <button class="faq-question">¿Los productos tienen garantía? <span>+</span></button>
                 <div class="faq-answer">
-                    <p>Sí, todos nuestros dispositivos tecnológicos y artículos de joyería pasan por un estricto control de calidad previo y cuentan con garantía de satisfacción ante cualquier defecto de fábrica o de material.</p>
+                    <p>Sí, todos nuestros dispositivos tecnológicos y piezas de joyería cuentan con garantía de satisfacción ante cualquier fallo técnico o defecto de fabricación.</p>
                 </div>
             </div>
         </div>
@@ -683,10 +707,10 @@
 
     <footer class="footer">
         <div class="social-links">
-            <a href="https://linktr.ee/GeoVentas" target="_blank" title="Linktree GeoVentas">🔗</a>
-            <a href="https://linktr.ee/GeoVentas" target="_blank" title="Contacto GeoVentas">📱</a>
+            <a href="https://linktr.ee/GeoVentas" target="_blank" title="Linktree GeoVentas"><i class="fas fa-link"></i></a>
+            <a href="https://linktr.ee/GeoVentas" target="_blank" title="Contacto GeoVentas"><i class="fab fa-whatsapp"></i></a>
         </div>
-        <p class="copyright">&copy; 2026 GEOVENTAS. Todos los derechos reservados. Elegancia y Seguridad Tecnológica.</p>
+        <p class="copyright">&copy; 2026 GeoVentas. Elegancia y Seguridad Tecnológica en Hualpén • Concepción</p>
     </footer>
 
     <script>
@@ -710,25 +734,27 @@
         const cursorFollower = document.getElementById('cursorFollower');
         let mouseX = 0, mouseY = 0, followerX = 0, followerY = 0;
 
-        document.addEventListener('mousemove', (e) => {
-            mouseX = e.clientX;
-            mouseY = e.clientY;
-            if(cursor) {
-                cursor.style.left = mouseX + 'px';
-                cursor.style.top = mouseY + 'px';
-            }
-        });
+        if (window.innerWidth > 768) {
+            document.addEventListener('mousemove', (e) => {
+                mouseX = e.clientX;
+                mouseY = e.clientY;
+                if(cursor) {
+                    cursor.style.left = mouseX + 'px';
+                    cursor.style.top = mouseY + 'px';
+                }
+            });
 
-        function animateFollower() {
-            followerX += (mouseX - followerX) * 0.12;
-            followerY += (mouseY - followerY) * 0.12;
-            if(cursorFollower) {
-                cursorFollower.style.left = followerX + 'px';
-                cursorFollower.style.top = followerY + 'px';
+            function animateFollower() {
+                followerX += (mouseX - followerX) * 0.12;
+                followerY += (mouseY - followerY) * 0.12;
+                if(cursorFollower) {
+                    cursorFollower.style.left = followerX + 'px';
+                    cursorFollower.style.top = followerY + 'px';
+                }
+                requestAnimationFrame(animateFollower);
             }
-            requestAnimationFrame(animateFollower);
+            animateFollower();
         }
-        animateFollower();
 
         // Menú Móvil Hamburger
         const hamburger = document.getElementById('hamburger');
