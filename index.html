@@ -280,6 +280,7 @@
             cursor: pointer;
             gap: 6px;
             padding: 5px;
+            z-index: 1002;
         }
 
         .hamburger span {
@@ -638,7 +639,7 @@
             box-shadow: 0 15px 35px rgba(212, 175, 55, 0.6);
         }
 
-        /* Mobile Optimization */
+        /* Mobile Optimization simplificado y ordenado */
         @media (max-width: 768px) {
             body { cursor: default; }
             .cursor, .cursor-follower { display: none; }
@@ -647,19 +648,29 @@
             .nav-links {
                 display: none;
                 flex-direction: column;
-                position: absolute;
-                top: 100%;
+                position: fixed;
+                top: 0;
                 left: 0;
-                width: 100%;
+                width: 100vw;
+                height: 100vh;
                 background: rgba(0,0,0,0.98);
-                backdrop-filter: blur(30px);
-                padding: 3rem 5%;
-                gap: 2.5rem;
+                backdrop-filter: blur(25px);
+                -webkit-backdrop-filter: blur(25px);
+                padding: 100px 2rem 3rem 2rem;
+                gap: 1.5rem;
                 text-align: center;
+                z-index: 1001;
+                overflow-y: auto;
                 border-bottom: 1px solid var(--glass-border);
             }
 
             .nav-links.active { display: flex; }
+            
+            .nav-links a {
+                font-size: 1.15rem;
+                padding: 0.4rem 0;
+            }
+
             section { padding: 80px 5%; }
             .hero-logo-main { max-width: 290px; }
             .products-grid { grid-template-columns: 1fr; gap: 2rem; }
@@ -690,15 +701,14 @@
     <nav class="navbar">
         <div class="nav-container">
             <a href="index.html" class="logo">GeoVentas</a>
+            <!-- Menú simplificado y optimizado para móviles -->
             <ul class="nav-links" id="navLinks">
                 <li><a href="#inicio" class="active">Inicio</a></li>
-                <li><a href="#nosotros">Quiénes Somos</a></li>
-                <li><a href="#destacados">Destacados</a></li>
-                <li><a href="#servicio">Modalidad & Pagos</a></li>
                 <li><a href="productos.html">Tecnología</a></li>
                 <li><a href="joyas.html">Joyas</a></li>
-                <li><a href="#contacto">Contacto</a></li>
-                <li><a href="#faq">FAQ</a></li>
+                <li><a href="#destacados">Colecciones</a></li>
+                <li><a href="#servicio">Modalidad</a></li>
+                <li><a href="#faq">Ayuda / FAQ</a></li>
             </ul>
             <div class="hamburger" id="hamburger">
                 <span></span>
@@ -806,7 +816,6 @@
         </div>
     </section>
 
-    <!-- PIE DE PÁGINA Y CENTRO DE DIRECCIONES / ENLACES -->
     <footer class="footer" id="contacto">
         <h3 class="footer-title">Centro de Enlaces & Contacto</h3>
         <div class="social-links">
@@ -818,7 +827,6 @@
         <p class="copyright">&copy; 2026 GeoVentas. Accesorios Tecnológicos & Joyas en Hualpén • Concepción</p>
     </footer>
 
-    <!-- BOTÓN FLOTANTE AL CENTRO DE ENLACES -->
     <a href="https://linktr.ee/GeoVentas" target="_blank" class="float-contact" title="Centro de Enlaces Linktree">
         <i class="fas fa-link"></i>
     </a>
@@ -839,7 +847,6 @@
             });
         }
 
-        // Sistema del Cursor Personalizado
         const cursor = document.getElementById('cursor');
         const cursorFollower = document.getElementById('cursorFollower');
         let mouseX = 0, mouseY = 0, followerX = 0, followerY = 0;
@@ -866,7 +873,6 @@
             animateFollower();
         }
 
-        // Menú Móvil Hamburger
         const hamburger = document.getElementById('hamburger');
         const navLinks = document.getElementById('navLinks');
         if(hamburger && navLinks) {
@@ -880,7 +886,6 @@
             });
         });
 
-        // FAQ Acordeón
         document.querySelectorAll('.faq-question').forEach(button => {
             button.addEventListener('click', () => {
                 const answer = button.nextElementSibling;
