@@ -457,7 +457,7 @@
             pointer-events: none;
         }
 
-        /* --- BOTÓN FLOTANTE Y MODAL DEL CARRITO --- */
+        /* --- BOTÓN FLOTANTE Y ANIMACIÓN DE COMPRA --- */
         .cart-trigger {
             position: fixed;
             bottom: 25px;
@@ -473,10 +473,22 @@
             display: flex;
             align-items: center;
             gap: 12px;
-            transition: all 0.3s ease;
+            transition: transform 0.3s ease;
         }
 
         .cart-trigger:hover { transform: scale(1.08); }
+
+        /* Animación de pulso/rebote al agregar al carro */
+        @keyframes bounceCart {
+            0% { transform: scale(1); }
+            30% { transform: scale(1.25); box-shadow: 0 0 50px rgba(241, 198, 64, 0.9); }
+            60% { transform: scale(0.95); }
+            100% { transform: scale(1); }
+        }
+
+        .cart-animate {
+            animation: bounceCart 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+        }
 
         .cart-count {
             background: #000;
@@ -715,7 +727,8 @@
     </nav>
 
     <header class="hero" id="inicio">
-        <img src="IMG_20260513_074612_172 (1).png" alt="GeoVentas Logo Oficial" class="hero-logo">
+        <!-- Imagen principal optimizada con carga inmediata (eager) -->
+        <img src="IMG_20260513_074612_172 (1).png" alt="GeoVentas Logo Oficial" class="hero-logo" loading="eager" decoding="async">
         <p>Hualpén • Concepción</p>
     </header>
 
@@ -728,7 +741,7 @@
                 <div class="product-web-slider">
                     <div class="slider-track">
                         <div class="slide-item">
-                            <img src="cargador-essager-1.png" alt="Cargador de Auto Essager 30W" class="magnify-img">
+                            <img src="cargador-essager-1.png" alt="Cargador de Auto Essager 30W" class="magnify-img" loading="eager" decoding="async">
                         </div>
                     </div>
                     <div class="slider-indicator"><i class="fas fa-left-right"></i> Vista de producto</div>
@@ -736,7 +749,6 @@
 
                 <h3 class="product-title">Cargador de Auto 30W Max</h3>
 
-                <!-- CAJA DE VALORACIÓN DESBLOQUEABLE -->
                 <div class="rating-box locked" id="rating-cargador-auto-30w">
                     <div class="stars-container">
                         <i class="fas fa-star" onclick="calificarProducto('cargador-auto-30w', 1)"></i>
@@ -759,16 +771,16 @@
                 <div class="product-web-slider">
                     <div class="slider-track">
                         <div class="slide-item">
-                            <img src="parlante-g200-1.png" alt="Parlante Inalámbrico G200 - Vista 1" class="magnify-img">
+                            <img src="parlante-g200-1.png" alt="Parlante Inalámbrico G200 - Vista 1" class="magnify-img" loading="eager" decoding="async">
                         </div>
                         <div class="slide-item">
-                            <img src="parlante-g200-2.png" alt="Parlante Inalámbrico G200 - Vista 2" class="magnify-img">
+                            <img src="parlante-g200-2.png" alt="Parlante Inalámbrico G200 - Vista 2" class="magnify-img" loading="eager" decoding="async">
                         </div>
                         <div class="slide-item">
-                            <img src="parlante-g200-3.png" alt="Parlante Inalámbrico G200 - Vista 3" class="magnify-img">
+                            <img src="parlante-g200-3.png" alt="Parlante Inalámbrico G200 - Vista 3" class="magnify-img" loading="eager" decoding="async">
                         </div>
                         <div class="slide-item">
-                            <img src="parlante-g200-4.png" alt="Parlante Inalámbrico G200 - Vista 4" class="magnify-img">
+                            <img src="parlante-g200-4.png" alt="Parlante Inalámbrico G200 - Vista 4" class="magnify-img" loading="eager" decoding="async">
                         </div>
                     </div>
                     <div class="slider-indicator"><i class="fas fa-left-right"></i> Desliza para ver más</div>
@@ -776,7 +788,6 @@
 
                 <h3 class="product-title">Parlante Magnético G200</h3>
 
-                <!-- CAJA DE VALORACIÓN DESBLOQUEABLE -->
                 <div class="rating-box locked" id="rating-parlante-g200">
                     <div class="stars-container">
                         <i class="fas fa-star" onclick="calificarProducto('parlante-g200', 1)"></i>
@@ -794,18 +805,18 @@
                 <button class="order-btn" onclick="agregarAlCarrito('Parlante Magnético G200', 4990, 'parlante-g200')">AÑADIR AL CARRO</button>
             </div>
 
-            <!-- PRODUCTO 4: AUDÍFONOS KZ EDX PRO -->
+            <!-- PRODUCTO 3: AUDÍFONOS KZ EDX PRO -->
             <div class="product-card" data-name="audífonos kz edx" data-id="audifonos-kz-edx-pro">
                 <div class="product-web-slider">
                     <div class="slider-track">
                         <div class="slide-item">
-                            <img src="1_20260602_233200_0000.png" alt="Audífonos KZ eDX Pro Estilo" class="magnify-img">
+                            <img src="1_20260602_233200_0000.png" alt="Audífonos KZ eDX Pro Estilo" class="magnify-img" loading="eager" decoding="async">
                         </div>
                         <div class="slide-item">
-                            <img src="2_20260602_233201_0001.png" alt="KZ eDX Pro Diseño Premium" class="magnify-img">
+                            <img src="2_20260602_233201_0001.png" alt="KZ eDX Pro Diseño Premium" class="magnify-img" loading="eager" decoding="async">
                         </div>
                         <div class="slide-item">
-                            <img src="3_20260602_233201_0002.png" alt="KZ eDX Pro Detalles Técnicos" class="magnify-img">
+                            <img src="3_20260602_233201_0002.png" alt="KZ eDX Pro Detalles Técnicos" class="magnify-img" loading="eager" decoding="async">
                         </div>
                     </div>
                     <div class="slider-indicator"><i class="fas fa-left-right"></i> Desliza para ver galerías</div>
@@ -813,7 +824,6 @@
 
                 <h3 class="product-title">Audífonos KZ eDX Pro</h3>
 
-                <!-- CAJA DE VALORACIÓN DESBLOQUEABLE -->
                 <div class="rating-box locked" id="rating-audifonos-kz-edx-pro">
                     <div class="stars-container">
                         <i class="fas fa-star" onclick="calificarProducto('audifonos-kz-edx-pro', 1)"></i>
@@ -834,15 +844,15 @@
                 <button class="order-btn" onclick="agregarAlCarrito('Audífonos KZ eDX Pro', 9990, 'audifonos-kz-edx-pro')">AÑADIR AL CARRO</button>
             </div>
 
-            <!-- PRODUCTO 5: AUDÍFONOS LENOVO GM2 PRO -->
+            <!-- PRODUCTO 4: AUDÍFONOS LENOVO GM2 PRO -->
             <div class="product-card" data-name="lenovo gm2 pro" data-id="lenovo-gm2-pro">
                 <div class="product-web-slider">
                     <div class="slider-track">
                         <div class="slide-item">
-                            <img src="lenovo-gm2-pro-1.png" alt="Audífonos Lenovo GM2 Pro Vista Principal" class="magnify-img">
+                            <img src="lenovo-gm2-pro-1.png" alt="Audífonos Lenovo GM2 Pro Vista Principal" class="magnify-img" loading="eager" decoding="async">
                         </div>
                         <div class="slide-item">
-                            <img src="lenovo-gm2-pro-2.png" alt="Audífonos Lenovo GM2 Pro Estuche de Carga" class="magnify-img">
+                            <img src="lenovo-gm2-pro-2.png" alt="Audífonos Lenovo GM2 Pro Estuche de Carga" class="magnify-img" loading="eager" decoding="async">
                         </div>
                     </div>
                     <div class="slider-indicator"><i class="fas fa-left-right"></i> Desliza para ver más</div>
@@ -850,7 +860,6 @@
 
                 <h3 class="product-title">Lenovo GM2 Pro TWS</h3>
 
-                <!-- CAJA DE VALORACIÓN DESBLOQUEABLE -->
                 <div class="rating-box locked" id="rating-lenovo-gm2-pro">
                     <div class="stars-container">
                         <i class="fas fa-star" onclick="calificarProducto('lenovo-gm2-pro', 1)"></i>
@@ -868,15 +877,15 @@
                 <button class="order-btn" onclick="agregarAlCarrito('Lenovo GM2 Pro TWS', 12990, 'lenovo-gm2-pro')">AÑADIR AL CARRO</button>
             </div>
 
-            <!-- PRODUCTO 6: CABLE ESSAGER -->
+            <!-- PRODUCTO 5: CABLE ESSAGER -->
             <div class="product-card" data-name="cable essager 2mts" data-id="cable-essager-2m">
                 <div class="product-web-slider">
                     <div class="slider-track">
                         <div class="slide-item">
-                            <img src="4_20260602_233201_0003.png" alt="Cable Essager 2mts TYPE-C" class="magnify-img">
+                            <img src="4_20260602_233201_0003.png" alt="Cable Essager 2mts TYPE-C" class="magnify-img" loading="eager" decoding="async">
                         </div>
                         <div class="slide-item">
-                            <img src="5_20260602_233201_0004.png" alt="Sello Calidad Premium GeoVentas" class="magnify-img">
+                            <img src="5_20260602_233201_0004.png" alt="Sello Calidad Premium GeoVentas" class="magnify-img" loading="eager" decoding="async">
                         </div>
                     </div>
                     <div class="slider-indicator"><i class="fas fa-left-right"></i> Ver detalles</div>
@@ -884,7 +893,6 @@
 
                 <h3 class="product-title">Cable Essager 2Mts</h3>
 
-                <!-- CAJA DE VALORACIÓN DESBLOQUEABLE -->
                 <div class="rating-box locked" id="rating-cable-essager-2m">
                     <div class="stars-container">
                         <i class="fas fa-star" onclick="calificarProducto('cable-essager-2m', 1)"></i>
@@ -908,8 +916,8 @@
         </div>
     </section>
 
-    <!-- COMPONENTE FLOTANTE Y MODAL DEL CARRITO DE COMPRAS -->
-    <div class="cart-trigger" onclick="toggleCart()">
+    <!-- COMPONENTE FLOTANTE CON ANIMACIÓN DE COMPRA -->
+    <div class="cart-trigger" id="cartTrigger" onclick="toggleCart()">
         <i class="fas fa-shopping-bag"></i>
         <span>Carrito</span>
         <div class="cart-count" id="cartCount">0</div>
@@ -969,7 +977,7 @@
     </footer>
 
     <script>
-        // CONFIGURACIÓN DEL CARRITO
+        // CONFIGURACIÓN DEL CARRITO CON ANIMACIÓN DE COMPRA
         let carrito = [];
 
         function toggleCart() {
@@ -979,7 +987,14 @@
         function agregarAlCarrito(nombre, precio, id) {
             carrito.push({ nombre, precio, id });
             actualizarCarrito();
-            document.getElementById('cartModal').classList.add('open');
+
+            // Activar animación en el botón flotante del carrito
+            const cartTrigger = document.getElementById('cartTrigger');
+            if(cartTrigger) {
+                cartTrigger.classList.remove('cart-animate');
+                void cartTrigger.offsetWidth; // Truco para reiniciar la animación CSS
+                cartTrigger.classList.add('cart-animate');
+            }
         }
 
         function eliminarDelCarrito(index) {
@@ -1248,3 +1263,4 @@
 
 </body>
 </html>
+
